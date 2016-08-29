@@ -1,0 +1,10 @@
+<h1>All cars - ADMIN ONLY</h1>
+
+<% @cars.each do |car| %>
+  <h2>Car owner: <%= car.user %></h2>
+  <ul>
+    <li><%= car.make %></li>
+    <li><%= car.model %></li>
+    <li><%= car.vrn %></li>
+  </ul>
+<% end %>
