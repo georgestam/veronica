@@ -1,7 +1,7 @@
 <h1>All cars - ADMIN ONLY</h1>
 
 <% @cars.each do |car| %>
-  <h2>Car owner: <%= car.user %></h2>
+  <h2>Car owner: <%= "#{car.user.first_name} #{car.user.last_name}" %></h2>
   <ul>
     <li>Make: <%= car.make %></li>
     <li>Model: <%= car.name %></li>
