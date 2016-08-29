@@ -1,0 +1,17 @@
+<div class="banner-content">
+  <h1><%= @journey.user.name %></h1>
+  <p><%= @journey.seats_available %></p>
+  <p><%= @journey.pick_up_time %></p>
+  <p><%= @journey.pick_up_location %></p>
+  <p><%= @journey.drop_off_location %></p>
+  <p><%= @journey.seats_available %></p>
+  <p><%= @journey.user.description %></p>
+  <p><%= @journey.user.music_habits %></p>
+  <p><%= @journey.user.speaking_habits %></p>
+  <p><%= @journey.user.smoking %></p>
+  <p><%= @journey.car.make %></p>
+  <p><%= @journey.car.colour %></p>
+  <%= link_to "See all my journeys", user_journeys_path, class: "btn btn-primary" %>
+</div>
+
+
