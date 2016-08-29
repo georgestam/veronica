@@ -1,4 +1,9 @@
 // Your footer style
+.wrapper-footer {
+  background-color: $gray-darker;
+  min-height: 100px;
+  padding: 30px 0;
+}
 .share-links {
   display: flex;
   align-items: center;
