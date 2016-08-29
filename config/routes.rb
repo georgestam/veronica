@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   get "users/edit", to: "profiles#edit", as: :edit_profile
   patch "/profile", to: "profiles#update", as: :update_profile
 
-  resources :journey, only:[:index, :show, :edit, :update, :destroy] do
-    resources :passenger, only:[:create]
-  end
-
   resources :cars do
     resources :journeys, only:[:new, :create]
+  end
+
+  resources :journey, only:[:index, :show, :edit, :update, :destroy] do
+    resources :passenger, only:[:create]
   end
 
   resources :passengers, only:[:update]
