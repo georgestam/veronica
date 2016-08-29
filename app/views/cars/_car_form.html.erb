@@ -1,9 +1,18 @@
-<%= simple_form_for @car do |f| %>
-  <%= f.error_notification %>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <%= simple_form_for @car do |f| %>
+          <%= f.error_notification %>
 
-  <%= f.input :make %>
-  <%= f.input :name %>
-  <%= f.input :vrn %>
-  <%= f.input :colour %>
-  <%= f.button :submit %>
-<% end %>
+          <%= f.input :make %>
+          <%= f.input :name %>
+          <%= f.input :vrn %>
+          <%= f.input :colour %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
