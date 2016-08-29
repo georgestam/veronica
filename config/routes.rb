@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get "users/:id", to: "profiles#show", as: :profile
-  get "users/edit", to: "profiles#edit", as: :edit_profile
+  get "profile/edit", to: "profiles#edit", as: :edit_profile
   patch "/profile", to: "profiles#update", as: :update_profile
 
   resources :cars do
