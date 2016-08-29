@@ -25,7 +25,7 @@
           <h2>Driving preferences</h2>
           <%= f.input :music_habits %>
           <%= f.input :speaking_habits %>
-          <%= f.input :smoking %>
+          <%= f.input :smoking, as: :radio_buttons %>
 
           <%= f.button :submit %>
         <% end %>
