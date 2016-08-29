@@ -6,6 +6,7 @@
         <%= simple_form_for current_user, url: update_profile_path do |f| %>
           <%= f.error_notification %>
 
+          <h2>Personal info</h2>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
           <%= f.input :date_of_birth %>
@@ -16,10 +17,12 @@
           <%= f.input :email %>
           <%= f.input :phone_number %>
 
+          <h2>University info</h2>
           <%= f.input :student_id %>
           <%= f.input :year_of_study %>
           <%= f.input :uni_course %>
 
+          <h2>Driving preferences</h2>
           <%= f.input :music_habits %>
           <%= f.input :speaking_habits %>
           <%= f.input :smoking %>
