@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resources :passenger, only:[:create]
   end
 
+  namespace :user do
+    resources :journeys, only:[:index]
+  end
+
   resources :passengers, only:[:update]
 
 end
