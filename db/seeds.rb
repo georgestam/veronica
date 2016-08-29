@@ -70,16 +70,16 @@ end
   x += 1
 end
 
-# 5.times do
-#   x = 5
-#   passenger = Passenger.create!({
-#     user_id: users[x],
-#     journey_id: journeys[x],
-#     driver_rating: nil,
-#     passenger_rating: nil,
-#     })
-#   passenger.journey = journeys[x]
-#   passenger.user = users[x]
-#   passenger.save
-#   x +=1
-# end
+5.times do
+  x = 5
+  passenger = Passenger.create!({
+    user_id: users[x],
+    journey_id: journeys[x],
+    driver_rating: nil,
+    passenger_rating: nil,
+    })
+  passenger.journey = journeys[x]
+  passenger.user = users[x]
+  passenger.save
+  x +=1
+end
