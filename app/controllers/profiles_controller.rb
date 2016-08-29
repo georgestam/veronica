@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-
+    @user.update()
   end
 
   private
@@ -17,4 +17,6 @@ class ProfilesController < ApplicationController
   def find_user
     @user = User.find(params[:id])
   end
+
+
 end
