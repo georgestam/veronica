@@ -3,8 +3,9 @@
 <% @cars.each do |car| %>
   <h2>Car owner: <%= car.user %></h2>
   <ul>
-    <li><%= car.make %></li>
-    <li><%= car.model %></li>
-    <li><%= car.vrn %></li>
+    <li>Make: <%= car.make %></li>
+    <li>Model: <%= car.name %></li>
+    <li>Licence plate: <%= car.vrn %></li>
+    <li>Colour: <%= car.colour %></li>
   </ul>
 <% end %>
