@@ -12,12 +12,13 @@ Journey.destroy_all
 Car.destroy_all
 User.destroy_all
 
-passengers = []
 journeys = []
 cars = []
 users = []
 speaking_habits = ["Talkative", "Chatty", "SILENCE!"]
 uni_course = ["History", "Economics", "Engineering"]
+car_make = %w(Ferrari Porsche BMW Mercedes Mazda Ford Toyota Peugot Audi Mini)
+vrn = %w(VW52ZAB G4CLS S9EVO V651GTR M30SLK W200CLK VW55MEL CH55BMW TI33AMG JEZ605R)
 
 20.times do
   x = rand(0..2)
@@ -36,41 +37,49 @@ uni_course = ["History", "Economics", "Engineering"]
     year_of_study: rand(1..4),
     uni_course: uni_course[x],
     smoking: Faker::Boolean.boolean,
+    password: "123456789"
     })
 end
 
 10.times do
   x = 0
-  cars << Car.create!({
-    user_id: users[x],
-    make: Faker::Vehicle.manufacture,
-    name: Faker:: ,
-    vrn: Faker::Vehicle.vin ,
-    colour: Faker:: ,
+  car = Car.new({
+    make: car_make[x],
+    name: Faker::Pokemon.name,
+    vrn: vrn[x],
+    colour: Faker::Color.color_name,
     })
+  car.user = users[x]
+  car.save
+  cars << car
   x += 1
 end
 
 10.times do
   x = 0
-  journeys << Journey.create!({
-    user_id: users[x],
-    car_id: cars[x],
+  journey = Journey.create!({
     pick_up_time: Faker::Time.forward(7, :morning) ,
     pick_up_location: Faker::Address.street_address ,
     drop_off_location: Faker::Address.street_address ,
     completed: false,
     })
+  journey.car = cars[x]
+  journey.user = cars[x].user
+  journey.save
+  journeys << journey
   x += 1
 end
 
-5.times do
-  x = 5
-  passengers << Passenger.create!({
-    user_id: users[x],
-    journey_id: journeys[x],
-    driver_rating: nil,
-    passenger_rating: nil,
-    })
-  x +=1
-end
+# 5.times do
+#   x = 5
+#   passenger = Passenger.create!({
+#     user_id: users[x],
+#     journey_id: journeys[x],
+#     driver_rating: nil,
+#     passenger_rating: nil,
+#     })
+#   passenger.journey = journeys[x]
+#   passenger.user = users[x]
+#   passenger.save
+#   x +=1
+# end
