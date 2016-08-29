@@ -1,0 +1,67 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: calc(100vh - 70px);
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background-color: $gray-darker;
+}
+.banner h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+.banner p {
+  font-size: 20px;
+  font-weight: lighter;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+}
+
+
+#half-banner {
+  width: 100%;
+  height: 400px;
+  background-position: center;
+}
+.banner-content{
+  font-size: 14px;
+  line-height: 1.43;
+  padding-top: 30px;
+}
+
+.banner-form{
+  // background-color: $gray-darker;
+  // bottom: 0;
+  right: 0;
+  left: 0;
+
+  padding-top: 30px;
+  position: absolute;
+  margin:0;
+}
+
+.banner-text{
+  padding-bottom: 20px;
+}
+
+video#bgvid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    width: auto;
+    height: auto;
+    // bottom: 0px;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover;
+}
