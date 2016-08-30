@@ -28,6 +28,12 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+#  Seed gems
 gem 'faker'
 
+#  Photo upload gems
+gem 'cloudinary', '1.1.0'
+gem "attachinary", github: "assembler/attachinary"
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
 

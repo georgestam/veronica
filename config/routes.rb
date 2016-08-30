@@ -22,4 +22,5 @@ Rails.application.routes.draw do
 
   resources :passengers, only:[:update]
 
+  mount Attachinary::Engine => "/attachinary"
 end
