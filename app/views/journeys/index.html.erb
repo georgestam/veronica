@@ -1,0 +1,10 @@
+<h1 class="text-center"> All Journeys</h1>
+<div class="container">
+  <div class="row">
+    <% @journeys.each do |j| %>
+    <div class="col-xs-12 col-sm-4">
+      <%= render "card", journey: j %>
+    </div>
+    <% end %>
+  </div>
+</div>

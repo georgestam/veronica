@@ -9,7 +9,9 @@ class JourneysController < ApplicationController
   end
 
   def new
+    @car = Car.find(params[:car_id])
     @journey = Journey.new
+    @journey.car = @car
   end
 
   def create
@@ -24,6 +26,8 @@ class JourneysController < ApplicationController
   end
 
   def edit
+    @car = Car.find(params[:car_id])
+    @journey.car = @car
   end
 
   def update
@@ -33,6 +37,7 @@ class JourneysController < ApplicationController
 
   def destroy
     @journey.destroy
+    redirect_to journeys_path
   end
 
   private
