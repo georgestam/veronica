@@ -22,11 +22,21 @@
   margin-bottom: 20px;
 }
 
-// .banner-container {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-// }
+.banner-container {
+  background-color: #5688C7;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.caption h3 {
+  color: white;
+}
+
+.caption p {
+  color: white;
+}
 
 #half-banner {
   width: 100%;
