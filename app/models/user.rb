@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :passengers
   has_many :cars
   has_many :journeys
+
+  validates :email, uniqueness: true, format: { with: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/ }
 end
