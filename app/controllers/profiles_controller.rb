@@ -1,8 +1,9 @@
 class ProfilesController < ApplicationController
 
-  before_action :find_user, only: [:show, :edit]
+  before_action :find_user, only: [:show]
 
   def show
+    @cars = Car.where(user: @user)
   end
 
   def edit
@@ -20,6 +21,6 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone_number, :description, :gender, :student_id, :date_of_birth, :music_habits, :speaking_habits, :year_of_study, :uni_course, :smoking)
+    params.require(:user).permit(:photo, :first_name, :last_name, :email, :phone_number, :description, :gender, :student_id, :date_of_birth, :music_habits, :speaking_habits, :year_of_study, :uni_course, :smoking)
   end
 end

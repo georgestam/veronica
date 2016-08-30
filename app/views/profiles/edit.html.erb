@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <h1>Update your details</h1>
+        <%= simple_form_for current_user, url: update_profile_path do |f| %>
+          <%= f.error_notification %>
+
+          <h2>Personal info</h2>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :date_of_birth %>
+          <%= f.input :description %>
+          <%= f.input :gender %>
+
+          <h2>Contact info</h2>
+          <%= f.input :email %>
+          <%= f.input :phone_number %>
+
+          <h2>University info</h2>
+          <%= f.input :student_id %>
+          <%= f.input :year_of_study %>
+          <%= f.input :uni_course %>
+
+          <h2>Driving preferences</h2>
+          <%= f.input :music_habits %>
+          <%= f.input :speaking_habits %>
+          <%= f.input :smoking, as: :radio_buttons %>
+
+          <%= f.input :photo, as: :attachinary %>
+
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

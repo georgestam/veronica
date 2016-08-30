@@ -1,7 +1,7 @@
 class CarsController < ApplicationController
 
   before_action :find_car, only: [:show, :edit, :update, :destroy]
-  before_action :find_user, only: [:show, :create, :update, :destroy]
+  before_action :find_user, only: [:show, :update, :destroy]
 
   def index
     @cars = Car.all
@@ -17,9 +17,10 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    @user = @car.user
+    @user = current_user
+    @car.user = @user
     if @car.save
-      redirect_to user_path(@user)
+      redirect_to profile_path(@user)
     else
       render :new
     end
@@ -30,12 +31,12 @@ class CarsController < ApplicationController
 
   def update
     @car.update(car_params)
-    redirect_to user_path(@user)
+    redirect_to profile_path(@user)
   end
 
   def destroy
     @car.destroy
-    redirect_to user_path(@user)
+    redirect_to profile_path(@user)
   end
 
   private
@@ -49,6 +50,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:make, :model, :vrn, :colour)
+    params.require(:car).permit(:make, :name, :vrn, :colour)
   end
 end

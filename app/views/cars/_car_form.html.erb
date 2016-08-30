@@ -1,0 +1,10 @@
+<%= simple_form_for @car do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :make %>
+  <%= f.input :name %>
+  <%= f.input :vrn %>
+  <%= f.input :colour %>
+
+  <%= f.button :submit, class: "btn btn-primary wide-btn" %>
+<% end %>
