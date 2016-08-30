@@ -1,4 +1,4 @@
-class User::JourneysController < Applicationcontroller
+class User::JourneysController < ApplicationController
 
   # this is controller to  list all journeys a user has both a passenger and driver )
 

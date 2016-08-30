@@ -14,15 +14,15 @@
             <li> <i class="fa fa-users" aria-hidden="true"></i> <%= journey.seats_available %> </li>
           </ul>
         </div>
-        <%= link_to "", journey_path(@journey), class: "product-link" %>
+        <%= link_to "", journey_path(journey), class: "product-link" %>
       </div>
     <% end %>
-  <% end %>
+
 </div>
 
 
-<div class="wrapper" id="Passenger-bookings">
-  <h2>Passenger Journeys</h2>
+<div class="wrapper" id="Driver-bookings">
+  <h2>Driver Journeys</h2>
   <% @journeys_as_driver.each do |journey| %>
       <div class="product">
         <%= image_tag "https://unsplash.it/500/300", { class: "product-image hidden-xs"} %>
@@ -32,13 +32,12 @@
           <ul>
             <li><i class="fa fa-calendar" aria-hidden="true"></i> <%= journey.pick_up_location %></li>
             <li><i class="fa fa-map-marker" aria-hidden="true"> </i> <%= journey.drop_off_location %></li>
-            <li> <i class="fa fa-money" aria-hidden="true"></i> <%= Passenger.where(passenger.journey_id == journey) %> £ p/p </li>
+            <li> <i class="fa fa-money" aria-hidden="true"></i> <%= journey.passengers %> £ p/p </li>
             <li> <i class="fa fa-cutlery" aria-hidden="true"></i> <%= journey.car %></li>
             <li> <i class="fa fa-users" aria-hidden="true"></i> <%= journey.seats_available %> </li>
           </ul>
         </div>
-        <%= link_to "", journey_path(@journey), class: "product-link" %>
+        <%= link_to "", journey_path(journey), class: "product-link" %>
       </div>
     <% end %>
-  <% end %>
 </div>

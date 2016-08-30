@@ -1,5 +1,5 @@
 <div class="banner-content">
-  <h1><%= @journey.user.name %></h1>
+  <h1><%= @journey.user.first_name %></h1>
   <h2> Journey info </h2>
     <p><%= @journey.seats_available %></p>
     <p><%= @journey.pick_up_time %></p>
@@ -14,7 +14,8 @@
     <p><%= @journey.car.make %></p>
     <p><%= @journey.car.colour %></p>
   <%= link_to "See all my journeys", user_journeys_path, {class: "btn btn-primary" } %>
-  <%= link_to "Edit this journey", edit_journey_path { class: "btn btn-primary"}
+  <%= link_to "Edit this journey", edit_car_journey_path(@journey.car), { class: "btn btn-primary"}%>
+  <%= link_to "delete", journey_path(@journey), method: :delete  %>
 </div>
 
 

@@ -1,0 +1,7 @@
+<%= simple_form_for [@journey.car, @journey] do |f| %>
+  <%= f.input :seats_available %>
+  <%= f.input :pick_up_time %>
+  <%= f.input :pick_up_location %>
+  <%= f.input :drop_off_location %>
+  <%= f.button :submit, { class: "btn btn-danger wide-btn"} %>
+<% end %>
