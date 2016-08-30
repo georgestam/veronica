@@ -1,5 +1,11 @@
 <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
 
+<% if @user.photo? %>
+  <%= cl_image_tag @user.photo.path, width: 240, height: 240, crop: :fill, class: "img-circle" %>
+<% else %>
+  <%= image_tag "default_avatar.png", class: "avatar-xl" %>
+<% end %>
+
 <h2>Driver personal information</h2>
 <p>Email: <%= @user.email %></p>
 <p>Phone number: <%= @user.phone_number %></p>
