@@ -2,13 +2,13 @@
 <!-- <div class="banner"> -->
   <div class="banner-container text-center">
     <div class="row">
-      <h1> Shotgun</h1>
-      <h2> The first Carsharing service of Warwick University </h2>
+      <h1> SHOTGUN </h1>
+      <h2> The first carsharing service of Warwick University </h2>
       <h3>Save Money, Time and Stress </h3>
       <div class="col-xs-12 col-sm-6">
         <div class="user-card-home">
           <div class="thumbnail">
-            <img src="http://placehold.it/242x200" alt="http://placehold.it/242x200">
+            <%= image_tag "passenger.jpeg" %>
             <div class="caption">
                 <h3>PASSENGER</h3>
                 <p>YOU ARE A STUDENT?</p>
@@ -21,7 +21,7 @@
       <div class="col-xs-12 col-sm-6">
         <div class="user-card-home">
           <div class="thumbnail">
-            <img src="http://placehold.it/242x200" alt="#">
+            <%= image_tag "driver.jpeg" %>
             <div class="caption">
               <h3>DRIVER</h3>
               <p>YOU ARE A DRIVER?</p>
@@ -67,7 +67,7 @@
   </div> <!-- end of container -->
 </div> <!-- end of wrapper -->
 
-<div class="wrapper-user-testify">
+<div class="wrapper-user-testify" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "Car-driver.jpg" %>');">
   <div class="container padded">
 
     <div class="row">
@@ -77,7 +77,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6">
             <%= image_tag "http://placehold.it/200x200", class:"responsive-img" %>
-          </div> <!-- end of col 1.1 -->
+          </div> <!-- end of col 1.3 -->
           <div class="col-xs-12 col-sm-6">
             <h3> Jean-claude from Belgium </h3>
             <p> "Amazing" </p>
@@ -85,9 +85,9 @@
           </div> <!-- end of row 1.2 -->
         </div> <!-- end of user-card-info -->
       </div> <!-- end of user-card -->
-    </div>
+    </div> <!-- end of col 1.1 -->
   </div><!-- end of row 1.1 -->
-    <!-- <div class="row"> -->
+
 
     <div class="row">
       <div class="col-xs-12 col-sm-6 padding-ajustment">
@@ -96,7 +96,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <%= image_tag "http://placehold.it/200x200", class: "responsive-img" %>
-            </div> <!-- end of col 2.1 -->
+            </div> <!-- end of col 2.3 -->
             <div class="col-xs-12 col-sm-6">
               <h3> Paul de Pologne </h3>
               <p class="p-quote"> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -104,14 +104,13 @@
           </div> <!-- end of row 2.2 -->
         </div> <!-- end of user-card-info -->
       </div> <!-- end of user-card -->
-      </div>
+      </div> <!-- end of col 2.1 -->
     </div> <!-- end of row -->
 
     <div class="row">
       <div class="col-xs-12 col-sm-6 padding-ajustment">
         <div class="user-card" id="review">
           <div class="user-card-info">
-
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                   <%= image_tag "http://placehold.it/200X200", class: "responsive-img" %>
@@ -127,22 +126,22 @@
     </div> <!-- end of row 3 -->
 
     <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <div class="user-card" id="review">
-        <div class="user-card-info">
-
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 padding-ajustment">
-              <%= image_tag "http://placehold.it/200x200", class:"responsive-img" %>
-            </div> <!-- end of col 4.1 -->
-            <div class="col-xs-12 col-sm-6">
-              <h3> DJ Jordi from Spain</h3>
-              <p> "Cheap but i really enjoy the music" </p>
-            </div> <!-- end of col 4.2 -->
-          </div> <!-- end of row 3.2 -->
-        </div> <!-- end of user-card-info -->
-      </div> <!-- end of user-card -->
-      </div>
+      <div class="col-xs-12 col-sm-6 padding-ajustment">
+        <div class="user-card" id="review">
+          <div class="user-card-info">
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <%= image_tag "http://placehold.it/200x200", class:"responsive-img" %>
+              </div> <!-- end of col 4.3 -->
+              <div class="col-xs-12 col-sm-6">
+                <h3> DJ Jordi from Spain</h3>
+                <p> "Cheap but i really enjoy the music" </p>
+              </div> <!-- end of col 4.2 -->
+            </div> <!-- end of row 3.2 -->
+          </div> <!-- end of user-card-info -->
+        </div> <!-- end of user-card -->
+      </div> <!-- end of col 4.1 -->
     </div> <!-- end of row -->
-  </div>
-</div>
+
+  </div> <!-- end of container -->
+</div> <!-- end of wrapper-user-->
