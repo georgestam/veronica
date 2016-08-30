@@ -12,10 +12,10 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Welcome to Warwick Car Share')
   end
 
-  def reset_password_instructions(options = {})
-    @utf8 = utf8
-    @user = :user
-    @token = authenticity_token
+  def reset_password_instructions(user, token, random_shit)
+    @user = user
+    @token = token
+    @random_shit = random_shit
 
     mail(to: @user.email, subject: "Reset password")
   end
