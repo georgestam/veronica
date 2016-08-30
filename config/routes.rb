@@ -9,13 +9,18 @@ Rails.application.routes.draw do
   patch "/profile", to: "profiles#update", as: :update_profile
 
   resources :cars do
-    resources :journeys, only:[:new, :create]
+    resources :journeys, only:[:new, :create, :edit, :update]
   end
 
-  resources :journeys, only:[:index, :show, :edit, :update, :destroy] do
+  resources :journeys, only:[:index, :show, :destroy] do
     resources :passengers, only:[:create]
+  end
+
+  namespace :user do
+    resources :journeys, only:[:index]
   end
 
   resources :passengers, only:[:update]
 
+  mount Attachinary::Engine => "/attachinary"
 end
