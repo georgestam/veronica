@@ -14,8 +14,10 @@
     <p><%= @journey.car.make %></p>
     <p><%= @journey.car.colour %></p>
   <%= link_to "See all my journeys", user_journeys_path, {class: "btn btn-primary" } %>
-  <%= link_to "Edit this journey", edit_car_journey_path(@journey.car), { class: "btn btn-primary"}%>
-  <%= link_to "delete", journey_path(@journey), method: :delete  %>
+  <%= if @journey.user = current_user %>
+    <%= link_to "Edit this journey", edit_car_journey_path(@journey.car), { class: "btn btn-primary"}%>
+    <%= link_to "delete", journey_path(@journey), method: :delete  %>
+  <%= end %>
 </div>
 
 
