@@ -26,3 +26,19 @@
 <p>Smoking: <%= @user.smoking %></p>
 
 <%= link_to "Edit user details", edit_profile_path, class: "btn btn-primary" %>
+
+<% if @user.cars.empty? %>
+  <!-- Prompt user to add a car, if they don't have one -->
+  <%= link_to "Add new car", new_car_path, class: "btn btn-primary" %>
+<% else %>
+  <!-- Display user's car details -->
+  <h2>Car details</h2>
+  <% @cars.each do |car| %>
+    <p>Make: <%= car.make %></p>
+    <p>Model: <%= car.name %></p>
+    <p>Licence plate: <%= car.vrn %></p>
+    <p>Colour: <%= car.colour %></p>
+    <%= link_to "Edit car details", edit_car_path(car), class: "btn btn-primary" %>
+    <%= link_to "Delete car details", car_path(car), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  <% end %>
+<% end %>
