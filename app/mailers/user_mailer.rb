@@ -11,4 +11,12 @@ class UserMailer < ApplicationMailer
     # This will render a view in `app/views/user_mailer`!
     mail(to: @user.email, subject: 'Welcome to Warwick Car Share')
   end
+
+  def reset_password_instructions(options = {})
+    @utf8 = utf8
+    @user = :user
+    @token = authenticity_token
+
+    mail(to: @user.email, subject: "Reset password")
+  end
 end
