@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   before_action :find_user, only: [:show]
 
   def show
-    @cars = Car.find_by(user: @user)
+    @cars = Car.where(user: @user)
   end
 
   def edit
