@@ -41,8 +41,9 @@
     z-index: 0;
     margin-top: 0;
     text-align: left;
-    width: 100%;
+    max-width: 100%;
     color: #37474f;
+    height: auto;
 }
 
 #review p {
@@ -69,6 +70,18 @@
     text-align: left;
 }
 
+.divider {
+    height: 1px;
+    overflow: hidden;
+    background-color: #e0e0e0;
+}
+
+.s-user-bubble {
+    position: relative;
+    padding: 20px 0 0 55px;
+    text-align: left;
+    display: inline-block;
+}
 .user-card-photo {
   flex: 0 0 auto;
   align-itmes: center;
