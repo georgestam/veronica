@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830102055) do
+ActiveRecord::Schema.define(version: 20160831112724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,12 @@ ActiveRecord::Schema.define(version: 20160830102055) do
     t.string   "pick_up_location"
     t.string   "drop_off_location"
     t.boolean  "completed"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.float    "pick_up_latitude"
+    t.float    "pick_up_longitude"
+    t.float    "drop_off_latitude"
+    t.float    "drop_off_longitude"
     t.index ["car_id"], name: "index_journeys_on_car_id", using: :btree
     t.index ["user_id"], name: "index_journeys_on_user_id", using: :btree
   end

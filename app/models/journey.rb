@@ -14,5 +14,14 @@ class Journey < ApplicationRecord
     end
   end
 
+  geocoded_by :pick_up_location,
+    latitude: :pick_up_latitude,
+    longitude: :pick_up_longitude
 
+  geocoded_by :drop_off_location,
+    latitude: :drop_off_latitude,
+    longitude: : :drop_off_longitude
+
+    after_validation :geocode, if: pick_up_location_changed?
+    after_validation :geocode, if: drop_off_location_changed?
 end
