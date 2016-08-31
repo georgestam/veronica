@@ -15,8 +15,8 @@ Devise.setup do |config|
   config.mailer_sender = 'warwick.car.sharing@gmail.com'
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'UserMailer'
-  # config.mailer = 'Devise::Mailer'
+  # config.mailer = 'UserMailer'
+  config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
   config.parent_mailer = 'ActionMailer::Base'
