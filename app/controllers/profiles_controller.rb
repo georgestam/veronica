@@ -14,6 +14,11 @@ class ProfilesController < ApplicationController
     redirect_to profile_path(@user)
   end
 
+  def dashboard
+    @user = current_user
+
+  end
+
   private
 
   def find_user
