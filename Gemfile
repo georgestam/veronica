@@ -38,6 +38,7 @@ gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 
+
 # geocoder gems
 gem 'geocoder'
 gem 'coffee-rails'
@@ -46,4 +47,10 @@ gem 'gmaps4rails'
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
+
+#  Admin dashboard gems
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+
+>>>>>>> master
 
