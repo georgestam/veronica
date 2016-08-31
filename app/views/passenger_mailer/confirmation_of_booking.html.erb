@@ -1,0 +1,20 @@
+<p>Hello <%= @user.first_name %></p>
+
+<p>Your booking to <%= @journey.drop_off_location %> on <% @journey.pick_up_time %> has been confirmed.</p>
+
+<p>Please see a summary of your booking below:</p>
+
+<p>Pick-up location: <%=@journey.pick_up_location %></p>
+<p>Pick-up time: <%=@journey.pick_up_time %></p>
+<p>Destination: <%=@journey.drop_off_location %></p>
+
+<p>Driver: <%= @journey.user.first_name %> <%= @journey.user.last_name%></p>
+<p>Car: <%= @car.make %> <%= @car.name %></p>
+<p>Licence plate: <%= @Car.vrn %></p>
+
+<p>Thank you for booking with Warwick car share</p>
+
+<p>Please feel free to contact us with any feedback.</p>
+
+<p>Thanks,</p>
+<p>Luke</p>
