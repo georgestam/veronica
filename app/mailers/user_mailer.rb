@@ -12,10 +12,10 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Welcome to Warwick Car Share')
   end
 
-  def reset_password_instructions(user, token, options)
-    @user = user
-    @token = token
+  # def reset_password_instructions(user, token, options)
+  #   @user = user
+  #   @token = token
 
-    mail(to: @user.email, subject: "Reset password")
-  end
+  #   mail(to: @user.email, subject: "Reset password")
+  # end
 end
