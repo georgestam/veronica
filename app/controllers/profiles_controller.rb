@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show, :edit, :update]
 
   def show
     @cars = Car.where(user: @user)
@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to user_path(@user)
+    redirect_to profile_path(@user)
   end
 
   private
