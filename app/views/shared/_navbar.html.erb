@@ -61,8 +61,10 @@
 
     <% end %>
 
-    <% if current_user.admin? %>
+    <% if current_user != nil && current_user.admin? %>
       <%= link_to "Admin", "/admin", class: "navbar-wagon-item btn btn-primary" %>
+    <% else %>
+
     <% end %>
   </div>
 
