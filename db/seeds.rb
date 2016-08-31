@@ -56,8 +56,8 @@ end
     user: users.sample,
     car: cars.sample,
     pick_up_time: Faker::Time.forward(7, :morning) ,
-    pick_up_location: Faker::Address.street_address ,
-    drop_off_location: Faker::Address.street_address ,
+    pick_up_location: "18 Victoria Terrace, Leamington Spa, CV31 3AB",
+    drop_off_location: "University of Warwick, Coventry",
     completed: false,
     })
 end
