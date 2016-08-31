@@ -7,11 +7,13 @@ class JourneysController < ApplicationController
 
   def show
     @journeys = Journey.where.not(pick_up_latitude: nil, pick_up_longitude: nil, drop_off_latitude: nil, drop_off_longitude: nil)
+
+    raise
     @hash = Gmaps4rails.build_markers(@journeys) do |journey, marker|
-      marker.lat  journey.pick_up_latitude
+      marker.lat journey.pick_up_latitude
       marker.lng journey.pick_up_longitude
-      # marker.lat journey.drop_off_latitude
-      # marker.lng journey.drop_off_longitude
+      marker.lat journey.drop_off_latitude
+      marker.lng journey.drop_off_longitude
     end
   end
 
