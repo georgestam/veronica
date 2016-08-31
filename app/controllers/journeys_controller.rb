@@ -6,14 +6,11 @@ class JourneysController < ApplicationController
   end
 
   def show
-    @journeys = Journey.where.not(pick_up_latitude: nil, pick_up_longitude: nil, drop_off_latitude: nil, drop_off_longitude: nil)
+    @journey = Journey.find(params[:id])
 
-    raise
-    @hash = Gmaps4rails.build_markers(@journeys) do |journey, marker|
-      marker.lat journey.pick_up_latitude
-      marker.lng journey.pick_up_longitude
-      marker.lat journey.drop_off_latitude
-      marker.lng journey.drop_off_longitude
+    @hash = Gmaps4rails.build_markers([ @journey.pick_up_location, @journey.drop_off_location ]) do |location, marker|
+      marker.lat location.latitude
+      marker.lng location.longitude
     end
   end
 
@@ -21,11 +18,13 @@ class JourneysController < ApplicationController
     @car = Car.find(params[:car_id])
     @journey = Journey.new
     @journey.car = @car
+    @journey.build_pick_up_location
+    @journey.build_drop_off_location
   end
 
   def create
-    @journey = Journey.new(journey_params)
-    @journey.car = Car.find(params[:car_id])
+    @car = Car.find(params[:car_id])
+    @journey = @car.journeys.build(journey_params)
     @journey.user = current_user
     if @journey.save
       redirect_to journey_path(@journey)
@@ -56,6 +55,11 @@ class JourneysController < ApplicationController
   end
 
   def journey_params
-    params.require(:journey).permit(:seats_available, :pick_up_time, :pick_up_location, :drop_off_location)
+    params.require(:journey).permit(
+      :seats_available,
+      :pick_up_time,
+      pick_up_location_attributes: [ :address ],
+      drop_off_location_attributes: [ :address ]
+    )
   end
 end
