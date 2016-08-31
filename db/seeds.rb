@@ -18,7 +18,7 @@ users = []
 speaking_habits = ["Talkative", "Chatty", "SILENCE!"]
 uni_course = ["History", "Economics", "Engineering"]
 car_make = %w(Ferrari Porsche BMW Mercedes Mazda Ford Toyota Peugot Audi Mini)
-vrn = %w(VW52ZAB G4CLS S9EVO V651GTR M30SLK W200CLK VW55MEL CH55BMW TI33AMG JEZ605R)
+vrn = %w(VA52ZAB G4ALS S9EAO V651GAR M30SAK W200CAK VW55MAL CH55BAW TI33AAG JAZ605R)
 
 20.times do
   x = rand(0..2)
@@ -41,8 +41,9 @@ vrn = %w(VW52ZAB G4CLS S9EVO V651GTR M30SLK W200CLK VW55MEL CH55BMW TI33AMG JEZ6
     })
 end
 
+x = 0
+
 10.times do
-  x = 0
   cars << Car.create!({
     user: users.sample,
     make: car_make.sample,
@@ -57,9 +58,10 @@ end
   journeys << Journey.create!({
     user: users.sample,
     car: cars.sample,
+    seats_available: rand(3..4),
     pick_up_time: Faker::Time.forward(7, :morning) ,
-    pick_up_location: Faker::Address.street_address ,
-    drop_off_location: Faker::Address.street_address ,
+    pick_up_location: "18 Victoria Terrace, Leamington Spa, CV31 3AB",
+    drop_off_location: "University of Warwick, Coventry",
     completed: false,
     })
 end
