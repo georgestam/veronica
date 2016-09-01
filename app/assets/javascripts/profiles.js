@@ -3,8 +3,8 @@
 
 $(document).ready(function(){
 
+  // This will update the progress bar
   var progress = $("#progress").text();
-
   $('#account-progress').attr('aria-valuenow', progress).css('width',progress+'%');
 
 
@@ -21,5 +21,23 @@ $(document).ready(function(){
     var tabSelector = $(this).data("target");
     $(tabSelector).removeClass("hidden");
   });
+
+
+  if ($('#email-verification').val()){
+    $("#email").addClass("verified");
+  };
+
+  if ($('#payment-verification').val()){
+    $('#payment').addClass("verified");
+  };
+
+  if ($('#student-id-verification').val()){
+    $("student_id").addClass("verified");
+  };
+
+  if ($('#car-verification').val()){
+    $('car').addClass("verified");
+  };
+
 });
 

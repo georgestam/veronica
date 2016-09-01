@@ -21,6 +21,7 @@ class ProfilesController < ApplicationController
     @journeys_as_driver = Journey.where(user: current_user)
     calculate_avg_rating # This will return @avg-rating
     calculate_account_progress # This will return @progress
+    verifications
   end
 
   private
@@ -54,5 +55,12 @@ class ProfilesController < ApplicationController
     # progress + 20 if payment confirmed
     # progress + 20 if student_id confirmed
     @progress += 20 unless @user.cars.empty?
+  end
+
+  def verifications
+    @email_verification = true if @user.confirmed?
+    @payment_verification = false # Need to implement payment
+    @student_id_verification = false # Need to implement student verificaiton
+    @car_verification = true unless @user.cars.empty?
   end
 end
