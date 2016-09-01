@@ -101,11 +101,7 @@ ActiveRecord::Schema.define(version: 20160831154907) do
     t.boolean  "smoking"
     t.string   "phone_number"
     t.string   "student_id"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
     t.boolean  "admin",                  default: false, null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
