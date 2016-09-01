@@ -1,22 +1,46 @@
 <div class="row">
   <div class="col-xs-12">
-    <h2>Passenger Journeys</h2>
-    <% @journeys_as_passenger.each do |journey| %>
-      <div class="product">
-        <%= image_tag "https://unsplash.it/500/300", { class: "product-image hidden-xs"} %>
-        <div class='product-body'>
-          <p> <%= journey.pick_up_time%> </p>
+    <% unless @journeys_as_passenger.empty? %>
+      <h2 class="text-center">Passenger Journeys</h2>
+      <% @journeys_as_passenger.each do |journey| %>
+        <div class="product dashboard-card">
+          <%= image_tag "https://unsplash.it/500/300", { class: "product-image hidden-xs"} %>
+          <div class='product-body'>
+            <p> <%= journey.pick_up_time.class.strftime("%H:%M on %e %b %Y")%> </p>
 
-          <ul>
-            <li><i class="fa fa-calendar" aria-hidden="true"></i> <%= journey.pick_up_location %></li>
-            <li><i class="fa fa-map-marker" aria-hidden="true"> </i> <%= journey.drop_off_location %></li>
-            <li> <i class="fa fa-money" aria-hidden="true"></i> <%= journey.user %> £ p/p </li>
-            <li> <i class="fa fa-cutlery" aria-hidden="true"></i> <%= journey.car %></li>
-            <li> <i class="fa fa-users" aria-hidden="true"></i> <%= journey.seats_available %> </li>
-          </ul>
+            <ul>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= journey.pick_up_location.address %></li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= journey.drop_off_location.address %></li>
+              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= journey.user %> £ p/p </li>
+              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= "#{journey.car.make} #{journey.car.name}" %></li>
+              <li> <i class="fa fa-users" aria-hidden="true"></i>  <%= journey.seats_available %> </li>
+            </ul>
+          </div>
+          <%= link_to "", journey_path(journey), class: "product-link" %>
         </div>
-        <%= link_to "", journey_path(journey), class: "product-link" %>
-      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-xs-12">
+    <% unless @journeys_as_driver.empty? %>
+      <h2 class="text-center">Driver Journeys</h2>
+      <% @journeys_as_driver.each do |journey| %>
+        <div class="product dashboard-card">
+          <%= image_tag "https://unsplash.it/500/300", { class: "product-image hidden-xs"} %>
+          <div class='product-body'>
+            <p> <%= journey.pick_up_time.strftime("%H:%M on %e %b %Y")%> </p>
+
+            <ul>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= journey.pick_up_location.address %></li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= journey.drop_off_location.address %></li>
+              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= journey.passengers.count %></li>
+              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= "#{journey.car.make} #{journey.car.name}" %></li>
+              <li> <i class="fa fa-users" aria-hidden="true"></i  ><%= journey.seats_available %> </li>
+            </ul>
+          </div>
+          <%= link_to "", journey_path(journey), class: "product-link" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

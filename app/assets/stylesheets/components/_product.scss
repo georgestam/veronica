@@ -16,6 +16,7 @@
   padding: 20px;
   border-radius: 3px;
   transition: all 0.15s ease;
+  margin-bottom: 10px;
 }
 
 /* Body design */
@@ -28,14 +29,17 @@
   margin-top: 0;
 }
 .product-body p {
-  color: gray-darker;
   margin-bottom: 10px;
 }
 
 .product-body li {
-  font-weight: lighter;
+  // font-weight: lighter;
   color: #999999;
   margin-bottom: 0;
+  p {
+    color: black;
+    margin-left: 10px;
+  }
 }
 
 /* Product image */
