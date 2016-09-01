@@ -11,6 +11,10 @@ $(document).ready(function(){
     $('#account-progress').attr('aria-valuenow', newprogress).css('width',newprogress+'%');
   });
 
+  var progress = $("#progress").val();
+
+  console.log(progress);
+
   // This will dynamically switch between tabs
   $(".tab").on("click", function(e){
     // Change active tab

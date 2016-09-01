@@ -19,7 +19,8 @@ class ProfilesController < ApplicationController
     @journeys = Journey.where(user: @user)
     @journeys_as_passenger = Passenger.where(user: current_user).map{|passenger| passenger.journey}
     @journeys_as_driver = Journey.where(user: current_user)
-    calculate_avg_rating
+    calculate_avg_rating # This will return @avg-rating
+    calculate_account_progress # This will return @progress
   end
 
   private
@@ -45,5 +46,13 @@ class ProfilesController < ApplicationController
     end
 
     @avg_rating = ratings.inject(0){|sum,x| sum + x } / ratings.count if ratings.count != 0
+  end
+
+  def calculate_account_progress
+    @progress = 0
+    @progress += 20 if @user.confirmed? # Email confirmation
+    # progress + 20 if payment confirmed
+    # progress + 20 if student_id confirmed
+    @progress += 20 unless @user.cars.empty?
   end
 end
