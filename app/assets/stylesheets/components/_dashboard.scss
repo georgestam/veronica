@@ -1,0 +1,70 @@
+.profile-wrapper {
+  min-height: 100vh;
+  background-color: white;
+  margin: 20px 0;
+}
+.dashboard-wrapper {
+  padding: 0 10px;
+}
+
+.content-wrapper {
+  background-color: $gray-light;
+  padding: 20px;
+  border-radius: 0 0 5px 5px;
+}
+
+.overview-header {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.header-img {
+  flex: 0 0 auto;
+}
+
+.header-info {
+  flex: 0 0 auto;
+  margin-left: 30px;
+  a {
+    text-decoration: none;
+  }
+  h3 {
+    margin-top: 0px;
+  }
+}
+
+.header-progress {
+  flex: 1 1 auto;
+  margin: 0 60px;
+}
+
+.dashboard-card {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: white;
+  margin-top: 10px;
+}
+
+.car-card {
+  margin-bottom: 30px;;
+  height: 240px;
+}
+
+.review-card {
+  height: 290px;
+}
+
+.unverified {
+  color: $red;
+}
+
+.verified {
+  color: $green;
+  font-weight: bolder;
+}
