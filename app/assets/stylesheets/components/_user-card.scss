@@ -100,10 +100,13 @@
       color: green;
       cursor: pointer;
     }
-    #non-smoking:hover {
-      color: red;
-    }
+    // #non-smoking:hover {
+    //   color: red;
+    //   background-color: red;
+
+    // }
 }
+
 .user-card-photo {
   flex: 0 0 auto;
   align-itmes: center;

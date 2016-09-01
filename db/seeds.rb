@@ -56,14 +56,14 @@ end
 
 drop_off_location = Location.create!({
   address: "Warwick university",
-  latitude: "52.380158",
-  longitude: "-1.561784",
+  latitude: 52.380158,
+  longitude: -1.561784,
   })
 
 pick_up_location = Location.create!({
   address: "Birmingham B5 4ST",
-  latitude: "52.475009",
-  longitude: "-1.896354",
+  latitude: 52.475009,
+  longitude: -1.896354,
   })
 
 10.times do
@@ -72,8 +72,8 @@ pick_up_location = Location.create!({
     car: cars.sample,
     seats_available: rand(3..4),
     pick_up_time: Faker::Time.forward(7, :morning) ,
-    pick_up_location: "18 Victoria Terrace, Leamington Spa, CV31 3AB",
-    drop_off_location: "University of Warwick, Coventry",
+    pick_up_location: pick_up_location,
+    drop_off_location: drop_off_location,
     completed: false,
     })
 end

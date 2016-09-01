@@ -10,7 +10,7 @@
         <h3> <%= journey.user.first_name %> </h3>
           <ul>
             <li> <strong> Pickt-up time <%= journey.pick_up_time.to_formatted_s(:time) %> </strong></li>
-            <li> <%= journey.drop_off_location %> </li>
+            <li> <%= journey.drop_off_location.address %> </li>
             <li> seats available : <%= journey.seats_available %> </li>
             <li> car model : <%= journey.car.make %> </li>
           </ul>
@@ -27,11 +27,15 @@
 
               <% if journey.user.smoking? %>
 
-              <li> <small><i class="fa fa-cloud test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></small></li>
+              <li> <small><i class="vs vs-no-smoking-alt test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></small></li>
 
               <% else %>
 
-              <li> <small><i class="fa fa-cloud test" id="non-smoking" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"></i></small></li>
+              <li>
+              <small>
+              <i class="test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"><%= image_tag "no-smoking.png" %></i>
+              </small>
+              </li>
 
               <% end %>
 
