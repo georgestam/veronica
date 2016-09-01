@@ -2,17 +2,42 @@
   <div class="dashboard-wrapper padded">
     <div class="container">
       <div class="row">
+        <div class="col-xs-12">
+          <div class="overview-header">
+            <% if @user.photo? %>
+              <%= cl_image_tag @user.photo.path, class: "avatar-large header-img" %>
+            <% else %>
+              <%= image_tag "http://placehold.it", class: "avatar-large header-img" %>
+            <% end %>
+            <div class="header-info">
+              <h3><%= @user.full_name %></h3>
+              <%= link_to "View public profile", profile_path(@user) %>
+            </div>
+            <div class="header-progress">
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
+                aria-valuemin="0" aria-valuemax="100" style="width:20%" id="account-progress">
+                  20% Complete
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
         <div class="tabs">
-          <a class="profile-tab tab" href="#" data-target="#overview">
+          <a class="tab active" href="#" data-target="#overview">
             <h3>Overview</h3>
           </a>
-          <a class="profile-tab tab" href="#" data-target="#journey">
+          <a class="tab" href="#" data-target="#journey">
             <h3>Journeys</h3>
           </a>
-          <a class="profile-tab tab" href="#" data-target="#notifications">
+          <a class="tab" href="#" data-target="#notifications">
             <h3>Notifcations</h3>
           </a>
-          <a class="profile-tab tab active" href="#" data-target="#account-settings">
+          <a class="tab" href="#" data-target="#account-settings">
             <h3>Account settings</h3>
           </a>
         </div>
@@ -21,16 +46,16 @@
   </div>
   <div class="container">
     <div class="content-wrapper">
-      <div class="profile-tab-content hidden" id="overview">
+      <div class="tab-content" id="overview">
         <%= render 'profiles/dashboard/overview' %>
       </div>
-      <div class="profile-tab-content hidden" id="journey">
+      <div class="tab-content hidden" id="journey">
         <%= render 'profiles/dashboard/journey' %>
       </div>
-      <div class="profile-tab-content hidden" id="notifications">
+      <div class="tab-content hidden" id="notifications">
         <%= render 'profiles/dashboard/notifications' %>
       </div>
-      <div class="profile-tab-content" id="account-settings">
+      <div class="tab-content hidden" id="account-settings">
         <%= render 'profiles/dashboard/account-settings' %>
       </div>
     </div>

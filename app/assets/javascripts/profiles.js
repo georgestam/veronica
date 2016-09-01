@@ -12,13 +12,13 @@ $(document).ready(function(){
   });
 
   // This will dynamically switch between tabs
-  $(".profile-tab").on("click", function(e){
+  $(".tab").on("click", function(e){
     // Change active tab
-    $(".profile-tab").removeClass("active");
+    $(".tab").removeClass("active");
     $(this).addClass("active");
 
     // Hide all tab content
-    $(".profile-tab-content").addClass("hidden");
+    $(".tab-content").addClass("hidden");
 
     // Show target tab
     var tabSelector = $(this).data("target");
