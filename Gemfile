@@ -41,7 +41,6 @@ gem "coffee-rails"
 
 # geocoder gems
 gem 'geocoder'
-gem 'coffee-rails'
 gem 'gmaps4rails'
 
 source 'https://rails-assets.org' do
