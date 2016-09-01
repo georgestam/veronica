@@ -3,16 +3,16 @@
     <div class="container">
       <div class="row">
         <div class="tabs">
-          <a class="tab active" href="#">
+          <a class="tab active" href="#" data-target="#overview">
             <h3>Overview</h3>
           </a>
-          <a class="tab" href="#">
+          <a class="tab" href="#" data-target="#journey">
             <h3>Journeys</h3>
           </a>
-          <a class="tab" href="#">
+          <a class="tab" href="#" data-target="#notifications">
             <h3>Notifcations</h3>
           </a>
-          <a class="tab" href="#">
+          <a class="tab" href="#" data-target="#account-settings">
             <h3>Account settings</h3>
           </a>
         </div>
@@ -21,16 +21,16 @@
   </div>
   <div class="container">
     <div class="content-wrapper">
-      <div class="overview show">
+      <div class="tab-content" id="overview">
        <%= render 'dashboard-overview' %>
       </div>
-      <div class="journeys">
+      <div class="tab-content hidden" id="journey">
         <h2>Journey information will go here</h2>
       </div>
-      <div class="notifications">
+      <div class="tab-content hidden" id="notifications">
         <h2>Notification information will go here</h2>
       </div>
-      <div class="account-settings">
+      <div class="tab-content hidden" id="account-settings">
         <h2>Edit account settings</h2>
       </div>
     </div>

@@ -9,7 +9,20 @@ $(document).ready(function(){
     var newprogress = "40";
 
     $('#account-progress').attr('aria-valuenow', newprogress).css('width',newprogress+'%');
-
   });
 
+  // This will dynamically switch between tabs
+  $(".tab").on("click", function(e){
+    // Change active tab
+    $(".tab").removeClass("active");
+    $(this).addClass("active");
+
+    // Hide all tab content
+    $(".tab-content").addClass("hidden");
+
+    // Show target tab
+    var tabSelector = $(this).data("target");
+    $(tabSelector).removeClass("hidden");
+  });
 });
+

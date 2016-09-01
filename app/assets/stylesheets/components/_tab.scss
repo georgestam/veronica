@@ -5,12 +5,13 @@
 }
 .tabs a {
   color: black;
-}
-.tabs a:hover {
-  cursor: pointer;
   text-decoration: none;
-  background-color: $gray-lighter;
 }
+// .tabs a:hover {
+//   cursor: pointer;
+//   text-decoration: none;
+//   background-color: $gray-lighter;
+// }
 .tabs h3 {
   font-size: 17px;
   font-weight: bold;
