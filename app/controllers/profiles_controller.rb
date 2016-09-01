@@ -34,8 +34,11 @@ class ProfilesController < ApplicationController
     ratings = []
 
     @journeys.each do |journey|
-      journeys.passengers.each do |passenger|
-        ratings << passenger.driver_rating
+      journey.passengers.each do |passenger|
+        unless passenger.driver_rating.nil?
+          #  This will remove any future journeys as the driver will not have been rated, therefore rating = nil
+          ratings << passenger.driver_rating
+        end
       end
     end
 
