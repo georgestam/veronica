@@ -2,12 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function(){
-
-  // This will update the progress bar
-  var progress = $("#progress").text();
-  $('#account-progress').attr('aria-valuenow', progress).css('width',progress+'%');
-
-
   // This will dynamically switch between tabs
   $(".tab").on("click", function(e){
     // Change active tab
