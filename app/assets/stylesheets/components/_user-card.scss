@@ -81,6 +81,13 @@
     padding: 20px 0 0 55px;
     text-align: left;
     display: inline-block;
+    i:hover {
+      color: green;
+      cursor: pointer;
+    }
+    #non-smoking:hover {
+      color: red;
+    }
 }
 .user-card-photo {
   flex: 0 0 auto;
