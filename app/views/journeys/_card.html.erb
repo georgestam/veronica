@@ -27,15 +27,11 @@
 
               <% if journey.user.smoking? %>
 
-              <li> <small><i class="vs vs-no-smoking-alt test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></small></li>
+              <li> <small><i class="fi-info test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></small></li>
 
               <% else %>
 
-              <li>
-              <small>
-              <i class="test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"><%= image_tag "no-smoking.png" %></i>
-              </small>
-              </li>
+              <li><i class="fi-no-smoking test non-smoking" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"></i></li>
 
               <% end %>
 
