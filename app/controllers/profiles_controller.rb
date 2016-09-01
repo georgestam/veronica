@@ -17,6 +17,8 @@ class ProfilesController < ApplicationController
   def dashboard
     @user = current_user
     @journeys = Journey.where(user: @user)
+    @journeys_as_passenger = Passenger.where(user: current_user).map{|passenger| passenger.journey}
+    @journeys_as_driver = Journey.where(user: current_user)
     calculate_avg_rating
   end
 

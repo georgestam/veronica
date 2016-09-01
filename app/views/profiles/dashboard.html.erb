@@ -22,16 +22,16 @@
   <div class="container">
     <div class="content-wrapper">
       <div class="tab-content" id="overview">
-       <%= render 'dashboard-overview' %>
+        <%= render 'profiles/dashboard/overview' %>
       </div>
       <div class="tab-content hidden" id="journey">
-        <h2>Journey information will go here</h2>
+        <%= render 'profiles/dashboard/journey' %>
       </div>
       <div class="tab-content hidden" id="notifications">
-        <h2>Notification information will go here</h2>
+        <%= render 'profiles/dashboard/notifications' %>
       </div>
       <div class="tab-content hidden" id="account-settings">
-        <h2>Edit account settings</h2>
+        <%= render 'profiles/dashboard/account-settings' %>
       </div>
     </div>
   </div>
