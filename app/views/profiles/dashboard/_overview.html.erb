@@ -34,7 +34,7 @@
     </div>
     <div class="dashboard-card review-card text-center">
       <h2>Reviews</h2>
-      <% if @avg_rating == 0 %>
+      <% if @avg_rating.nil? %>
         <p>You haven't been reviewed yet!</p>
       <% else %>
         <p>Rating: <%= @avg_rating %> </p>
