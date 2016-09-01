@@ -3,16 +3,16 @@
     <div class="container">
       <div class="row">
         <div class="tabs">
-          <a class="tab active" href="#" data-target="#overview">
+          <a class="profile-tab tab" href="#" data-target="#overview">
             <h3>Overview</h3>
           </a>
-          <a class="tab" href="#" data-target="#journey">
+          <a class="profile-tab tab" href="#" data-target="#journey">
             <h3>Journeys</h3>
           </a>
-          <a class="tab" href="#" data-target="#notifications">
+          <a class="profile-tab tab" href="#" data-target="#notifications">
             <h3>Notifcations</h3>
           </a>
-          <a class="tab" href="#" data-target="#account-settings">
+          <a class="profile-tab tab active" href="#" data-target="#account-settings">
             <h3>Account settings</h3>
           </a>
         </div>
@@ -21,16 +21,16 @@
   </div>
   <div class="container">
     <div class="content-wrapper">
-      <div class="tab-content" id="overview">
+      <div class="profile-tab-content hidden" id="overview">
         <%= render 'profiles/dashboard/overview' %>
       </div>
-      <div class="tab-content hidden" id="journey">
+      <div class="profile-tab-content hidden" id="journey">
         <%= render 'profiles/dashboard/journey' %>
       </div>
-      <div class="tab-content hidden" id="notifications">
+      <div class="profile-tab-content hidden" id="notifications">
         <%= render 'profiles/dashboard/notifications' %>
       </div>
-      <div class="tab-content hidden" id="account-settings">
+      <div class="profile-tab-content" id="account-settings">
         <%= render 'profiles/dashboard/account-settings' %>
       </div>
     </div>
