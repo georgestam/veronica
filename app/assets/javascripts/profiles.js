@@ -3,17 +3,10 @@
 
 $(document).ready(function(){
 
-  // This will increase the account-progress bar dynamically
-  $('#increase-bar').click(function(){
-    // The variable below is currently hard-coded and needs to be altered later
-    var newprogress = "40";
+  var progress = $("#progress").text();
 
-    $('#account-progress').attr('aria-valuenow', newprogress).css('width',newprogress+'%');
-  });
+  $('#account-progress').attr('aria-valuenow', progress).css('width',progress+'%');
 
-  var progress = $("#progress").val();
-
-  console.log(progress);
 
   // This will dynamically switch between tabs
   $(".tab").on("click", function(e){
