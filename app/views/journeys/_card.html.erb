@@ -21,17 +21,17 @@
           <strong> preferences </strong>
             <ul class= "list-inline">
 
-              <li><small><i class="fa fa-volume-up test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.music_habits %>"></i></small></li>
+              <li> <p> <i class="fi-volume test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.music_habits %>"></i> </p> </li>
 
-              <li> <small><i class="fa fa-comment test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.speaking_habits %>"></i></small></li>
+              <li> <p> <i class="fa fa-comment test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.speaking_habits %>"></i> </p> </li>
 
               <% if journey.user.smoking? %>
 
-              <li> <small><i class="fi-info test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></small></li>
+              <li> <p><i class="fi-info test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></p></li>
 
               <% else %>
 
-              <li><i class="fi-no-smoking test non-smoking" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"></i></li>
+              <li> <p> <i class="fi-no-smoking test non-smoking" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"></i> </p> </li>
 
               <% end %>
 
