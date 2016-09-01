@@ -54,6 +54,18 @@ x = 0
   x += 1
 end
 
+drop_off_location = Location.create!({
+  address: "Warwick university",
+  latitude: "52.380158",
+  longitude: "-1.561784",
+  })
+
+pick_up_location = Location.create!({
+  address: "Birmingham B5 4ST",
+  latitude: "52.475009",
+  longitude: "-1.896354",
+  })
+
 10.times do
   journeys << Journey.create!({
     user: users.sample,
