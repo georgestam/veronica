@@ -1,7 +1,43 @@
-<div class="card">
-  <div class="card-category">Journey</div>
-    <div class="card-description">
-      <h2> <%= journey.pick_up_location %></h2>
-      <h3> <%= journey.pick_up_time %> </h3>
-    </div>
-</div>
+<div class="user-card" id="review">
+  <div class="user-card-info">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= image_tag "http://placehold.it/200x200", class:"responsive-avatar text-center-xs" %>
+      </div> <!-- end of col 1.3 -->
+
+      <div class="col-xs-12 col-sm-6 padding-ajustment">
+        <h3> <%= journey.user.first_name %> </h3>
+          <ul>
+            <li> <strong> Pickt-up time <%= journey.pick_up_time.to_formatted_s(:time) %> </strong></li>
+            <li> <%= journey.drop_off_location %> </li>
+            <li> seats available : <%= journey.seats_available %> </li>
+            <li> car model : <%= journey.car.make %> </li>
+          </ul>
+
+        <div class="divider"></div>
+
+        <div class="s-user-bubble padding-ajustment">
+          <strong> preferences </strong>
+            <ul class= "list-inline">
+
+              <li><small><i class="fa fa-volume-up test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.music_habits %>"></i></small></li>
+
+              <li> <small><i class="fa fa-comment test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.speaking_habits %>"></i></small></li>
+
+              <% if journey.user.smoking? %>
+
+              <li> <small><i class="fa fa-cloud test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></small></li>
+
+              <% else %>
+
+              <li> <small><i class="fa fa-cloud test" id="non-smoking" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"></i></small></li>
+
+              <% end %>
+            </ul>
+        </div>
+      </div> <!-- end of col 2 -->
+    </div> <!-- end of row -->
+  </div> <!-- end of user-card-info -->
+</div> <!-- end of user-card -->
+
+

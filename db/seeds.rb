@@ -48,7 +48,7 @@ x = 0
     user: users.sample,
     make: car_make.sample,
     name: Faker::Pokemon.name,
-    vrn: vrn[x] ,
+    vrn: vrn[x],
     colour: Faker::Color.color_name,
     })
   x += 1
