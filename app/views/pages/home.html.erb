@@ -27,7 +27,7 @@
               <p>YOU ARE A DRIVER?</p>
               <% if user_signed_in? && @car != nil %>
               <p><%= link_to "On the road again", new_car_journey_path(@car), {class: "btn btn-primary"} %>
-              <% elsif user_signed_in? %>
+              <% elsif policy(Car).create? %>
               <p><%= link_to "On the road again", new_car_path, {class: "btn btn-primary"} %>
               <% else %>
               <p><%= link_to "On the road again", new_user_registration_path, {class: "btn btn-primary"} %></p>
