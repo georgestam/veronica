@@ -22,7 +22,7 @@ class CarsController < ApplicationController
     @car.user = @user
     authorize @car
     if @car.save
-      redirect_to profile_path(@user)
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -33,12 +33,12 @@ class CarsController < ApplicationController
 
   def update
     @car.update(car_params)
-    redirect_to profile_path(@user)
+    redirect_to dashboard_path
   end
 
   def destroy
     @car.destroy
-    redirect_to profile_path(@user)
+    redirect_to dashboard_path
   end
 
   private
