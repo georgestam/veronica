@@ -23,10 +23,10 @@
       <p><%= @journey.car.make %></p>
       <p><%= @journey.car.colour %></p>
     <%= link_to "See all my journeys", user_journeys_path, {class: "btn btn-primary" } %>
-    <% if policy(Passenger).update? %>
+    <% if policy(Journey).update? %>
       <%= link_to "Edit this journey", edit_car_journey_path(@journey.car), { class: "btn btn-primary"}%>
     <% end %>
-    <% if policy(Passenger).delete? %>
+    <% if policy(Journey).destroy? %>
       <%= link_to "delete", journey_path(@journey), method: :delete  %>
     <% end %>
     <% if journey.user != current_user %>
