@@ -2,17 +2,21 @@
 <div class="user-card" id="review">
   <div class="user-card-info">
     <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <%= image_tag "http://placehold.it/200x200", class:"responsive-avatar text-center-xs" %>
+      <div class="col-xs-12 col-md-6">
+        <% if journey.user.photo? %>
+          <%= cl_image_tag journey.user.photo.path, class: "responsive-avatar text-center-xs" %>
+        <% else %>
+          <%= image_tag "http://placehold.it/200x200", class:"responsive-avatar text-center-xs" %>
+        <% end %>
       </div> <!-- end of col 1.3 -->
 
       <div class="col-xs-12 col-sm-6 padding-ajustment">
         <h3> <%= journey.user.first_name %> </h3>
           <ul>
             <li> <strong> Pick-up time <%= journey.pick_up_time.to_formatted_s(:time) %> </strong></li>
-            <li> <%= journey.drop_off_location.address %> </li>
-            <li> seats available : <%= journey.seats_available %> </li>
-            <li> car model : <%= journey.car.make %> </li>
+            <li> Destination: <%= journey.drop_off_location.address %> </li>
+            <li> Seats available : <%= journey.seats_available %> </li>
+            <li> Car: <%= journey.car.make %> <% journey.car.name %></li>
           </ul>
 
         <div class="divider"></div>
@@ -20,19 +24,20 @@
         <div class="s-user-bubble padding-ajustment">
           <strong> preferences </strong>
             <ul class= "list-inline">
-
-              <li> <p> <i class="fi-volume test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.music_habits %>"></i> </p> </li>
-
-              <li> <p> <i class="fa fa-comment test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.speaking_habits %>"></i> </p> </li>
-
+              <li>
+                <p><i class="fi-volume test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.music_habits %>"></i></p>
+              </li>
+              <li>
+                <p><i class="fa fa-comment test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.speaking_habits %>"></i></p>
+              </li>
               <% if journey.user.smoking? %>
-
-              <li> <p><i class="fi-info test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></p></li>
-
+                <li>
+                  <p><i class="fi-info test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></p>
+                </li>
               <% else %>
-
-              <li> <p> <i class="fi-no-smoking test non-smoking" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"></i> </p> </li>
-
+                <li>
+                  <p><i class="fi-no-smoking test non-smoking" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"></i></p>
+                </li>
               <% end %>
 
             </ul>
