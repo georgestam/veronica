@@ -7,12 +7,14 @@ class PassengersController < ApplicationController
     @passenger.user = current_user
     @passenger.journey = @journey
     @passenger.save
+    authorize @passenger
     redirect_to journey_path(@journey)
   end
 
   def update
     @passenger = Passenger.find(params[:id])
     @passenger.update(passenger_params)
+    authorize @passenger
     redirect_to journey_path(@journey)
   end
 

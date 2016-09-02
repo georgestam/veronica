@@ -6,13 +6,11 @@
       <p> Seat(s) available : <%= @journey.seats_available - @journey.passengers.count %></p>
       <% @journey.passengers.each do |passenger| %>
         <p> <%= passenger.user.first_name %></p>
-<<<<<<< HEAD
-        <%= passenger.user.photo %>
-=======
-        <% photo_url = "http://placehold.it/200x200" %>
-        <% photo_url = passenger.user.photo.path unless passenger.user.photo.nil? %>
-        <%= cl_image_tag photo_url, class: "avatar-large" %>
->>>>>>> 3b3057a613980f1f558cc02db513ac2cf8f57b71
+        <% if passenger.user.photo? %>
+          <%= cl_image_tag passenger.user.photo.path, class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "http://placehold.it/200x200", class: 'avatar-large' %>
+        <% end %>
       <% end %>
     <h2> Driver info </h2>
       <p><%= @journey.car.user.description %></p>
@@ -29,51 +27,17 @@
     <% if policy(Journey).destroy? %>
       <%= link_to "delete", journey_path(@journey), method: :delete  %>
     <% end %>
-    <% if journey.user != current_user %>
-      <%= link_to "Book this journey", journey_passengers_path(@journey), {class: "btn btn-primary"} %>
+    <% if user_signed_in? %>
+      <% if :not_on_journey %>
+        <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+        <% else %>
+          <h3> Journey Full </h3>
+        <% end %>
+    <% else %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary"  %>
     <% end %>
-    <
   </div>
-<script>
-  src ="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_BROWSER_KEY']}&callback=initMap"
-</script>
-   <%# content_for(:after_js) do %>
-     <%#= javascript_tag do %>
-     <script>
-        var directionsDisplay;
-        var directionsService = new google.maps.DirectionsService();
-        var map;
-        var start = new google.maps.LatLng(<%= @journey.pick_up_location.latitude %>, <%= @journey.pick_up_location.longitude %>);
-        var end = new google.maps.LatLng(<%= @journey.drop_off_location.latitude %>, <%= @journey.drop_off_location.longitude %>);
-
-        function initialize() {
-          directionsDisplay = new google.maps.DirectionsRenderer();
-          var mapOptions = {
-            zoom: 14,
-            center: start
-          }
-          map = new google.maps.Map(document.getElementById('map'), mapOptions);
-          directionsDisplay.setMap(map);
-        }
-
-        function calcRoute() {
-          var request = {
-              origin: start,
-              destination: end,
-              travelMode: 'DRIVING'
-          };
-          directionsService.route(request, function(response, status) {
-            if (status == 'OK') {
-              directionsDisplay.setDirections(response);
-            }
-          });
-        }
-   <%# end %>
-  <%# end %>
-  </script>
-
-
-
-
+  <%= render 'map' %>
+</div>
 
 
