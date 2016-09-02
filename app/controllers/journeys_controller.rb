@@ -38,10 +38,12 @@ class JourneysController < ApplicationController
   def edit
     @car = Car.find(params[:car_id])
     @journey.car = @car
+    authorize @journey
   end
 
   def update
     @journey.update(journey_params)
+    authorize @journey
     redirect_to journey_path(@journey)
   end
 
