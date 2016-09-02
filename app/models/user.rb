@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_attachment :photo
 
   validates :email, uniqueness: true, format: { with: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/ }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   after_create :send_welcome_email
 
