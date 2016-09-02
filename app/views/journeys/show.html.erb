@@ -6,9 +6,11 @@
       <p> Seat(s) available : <%= @journey.seats_available - @journey.passengers.count %></p>
       <% @journey.passengers.each do |passenger| %>
         <p> <%= passenger.user.first_name %></p>
-        <% photo_url = "http://placehold.it/200x200" %>
-        <% photo_url = passenger.user.photo.path unless passenger.user.photo.nil? %>
-        <%= cl_image_tag photo_url, class: "avatar-large" %>
+        <% if passenger.user.photo? %>
+          <%= cl_image_tag passenger.user.photo.path, class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "http://placehold.it/200x200", class: 'avatar-large' %>
+        <% end %>
       <% end %>
     <h2> Driver info </h2>
       <p><%= @journey.car.user.description %></p>
@@ -25,29 +27,17 @@
     <% if policy(Journey).destroy? %>
       <%= link_to "delete", journey_path(@journey), method: :delete  %>
     <% end %>
-    <% if @journey.passengers.include? current_user %>
-      <% link_to "Book this journey", journey_passengers_path(@journey), {class: "btn btn-primary"} %>
+    <% if user_signed_in? %>
+      <% if :not_on_journey %>
+        <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+        <% else %>
+          <h3> Journey Full </h3>
+        <% end %>
+    <% else %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary"  %>
     <% end %>
   </div>
-
-  <div id="map" style="width: 100%; height: 600px;"></div>
-
-    <% content_for(:after_js) do %>
-      <%= javascript_tag do %>
-        $(document).ready(function() {
-          var handler = Gmaps.build('Google');
-          handler.buildMap({ internal: { id: 'map' } }, function() {
-            markers = handler.addMarkers(<%= raw @hash.to_json %>);
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-            if (markers.length == 0) {
-              handler.getMap().setZoom(2);
-            } else if (markers.length == 1) {
-              handler.getMap().setZoom(14);
-            }
-          });
-        });
-      <% end %>
-    <% end %>
+  <%= render 'map' %>
 </div>
+
 

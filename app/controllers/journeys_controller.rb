@@ -1,5 +1,5 @@
 class JourneysController < ApplicationController
-  before_action :set_journey, only:[:show, :edit, :update, :destroy]
+  before_action :set_journey, only:[:show, :edit, :update, :destroy, :not_on_journey]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
     @journeys = policy_scope(Journey)
@@ -51,6 +51,10 @@ class JourneysController < ApplicationController
   def destroy
     @journey.destroy
     redirect_to journeys_path
+  end
+
+  def not_on_journey
+    @journey.user != current_user || @journey.passengers.exclude?(current_user)
   end
 
   private

@@ -6,7 +6,7 @@
         <div class="product dashboard-card">
           <%= image_tag "https://unsplash.it/500/300", { class: "product-image hidden-xs"} %>
           <div class='product-body'>
-            <p> <%= journey.pick_up_time.class.strftime("%H:%M on %e %b %Y")%> </p>
+            <p> <%= journey.pick_up_time.strftime("%H:%M on %e %b %Y")%> </p>
 
             <ul>
               <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= journey.pick_up_location.address %></li>
