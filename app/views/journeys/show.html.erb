@@ -1,12 +1,18 @@
 
 <div class="wrapper">
   <div class="banner-content">
-    <h1><%= @journey.pick_up_location%> to <%=@journey.drop_off_location %> at <%= @journey.pick_up_time %> </h1>
+    <h1><%= @journey.pick_up_location.address%> to <%=@journey.drop_off_location.address %> at <%= @journey.pick_up_time.to_formatted_s(:time) %> </h1>
     <h2> Journey info </h2>
-      <p><%= @journey.seats_available - @journey.passengers.count %></p>
+      <p> Seat(s) available : <%= @journey.seats_available - @journey.passengers.count %></p>
       <% @journey.passengers.each do |passenger| %>
         <p> <%= passenger.user.first_name %></p>
+<<<<<<< HEAD
         <%= passenger.user.photo %>
+=======
+        <% photo_url = "http://placehold.it/200x200" %>
+        <% photo_url = passenger.user.photo.path unless passenger.user.photo.nil? %>
+        <%= cl_image_tag photo_url, class: "avatar-large" %>
+>>>>>>> 3b3057a613980f1f558cc02db513ac2cf8f57b71
       <% end %>
     <h2> Driver info </h2>
       <p><%= @journey.car.user.description %></p>
@@ -17,11 +23,16 @@
       <p><%= @journey.car.make %></p>
       <p><%= @journey.car.colour %></p>
     <%= link_to "See all my journeys", user_journeys_path, {class: "btn btn-primary" } %>
-    <% if @journey.car.user = current_user %>
+    <% if policy(Passenger).update? %>
       <%= link_to "Edit this journey", edit_car_journey_path(@journey.car), { class: "btn btn-primary"}%>
+    <% end %>
+    <% if policy(Passenger).delete? %>
       <%= link_to "delete", journey_path(@journey), method: :delete  %>
     <% end %>
-    <%= link_to "Book this journey", journey_passengers_path(@journey), {class: "btn btn-primary"} %>
+    <% if journey.user != current_user %>
+      <%= link_to "Book this journey", journey_passengers_path(@journey), {class: "btn btn-primary"} %>
+    <% end %>
+    <
   </div>
 <script>
   src ="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_BROWSER_KEY']}&callback=initMap"
@@ -60,10 +71,6 @@
    <%# end %>
   <%# end %>
   </script>
-
-<script>
-  src ="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_BROWSER_KEY']}&callback=initMap"
-</script>
 
 
 

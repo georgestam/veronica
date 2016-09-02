@@ -46,7 +46,22 @@
     height: auto;
 }
 
-#review p {
+#review-link {
+    position: relative;
+    z-index: 0;
+    margin-top: 0;
+    text-align: left;
+    width: 100%;
+    color: #37474f;
+    height: auto;
+    opacity: 0;
+}
+
+#review:hover {
+  opacity: 0.9;
+}
+
+.review p {
     margin: 10px 0 20px;
 }
 
@@ -55,7 +70,7 @@
 }
 
 .responsive-img {
-    max-width: 100%;
+    max-width: 100% !important;
     height: auto;
 }
 .user-card-info {
@@ -85,10 +100,11 @@
       color: green;
       cursor: pointer;
     }
-    #non-smoking:hover {
+    .non-smoking:hover {
       color: red;
     }
 }
+
 .user-card-photo {
   flex: 0 0 auto;
   align-itmes: center;
