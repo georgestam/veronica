@@ -13,12 +13,14 @@ class CarsController < ApplicationController
 
   def new
     @car = Car.new
+    authorize @car
   end
 
   def create
     @car = Car.new(car_params)
     @user = current_user
     @car.user = @user
+    authorize @car
     if @car.save
       redirect_to profile_path(@user)
     else
@@ -43,6 +45,7 @@ class CarsController < ApplicationController
 
   def find_car
     @car = Car.find(params[:id])
+    authorize @car
   end
 
   def find_user

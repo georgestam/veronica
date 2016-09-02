@@ -4,11 +4,15 @@ ruby '2.3.1'
 gem 'rails', '5.0.0.1'
 gem 'puma'
 gem 'pg'
-gem 'figaro'
 gem 'jbuilder', '~> 2.0'
+
+# Security gems
 gem 'devise', github: 'plataformatec/devise'
+gem 'figaro'
+gem 'pundit'
 gem 'redis'
 
+# Front-end gems
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'

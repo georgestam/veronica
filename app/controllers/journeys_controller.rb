@@ -2,7 +2,7 @@ class JourneysController < ApplicationController
   before_action :set_journey, only:[:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
-    @journeys = Journey.all
+    @journeys = policy_scope(Journey)
   end
 
   def show
@@ -20,12 +20,14 @@ class JourneysController < ApplicationController
     @journey.car = @car
     @journey.build_pick_up_location
     @journey.build_drop_off_location
+    authorize @journey
   end
 
   def create
     @car = Car.find(params[:car_id])
     @journey = @car.journeys.build(journey_params)
     @journey.user = current_user
+    authorize @journey
     if @journey.save
       redirect_to journey_path(@journey)
     else
@@ -52,6 +54,7 @@ class JourneysController < ApplicationController
 
   def set_journey
     @journey = Journey.find(params[:id])
+    authorize @journey
   end
 
   def journey_params
