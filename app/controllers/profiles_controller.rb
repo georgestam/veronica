@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
 
   def dashboard
     @user = current_user
+    authorize @user
     @journeys = Journey.where(user: @user)
     @journeys_as_passenger = Passenger.where(user: current_user).map{|passenger| passenger.journey}
     @journeys_as_driver = Journey.where(user: current_user)
@@ -28,6 +29,7 @@ class ProfilesController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def user_params

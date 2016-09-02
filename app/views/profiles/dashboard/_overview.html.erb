@@ -22,7 +22,7 @@
       <h2>Car details</h2>
       <% if @user.cars.empty? %>
         <p>You haven't uploaded your car details yet!</p>
-        <%= if policy(Car).create? %>
+        <% if policy(car).create? %>
           <%= link_to "Add your car detials", new_car_path, class: "btn btn-primary" %>
         <% end %>
       <% else %>
