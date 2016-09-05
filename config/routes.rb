@@ -1,35 +1,37 @@
 Rails.application.routes.draw do
 
-  root to: 'pages#home'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  scope '(:locale)', locale: /fr|es/ do
 
-  get "users/:id", to: "profiles#show", as: :profile
-  get "/dashboard", to: "profiles#dashboard", as: :dashboard
-  get "profile/:id/edit", to: "profiles#edit", as: :edit_profile
-  patch "/profile/:id", to: "profiles#update", as: :update_profile
+    root to: 'pages#home'
 
-  resources :cars do
-    resources :journeys, only:[:new, :create, :edit, :update]
-  end
+    get "users/:id", to: "profiles#show", as: :profile
+    get "/dashboard", to: "profiles#dashboard", as: :dashboard
+    get "profile/:id/edit", to: "profiles#edit", as: :edit_profile
+    patch "/profile/:id", to: "profiles#update", as: :update_profile
 
-  resources :journeys, only:[:index, :show, :destroy] do
-    resources :passengers, only:[:create]
-  end
+    resources :cars do
+      resources :journeys, only:[:new, :create, :edit, :update]
+    end
 
-  namespace :user do
-    resources :journeys, only:[:index]
-  end
+    resources :journeys, only:[:index, :show, :destroy] do
+      resources :passengers, only:[:create]
+    end
 
-  resources :passengers, only:[:update]
+    namespace :user do
+      resources :journeys, only:[:index]
+    end
 
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      get "journeys/driver", to: "journeys#driver", as: :journey_driver
-      get "journeys/passenger", to: "journeys#passenger", as: :journey_passenger
-      resources :journeys, only: [:index, :show, :update]
+    resources :passengers, only:[:update]
+
+    namespace :api, defaults: { format: :json } do
+      namespace :v1 do
+        get "journeys/driver", to: "journeys#driver", as: :journey_driver
+        get "journeys/passenger", to: "journeys#passenger", as: :journey_passenger
+        resources :journeys, only: [:index, :show, :update]
+      end
     end
   end
 
