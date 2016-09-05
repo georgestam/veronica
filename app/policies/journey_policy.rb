@@ -16,4 +16,8 @@ class JourneyPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def driver?
+    true
+  end
 end

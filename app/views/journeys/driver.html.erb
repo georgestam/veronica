@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="passenger-card">
+          <% @journey.passengers.each do |passenger| %>
+            <%= render 'passenger_card'
+        <p> <%= passenger.user.first_name %></p>
+        <% if passenger.user.photo? %>
+          <%= cl_image_tag passenger.user.photo.path, class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "http://placehold.it/200x200", class: 'avatar-large' %>
+        <% end %>
+      <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
