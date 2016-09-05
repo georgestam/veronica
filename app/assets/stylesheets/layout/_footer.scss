@@ -2,12 +2,18 @@
 .wrapper-footer {
   background-color: #251102;
   min-height: 100px;
-  padding: 30px 0;
+  display: flex;
+  align-item: center;
+  justify-content: space-between;
+  color: white;
+  font-size: 19px;
+  padding: 30px;
 }
 .share-links {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 400px;
 }
 .share-link {
   flex: 0 0 24%;
@@ -19,6 +25,13 @@
   cursor: pointer;
   &:hover {
     color: white;
+  }
+}
+.made {
+  display: flex;
+  align-items: center;
+  i {
+    padding: 10px;
   }
 }
 .bg-text {
