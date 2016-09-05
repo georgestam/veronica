@@ -23,14 +23,14 @@
       <% if @user.cars.empty? %>
         <p><%= t('.no_cars') %></p>
         <% if policy(Car).create? %>
-          <%= link_to t('.add_car'), new_car_path, class: "btn btn-primary" %>
+          <%= link_to t('add_car'), new_car_path, class: "btn btn-primary" %>
         <% end %>
       <% else %>
         <% @user.cars.each do |car| %>
-          <p><%= t('.car_make_html', make: car.make) %></p>
-          <p><%= t('.car_model_html', name: car.name) %></p>
-          <p><%= t('.car_colour_html', colour: car.colour) %></p>
-          <p><%= t('.car_vrn_html', vrn: car.vrn) %></p>
+          <p><%= t('car_make_html', make: car.make) %></p>
+          <p><%= t('car_model_html', name: car.name) %></p>
+          <p><%= t('car_colour_html', colour: car.colour) %></p>
+          <p><%= t('car_vrn_html', vrn: car.vrn) %></p>
         <% end %>
       <% end %>
     </div>

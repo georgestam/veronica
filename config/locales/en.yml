@@ -8,9 +8,13 @@ en:
     formats:
       day_month_year: "%d %b %Y"
       time_date: "%H:%M on %e %b %Y"
+      time: "%H:%M"
   journeys:
     show:
       sign_in: Sign in
+    card:
+      car: "Car: %{make} %{name}"
+
   pages:
     home:
       passenger: PASSENGER
@@ -57,15 +61,21 @@ en:
   year_of_study_html: <strong>Year of study:</strong> %{year_of_study}
   uni_course_html: <strong>Course:</strong> %{course}
   bio: Bio
-  # Journey translations
+  #  Journey translations
   passenger_journeys: Passenger journeys
   pick_up_location_html: <strong>Pick up location:</strong> %{location}
-  drop_off_location_html: <strong>Drop off location:</strong> %{location}
+  destination_html: <strong>Destination:</strong> %{location}
   driver_name_html: <strong>Driver name:</strong> %{name}
   vehicle_html: <strong>Car details:</strong> %{make} %{name}
   seats_available_html: <strong>Seats available:</strong> %{seats_available}
   driver_journeys: Driver journeys
   num_of_passengers_html: <strong>Number of passengers:</strong>
+  pick_up_time: Pick up time
+  #  Car translations
+  car_make_html: <strong>Make:</strong> %{make}
+  car_model_html: <strong>Model:</strong> %{name}
+  car_colour_html: <strong>Colour:</strong> %{colour}
+  car_vrn_html: <strong>Licence:</strong> %{vrn}
   profiles:
     dashboard:
       tab_overview: Overview
@@ -92,10 +102,6 @@ en:
         num_of_journeys_driven_html: <strong>No. of journeys driven:</strong> %{number}
         num_of_journeys_passenger_html: <strong>No. of journeys as passenger:</strong> %{number}
         avg_journey_time_html: <strong>Avg. journey time:</strong>
-        car_make_html: <strong>Make:</strong> %{make}
-        car_model_html: <strong>Model:</strong> %{name}
-        car_colour_html: <strong>Colour:</strong> %{colour}
-        car_vrn_html: <strong>Licence:</strong> %{vrn}
         no_cars: You haven't uploaded your car details yet!
         no_reviews: You haven't been reviewed yet!
         rating_html: <strong>Rating:</strong>
