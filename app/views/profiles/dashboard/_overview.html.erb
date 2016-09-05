@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12 col-sm-4 hidden-xs">
     <div class="dashboard-card">
-      <h2>Verification</h2>
+      <h2><%= t('.verification') %></h2>
       <div class="<%= @email_verification ? 'verified' : "unverified" %>" id="email"><p><%= t('.email_verified')%></p></div>
       <div class="<%= @payment_verification ? 'verified' : "unverified" %>" id="payment"><p><%= t('.payment_verified')%></p></div>
       <div class="<%= @student_id_verification ? 'verified' : "unverified" %>" id="student_id"><p><%= t('.student_verified')%></p></div>
@@ -10,36 +10,36 @@
       <h2>Journey stats</h2>
       <p><%= t('.num_of_journeys_driven_html', number: @journeys_as_driver.count)%></p>
       <p><%= t('.num_of_journeys_passenger_html', number: @journeys_as_passenger.count)%></p>
-      <p><%= t('.avg_journey_time')%></p>
-      <h2>Preferences</h2>
-      <p><strong>Music:</strong> <%= @user.music_habits %></p>
-      <p><strong>Talking:</strong> <%= @user.speaking_habits %></p>
-      <p><strong>Smoker:</strong> <%= t(@user.smoking ? "yes" : "no") %></p>
+      <p><%= t('.avg_journey_time_html')%></p>
+      <h2><%= t('preferences') %></h2>
+      <p><%= t('music_html', music: @user.music_habits) %></p>
+      <p><%= t('speaking_html', speaking: @user.speaking_habits) %></p>
+      <p><%= t('smoking_html')%><%= @user.smoking ? "Yes" : "No" %></p>
     </div>
   </div>
   <div class="col-xs-12 col-sm-8">
     <div class="dashboard-card car-card text-center">
       <h2>Car details</h2>
       <% if @user.cars.empty? %>
-        <p>You haven't uploaded your car details yet!</p>
+        <p><%= t('.no_cars') %></p>
         <% if policy(Car).create? %>
-          <%= link_to "Add your car detials", new_car_path, class: "btn btn-primary" %>
+          <%= link_to t('.add_car'), new_car_path, class: "btn btn-primary" %>
         <% end %>
       <% else %>
         <% @user.cars.each do |car| %>
-          <p><strong>Make:</strong> <%= car.make %></p>
-          <p><strong>Model:</strong> <%= car.name %></p>
-          <p><strong>Colour:</strong> <%= car.colour %></p>
-          <p><strong>Licence:</strong> <%= car.vrn %></p>
+          <p><%= t('.car_make_html', make: car.make) %></p>
+          <p><%= t('.car_model_html', name: car.name) %></p>
+          <p><%= t('.car_colour_html', colour: car.colour) %></p>
+          <p><%= t('.car_vrn_html', vrn: car.vrn) %></p>
         <% end %>
       <% end %>
     </div>
     <div class="dashboard-card review-card text-center">
       <h2>Reviews</h2>
       <% if @avg_rating.nil? %>
-        <p>You haven't been reviewed yet!</p>
+        <p><%= t('.no_reviews') %></p>
       <% else %>
-        <p>Rating: <%= @avg_rating %> </p>
+        <p><%= t('.rating_html') %> <%= @avg_rating %> </p>
         <% @avg_rating.times do %>
           <%= image_tag "yellow-rating.png" %>
         <% end %>

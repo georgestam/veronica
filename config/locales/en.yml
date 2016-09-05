@@ -43,12 +43,14 @@ en:
       profile: Profile
       sign_in: Sign in
       sign_out: Sign out
+  #  Buttons
+  edit: Edit
+  add_car: Add you car details
   # Preferences translations
   preferences: Preferences
   music_html: <strong>Music:</strong> %{music}
   speaking_html: <strong>Speaking:</strong> %{speaking}
   smoking_html: <strong>Smoker:</strong>
-  edit: Edit
   #  University information translations
   university_information: University information
   student_id_html: <strong>Student ID:</strong> %{student_id}
@@ -78,6 +80,8 @@ en:
         date_of_birth_html: <strong>DOB:</strong>
       overview-header:
         complete: complete
+      notifications:
+        no_notifications: You don't have any notifications yet!
       overview:
         verification: Verification
         email_verified: Email verified
@@ -87,4 +91,11 @@ en:
         journey_stats: Journey stats
         num_of_journeys_driven_html: <strong>No. of journeys driven:</strong> %{number}
         num_of_journeys_passenger_html: <strong>No. of journeys as passenger:</strong> %{number}
-        avg_journey_time: <strong>Avg. journey time:</strong>
+        avg_journey_time_html: <strong>Avg. journey time:</strong>
+        car_make_html: <strong>Make:</strong> %{make}
+        car_model_html: <strong>Model:</strong> %{name}
+        car_colour_html: <strong>Colour:</strong> %{colour}
+        car_vrn_html: <strong>Licence:</strong> %{vrn}
+        no_cars: You haven't uploaded your car details yet!
+        no_reviews: You haven't been reviewed yet!
+        rating_html: <strong>Rating:</strong>
