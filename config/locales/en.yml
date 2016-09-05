@@ -13,6 +13,24 @@ en:
       slogan: Save Money, Time and Stress
       subtitle: The first carsharing service of Warwick University
       title: Warwick Car Sharing
+      driver: DRIVER
+      driver-call-to-action: On the road again
+      driver-subtitle: Want to make money?
+      how-it-works: How does it work?
+      step-one: STEP 1
+      step-one-explanation: Find/Propose a lift
+      step-two: STEP 2
+      step-two-explanation: Jump on/Pick up!
+      step-three: STEP 3
+      step-three-explanation: Travel to uni!
+      testimonial-one-name: Jean-claude from Belgium
+      testimonial-one-quote: Amazing
+      testimonial-two-name:  Paul de Pologne
+      testimonial-two-quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      testimonial-three-name: Luke breen from Birmingham
+      testimonial-three-quote: Luke Breen approves this service!
+      testimonial-four-name: DJ Jordi from Spain
+      testimonial-four-quote: Cheap but I really enjoy the music
   shared:
     navbar:
       dashboard: Dashboard
