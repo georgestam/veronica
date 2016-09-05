@@ -2,7 +2,8 @@
   <% if @user.photo? %>
     <%= cl_image_tag @user.photo.path, class: "avatar-large header-img" %>
   <% else %>
-    <%= image_tag "http://placehold.it/100x100", class: "avatar-large header-img" %>
+    <%= avatar_url = @user.facebook_picture_url || "http://placehold.it/100x100" %>
+    <%= image_tag avatar_url, class: "avatar-large header-img" %>
   <% end %>
   <div class="header-info">
     <h3><%= @user.full_name %></h3>
@@ -12,7 +13,7 @@
     <div class="progress">
       <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @progress %>"
       aria-valuemin="0" aria-valuemax="100" style="width:<%=@progress.to_i%>%" id="account-progress">
-      <span id="progress"><%= @progress %></span>% Complete
+      <span id="progress"><%= @progress %></span>% <%= t('.complete') %>
       </div>
     </div>
   </div>

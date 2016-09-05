@@ -1,5 +1,7 @@
 ---
 en:
+  "yes": "Yes"
+  "no": "No"
   abort: Abort
   error: Error
   time:
@@ -72,3 +74,15 @@ en:
         seats_available_html: <strong>Seats available:</strong> %{seats_available}
         driver_journeys: Driver journeys
         num_of_passengers_html: <strong>Number of passengers:</strong>
+      overview-header:
+        complete: complete
+      overview:
+        verification: Verification
+        email_verified: Email verified
+        payment_verified: Payment verified
+        student_verified: Student ID verified
+        car_verified: Car verified
+        journey_stats: Journey stats
+        num_of_journeys_driven: <strong>No. of journeys driven:</strong> %{number}
+        num_of_journeys_passenger: <strong>No. of journeys as passenger:</strong> %{number}
+        avg_journey_time: <strong>Avg. journey time:</strong>
