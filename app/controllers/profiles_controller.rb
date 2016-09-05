@@ -17,10 +17,13 @@ class ProfilesController < ApplicationController
   def dashboard
     @user = current_user
     authorize @user
-    @journeys = Journey.where(user: @user)
+
+    @journeys = Journey.where(user: @user) #  Needed to calculate the avg_rating
+    calculate_avg_rating # This will return @avg-rating
+
     @journeys_as_passenger = Passenger.where(user: current_user).map{|passenger| passenger.journey}
     @journeys_as_driver = Journey.where(user: current_user)
-    calculate_avg_rating # This will return @avg-rating
+
     calculate_account_progress # This will return @progress
     verifications
   end

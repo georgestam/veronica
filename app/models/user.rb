@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :journeys
   has_attachment :photo
 
+  acts_as_token_authenticatable #  This is for API authentication
+
   validates :email, uniqueness: true, format: { with: /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/ }
   validates :first_name, presence: true
   validates :last_name, presence: true
