@@ -15,7 +15,7 @@
           <ul>
             <li> <strong> Pick-up time <%= journey.pick_up_time.to_formatted_s(:time) %> </strong></li>
             <li> Destination: <%= journey.drop_off_location.address %> </li>
-            <li> Seats available : <%= journey.seats_available %> </li>
+            <li> Seats available : @seats_available </li>
             <li> Car: <%= journey.car.make %> <% journey.car.name %></li>
           </ul>
 

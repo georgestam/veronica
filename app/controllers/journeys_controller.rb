@@ -1,5 +1,5 @@
 class JourneysController < ApplicationController
-  before_action :set_journey, only:[:show, :edit, :update, :destroy, :not_on_journey]
+  before_action :set_journey, only:[:show, :edit, :update, :destroy, :on_journey, :seats_available]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
     @journeys = policy_scope(Journey)
@@ -13,6 +13,8 @@ class JourneysController < ApplicationController
       marker.lat location.latitude
       marker.lng location.longitude
     end
+    on_journey?
+    seats_available
   end
 
   def new
@@ -53,11 +55,18 @@ class JourneysController < ApplicationController
     redirect_to journeys_path
   end
 
-  def not_on_journey
-    @journey.user != current_user || @journey.passengers.exclude?(current_user)
+  private
+
+  def on_journey?
+    @on_journey = false
+    if  @journey.user == current_user || @journey.passengers.include?(current_user)
+      @on_journey = true
+    end
   end
 
-  private
+  def seats_available
+    @seats_available = @journey.seats_available - @journey.passengers.count
+  end
 
   def set_journey
     @journey = Journey.find(params[:id])
