@@ -2,38 +2,73 @@
 en:
   abort: Abort
   error: Error
+  time:
+    formats:
+      day_month_year: "%d %b %Y"
+      time_date: "%H:%M on %e %b %Y"
   journeys:
     show:
       sign_in: Sign in
   pages:
     home:
       passenger: PASSENGER
-      passenger-call-to-action: Jump on!
-      passenger-subtitle: Want an easier ride to uni?
+      passenger_call_to_action: Jump on!
+      passenger_subtitle: Want an easier ride to uni?
       slogan: Save Money, Time and Stress
       subtitle: The first carsharing service of Warwick University
       title: Warwick Car Sharing
       driver: DRIVER
-      driver-call-to-action: On the road again
-      driver-subtitle: Want to make money?
-      how-it-works: How does it work?
-      step-one: STEP 1
-      step-one-explanation: Find/Propose a lift
-      step-two: STEP 2
-      step-two-explanation: Jump on/Pick up!
-      step-three: STEP 3
-      step-three-explanation: Travel to uni!
-      testimonial-one-name: Jean-claude from Belgium
-      testimonial-one-quote: Amazing
-      testimonial-two-name:  Paul de Pologne
-      testimonial-two-quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      testimonial-three-name: Luke breen from Birmingham
-      testimonial-three-quote: Luke Breen approves this service!
-      testimonial-four-name: DJ Jordi from Spain
-      testimonial-four-quote: Cheap but I really enjoy the music
+      driver_call_to_action: On the road again
+      driver_subtitle: Want to make money?
+      how_it_works: How does it work?
+      step_one: STEP 1
+      step_one_explanation: Find/Propose a lift
+      step_two: STEP 2
+      step_two_explanation: Jump on/Pick up!
+      step_three: STEP 3
+      step_three_explanation: Travel to uni!
+      testimonial_one_name: Jean-claude from Belgium
+      testimonial_one_quote: Amazing
+      testimonial_two_name:  Paul de Pologne
+      testimonial_two_quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      testimonial_three_name: Luke breen from Birmingham
+      testimonial_three_quote: Luke Breen approves this service!
+      testimonial_four_name: DJ Jordi from Spain
+      testimonial_four_quote: Cheap but I really enjoy the music
   shared:
     navbar:
       dashboard: Dashboard
       profile: Profile
       sign_in: Sign in
       sign_out: Sign out
+  profiles:
+    dashboard:
+      tab_overview: Overview
+      tab_journey: Journeys
+      tab_notifications: Notifications
+      tab_account_settings: Account Settings
+      account-settings:
+        edit: Edit
+        personal_information: Personal information
+        email_html: <strong>Email:</strong> %{email}
+        phone_number_html: <strong>Phone number:</strong> %{phone_number}
+        gender_html: <strong>Gender:</strong> %{gender}
+        date_of_birth_html: <strong>DOB:</strong>
+        university_information: University information
+        student_id_html: <strong>Student ID:</strong> %{student_id}
+        year_of_study_html: <strong>Year of study:</strong> %{year_of_study}
+        uni_course_html: <strong>Course:</strong> %{course}
+        preferences: Preferences
+        music_html: <strong>Music:</strong> %{music}
+        speaking_html: <strong>Speaking:</strong> %{speaking}
+        smoking_html: <strong>Smoker:</strong> NEED TO FINISH THIS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        bio: Bio
+      journey:
+        passenger_journeys: Passenger journeys
+        pick_up_location_html: <strong>Pick up location:</strong> %{location}
+        drop_off_location_html: <strong>Drop off location:</strong> %{location}
+        driver_name_html: <strong>Driver name:</strong> %{name}
+        vehicle_html: <strong>Car details:</strong> %{make} %{name}
+        seats_available_html: <strong>Seats available:</strong> %{seats_available}
+        driver_journeys: Driver journeys
+        num_of_passengers_html: <strong>Number of passengers:</strong>
