@@ -43,16 +43,27 @@ en:
       profile: Profile
       sign_in: Sign in
       sign_out: Sign out
+  # Preferences translations
   preferences: Preferences
   music_html: <strong>Music:</strong> %{music}
   speaking_html: <strong>Speaking:</strong> %{speaking}
   smoking_html: <strong>Smoker:</strong>
   edit: Edit
+  #  University information translations
   university_information: University information
   student_id_html: <strong>Student ID:</strong> %{student_id}
   year_of_study_html: <strong>Year of study:</strong> %{year_of_study}
   uni_course_html: <strong>Course:</strong> %{course}
   bio: Bio
+  # Journey translations
+  passenger_journeys: Passenger journeys
+  pick_up_location_html: <strong>Pick up location:</strong> %{location}
+  drop_off_location_html: <strong>Drop off location:</strong> %{location}
+  driver_name_html: <strong>Driver name:</strong> %{name}
+  vehicle_html: <strong>Car details:</strong> %{make} %{name}
+  seats_available_html: <strong>Seats available:</strong> %{seats_available}
+  driver_journeys: Driver journeys
+  num_of_passengers_html: <strong>Number of passengers:</strong>
   profiles:
     dashboard:
       tab_overview: Overview
@@ -65,15 +76,6 @@ en:
         phone_number_html: <strong>Phone number:</strong> %{phone_number}
         gender_html: <strong>Gender:</strong> %{gender}
         date_of_birth_html: <strong>DOB:</strong>
-      journey:
-        passenger_journeys: Passenger journeys
-        pick_up_location_html: <strong>Pick up location:</strong> %{location}
-        drop_off_location_html: <strong>Drop off location:</strong> %{location}
-        driver_name_html: <strong>Driver name:</strong> %{name}
-        vehicle_html: <strong>Car details:</strong> %{make} %{name}
-        seats_available_html: <strong>Seats available:</strong> %{seats_available}
-        driver_journeys: Driver journeys
-        num_of_passengers_html: <strong>Number of passengers:</strong>
       overview-header:
         complete: complete
       overview:
@@ -83,6 +85,6 @@ en:
         student_verified: Student ID verified
         car_verified: Car verified
         journey_stats: Journey stats
-        num_of_journeys_driven: <strong>No. of journeys driven:</strong> %{number}
-        num_of_journeys_passenger: <strong>No. of journeys as passenger:</strong> %{number}
+        num_of_journeys_driven_html: <strong>No. of journeys driven:</strong> %{number}
+        num_of_journeys_passenger_html: <strong>No. of journeys as passenger:</strong> %{number}
         avg_journey_time: <strong>Avg. journey time:</strong>

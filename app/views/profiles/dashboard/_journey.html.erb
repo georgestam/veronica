@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <% unless @journeys_as_passenger.empty? %>
-      <h2 class="text-center"><%= t('.passenger-journeys') %></h2>
+      <h2 class="text-center"><%= t('passenger-journeys') %></h2>
       <% @journeys_as_passenger.each do |journey| %>
         <div class="product dashboard-card">
           <%= image_tag "https://unsplash.it/500/300", { class: "product-image hidden-xs"} %>
@@ -9,11 +9,11 @@
             <p> <%= l(journey.pick_up_time, format: :time_date)%> </p>
 
             <ul>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('.pick_up_location_html', location: journey.pick_up_location.address) %></li>
-              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('.drop_off_location_html', location: journey.drop_off_location.address) %></li>
-              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.driver_name_html', name: journey.user.full_name) %></li>
-              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= t(".vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
-              <li> <i class="fa fa-users" aria-hidden="true"></i>  <%= t('.seats_available_html', seats_available: journey.calc_seats_available) %> </li>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('pick_up_location_html', location: journey.pick_up_location.address) %></li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('drop_off_location_html', location: journey.drop_off_location.address) %></li>
+              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('driver_name_html', name: journey.user.full_name) %></li>
+              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= t("vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
+              <li> <i class="fa fa-users" aria-hidden="true"></i>  <%= t('seats_available_html', seats_available: journey.calc_seats_available) %> </li>
             </ul>
           </div>
           <%= link_to "", journey_path(journey), class: "product-link" %>
@@ -23,7 +23,7 @@
   </div>
   <div class="col-xs-12">
     <% unless @journeys_as_driver.empty? %>
-      <h2 class="text-center"><%= t('.driver_journeys') %></h2>
+      <h2 class="text-center"><%= t('driver_journeys') %></h2>
       <% @journeys_as_driver.each do |journey| %>
         <div class="product dashboard-card">
           <%= image_tag "https://unsplash.it/500/300", { class: "product-image hidden-xs"} %>
@@ -31,11 +31,11 @@
             <p> <%= l(journey.pick_up_time, format: :time_date)%> </p>
 
             <ul>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('.pick_up_location_html', location: journey.pick_up_location.address) %></li>
-              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('.drop_off_location_html', location: journey.drop_off_location.address) %></li>
-              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.num_of_passengers_html') %> <%= journey.passengers.count %></li>
-              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= t(".vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
-              <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('.seats_available_html', seats_available: journey.calc_seats_available) %> </li>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('pick_up_location_html', location: journey.pick_up_location.address) %></li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('drop_off_location_html', location: journey.drop_off_location.address) %></li>
+              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('num_of_passengers_html') %> <%= journey.passengers.count %></li>
+              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= t("vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
+              <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('seats_available_html', seats_available: journey.calc_seats_available) %> </li>
             </ul>
           </div>
           <%= link_to "", journey_path(journey), class: "product-link" %>

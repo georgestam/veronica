@@ -8,8 +8,8 @@
       <div class="<%= @car_verification ? 'verified' : "unverified" %>" id="car"><p><%= t('.car_verified')%></p></div>
 
       <h2>Journey stats</h2>
-      <p><%= t('.num_of_journeys_driven', number: @journeys_as_driver.count)%></p>
-      <p><%= t('.num_of_journeys_passenger', number: @journeys_as_passenger.count)%></p>
+      <p><%= t('.num_of_journeys_driven_html', number: @journeys_as_driver.count)%></p>
+      <p><%= t('.num_of_journeys_passenger_html', number: @journeys_as_passenger.count)%></p>
       <p><%= t('.avg_journey_time')%></p>
       <h2>Preferences</h2>
       <p><strong>Music:</strong> <%= @user.music_habits %></p>
