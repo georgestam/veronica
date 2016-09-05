@@ -16,12 +16,4 @@ class JourneyPolicy < ApplicationPolicy
   def destroy?
     true
   end
-
-  def driver?
-    record.user == user
-  end
-
-  def passenger?
-    record.user == user
-  end
 end

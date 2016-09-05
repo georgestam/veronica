@@ -13,7 +13,11 @@ class UserPolicy < ApplicationPolicy
     record == user
   end
 
-  def dashboard?
+  def driver?
+    record == user
+  end
+
+  def passenger?
     record == user
   end
 end
