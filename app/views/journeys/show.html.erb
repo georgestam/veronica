@@ -29,14 +29,17 @@
     <% if policy(Journey).destroy? %>
       <%= link_to "delete", journey_path(@journey), method: :delete  %>
     <% end %>
-    <% if user_signed_in? %>
-      <% if @journey.seats_available <= 0 %>
-        <h3> Journey full </h3>
-      <% elsif :on_journey? %>
-          <h3> Already on this journey </h3>
-      <% else %>
-        <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
-      <% end %>
+
+
+    <%if @on_journey %>
+      <h3> Already on this journey </h3>
+    <% elsif @seats_available <= 0 %>
+      <h3> Journey full </h3>
+    <% elsif @seats_available == 1 %>
+     <h3> Only one seat left! </h3>
+     <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+    <% elsif user_signed_in? %>
+      <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
     <% else %>
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary"  %>
     <% end %>
