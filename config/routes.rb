@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :journeys, only: [:index, :show, :update]
+      get "/dashboard", to: "profiles#dashboard", as: :dashboard
     end
   end
 
