@@ -1,5 +1,5 @@
 ---
-en:
+fr:
   abort: Abort
   error: Error
   journeys:
@@ -10,8 +10,8 @@ en:
       passenger: PASSENGER
       passenger-call-to-action: Jump on!
       passenger-subtitle: Want an easier ride to uni?
-      slogan: Save Money, Time and Stress
-      subtitle: The first carsharing service of Warwick University
+      slogan: Économisez de l'argent , le temps et le stress
+      subtitle: Le premier service d'autopartage de l'Université de Warwick
       title: Warwick Car Sharing
   shared:
     navbar:

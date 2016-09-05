@@ -2,17 +2,17 @@
 <!-- <div class="banner"> -->
   <div class="banner-container container text-center">
     <div class="row">
-      <h1> SHOTGUN </h1>
-      <h2> The first carsharing service of Warwick University </h2>
-      <h3>Save Money, Time and Stress </h3>
+      <h1><%= t('.title')%></h1>
+      <h2><%= t('.subtitle')%></h2>
+      <h3><%= t('.slogan')%></h3>
       <div class="col-xs-12 col-sm-6">
         <div class="user-card-home">
           <div class="thumbnail">
             <%= image_tag "students.jpg", {class: "responsive-img"} %>
             <div class="caption">
-                <h3>PASSENGER</h3>
-                <p>YOU ARE A BUS WANKER?</p>
-                <p><%= link_to "Jump on!", journeys_path, {class: "btn btn-primary"} %></p>
+                <h3><%= t('.passenger')%></h3>
+                <p><%= t('.passenger-subtitle')%></p>
+                <p><%= link_to t('.passenger-call-to-action'), journeys_path, {class: "btn btn-primary"} %></p>
             </div> <!-- end of caption -->
           </div> <!-- end of thumbnail -->
         </div> <!-- end of user-card-home -->
