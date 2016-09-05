@@ -41,6 +41,17 @@
     margin-left: 10px;
   }
 }
+
+#gmap {
+    position: relative;
+    z-index: 0;
+    margin-top: 0;
+    text-align: left;
+    max-width: 100%;
+    color: #37474f;
+    height: 420px;
+}
+
 .journey-body {
   position: relative;
   z-index: 0;
@@ -77,6 +88,19 @@
   }
   p {
     font-size: 14px;
+  }
+
+  i:hover {
+    color: green;
+    cursor: pointer;
+  }
+
+  i {
+    font-size: 20px;
+  }
+
+  .non-smoking:hover {
+    color: red;
   }
 }
 .driver-links a .fa {

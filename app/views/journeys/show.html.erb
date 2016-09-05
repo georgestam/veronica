@@ -26,7 +26,8 @@
                 <% if passenger.user.photo? %>
                   <%= cl_image_tag passenger.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
                 <% else %>
-                  <%= image_tag "http://placehold.it/200x200", class: 'avatar-large test', "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name %>
+                  <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/200x200" %>
+                  <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
                 <% end %>
               <% end %>
             </div>
@@ -54,7 +55,12 @@
               </ul>
             </div>
             <div class="driver-card">
-              <%= image_tag "http://placehold.it/200x200", class:"avatar-large" %>
+            <% if @journey.user.photo? %>
+              <%= cl_image_tag @journey.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => @journey.user.first_name  %>
+            <% else %>
+              <% avatar_url = @journey.user.facebook_picture_url || "http://placehold.it/200x200" %>
+              <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => @journey.user.first_name  %>
+            <% end %>
               <p class="name"><%= @journey.user.first_name %> <%= @journey.user.last_name %></p>
               <p class="car"><%= @journey.car.make %>, <%= @journey.car.colour %></p>
             </div>
@@ -93,7 +99,7 @@
         </div> <!-- end of user-card-info -->
       </div>
       <div class="col-xs-12 col-sm-6">
-        <div class="user-card" id="review">
+        <div class="user-card" id="gmap">
           <div class="user-card-info">
             <%= render 'map' %>
           </div> <!-- end of row 1.2 -->
