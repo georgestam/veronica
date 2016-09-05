@@ -1,0 +1,14 @@
+<div class="text-center">
+  <% if passenger.user.photo? %>
+    <%= cl_image_tag passenger.user.photo.path, class: "avatar-large" %>
+  <% else %>
+    <%= image_tag "http://placehold.it/200x200", class: 'avatar-large' %>
+  <% end %>
+  <h4><%= passenger.user.first_name passenger.user.last_name %></h4>
+  <p><%= passenger.user.description %></p>
+  <p><%= passenger.user.music_habits %></p>
+  <p><%= passenger.user.speaking_habits %></p>
+  <p><%= passenger.user.smoking %></p>
+</div>
+
+
