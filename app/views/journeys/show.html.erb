@@ -1,7 +1,9 @@
 
 <div class="wrapper">
   <div class="banner-content">
-    <h1><%= @journey.pick_up_location.address%> to <%=@journey.drop_off_location.address %> at <%= @journey.pick_up_time.to_formatted_s(:time) %> </h1>
+    <h1>From: <%= @journey.pick_up_location.address%></h1>
+    <h1>To: <%=@journey.drop_off_location.address %></h1>
+    <h1>Time: <%= @journey.pick_up_time.to_formatted_s(:time) %> </h1>
     <h2> Journey info </h2>
       <p> Seat(s) available : <%= @journey.seats_available - @journey.passengers.count %></p>
       <% @journey.passengers.each do |passenger| %>

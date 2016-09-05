@@ -3,6 +3,7 @@ class JourneysController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
     @journeys = policy_scope(Journey)
+    @journeys.sort { |x,y| x.pick_up_time <=> y.pick_up_time }
   end
 
   def show

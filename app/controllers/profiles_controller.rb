@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to profile_path(@user)
+    redirect_to dashboard_path
   end
 
   def dashboard
