@@ -43,6 +43,16 @@ en:
       profile: Profile
       sign_in: Sign in
       sign_out: Sign out
+  preferences: Preferences
+  music_html: <strong>Music:</strong> %{music}
+  speaking_html: <strong>Speaking:</strong> %{speaking}
+  smoking_html: <strong>Smoker:</strong>
+  edit: Edit
+  university_information: University information
+  student_id_html: <strong>Student ID:</strong> %{student_id}
+  year_of_study_html: <strong>Year of study:</strong> %{year_of_study}
+  uni_course_html: <strong>Course:</strong> %{course}
+  bio: Bio
   profiles:
     dashboard:
       tab_overview: Overview
@@ -50,21 +60,11 @@ en:
       tab_notifications: Notifications
       tab_account_settings: Account Settings
       account-settings:
-        edit: Edit
         personal_information: Personal information
         email_html: <strong>Email:</strong> %{email}
         phone_number_html: <strong>Phone number:</strong> %{phone_number}
         gender_html: <strong>Gender:</strong> %{gender}
         date_of_birth_html: <strong>DOB:</strong>
-        university_information: University information
-        student_id_html: <strong>Student ID:</strong> %{student_id}
-        year_of_study_html: <strong>Year of study:</strong> %{year_of_study}
-        uni_course_html: <strong>Course:</strong> %{course}
-        preferences: Preferences
-        music_html: <strong>Music:</strong> %{music}
-        speaking_html: <strong>Speaking:</strong> %{speaking}
-        smoking_html: <strong>Smoker:</strong> NEED TO FINISH THIS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        bio: Bio
       journey:
         passenger_journeys: Passenger journeys
         pick_up_location_html: <strong>Pick up location:</strong> %{location}
