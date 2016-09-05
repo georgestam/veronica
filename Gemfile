@@ -57,3 +57,6 @@ end
 #  Admin dashboard gems
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
+
+#  API gem
+gem "simple_token_authentication"

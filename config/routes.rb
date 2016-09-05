@@ -25,6 +25,14 @@ Rails.application.routes.draw do
 
   resources :passengers, only:[:update]
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      get "journeys/driver", to: "journeys#driver", as: :journey_driver
+      get "journeys/passenger", to: "journeys#passenger", as: :journey_passenger
+      resources :journeys, only: [:index, :show, :update]
+    end
+  end
+
   mount Attachinary::Engine => "/attachinary"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end
