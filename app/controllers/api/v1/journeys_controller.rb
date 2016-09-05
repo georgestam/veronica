@@ -17,6 +17,15 @@ class Api::V1::JourneysController < Api::V1::BaseController
     end
   end
 
+  def driver
+    @journeys_as_driver = Journey.where(user: current_user)
+    authorize @journeys_as_driver
+  end
+
+  def passenger
+    @journeys_as_passenger = Passenger.where(user: current_user).map{|passenger| passenger.journey}
+  end
+
   private
 
   def set_journey
