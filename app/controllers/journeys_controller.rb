@@ -9,11 +9,7 @@ class JourneysController < ApplicationController
   def show
     @journey = Journey.find(params[:id])
     @passenger = @journey.passengers.build(user: current_user)
-
-    @hash = Gmaps4rails.build_markers([ @journey.pick_up_location, @journey.drop_off_location ]) do |location, marker|
-      marker.lat location.latitude
-      marker.lng location.longitude
-    end
+    @car = @journey.car
   end
 
   def new
@@ -45,7 +41,7 @@ class JourneysController < ApplicationController
 
   def update
     @journey.update(journey_params)
-    email_all_passengers(@journey.passengers)
+    email_all_passengers(@journey.passengers) unless @journey.completed?
     authorize @journey
     redirect_to journey_path(@journey)
   end

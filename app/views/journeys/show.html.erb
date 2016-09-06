@@ -41,7 +41,7 @@
                 <% if user_signed_in?  %>
                   <% if policy(@journey).update? %>
                     <li>
-                      <%= link_to edit_car_journey_path(@journey.car) do %>
+                      <%= link_to edit_journey_path(@journey) do %>
                         <i class="fa fa-pencil"></i>
                       <% end %>
                     </li>
@@ -91,24 +91,27 @@
 
               <% if user_signed_in?  %>
 
-                <% if policy(@journey).update? %>
-                  <%= simple_form_for @journey do |f| %>
+                <% if @journey.completed %>
+                  Journey completed
+                <% elsif policy(@journey).update? %>
+                  <%= simple_form_for [@journey] do |f| %>
                     <%= f.hidden_field :completed, :value => true %>
-                    <%= f.submit "Mark as Completed", class: 'btn' %>
+                    <%= f.submit "Mark as Completed", class: 'btn-booking' %>
                   <% end %>
+                <% end %>
 
-                <% elsif on_journey?(@journey) %>
+                <% if on_journey?(@journey) %>
                   <h4> Already on this journey </h4>
                 <% elsif @journey.full? %>
                   <h4> Journey full </h4>
                 <% elsif policy(@passenger).create? %>
                   <%= t ".only_remaining", count: @journey.remaining_seats %>
 
-                  <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn" %>
+                  <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn-booking" %>
                 <% end %>
 
               <% elsif user_signed_in? %>
-                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn" %>
+                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn-booking" %>
               <% else %>
 
               <% end %>
