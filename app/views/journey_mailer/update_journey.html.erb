@@ -1,10 +1,8 @@
 <p>Hello <%= @user.first_name %></p>
 
-<p>Your booking to <strong><%= @journey.drop_off_location.address %></strong> at <strong><%= l(@journey.pick_up_time, format: :time_date) %></strong> has been confirmed.</p>
+<p>Your driver has changed some features of your journey. Please see the updated details below.</p>
 
 
-
-<p><strong>Please see a summary of your booking below:</strong></p>
 
 <p><strong>Pick-up location:</strong> <%=@journey.pick_up_location.address %></p>
 <p><strong>Pick-up time:</strong> <%=@journey.pick_up_time %></p>

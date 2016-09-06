@@ -1,5 +1,5 @@
-<h1 class="text-center"> All Journeys</h1>
-<div class="container">
+<div class="container" id="journey-list">
+  <h1 class="text-center"><strong><%= @journeys.count %></strong> rides today</h1>
   <div class="row">
     <% @journeys.each do |j| %>
     <div class="col-xs-12 col-sm-6">

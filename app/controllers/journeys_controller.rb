@@ -45,6 +45,7 @@ class JourneysController < ApplicationController
 
   def update
     @journey.update(journey_params)
+    email_all_passengers(@journey.passengers)
     authorize @journey
     redirect_to journey_path(@journey)
   end
@@ -74,5 +75,11 @@ class JourneysController < ApplicationController
       pick_up_location_attributes: [ :address ],
       drop_off_location_attributes: [ :address ]
     )
+  end
+
+  def email_all_passengers(passengers)
+    passengers.each do |passenger|
+      JourneyMailer.update_journey(passenger).deliver_now
+    end
   end
 end

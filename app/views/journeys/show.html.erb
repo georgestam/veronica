@@ -1,63 +1,132 @@
 
 <div class="wrapper">
-  <div class="banner-content">
-    <h1>From: <%= @journey.pick_up_location.address%></h1>
-    <h1>To: <%=@journey.drop_off_location.address %></h1>
-    <h1>Time: <%= @journey.pick_up_time.to_formatted_s(:time) %> </h1>
-    <h2> Journey info </h2>
-      <p> Seat(s) available : <%= @journey.remaining_seats %> / <%= @journey.seats_available %></p>
-      <% @journey.passengers.each do |passenger| %>
-        <p> <%= passenger.user.first_name %></p>
-        <% if passenger.user.photo? %>
-          <%= cl_image_tag passenger.user.photo.path, class: "avatar-large" %>
-        <% else %>
-          <%= image_tag "http://placehold.it/200x200", class: 'avatar-large' %>
-        <% end %>
-      <% end %>
-    <h2> Driver info </h2>
-      <p><%= @journey.car.user.description %></p>
-      <p><%= @journey.user.music_habits %></p>
-      <p><%= @journey.user.speaking_habits %></p>
-      <p><%= @journey.user.smoking %></p>
-    <h2> Car info </h2>
-      <p><%= @journey.car.make %></p>
-      <p><%= @journey.car.colour %></p>
-      <%= link_to "See all my journeys", user_journeys_path %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="user-card" id="journey">
+          <div class="journey-header">
+            <div class="journey-details">
+              <div class="from">
+                <h2><%= t('.departure') %></h2>
+                <p><%= @journey.pick_up_location.address%></p>
+              </div>
+              <i class="fi-arrow-right"></i>
+              <div class="to">
+                <h2><%= t('.arrival') %></h2>
+                <p><%= @journey.drop_off_location.address%></p>
+              </div>
+              <div class="pick-up">
+                <h2><i class="fi-clock"></i><%= t('pick_up_time') %></h2>
+                <p><%= l(@journey.pick_up_time, format: :time_date) %></p>
+              </div>
+            </div>
+            <div class="journey-passengers">
+              <p> <%= t('seats_available', count: @journey.remaining_seats)%> - </p>
+              <% @journey.passengers.each do |passenger| %>
+                <% if passenger.user.photo? %>
+                  <%= cl_image_tag passenger.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
+                <% else %>
+                  <% avatar_url = passenger.user.facebook_picture_url || "http://placehold.it/200x200" %>
+                  <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="user-card" id="journey">
+          <div class="user-card-info journey-body">
 
-    <% if user_signed_in?  %>
+            <div class="driver-links">
+              <ul class="list-inline">
+                <% if user_signed_in?  %>
+                  <% if policy(@journey).update? %>
+                    <li>
+                      <%= link_to edit_car_journey_path(@journey.car) do %>
+                        <i class="fa fa-pencil"></i>
+                      <% end %>
+                    </li>
+                  <% end %>
+                  <% if policy(@journey).destroy? %>
+                    <li>
+                      <%= link_to journey_path(@journey), method: :delete do %>
+                        <i class="fa fa-trash"></i>
+                      <% end %>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+            <div class="driver-card">
+            <% if @journey.user.photo? %>
+              <%= cl_image_tag @journey.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => @journey.user.first_name  %>
+            <% else %>
+              <% avatar_url = @journey.user.facebook_picture_url || "http://placehold.it/200x200" %>
+              <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => @journey.user.first_name  %>
+            <% end %>
+              <p class="name"><%= @journey.user.full_name %></p>
+              <p class="car"><%= @journey.car.make %>, <%= @journey.car.colour %></p>
+            </div>
+            <div class="driver-description">
+              <h4><%= t('.about_me') %></h4>
+              <p><%= t('year_of_study_html', year_of_study: @journey.user.year_of_study) %></p>
+              <p><%= t('uni_course_html', course: @journey.user.uni_course) %></p>
+              <p><%= @journey.car.user.description %></p>
+              <ul class= "list-inline">
+                <li>
+                  <p><i class="fi-volume test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= @journey.user.music_habits %>"></i></p>
+                </li>
+                <li>
+                  <p><i class="fa fa-comment test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= @journey.user.speaking_habits %>"></i></p>
+                </li>
+                <% if @journey.user.smoking? %>
+                  <li>
+                    <p><i class="fi-info test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="smoking"></i></p>
+                  </li>
+                <% else %>
+                  <li>
+                    <p><i class="fi-no-smoking test non-smoking" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="no smoking"></i></p>
+                  </li>
+                <% end %>
+              </ul>
 
-      <% if policy(@journey).update? %>
-        <%= link_to "Edit this journey", edit_car_journey_path(@journey.car) %>
-      <% end %>
+              <% if user_signed_in?  %>
 
-      <% if policy(@journey).destroy? %>
-        <%= link_to "delete", journey_path(@journey), method: :delete, class: "btn btn-danger"  %>
-      <% end %>
+                <% if policy(@journey).update? %>
+                  <%= simple_form_for @journey do |f| %>
+                    <%= f.hidden_field :completed, :value => true %>
+                    <%= f.submit "Mark as Completed", class: 'btn btn-primary' %>
+                  <% end %>
+                <% end %>
 
-      <% if policy(@journey).update? %>
-        <%= simple_form_for @journey do |f| %>
-          <%= f.hidden_field :completed, :value => true %>
-          <%= f.submit "Mark as Completed", class: 'btn btn-primary' %>
-        <% end %>
-      <% end %>
+                <% if on_journey?(@journey) %>
+                  <h3> Already on this journey </h3>
+                <% elsif @journey.full? %>
+                  <h3> Journey full </h3>
+                <% elsif policy(@passenger).create? %>
+                  <%= t ".only_remaining", count: @journey.remaining_seats %>
 
-      <% if on_journey?(@journey) %>
-        <h3> Already on this journey </h3>
-      <% elsif @journey.full? %>
-        <h3> Journey full </h3>
-      <% elsif policy(@passenger).create? %>
-        <%= t ".only_remaining", count: @journey.remaining_seats %>
+                  <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+                <% end %>
 
-        <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
-      <% end %>
+              <% elsif user_signed_in? %>
+                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+              <% else %>
 
-    <% elsif user_signed_in? %>
-      <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
-    <% else %>
+              <% end %>
 
-    <% end %>
+            </div>
+          </div>
+        </div> <!-- end of user-card-info -->
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="user-card" id="gmap">
+          <div class="user-card-info">
+            <%= render 'map' %>
+          </div> <!-- end of row 1.2 -->
+        </div> <!-- end of user-card-info -->
+      </div>
+    </div>
   </div>
-  <%= render 'map' %>
 </div>
 
 

@@ -21,8 +21,11 @@ class CarsController < ApplicationController
     @user = current_user
     @car.user = @user
     authorize @car
-    if @car.save
+    if @user.cars.count == 0 && @car.save
       redirect_to dashboard_path
+    elsif @user.cars.count > 0
+      flash[:exceed_car_limit] = "You can only upload one car."
+      render :new
     else
       render :new
     end

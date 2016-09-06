@@ -1,0 +1,74 @@
+.login-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  color: black;
+  h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .btn {
+    width: 100%;
+    line-height: 30px;
+  }
+}
+
+.button-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  color: black;
+  h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .btn {
+    width: 100%;
+    line-height: 30px;
+    margin-top: 5px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.or {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  span {
+    font-size: 20px;
+    padding: 10px;
+    color: rgb(170, 170, 170);
+    font-weight: lighter;
+  }
+}
+.or-line {
+  height: 1px;
+  flex: 1 1 auto;
+  background-color: rgb(170, 170, 170);
+}
+.btn-facebook {
+  background-color: #385590;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background-color: #385590;
+    color: white;
+    opacity: 0.7;
+  }
+  i {
+    font-size: 20px;
+    padding-right: 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  span {
+    padding-left: 10px;
+  }
+}
