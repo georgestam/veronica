@@ -8,12 +8,15 @@
 }
 
 .content-wrapper {
-  background-color: #1B2639;
+  background-color: white;
   padding: 20px;
   border-radius: 0 0 5px 5px;
   color:white;
   h2 {
-    color:white;
+    color:#78AED9;
+  }
+  h3 {
+    color:#78AED9;
   }
 }
 
@@ -70,17 +73,17 @@
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
-  background-color: #78AED9;
+  background-color: $gray-lighter;
   margin-top: 10px;
-  color: white;
+  color: black;
   font-weight:100;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   h2 {
   font-size: 35px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-  font-weight: 100;
-  color: white;
+  font-weight: 400;
+  color: #78AED9;
   }
   .btn {
     width: 100px;
@@ -114,6 +117,9 @@
       border-bottom-color: rgb(26, 159, 217);
       background-color: rgb(62, 180, 232);
     }
+  }
+  p {
+    font-weight:bolder;
   }
 }
 
