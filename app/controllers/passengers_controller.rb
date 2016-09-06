@@ -7,7 +7,8 @@ class PassengersController < ApplicationController
     @passenger.user = current_user
     @passenger.journey = @journey
     if @passenger.save
-      PassengerMailer.confirmation_of_booking(@passenger).deliver_now
+      PassengerMailer.confirmation_of_booking(@passenger).deliver_now # This sends email confirmation to the passenger
+      PassengerMailer.new_passenger(@passenger).deliver_now # This send a notification to the driver
     else
       flash[:alert] = "There was an error booking you on this journey!"
     end
