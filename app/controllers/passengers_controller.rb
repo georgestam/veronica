@@ -7,7 +7,7 @@ class PassengersController < ApplicationController
     @passenger.user = current_user
     @passenger.journey = @journey
     if @passenger.save
-      RestaurantMailer.confirmation_of_booking(@passenger).deliver_now
+      PassengerMailer.confirmation_of_booking(@passenger).deliver_now
     else
       flash[:alert] = "There was an error booking you on this journey!"
     end

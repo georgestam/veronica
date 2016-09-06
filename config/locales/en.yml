@@ -133,8 +133,8 @@ en:
       tab_notifications: Notifications
       tab_overview: Overview
   seats_available:
-    one: Hurry! There is only one seat left!
-    other: "%{count} seats available"
+    one: There is only one seat left!
+    other: "There are %{count} seats available"
     zero: There are no seats left!
   seats_available_html: "<strong>Seats available:</strong> %{seats_available}"
   shared:
