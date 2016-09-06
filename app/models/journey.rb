@@ -19,4 +19,8 @@ class Journey < ApplicationRecord
       errors.add(:pick_up_time, "Cannot be in the past")
     end
   end
+
+  def calc_seats_available
+    self.seats_available - self.passengers.count
+  end
 end

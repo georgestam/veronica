@@ -2,6 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <% if flash[:exceed_car_limit] %>
+            <div class="alert-warning"><%= flash[:exceed_car_limit] %></div>
+          <% end %>
         <h2>Add a new car</h2>
         <%= render 'car_form' %>
       </div>
