@@ -1,5 +1,11 @@
 ---
 en:
+  hello: "Hello world"
+  journeys:
+    show:
+      only_remaining:
+        one: Only one seat remaining?
+        other: "%{count} seats remaining"
   abort: Abort
   activerecord:
     attributes:

@@ -21,7 +21,7 @@
               </div>
             </div>
             <div class="journey-passengers">
-              <p> <%= t('seats_available', count: @journey.calc_seats_available)%> - </p>
+              <p> <%= t('seats_available', count: @journey.remaining_seats)%> - </p>
               <% @journey.passengers.each do |passenger| %>
                 <% if passenger.user.photo? %>
                   <%= cl_image_tag passenger.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
@@ -38,19 +38,21 @@
 
             <div class="driver-links">
               <ul class="list-inline">
-                <% if policy(Journey).update? %>
-                  <li>
-                    <%= link_to edit_car_journey_path(@journey.car) do %>
-                      <i class="fa fa-pencil"></i>
-                    <% end %>
-                  </li>
-                <% end %>
-                <% if policy(Journey).destroy? %>
-                  <li>
-                    <%= link_to journey_path(@journey), method: :delete do %>
-                      <i class="fa fa-trash"></i>
-                    <% end %>
-                  </li>
+                <% if user_signed_in?  %>
+                  <% if policy(@journey).update? %>
+                    <li>
+                      <%= link_to edit_journey_path(@journey) do %>
+                        <i class="fa fa-pencil"></i>
+                      <% end %>
+                    </li>
+                  <% end %>
+                  <% if policy(@journey).destroy? %>
+                    <li>
+                      <%= link_to journey_path(@journey), method: :delete do %>
+                        <i class="fa fa-trash"></i>
+                      <% end %>
+                    </li>
+                  <% end %>
                 <% end %>
               </ul>
             </div>
@@ -87,18 +89,31 @@
                 <% end %>
               </ul>
 
+              <% if user_signed_in?  %>
 
-              <%if @on_journey %>
-                <h3> Already on this journey </h3>
-              <% elsif @seats_available <= 0 %>
-                <h3> Journey full </h3>
-              <% elsif @seats_available == 1 %>
-               <h3> Only one seat left! </h3>
-               <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+                <% if @journey.completed %>
+                  Journey completed
+                <% elsif policy(@journey).update? %>
+                  <%= simple_form_for [@journey] do |f| %>
+                    <%= f.hidden_field :completed, :value => true %>
+                    <%= f.submit "Mark as Completed", class: 'btn-booking' %>
+                  <% end %>
+                <% end %>
+
+                <% if on_journey?(@journey) %>
+                  <h4> Already on this journey </h4>
+                <% elsif @journey.full? %>
+                  <h4> Journey full </h4>
+                <% elsif policy(@passenger).create? %>
+                  <%= t ".only_remaining", count: @journey.remaining_seats %>
+
+                  <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn-booking" %>
+                <% end %>
+
               <% elsif user_signed_in? %>
-                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn-booking" %>
               <% else %>
-                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+
               <% end %>
 
             </div>

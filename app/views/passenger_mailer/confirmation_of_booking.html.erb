@@ -16,7 +16,7 @@
 
 
 
-<p>Do you know a friend who needs a lift? <%= t('seats_available', count: @journey.calc_seats_available) %>. Recommend this journey to a friend with this link: www.car-sharing-app.herokuapp.com/journeys/<%= @journey.id %></p>
+<p>Do you know a friend who needs a lift? <%= t('seats_available', count: @journey.remaining_seats) %>. Recommend this journey to a friend with this link: www.car-sharing-app.herokuapp.com/journeys/<%= @journey.id %></p>
 
 <p>Thank you for booking with Warwick car share</p>
 

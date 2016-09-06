@@ -4,7 +4,7 @@ class CarsController < ApplicationController
   before_action :find_user, only: [:show, :update, :destroy]
 
   def index
-    @cars = Car.all
+    @cars = policy_scope(Car)
   end
 
   def show
