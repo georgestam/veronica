@@ -26,7 +26,7 @@
                 <% if passenger.user.photo? %>
                   <%= cl_image_tag passenger.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
                 <% else %>
-                  <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/200x200" %>
+                  <% avatar_url = passenger.user.facebook_picture_url || "http://placehold.it/200x200" %>
                   <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
                 <% end %>
               <% end %>
@@ -96,7 +96,7 @@
               <% elsif user_signed_in? %>
                 <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
               <% else %>
-                <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary"  %>
+                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
               <% end %>
 
             </div>

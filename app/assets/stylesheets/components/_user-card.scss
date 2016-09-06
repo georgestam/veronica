@@ -26,13 +26,38 @@
 
 .user-card-home {
   color: white;
-  background-color: #2C5784;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px $gray-light;
-  padding: 20px;
-  margin: 10px;
+  /* background-color: #2C5784; */
+  /* border-radius: 5px; */
+  /* box-shadow: 1px 1px 1px #c4c4c4; */
+  padding: 50px;
+  /* margin: 10px; */
   h2 {
     margin: 10px 0;
+  }
+  .thumbnail {
+    display: block;
+    /* padding: 4px; */
+    margin-bottom: 22px;
+    line-height: 1.4;
+    background-color: #5B1865;
+    /* border: 1px solid #5B1865; */
+    border-radius: 2px;
+    transition: border 0.2s ease-in-out;
+    padding: 0;
+    border: none;
+    .btn {
+      width: 230px;
+      padding: 15px;
+      border-bottom: 5px solid rgb(21, 126, 171);
+      font-weight: bold;
+      font-size: 19px;
+      transition: all 0.3s ease;
+      &:hover {
+        transform: translateY(-3px);
+        border-bottom-color: rgb(26, 159, 217);
+        background-color: rgb(62, 180, 232);
+      }
+    }
   }
 }
 

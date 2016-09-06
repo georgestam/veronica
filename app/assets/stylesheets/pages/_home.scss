@@ -2,3 +2,32 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+
+#how-it-works {
+  background: #78AED9;
+  h2 {
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-weight: lighter;
+  }
+  p {
+    opacity: 0.8;
+    font-size: 22px;
+    font-weight: lighter;
+  }
+  img {
+    border-radius: 13px;
+  }
+  span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: white;
+    color: #78AED9;
+    border-radius: 50%;
+    margin: auto;
+  }
+}
