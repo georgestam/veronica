@@ -60,3 +60,6 @@ gem 'rails_admin', '>= 1.0.0.rc'
 
 #  API gem
 gem "simple_token_authentication"
+
+#  Translation gems
+gem 'rails-i18n', '~> 5.0.0'

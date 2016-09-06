@@ -2,17 +2,17 @@
 <!-- <div class="banner"> -->
   <div class="banner-container container text-center">
     <div class="row">
-      <h1> SHOTGUN </h1>
-      <h2> The first carsharing service of Warwick University </h2>
-      <h3>Save Money, Time and Stress </h3>
+      <h1><%= t('.title')%></h1>
+      <h2><%= t('.subtitle')%></h2>
+      <h3><%= t('.slogan')%></h3>
       <div class="col-xs-12 col-sm-6">
         <div class="user-card-home">
           <div class="thumbnail">
             <%= image_tag "students.jpg", {class: "responsive-img"} %>
             <div class="caption">
-                <h3>PASSENGER</h3>
-                <p>YOU ARE A BUS WANKER?</p>
-                <p><%= link_to "Jump on!", journeys_path, {class: "btn btn-primary"} %></p>
+                <h3><%= t('.passenger')%></h3>
+                <p><%= t('.passenger_subtitle')%></p>
+                <p><%= link_to t('.passenger_call_to_action'), journeys_path, {class: "btn btn-primary"} %></p>
             </div> <!-- end of caption -->
           </div> <!-- end of thumbnail -->
         </div> <!-- end of user-card-home -->
@@ -23,14 +23,14 @@
           <div class="thumbnail">
             <%= image_tag "driver.jpg", {class: "responsive-img"} %>
             <div class="caption">
-              <h3>DRIVER</h3>
-              <p>YOU ARE A DRIVER?</p>
+              <h3><%= t('.driver')%></h3>
+              <p><%= t('.driver_subtitle')%></p>
               <% if user_signed_in? && @user.cars.count != 0 %>
-              <p><%= link_to "On the road again", new_car_journey_path(@user.cars[0].id), {class: "btn btn-primary"} %>
+              <p><%= link_to t('.driver_call_to_action'), new_car_journey_path(@user.cars[0].id), {class: "btn btn-primary"} %>
               <% elsif policy(Car).create? %>
-              <p><%= link_to "On the road again", new_car_path, {class: "btn btn-primary"} %>
+              <p><%= link_to t('.driver_call_to_action'), new_car_path, {class: "btn btn-primary"} %>
               <% else %>
-              <p><%= link_to "On the road again", new_user_registration_path, {class: "btn btn-primary"} %></p>
+              <p><%= link_to t('.driver_call_to_action'), new_user_registration_path, {class: "btn btn-primary"} %></p>
               <% end %>
             </div> <!-- end of caption -->
           </div> <!-- end of thumbnail -->
@@ -44,28 +44,28 @@
 <div class="wrapper text-center">
   <div class="container">
     <div class="row">
-    <h2> How it works? </h2>
+    <h2><%= t('.how-it-works')%></h2>
       <div class="col-xs-12 col-sm-4 text-center">
         <div class="first ">
           <%= image_tag "lift.jpg", class:"responsive-img" %>
-            <h2>STEP 1</h2>
-            <p>Find/Propose a lift</p>
+            <h2><%= t('.step_one')%></h2>
+            <p><%= t('.step_one_explanation')%></p>
         </div> <!-- end of first  -->
       </div> <!-- end of col 2 -->
 
       <div class="col-xs-12 col-sm-4 text-center">
         <div class="middle">
           <%= image_tag "pickup.jpg", class:"responsive-img" %>
-          <h2>STEP 2</h2>
-          <p>jump on!/pick up!</p>
+          <h2><%= t('.step_two')%></h2>
+          <p><%= t('.step_two_explanation')%></p>
         </div> <!-- end of middle -->
       </div> <!-- end of col 3 -->
 
       <div class="col-xs-12 col-sm-4 text-center">
         <div class="last">
           <%= image_tag "uni.jpg", class:"responsive-img" %>
-          <h2>STEP 3</h2>
-          <p>go to Uni</p>
+          <h2><%= t('.step_three')%></h2>
+          <p><%= t('.step_three_explanation')%></p>
         </div> <!-- end of last -->
       </div> <!-- end of col 3 -->
 
@@ -85,8 +85,8 @@
             <%= image_tag "http://placehold.it/200x200", class:"responsive-img" %>
           </div> <!-- end of col 1.3 -->
           <div class="col-xs-12 col-sm-6">
-            <h3> Jean-claude from Belgium </h3>
-            <p> "Amazing" </p>
+            <h3><%= t('.testimonial_one_name') %></h3>
+            <p> "<%= t('.testimonial_one_quote') %>" </p>
           </div> <!-- end of col 1.2 -->
           </div> <!-- end of row 1.2 -->
         </div> <!-- end of user-card-info -->
@@ -104,8 +104,8 @@
               <%= image_tag "http://placehold.it/200x200", class: "responsive-img" %>
             </div> <!-- end of col 2.3 -->
             <div class="col-xs-12 col-sm-6">
-              <h3> Paul de Pologne </h3>
-              <p class="p-quote"> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <h3><%= t('.testimonial_two_name')%></h3>
+              <p class="p-quote"> "<%= t('.testimonial_two_qoute')%>"</p>
             </div> <!-- end of col 2.2 -->
           </div> <!-- end of row 2.2 -->
         </div> <!-- end of user-card-info -->
@@ -122,8 +122,8 @@
                   <%= image_tag "http://placehold.it/200X200", class: "responsive-img" %>
               </div> <!-- end of col-3.3 -->
               <div class="col-xs-12 col-sm-6">
-                <h3> Luke breen from Birmingham </h3>
-                <p> "Luke Breen approve this service!" </p>
+                <h3> <%= t('.testimonial_three_name')%></h3>
+                <p> "<%= t('.testimonial_three_quote')%>" </p>
               </div> <!-- end of col-3.2 -->
             </div> <!-- end of row 3.2 -->
           </div> <!-- end of user-card-info 3 -->
@@ -140,8 +140,8 @@
                 <%= image_tag "http://placehold.it/200x200", class:"responsive-img" %>
               </div> <!-- end of col 4.3 -->
               <div class="col-xs-12 col-sm-6">
-                <h3> DJ Jordi from Spain</h3>
-                <p> "Cheap but i really enjoy the music" </p>
+                <h3> <%= t('.testimonial_four_name')%></h3>
+                <p> "<%= t('.testimonial_four_quote')%>" </p>
               </div> <!-- end of col 4.2 -->
             </div> <!-- end of row 3.2 -->
           </div> <!-- end of user-card-info -->
