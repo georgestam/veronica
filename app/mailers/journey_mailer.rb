@@ -1,0 +1,4 @@
+class JourneyMailer < ApplicationMailer
+
+
+end
