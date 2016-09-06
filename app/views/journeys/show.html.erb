@@ -94,22 +94,21 @@
                 <% if policy(@journey).update? %>
                   <%= simple_form_for @journey do |f| %>
                     <%= f.hidden_field :completed, :value => true %>
-                    <%= f.submit "Mark as Completed", class: 'btn btn-primary' %>
+                    <%= f.submit "Mark as Completed", class: 'btn' %>
                   <% end %>
-                <% end %>
 
-                <% if on_journey?(@journey) %>
-                  <h3> Already on this journey </h3>
+                <% elsif on_journey?(@journey) %>
+                  <h4> Already on this journey </h4>
                 <% elsif @journey.full? %>
-                  <h3> Journey full </h3>
+                  <h4> Journey full </h4>
                 <% elsif policy(@passenger).create? %>
                   <%= t ".only_remaining", count: @journey.remaining_seats %>
 
-                  <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+                  <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn" %>
                 <% end %>
 
               <% elsif user_signed_in? %>
-                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn" %>
               <% else %>
 
               <% end %>

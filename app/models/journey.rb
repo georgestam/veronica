@@ -26,4 +26,5 @@ class Journey < ApplicationRecord
 
   def full?
     remaining_seats == 0
+  end
 end

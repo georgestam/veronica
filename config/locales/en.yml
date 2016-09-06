@@ -1,13 +1,11 @@
 ---
 en:
-
   hello: "Hello world"
   journeys:
     show:
       only_remaining:
         one: Only one seat remaining?
         other: "%{count} seats remaining"
-
   abort: Abort
   activerecord:
     attributes:
@@ -162,4 +160,3 @@ en:
   vehicle_html: "<strong>Car details:</strong> %{make} %{name}"
   year_of_study_html: "<strong>Year of study:</strong> %{year_of_study}"
   'yes': 'Yes'
->>>>>>> master
