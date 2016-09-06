@@ -12,9 +12,9 @@
       <p><%= t('.num_of_journeys_passenger_html', number: @journeys_as_passenger.count)%></p>
       <p><%= t('.avg_journey_time_html')%></p>
       <h2><%= t('preferences') %></h2>
-      <p><%= t('music_html', music: @user.music_habits) %></p>
-      <p><%= t('speaking_html', speaking: @user.speaking_habits) %></p>
-      <p><%= t('smoking_html')%><%= @user.smoking ? "Yes" : "No" %></p>
+      <p> <%= t('music_html', music: @user.music_habits) %> </p>
+      <p> <%= t('speaking_html', speaking: @user.speaking_habits) %> </p>
+      <p> <%= t('smoking_html')%> <%= @user.smoking ? "Yes" : "No" %> </p>
     </div>
   </div>
   <div class="col-xs-12 col-sm-8">

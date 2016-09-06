@@ -2,7 +2,7 @@
   <% if @user.photo? %>
     <%= cl_image_tag @user.photo.path, class: "avatar-large header-img" %>
   <% else %>
-    <%= avatar_url = @user.facebook_picture_url || "http://placehold.it/100x100" %>
+    <% avatar_url = @user.facebook_picture_url || "http://placehold.it/100x100" %>
     <%= image_tag avatar_url, class: "avatar-large header-img" %>
   <% end %>
   <div class="header-info">
