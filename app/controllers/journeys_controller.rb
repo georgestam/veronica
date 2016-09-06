@@ -1,5 +1,5 @@
 class JourneysController < ApplicationController
-  before_action :set_journey, only:[:show, :edit, :update, :destroy, :on_journey, :seats_available, :driver]
+  before_action :set_journey, only:[:show, :edit, :update, :destroy, :driver_journey]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
     @journeys = policy_scope(Journey)
@@ -8,13 +8,12 @@ class JourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
+    @passenger = @journey.passengers.build(user: current_user)
 
     @hash = Gmaps4rails.build_markers([ @journey.pick_up_location, @journey.drop_off_location ]) do |location, marker|
       marker.lat location.latitude
       marker.lng location.longitude
     end
-    on_journey?
-    seats_available
   end
 
   def new
@@ -52,25 +51,14 @@ class JourneysController < ApplicationController
 
   def destroy
     @journey.destroy
+    authorize @journey
     redirect_to journeys_path
-  end
-
-  def driver
-    @user = current_user
-    authorize @user
   end
 
   private
 
-  def on_journey?
-    @on_journey = false
-    if  @journey.user == current_user || @journey.passengers.include?(current_user)
-      @on_journey = true
-    end
-  end
-
-  def seats_available
-    @seats_available = @journey.seats_available - @journey.passengers.count
+  def driver_journey
+    authorize @journey
   end
 
   def set_journey
@@ -82,6 +70,7 @@ class JourneysController < ApplicationController
     params.require(:journey).permit(
       :seats_available,
       :pick_up_time,
+      :completed,
       pick_up_location_attributes: [ :address ],
       drop_off_location_attributes: [ :address ]
     )

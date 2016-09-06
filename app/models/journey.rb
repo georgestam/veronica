@@ -19,4 +19,12 @@ class Journey < ApplicationRecord
       errors.add(:pick_up_time, "Cannot be in the past")
     end
   end
+
+  def remaining_seats
+    seats_available - passengers.size
+  end
+
+  def full?
+    remaining_seats == 0
+  end
 end

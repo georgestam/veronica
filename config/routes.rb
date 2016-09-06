@@ -15,8 +15,6 @@ Rails.application.routes.draw do
     resources :journeys, only:[:new, :create, :edit, :update]
   end
 
-  get "/journeys/:journey_id/driver/:id", to: "journeys#driver", as: :driver
-
   resources :journeys, only:[:index, :show, :destroy] do
     resources :passengers, only:[:create]
   end

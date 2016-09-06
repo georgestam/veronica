@@ -1,20 +1,19 @@
 class PassengersController < ApplicationController
 
   before_action :find_journey, only: [:create, :update]
+  before_action :find_passenger, only: :update
 
   def create
     @passenger = Passenger.new
     @passenger.user = current_user
     @passenger.journey = @journey
-    @passenger.save
     authorize @passenger
+    @passenger.save
     redirect_to journey_path(@journey)
   end
 
   def update
-    @passenger = Passenger.find(params[:id])
     @passenger.update(passenger_params)
-    authorize @passenger
     redirect_to journey_path(@journey)
   end
 
@@ -24,8 +23,13 @@ class PassengersController < ApplicationController
     @journey = Journey.find(params[:journey_id])
   end
 
+  def find_passenger
+    @passenger = Passenger.find(params[:id])
+    authorize @passenger
+  end
+
   def passenger_params
-    params.require(:passenger).permit(:driver_rating, :passenger_rating)
+    params.require(:passenger).permit(policy(@passenger).permitted_attributes)
   end
 end
 

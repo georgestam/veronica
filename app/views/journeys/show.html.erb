@@ -5,7 +5,7 @@
     <h1>To: <%=@journey.drop_off_location.address %></h1>
     <h1>Time: <%= @journey.pick_up_time.to_formatted_s(:time) %> </h1>
     <h2> Journey info </h2>
-      <p> Seat(s) available : <%= @journey.seats_available - @journey.passengers.count %></p>
+      <p> Seat(s) available : <%= @journey.remaining_seats %> / <%= @journey.seats_available %></p>
       <% @journey.passengers.each do |passenger| %>
         <p> <%= passenger.user.first_name %></p>
         <% if passenger.user.photo? %>
@@ -22,26 +22,39 @@
     <h2> Car info </h2>
       <p><%= @journey.car.make %></p>
       <p><%= @journey.car.colour %></p>
-    <%= link_to "See all my journeys", user_journeys_path, {class: "btn btn-primary" } %>
-    <% if policy(Journey).update? %>
-      <%= link_to "Edit this journey", edit_car_journey_path(@journey.car), { class: "btn btn-primary"}%>
-    <% end %>
-    <% if policy(Journey).destroy? %>
-      <%= link_to "delete", journey_path(@journey), method: :delete  %>
-    <% end %>
+      <%= link_to "See all my journeys", user_journeys_path %>
 
+    <% if user_signed_in?  %>
 
-    <%if @on_journey %>
-      <h3> Already on this journey </h3>
-    <% elsif @seats_available <= 0 %>
-      <h3> Journey full </h3>
-    <% elsif @seats_available == 1 %>
-     <h3> Only one seat left! </h3>
-     <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+      <% if policy(@journey).update? %>
+        <%= link_to "Edit this journey", edit_car_journey_path(@journey.car) %>
+      <% end %>
+
+      <% if policy(@journey).destroy? %>
+        <%= link_to "delete", journey_path(@journey), method: :delete, class: "btn btn-danger"  %>
+      <% end %>
+
+      <% if policy(@journey).update? %>
+        <%= simple_form_for @journey do |f| %>
+          <%= f.hidden_field :completed, :value => true %>
+          <%= f.submit "Mark as Completed", class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
+
+      <% if on_journey?(@journey) %>
+        <h3> Already on this journey </h3>
+      <% elsif @journey.full? %>
+        <h3> Journey full </h3>
+      <% elsif policy(@passenger).create? %>
+        <%= t ".only_remaining", count: @journey.remaining_seats %>
+
+        <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
+      <% end %>
+
     <% elsif user_signed_in? %>
       <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
     <% else %>
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary"  %>
+
     <% end %>
   </div>
   <%= render 'map' %>
