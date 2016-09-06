@@ -7,16 +7,55 @@ en:
   time:
     formats:
       day_month_year: "%d %b %Y"
-      time_date: "%H:%M on %e %b %Y"
+      time_date: "%H:%M on %e %b"
       time: "%H:%M"
+  activerecord:
+    models:
+      car: Car
+      journey: Journey
+      location: Location
+      passenger: Passenger
+      user: User
+    attributes:
+      car:
+        make: Make
+        name: Model
+        vrn: Licence Plate Number
+        colour: Colour
+      journey:
+        seats_available: Seats available
+        pick_up_time: Pick up time
+        completed: Completed
+      location:
+        address: Address
+        latitude: Latitude
+        longitude: Longitude
+      passenger:
+        driver_rating: Driver rating
+        passenger_rating: Passenger rating
+      user:
+        email: Email
+        first_name: First name
+        last_name: Last name
+        description: Description
+        gender: Gender
+        date_of_birth: Date of birth
+        music_habits: Music habits
+        speaking_habits: Speaking habits
+        year_of_study: Year of study
+        uni_course: University course
+        smoking: Smoking
+        phone_number: Phone number
+        student_id: Student ID
+        admin: Admin
   journeys:
     show:
       sign_in: Sign in
       departure: Departure
       arrival: Arrival
     card:
-      car: "Car: %{make} %{name}"
-
+      car_html: "<strong>Car:</strong> %{make} %{name}"
+      about_me: About me
   pages:
     home:
       passenger: PASSENGER
@@ -73,6 +112,10 @@ en:
   driver_journeys: Driver journeys
   num_of_passengers_html: <strong>Number of passengers:</strong>
   pick_up_time: Pick up time
+  seats_available:
+    zero: There are no seats left!
+    one: Hurry! There is only one seat left!
+    other: "%{count} seats available"
   #  Car translations
   car_make_html: <strong>Make:</strong> %{make}
   car_model_html: <strong>Model:</strong> %{name}

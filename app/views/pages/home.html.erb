@@ -11,8 +11,8 @@
             <%= image_tag "students.jpg", {class: "responsive-img"} %>
             <div class="caption">
                 <h3><%= t('.passenger')%></h3>
-                <p><%= t('.passenger-subtitle')%></p>
-                <p><%= link_to t('.passenger-call-to-action'), journeys_path, {class: "btn btn-primary"} %></p>
+                <p><%= t('.passenger_subtitle')%></p>
+                <p><%= link_to t('.passenger_call_to_action'), journeys_path, {class: "btn btn-primary"} %></p>
             </div> <!-- end of caption -->
           </div> <!-- end of thumbnail -->
         </div> <!-- end of user-card-home -->
@@ -24,13 +24,13 @@
             <%= image_tag "driver.jpg", {class: "responsive-img"} %>
             <div class="caption">
               <h3><%= t('.driver')%></h3>
-              <p><%= t('.driver-subtitle')%></p>
+              <p><%= t('.driver_subtitle')%></p>
               <% if user_signed_in? && @user.cars.count != 0 %>
-              <p><%= link_to t('.driver-call-to-action'), new_car_journey_path(@user.cars[0].id), {class: "btn btn-primary"} %>
+              <p><%= link_to t('.driver_call_to_action'), new_car_journey_path(@user.cars[0].id), {class: "btn btn-primary"} %>
               <% elsif policy(Car).create? %>
-              <p><%= link_to t('.driver-call-to-action'), new_car_path, {class: "btn btn-primary"} %>
+              <p><%= link_to t('.driver_call_to_action'), new_car_path, {class: "btn btn-primary"} %>
               <% else %>
-              <p><%= link_to t('.driver-call-to-action'), new_user_registration_path, {class: "btn btn-primary"} %></p>
+              <p><%= link_to t('.driver_call_to_action'), new_user_registration_path, {class: "btn btn-primary"} %></p>
               <% end %>
             </div> <!-- end of caption -->
           </div> <!-- end of thumbnail -->
@@ -48,24 +48,24 @@
       <div class="col-xs-12 col-sm-4 text-center">
         <div class="first ">
           <%= image_tag "lift.jpg", class:"responsive-img" %>
-            <h2><%= t('.step-one')%></h2>
-            <p><%= t('.step-one-explanation')%></p>
+            <h2><%= t('.step_one')%></h2>
+            <p><%= t('.step_one_explanation')%></p>
         </div> <!-- end of first  -->
       </div> <!-- end of col 2 -->
 
       <div class="col-xs-12 col-sm-4 text-center">
         <div class="middle">
           <%= image_tag "pickup.jpg", class:"responsive-img" %>
-          <h2><%= t('.step-two')%></h2>
-          <p><%= t('.step-two-explanation')%></p>
+          <h2><%= t('.step_two')%></h2>
+          <p><%= t('.step_two_explanation')%></p>
         </div> <!-- end of middle -->
       </div> <!-- end of col 3 -->
 
       <div class="col-xs-12 col-sm-4 text-center">
         <div class="last">
           <%= image_tag "uni.jpg", class:"responsive-img" %>
-          <h2><%= t('.step-three')%></h2>
-          <p><%= t('.step-three-explanation')%></p>
+          <h2><%= t('.step_three')%></h2>
+          <p><%= t('.step_three_explanation')%></p>
         </div> <!-- end of last -->
       </div> <!-- end of col 3 -->
 
@@ -85,8 +85,8 @@
             <%= image_tag "http://placehold.it/200x200", class:"responsive-img" %>
           </div> <!-- end of col 1.3 -->
           <div class="col-xs-12 col-sm-6">
-            <h3><%= t('.testimonial-one-name') %></h3>
-            <p> "<%= t('.testimonial-one-quote') %>" </p>
+            <h3><%= t('.testimonial_one_name') %></h3>
+            <p> "<%= t('.testimonial_one_quote') %>" </p>
           </div> <!-- end of col 1.2 -->
           </div> <!-- end of row 1.2 -->
         </div> <!-- end of user-card-info -->
@@ -104,8 +104,8 @@
               <%= image_tag "http://placehold.it/200x200", class: "responsive-img" %>
             </div> <!-- end of col 2.3 -->
             <div class="col-xs-12 col-sm-6">
-              <h3><%= t('.testimonial-two-name')%></h3>
-              <p class="p-quote"> "<%= t('.testimonial-two-qoute')%>"</p>
+              <h3><%= t('.testimonial_two_name')%></h3>
+              <p class="p-quote"> "<%= t('.testimonial_two_qoute')%>"</p>
             </div> <!-- end of col 2.2 -->
           </div> <!-- end of row 2.2 -->
         </div> <!-- end of user-card-info -->
@@ -122,8 +122,8 @@
                   <%= image_tag "http://placehold.it/200X200", class: "responsive-img" %>
               </div> <!-- end of col-3.3 -->
               <div class="col-xs-12 col-sm-6">
-                <h3> <%= t('.testimonial-three-name')%></h3>
-                <p> "<%= t('.testimonial-three-quote')%>" </p>
+                <h3> <%= t('.testimonial_three_name')%></h3>
+                <p> "<%= t('.testimonial_three_quote')%>" </p>
               </div> <!-- end of col-3.2 -->
             </div> <!-- end of row 3.2 -->
           </div> <!-- end of user-card-info 3 -->
@@ -140,8 +140,8 @@
                 <%= image_tag "http://placehold.it/200x200", class:"responsive-img" %>
               </div> <!-- end of col 4.3 -->
               <div class="col-xs-12 col-sm-6">
-                <h3> <%= t('.testimonial-four-name')%></h3>
-                <p> "<%= t('.testimonial-four-quote')%>" </p>
+                <h3> <%= t('.testimonial_four_name')%></h3>
+                <p> "<%= t('.testimonial_four_quote')%>" </p>
               </div> <!-- end of col 4.2 -->
             </div> <!-- end of row 3.2 -->
           </div> <!-- end of user-card-info -->

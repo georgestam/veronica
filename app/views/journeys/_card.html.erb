@@ -15,9 +15,9 @@
         <h3> <%= journey.user.first_name %> </h3>
           <ul>
             <li><strong><%= t('pick_up_time_html') %><%= l(journey.pick_up_time, format: :time ) %></strong></li>
-            <li> <%= t('destination_html', location: journey.drop_off_location ) %></li>
-            <li> <%= t('seats_available_html'), seats_available: journey.calc_seats_available %></li>
-            <li><%= t('.car', make: journey.car.make, name: journey.car.name) %></li>
+            <li> <%= t('destination_html', location: journey.drop_off_location.address ) %></li>
+            <li> <%= t('seats_available_html', seats_available: journey.calc_seats_available) %></li>
+            <li><%= t('.car_html', make: journey.car.make, name: journey.car.name) %></li>
           </ul>
 
         <div class="divider"></div>
