@@ -11,6 +11,8 @@ Passenger.destroy_all
 Journey.destroy_all
 Car.destroy_all
 User.destroy_all
+Location.destroy_all
+PassengerLocation.destroy_all
 
 journeys = []
 cars = []
@@ -65,7 +67,7 @@ end
 
 #  Passenger pick-up locations
 pick_up_locations.each do |location|
-  passenger_locations << Location.create!({
+  passenger_locations << PassengerLocation.create!({
     address: location
     })
 end
@@ -92,7 +94,7 @@ end
   Passenger.create!({
     user: users.sample,
     journey: journeys.sample,
-    passenger_location: passenger_locations.sample,
+    passenger_location_id: passenger_locations.sample.id,
     driver_rating: nil,
     passenger_rating: nil,
     })

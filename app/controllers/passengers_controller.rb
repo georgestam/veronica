@@ -3,13 +3,8 @@ class PassengersController < ApplicationController
   before_action :find_journey, only: [:create, :update]
   before_action :find_passenger, only: :update
 
-  # def new
-  #   @passenger = Passenger.new
-  #   authorize @passenger
-  # end
-
   def create
-    @passenger = Passenger.new(passenger_params)
+    @passenger = Passenger.new(params.require(:passenger).permit(:passenger_location_id))
     @passenger.user = current_user
     @passenger.journey = @journey
     authorize @passenger
@@ -38,7 +33,7 @@ class PassengersController < ApplicationController
     authorize @passenger
   end
 
-  def passenger_params
+  def passenger_params # Only used for update
     params.require(:passenger).permit(policy(@passenger).permitted_attributes)
   end
 end
