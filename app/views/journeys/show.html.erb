@@ -98,7 +98,7 @@
               <% elsif user_signed_in? %>
                 <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
               <% else %>
-                <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary"  %>
+                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn btn-primary" %>
               <% end %>
 
             </div>
