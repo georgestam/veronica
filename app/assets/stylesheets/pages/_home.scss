@@ -29,5 +29,21 @@
     color: #78AED9;
     border-radius: 50%;
     margin: auto;
+
+  }
+
+  h3 {
+    span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: white;
+    color: #78AED9;
+    border-radius: 50%;
+    margin: auto;
+    padding-bottom: 4px;
+    }
   }
 }

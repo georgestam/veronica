@@ -5,7 +5,7 @@
       <p><%= t('.email_html', email: @user.email) %></p>
       <p><%= t('.phone_number_html', phone_number: @user.phone_number) %></p>
       <p><%= t('.gender_html', gender: @user.gender) %></p>
-      <p><%= t('.date_of_birth_html')%> <%= l(@user.date_of_birth, format: :day_month_year) %></p>
+      <p><%= t('.date_of_birth_html')%> <%= l(@user.date_of_birth, format: :day_month_year) unless @user.date_of_birth.nil? %></p>
       <%= link_to t('edit'), edit_profile_path(@user), class: "btn btn-primary" %>
 
       <div class="divider"></div>

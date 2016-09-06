@@ -1,6 +1,6 @@
 .profile-wrapper {
   min-height: 100vh;
-  background-color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.79), rgba(0,0,0,0.3));
   margin: 20px 0;
 }
 .dashboard-wrapper {
@@ -8,9 +8,16 @@
 }
 
 .content-wrapper {
-  background-color: $gray-light;
+  background-color: white;
   padding: 20px;
   border-radius: 0 0 5px 5px;
+  color:white;
+  h2 {
+    color:#78AED9;
+  }
+  h3 {
+    color:#78AED9;
+  }
 }
 
 .overview-header {
@@ -20,7 +27,25 @@
   padding: 20px;
   border: 1px solid black;
   border-radius: 5px;
-  background-color: white;
+  background-color: #78AED9;
+  h3 {
+  font-size: 35px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-weight: 100;
+  color: white;
+  }
+  a {
+  font-size: 24px;
+  font-weight: lighter;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: bold;
+  &:hover {
+    border-bottom: 4px solid $red;
+    color: white;
+  }
+  }
 }
 
 .header-img {
@@ -35,6 +60,7 @@
   }
   h3 {
     margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 
@@ -47,13 +73,54 @@
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
-  background-color: white;
+  background-color: $gray-lighter;
   margin-top: 10px;
+  color: black;
+  font-weight:100;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  h2 {
+  font-size: 35px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  color: #78AED9;
+  }
+  .btn {
+    width: 100px;
+    padding: 15px;
+    border-bottom: 5px solid rgb(21, 126, 171);
+    font-weight: bold;
+    font-size: 19px;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    &:hover {
+      transform: translateY(-3px);
+      border-bottom-color: rgb(26, 159, 217);
+      background-color: rgb(62, 180, 232);
+    }
+  }
 }
 
 .car-card {
   margin-bottom: 30px;;
   height: 240px;
+  .btn {
+    width: 230px;
+    padding: 15px;
+    border-bottom: 5px solid rgb(21, 126, 171);
+    font-weight: bold;
+    font-size: 19px;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: translateY(-3px);
+      border-bottom-color: rgb(26, 159, 217);
+      background-color: rgb(62, 180, 232);
+    }
+  }
+  p {
+    font-weight:bolder;
+  }
 }
 
 .review-card {
@@ -61,7 +128,8 @@
 }
 
 .unverified {
-  color: $red;
+  color: red;
+  font-weight:500;
 }
 
 .verified {
