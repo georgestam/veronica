@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905103427) do
+ActiveRecord::Schema.define(version: 20160906143810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,8 +70,9 @@ ActiveRecord::Schema.define(version: 20160905103427) do
     t.integer  "journey_id"
     t.integer  "driver_rating"
     t.integer  "passenger_rating"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "pick_up_location_id"
     t.index ["journey_id"], name: "index_passengers_on_journey_id", using: :btree
     t.index ["user_id"], name: "index_passengers_on_user_id", using: :btree
   end
@@ -101,10 +102,10 @@ ActiveRecord::Schema.define(version: 20160905103427) do
     t.boolean  "smoking"
     t.string   "phone_number"
     t.string   "student_id"
-    t.boolean  "admin",                             default: false, null: false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean  "admin",                             default: false, null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"
@@ -123,5 +124,6 @@ ActiveRecord::Schema.define(version: 20160905103427) do
   add_foreign_key "journeys", "locations", column: "pick_up_location_id"
   add_foreign_key "journeys", "users"
   add_foreign_key "passengers", "journeys"
+  add_foreign_key "passengers", "locations", column: "pick_up_location_id"
   add_foreign_key "passengers", "users"
 end

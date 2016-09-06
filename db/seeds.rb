@@ -19,6 +19,14 @@ speaking_habits = ["Talkative", "Chatty", "SILENCE!"]
 uni_course = ["History", "Economics", "Engineering"]
 car_make = %w(Ferrari Porsche BMW Mercedes Mazda Ford Toyota Peugot Audi Mini)
 vrn = %w(VA52ZAB G4ALS S9EAO V651GAR M30SAK W200CAK VW55MAL CH55BAW TI33AAG JAZ605R)
+pick_up_locations = [
+  "107 Tachbrook Road, Leamington Spa CV31 3EA, UK",
+  "Leamington Spa Train Station, UK",
+  "18 Victoria Terrace, Leamington, UK",
+  "2 Kenilworth Road, Leamington Spa CV32, UK",
+  "49 Kenilworth Road, Leamington Spa CV32, UK",
+  "8A Clarendon Place, Leamington Spa CV32 5QN, UK",
+  "45C Lansdowne Crescent, Willes Road, Leamington Spa CV32 4PR, UK"]
 
 20.times do
   x = rand(0..2)
@@ -60,11 +68,13 @@ drop_off_location = Location.create!({
   longitude: -1.561784,
   })
 
-pick_up_location = Location.create!({
-  address: "Birmingham B5 4ST",
-  latitude: 52.475009,
-  longitude: -1.896354,
-  })
+pick_up_locations.each do |location|
+  Location.create!({
+    address: location
+    })
+end
+
+pick_up_location = Location.create!(address: "73 Brunswick Street, Leamington, UK")
 
 10.times do
   journeys << Journey.create!({

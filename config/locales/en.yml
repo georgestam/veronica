@@ -96,7 +96,6 @@ en:
   passenger_journeys: Passenger journeys
   pick_up_location_html: "<strong>Pick up location:</strong> %{location}"
   pick_up_time: Pick up time
-  pick_up_time_html: Pick up time html
   preferences: Preferences
   profiles:
     dashboard:
