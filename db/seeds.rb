@@ -27,6 +27,7 @@ pick_up_locations = [
   "49 Kenilworth Road, Leamington Spa CV32, UK",
   "8A Clarendon Place, Leamington Spa CV32 5QN, UK",
   "45C Lansdowne Crescent, Willes Road, Leamington Spa CV32 4PR, UK"]
+passenger_locations = []
 
 20.times do
   x = rand(0..2)
@@ -62,19 +63,18 @@ x = 0
   x += 1
 end
 
-drop_off_location = Location.create!({
-  address: "Warwick university",
-  latitude: 52.380158,
-  longitude: -1.561784,
-  })
-
+#  Passenger pick-up locations
 pick_up_locations.each do |location|
-  Location.create!({
+  passenger_locations << Location.create!({
     address: location
     })
 end
 
-pick_up_location = Location.create!(address: "73 Brunswick Street, Leamington, UK")
+# Driver drop-off location
+drop_off_location = Location.create!(address: "University of Warwick, Gibbet Hill Road, UK")
+
+# Driver departure location
+departure_location = Location.create!(address: "73 Brunswick Street, Leamington, UK")
 
 10.times do
   journeys << Journey.create!({
@@ -82,7 +82,7 @@ pick_up_location = Location.create!(address: "73 Brunswick Street, Leamington, U
     car: cars.sample,
     seats_available: rand(3..4),
     pick_up_time: Faker::Time.forward(7, :morning) ,
-    pick_up_location: pick_up_location,
+    pick_up_location: departure_location,
     drop_off_location: drop_off_location,
     completed: false,
     })
@@ -92,6 +92,7 @@ end
   Passenger.create!({
     user: users.sample,
     journey: journeys.sample,
+    passenger_location: passenger_locations.sample,
     driver_rating: nil,
     passenger_rating: nil,
     })

@@ -117,3 +117,7 @@
 </div>
 
 
+<% simple_form_for([ @journey, @journey.passengers.build ]) do |f| %>
+
+  <%= f.submit "Book" %>
+<% end %>

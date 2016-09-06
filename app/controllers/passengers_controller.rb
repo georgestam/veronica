@@ -2,8 +2,13 @@ class PassengersController < ApplicationController
 
   before_action :find_journey, only: [:create, :update]
 
+  # def new
+  #   @passenger = Passenger.new
+  #   authorize @passenger
+  # end
+
   def create
-    @passenger = Passenger.new
+    @passenger = Passenger.new(passenger_params)
     @passenger.user = current_user
     @passenger.journey = @journey
     if @passenger.save
@@ -28,6 +33,8 @@ class PassengersController < ApplicationController
   def find_journey
     @journey = Journey.find(params[:journey_id])
   end
+
+
 
   def passenger_params
     params.require(:passenger).permit(:driver_rating, :passenger_rating)
