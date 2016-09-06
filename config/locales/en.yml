@@ -69,11 +69,8 @@ en:
       driver: DRIVER
       driver_call_to_action: On the road again
       driver_subtitle: Want to make money?
-      how-it-works: How-it-works
       how_it_works: How does it work?
       passenger: PASSENGER
-      passenger-call-to-action: Jump on!
-      passenger-subtitle: Want an easier ride to uni?
       passenger_call_to_action: Jump on!
       passenger_subtitle: Want an easier ride to uni?
       slogan: Save Money, Time and Stress
@@ -133,8 +130,8 @@ en:
       tab_notifications: Notifications
       tab_overview: Overview
   seats_available:
-    one: Hurry! There is only one seat left!
-    other: "%{count} seats available"
+    one: There is only one seat left!
+    other: "There are %{count} seats available"
     zero: There are no seats left!
   seats_available_html: "<strong>Seats available:</strong> %{seats_available}"
   shared:

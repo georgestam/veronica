@@ -3,7 +3,8 @@ class JourneysController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
     @journeys = policy_scope(Journey)
-    @journeys.sort { |x,y| x.pick_up_time <=> y.pick_up_time }
+    @available_journeys = @journeys.select{ |journey| journey.calc_seats_available > 0 }
+    @available_journeys.sort { |x,y| x.pick_up_time <=> y.pick_up_time }
   end
 
   def show
@@ -46,6 +47,7 @@ class JourneysController < ApplicationController
 
   def update
     @journey.update(journey_params)
+    email_all_passengers(@journey.passengers)
     authorize @journey
     redirect_to journey_path(@journey)
   end
@@ -80,5 +82,11 @@ class JourneysController < ApplicationController
       pick_up_location_attributes: [ :address ],
       drop_off_location_attributes: [ :address ]
     )
+  end
+
+  def email_all_passengers(passengers)
+    passengers.each do |passenger|
+      JourneyMailer.update_journey(passenger).deliver_now
+    end
   end
 end

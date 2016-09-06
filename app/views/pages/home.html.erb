@@ -1,17 +1,17 @@
 
 <div class="banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0, 0, 0, 0.79)), url('<%= image_path "Car-driver.jpg" %>');">
   <div class="banner-content">
-    <h1> SHOTGUN </h1>
-    <p> The first carsharing service of Warwick University </p>
-    <p>Save Money, Time and Stress </p>
+    <h1><%= t('.title') %></h1>
+    <p><%= t('.subtitle') %> </p>
+    <p><%= t('.slogn') %></p>
     <div class="cta">
-      <%= link_to "Jump on!", journeys_path, {class: "btn btn-primary"} %>
+      <%= link_to t('.passenger_call_to_action') , journeys_path, {class: "btn btn-primary"} %>
       <% if user_signed_in? && @user.cars.count != 0 %>
-      <%= link_to "On the road again", new_car_journey_path(@user.cars[0].id), {class: "btn btn-primary"} %>
+      <%= link_to t('.driver_call_to_action'), new_car_journey_path(@user.cars[0].id), {class: "btn btn-primary"} %>
       <% elsif policy(Car).create? %>
-      <%= link_to "On the road again", new_car_path, {class: "btn btn-primary"} %>
+      <%= link_to t('.driver_call_to_action'), new_car_path, {class: "btn btn-primary"} %>
       <% else %>
-      <%= link_to "On the road again", new_user_registration_path, {class: "btn btn-primary"} %>
+      <%= link_to t('.driver_call_to_action'), new_user_registration_path, {class: "btn btn-primary"} %>
       <% end %>
     </div>
   </div>
@@ -20,7 +20,7 @@
 <div class="wrapper text-center" id="how-it-works">
   <div class="container">
     <div class="row">
-    <h2> How it works? </h2>
+    <h2><%= t('.how_it_works') %></h2>
       <div class="col-xs-12 col-sm-4 text-center">
         <div class="first ">
           <%= image_tag "lift.jpg", class:"responsive-img" %>
