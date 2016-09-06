@@ -12,6 +12,8 @@ en:
   journeys:
     show:
       sign_in: Sign in
+      departure: Departure
+      arrival: Arrival
     card:
       car: "Car: %{make} %{name}"
 

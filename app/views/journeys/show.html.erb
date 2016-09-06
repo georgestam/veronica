@@ -7,12 +7,12 @@
           <div class="journey-header">
             <div class="journey-details">
               <div class="from">
-                <h2>Departure</h2>
+                <h2><%= t('.departure') %></h2>
                 <p><%= @journey.pick_up_location.address%></p>
               </div>
               <i class="fi-arrow-right"></i>
               <div class="to">
-                <h2>Arrival</h2>
+                <h2><%= t('.arrival') %></h2>
                 <p><%= @journey.drop_off_location.address%></p>
               </div>
               <div class="pick-up">
