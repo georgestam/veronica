@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     patch "/profile/:id", to: "profiles#update", as: :update_profile
 
     resources :cars do
-      resources :journeys, only:[:new, :create, :edit, :update]
+      resources :journeys, only:[:new, :create]
     end
 
-    resources :journeys, only:[:index, :show, :destroy] do
+    resources :journeys, only:[:index, :show, :destroy, :update, :edit] do
       resources :passengers, only:[:create]
     end
 

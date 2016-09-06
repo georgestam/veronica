@@ -1,7 +1,7 @@
 class JourneyPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(completed: false)
     end
   end
 
@@ -10,10 +10,14 @@ class JourneyPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.user == user
   end
 
   def destroy?
-    true
+    record.user == user
+  end
+
+  def driver_journey?
+    record.user == user
   end
 end

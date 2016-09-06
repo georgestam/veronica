@@ -20,7 +20,11 @@ class Journey < ApplicationRecord
     end
   end
 
-  def calc_seats_available
-    self.seats_available - self.passengers.count
+  def remaining_seats
+    seats_available - passengers.size
+  end
+
+  def full?
+    remaining_seats == 0
   end
 end

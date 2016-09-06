@@ -16,7 +16,7 @@
           <ul>
             <li><strong><%= t('pick_up_time') %>: <%= l(journey.pick_up_time, format: :time ) %></strong></li>
             <li> <%= t('destination_html', location: journey.drop_off_location.address ) %></li>
-            <li> <%= t('seats_available_html', seats_available: journey.calc_seats_available) %></li>
+            <li> <%= t('seats_available_html', seats_available: journey.remaining_seats) %></li>
             <li><%= t('.car_html', make: journey.car.make, name: journey.car.name) %></li>
           </ul>
 
