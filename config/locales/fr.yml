@@ -1,21 +1,158 @@
 ---
 fr:
   abort: Abort
+  activerecord:
+    attributes:
+      car:
+        colour: Colour
+        make: Make
+        name: Model
+        vrn: Licence Plate Number
+      journey:
+        completed: Completed
+        pick_up_time: Pick up time
+        seats_available: Seats available
+      location:
+        address: Address
+        latitude: Latitude
+        longitude: Longitude
+      passenger:
+        driver_rating: Driver rating
+        passenger_rating: Passenger rating
+      user:
+        admin: Admin
+        date_of_birth: Date of birth
+        description: Description
+        email: Email
+        first_name: First name
+        gender: Gender
+        last_name: Last name
+        music_habits: Music habits
+        phone_number: Phone number
+        smoking: Smoking
+        speaking_habits: Speaking habits
+        student_id: Student ID
+        uni_course: University course
+        year_of_study: Year of study
+    models:
+      car: Car
+      journey: Journey
+      location: Location
+      passenger: Passenger
+      user: User
+  add_car: Add you car details
+  bio: Bio
+  car_colour_html: "<strong>Colour:</strong> %{colour}"
+  car_make_html: "<strong>Make:</strong> %{make}"
+  car_model_html: "<strong>Model:</strong> %{name}"
+  car_vrn_html: "<strong>Licence:</strong> %{vrn}"
+  destination_html: "<strong>Destination:</strong> %{location}"
+  driver_journeys: Driver journeys
+  driver_name_html: "<strong>Driver name:</strong> %{name}"
+  edit: Edit
   error: Error
   journeys:
+    card:
+      about_me: About me
+      car_html: "<strong>Car:</strong> %{make} %{name}"
+      preferences: Preferences
     show:
+      about_me: About me
+      arrival: Arrival
+      departure: Departure
       sign_in: Sign in
+  music_html: "<strong>Music:</strong> %{music}"
+  'no': 'No'
+  num_of_passengers_html: "<strong>Number of passengers:</strong>"
   pages:
     home:
+      driver: DRIVER
+      driver_call_to_action: On the road again
+      driver_subtitle: Want to make money?
+      how-it-works: How-it-works
+      how_it_works: How does it work?
       passenger: PASSENGER
       passenger-call-to-action: Jump on!
       passenger-subtitle: Want an easier ride to uni?
+      passenger_call_to_action: Jump on!
+      passenger_subtitle: Want an easier ride to uni?
       slogan: Économisez de l'argent , le temps et le stress
+      step_one: STEP 1
+      step_one_explanation: Find/Propose a lift
+      step_three: STEP 3
+      step_three_explanation: Travel to uni!
+      step_two: STEP 2
+      step_two_explanation: Jump on/Pick up!
       subtitle: Le premier service d'autopartage de l'Université de Warwick
+      testimonial_four_name: DJ Jordi from Spain
+      testimonial_four_quote: Cheap but I really enjoy the music
+      testimonial_one_name: Jean-claude from Belgium
+      testimonial_one_quote: Amazing
+      testimonial_three_name: Luke breen from Birmingham
+      testimonial_three_quote: Luke Breen approves this service!
+      testimonial_two_name: Paul de Pologne
+      testimonial_two_qoute: Testimonial two qoute
+      testimonial_two_quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       title: Warwick Car Sharing
+  passenger-journeys: Passenger-journeys
+  passenger_journeys: Passenger journeys
+  pick_up_location_html: "<strong>Pick up location:</strong> %{location}"
+  pick_up_time: Pick up time
+  pick_up_time_html: Pick up time html
+  preferences: Preferences
+  profiles:
+    dashboard:
+      account-settings:
+        date_of_birth_html: "<strong>DOB:</strong>"
+        email_html: "<strong>Email:</strong> %{email}"
+        gender_html: "<strong>Gender:</strong> %{gender}"
+        personal-information: Personal-information
+        personal_information: Personal information
+        phone_number_html: "<strong>Phone number:</strong> %{phone_number}"
+      notifications:
+        no_notifications: You don't have any notifications yet!
+      overview:
+        avg_journey_time_html: "<strong>Avg. journey time:</strong>"
+        car_verified: Car verified
+        email_verified: Email verified
+        journey_stats: Journey stats
+        no_cars: You haven't uploaded your car details yet!
+        no_reviews: You haven't been reviewed yet!
+        num_of_journeys_driven_html: "<strong>No. of journeys driven:</strong> %{number}"
+        num_of_journeys_passenger_html: "<strong>No. of journeys as passenger:</strong>
+          %{number}"
+        payment_verified: Payment verified
+        rating_html: "<strong>Rating:</strong>"
+        student_verified: Student ID verified
+        verification: Verification
+      overview-header:
+        complete: complete
+      tab_account_settings: Account Settings
+      tab_journey: Journeys
+      tab_notifications: Notifications
+      tab_overview: Overview
+  seats_available:
+    one: Hurry! There is only one seat left!
+    other: "%{count} seats available"
+    zero: There are no seats left!
+  seats_available_html: "<strong>Seats available:</strong> %{seats_available}"
   shared:
     navbar:
       dashboard: Dashboard
       profile: Profile
       sign_in: Sign in
       sign_out: Sign out
+  smoking_html: "<strong>Smoker:</strong>"
+  speaking_html: "<strong>Speaking:</strong> %{speaking}"
+  student_id_html: "<strong>Student ID:</strong> %{student_id}"
+  time:
+    formats:
+      day_month_year: "%d %b %Y"
+      time: "%H:%M"
+      time_date: "%H:%M on %e %b"
+  uni_course_html: "<strong>Course:</strong> %{course}"
+  university_information: University information
+  vehicle_html: "<strong>Car details:</strong> %{make} %{name}"
+  year_of_study_html: "<strong>Year of study:</strong> %{year_of_study}"
+  'yes': 'Yes'
