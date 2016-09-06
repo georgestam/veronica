@@ -10,8 +10,16 @@
   position: relative;
 }
 .alert-info {
+  text-align: center;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
   background: $green;
 }
 .alert-warning {
+  text-align: center;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
   background: $red;
 }

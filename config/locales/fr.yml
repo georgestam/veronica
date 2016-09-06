@@ -1,5 +1,5 @@
 ---
-en:
+fr:
   abort: Abort
   activerecord:
     attributes:
@@ -76,14 +76,14 @@ en:
       passenger-subtitle: Want an easier ride to uni?
       passenger_call_to_action: Jump on!
       passenger_subtitle: Want an easier ride to uni?
-      slogan: Save Money, Time and Stress
+      slogan: Économisez de l'argent , le temps et le stress
       step_one: STEP 1
       step_one_explanation: Find/Propose a lift
       step_three: STEP 3
       step_three_explanation: Travel to uni!
       step_two: STEP 2
       step_two_explanation: Jump on/Pick up!
-      subtitle: The first carsharing service of Warwick University
+      subtitle: Le premier service d'autopartage de l'Université de Warwick
       testimonial_four_name: DJ Jordi from Spain
       testimonial_four_quote: Cheap but I really enjoy the music
       testimonial_one_name: Jean-claude from Belgium
@@ -153,7 +153,6 @@ en:
       time_date: "%H:%M on %e %b"
   uni_course_html: "<strong>Course:</strong> %{course}"
   university_information: University information
-  update_car: Update your car detials
   vehicle_html: "<strong>Car details:</strong> %{make} %{name}"
   year_of_study_html: "<strong>Year of study:</strong> %{year_of_study}"
   'yes': 'Yes'

@@ -6,23 +6,24 @@
         <% if journey.user.photo? %>
           <%= cl_image_tag journey.user.photo.path, class: "responsive-avatar text-center-xs" %>
         <% else %>
-          <%= image_tag "http://placehold.it/200x200", class:"responsive-avatar text-center-xs" %>
+          <% avatar_url = journey.user.facebook_picture_url || "http://placehold.it/200x200" %>
+          <%= image_tag avatar_url, class:"responsive-avatar text-center-xs" %>
         <% end %>
       </div> <!-- end of col 1.3 -->
 
       <div class="col-xs-12 col-sm-6 padding-ajustment">
         <h3> <%= journey.user.first_name %> </h3>
           <ul>
-            <li> <strong> Pick-up time <%= journey.pick_up_time.to_formatted_s(:time) %> </strong></li>
-            <li> Destination: <%= journey.drop_off_location.address %> </li>
-            <li> Seats available : @seats_available </li>
-            <li> Car: <%= journey.car.make %> <% journey.car.name %></li>
+            <li><strong><%= t('pick_up_time_html') %><%= l(journey.pick_up_time, format: :time ) %></strong></li>
+            <li> <%= t('destination_html', location: journey.drop_off_location.address ) %></li>
+            <li> <%= t('seats_available_html', seats_available: journey.calc_seats_available) %></li>
+            <li><%= t('.car_html', make: journey.car.make, name: journey.car.name) %></li>
           </ul>
 
         <div class="divider"></div>
 
         <div class="s-user-bubble padding-ajustment">
-          <strong> preferences </strong>
+          <strong><%= t('.preferences') %></strong>
             <ul class= "list-inline">
               <li>
                 <p><i class="fi-volume test" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="<%= journey.user.music_habits %>"></i></p>

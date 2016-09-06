@@ -20,4 +20,8 @@ class UserPolicy < ApplicationPolicy
   def passenger?
     record == user
   end
+
+  def dashboard?
+    record == user
+  end
 end

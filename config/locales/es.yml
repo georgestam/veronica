@@ -1,5 +1,5 @@
 ---
-en:
+es:
   abort: Abort
   activerecord:
     attributes:
@@ -153,7 +153,6 @@ en:
       time_date: "%H:%M on %e %b"
   uni_course_html: "<strong>Course:</strong> %{course}"
   university_information: University information
-  update_car: Update your car detials
   vehicle_html: "<strong>Car details:</strong> %{make} %{name}"
   year_of_study_html: "<strong>Year of study:</strong> %{year_of_study}"
   'yes': 'Yes'

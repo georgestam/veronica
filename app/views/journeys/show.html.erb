@@ -7,21 +7,21 @@
           <div class="journey-header">
             <div class="journey-details">
               <div class="from">
-                <h2>Departure</h2>
+                <h2><%= t('.departure') %></h2>
                 <p><%= @journey.pick_up_location.address%></p>
               </div>
               <i class="fi-arrow-right"></i>
               <div class="to">
-                <h2>Arrival</h2>
+                <h2><%= t('.arrival') %></h2>
                 <p><%= @journey.drop_off_location.address%></p>
               </div>
               <div class="pick-up">
-                <h2><i class="fi-clock"></i> Pickup</h2>
-                <p><%= @journey.pick_up_time.to_formatted_s(:time) %> on <%= @journey.pick_up_time.strftime("%b, %-d")%></p>
+                <h2><i class="fi-clock"></i><%= t('pick_up_time') %></h2>
+                <p><%= l(@journey.pick_up_time, format: :time_date) %></p>
               </div>
             </div>
             <div class="journey-passengers">
-              <p> <%= @journey.seats_available - @journey.passengers.count %> seat(s) available -</p>
+              <p> <%= t('seats_available', count: @journey.calc_seats_available)%> - </p>
               <% @journey.passengers.each do |passenger| %>
                 <% if passenger.user.photo? %>
                   <%= cl_image_tag passenger.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
@@ -61,11 +61,13 @@
               <% avatar_url = @journey.user.facebook_picture_url || "http://placehold.it/200x200" %>
               <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => @journey.user.first_name  %>
             <% end %>
-              <p class="name"><%= @journey.user.first_name %> <%= @journey.user.last_name %></p>
+              <p class="name"><%= @journey.user.full_name %></p>
               <p class="car"><%= @journey.car.make %>, <%= @journey.car.colour %></p>
             </div>
             <div class="driver-description">
-              <h4>About me</h4>
+              <h4><%= t('.about_me') %></h4>
+              <p><%= t('year_of_study_html', year_of_study: @journey.user.year_of_study) %></p>
+              <p><%= t('uni_course_html', course: @journey.user.uni_course) %></p>
               <p><%= @journey.car.user.description %></p>
               <ul class= "list-inline">
                 <li>
