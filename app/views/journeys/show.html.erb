@@ -101,7 +101,7 @@
                 <% end %>
 
                 <% if on_journey?(@journey) %>
-                  <h4> Already on this journey </h4>
+                  <% link_to "Cancel this booking", journey_passenger_path(@journey), :method :destroy, class: "btn btn-primary" %>
                 <% elsif @journey.full? %>
                   <h4> Journey full </h4>
                 <% elsif policy(@passenger).create? %>
