@@ -87,8 +87,8 @@ class JourneysController < ApplicationController
   end
 
   def create_waypoints
-    @waypoints = []
-    @journey.passengers.each { |passenger| @waypoints << { location: passenger.passenger_location.address.to_s } } # stopover is default true
-    @waypoints
+    @waypoints = @journey.passengers.map do |passenger|
+      { location: passenger.passenger_location.address.to_s }
+    end
   end
 end
