@@ -89,16 +89,13 @@ es:
       testimonial_three_quote: Luke Breen aprueba este servicio
       testimonial_two_name: Paul de Polonia
       testimonial_two_qoute: Testimonial en comillas
-      testimonial_two_quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      testimonial_two_quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       title: Warwick Car Sharing
   passenger-journeys: viaje de los pasajeros
   passenger_journeys: viaje de los pasajeros
   pick_up_location_html: "<strong>Lugar de recogida:</strong> %{location}"
   pick_up_time: tiempo de recogida
   pick_up_time_html: tiempo de recogida
-
- html
   preferences: Preferencias
   profiles:
     dashboard:
@@ -106,8 +103,7 @@ es:
         date_of_birth_html: "<strong>Fecha de nacimiento:</strong>"
         email_html: "<strong>Email:</strong> %{email}"
         gender_html: "<strong>Sexo:</strong> %{gender}"
-        personal-information: Informacion personal
-        personal_information: : Informacion personal
+        personal_information: Informacion personal
         phone_number_html: "<strong>Numero de Telefono :</strong> %{phone_number}"
       notifications:
         no_notifications: No tienes notificaciones aun!
@@ -119,8 +115,7 @@ es:
         no_cars: Aun no has subido los detalles del viaje
         no_reviews: Aun no tienes ninguna critica!
         num_of_journeys_driven_html: "<strong>No.de viajes conducidos:</strong> %{number}"
-        num_of_journeys_passenger_html: "<strong>No.de viajes como pasajero:</strong>
-          %{number}"
+        num_of_journeys_passenger_html: "<strong>No.de viajes como pasajero:</strong> %{number}"
         payment_verified: Pago verificado
         rating_html: "<strong>Valuación:</strong>"
         student_verified: Carnet de estudiante verificado
