@@ -69,8 +69,9 @@
                     <% end %>
                   <% end %>
 
-                  <% if on_journey?(@journey) %>
-                    <h4> Already on this journey </h4>
+                    <% if on_journey?(@journey) %>
+                      <% remove_passenger = @journey.passengers.where(user: current_user)[0] %>
+                      <%= link_to 'Cancel booking', journey_passenger_path(journey_id: @journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
                   <% elsif @journey.full? %>
                     <h4> Journey full </h4>
                   <% elsif policy(@passenger).create? %>
@@ -99,7 +100,7 @@
                     </div>
 
                 <% else %>
-
+                <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %
                 <% end %>
 
 
@@ -169,12 +170,6 @@
               <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bkg-confirmation-modal">
                 book this journey
               </button>
-
-
-
-
-
-
 
             </div>
           </div>

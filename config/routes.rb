@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
 
     resources :journeys, only:[:index, :show, :destroy, :update, :edit] do
-      resources :passengers, only:[:create]
+      resources :passengers, only:[:create, :destroy]
     end
 
     namespace :user do
