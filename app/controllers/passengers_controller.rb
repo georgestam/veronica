@@ -1,7 +1,7 @@
 class PassengersController < ApplicationController
 
   before_action :find_journey, only: [:create, :update]
-  before_action :find_passenger, only: :update :destroy
+  before_action :find_passenger, only: [:update, :destroy]
 
   def create
     @passenger = Passenger.new(params.require(:passenger).permit(:passenger_location_id))
@@ -23,10 +23,8 @@ class PassengersController < ApplicationController
   end
 
   def destroy
-    @passenger.journey = @journey
     @passenger.destroy
-    authorize @passenger
-    redirect_to journey_path(@journey)
+    redirect_to journey_path(@passenger.journey)
   end
 
   private

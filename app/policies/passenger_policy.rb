@@ -23,4 +23,5 @@ class PassengerPolicy < ApplicationPolicy
 
   def destroy?
     record.user == user # Passenger can cancel their booking
+  end
 end

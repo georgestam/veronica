@@ -101,7 +101,8 @@
                 <% end %>
 
                 <% if on_journey?(@journey) %>
-                  <% link_to "Cancel this booking", journey_passenger_path(@journey), :method :destroy, class: "btn btn-primary" %>
+                  <% remove_passenger = @journey.passengers.where(user: current_user)[0] %>
+                  <%= link_to 'Cancel booking', journey_passenger_path(journey_id: @journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
                 <% elsif @journey.full? %>
                   <h4> Journey full </h4>
                 <% elsif policy(@passenger).create? %>
@@ -111,17 +112,14 @@
                     <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
                     <%= f.submit "Book this journey" %>
                   <% end %>
+                <% else %>
+                  <%= simple_form_for([ @journey, @passenger ]) do |f| %>
+                    <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
+                    <%= f.submit "Book this journey", class: "btn btn-primary" %>
+                  <% end %>
                 <% end %>
-
-              <% elsif user_signed_in? %>
-                <%= simple_form_for([ @journey, @journey.passengers.build ]) do |f| %>
-                  <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
-                  <%= f.submit "Book this journey", class: "btn btn-primary" %>
-                <% end %>
-
-
               <% else %>
-
+               <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
               <% end %>
 
             </div>
