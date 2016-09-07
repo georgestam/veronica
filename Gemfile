@@ -21,6 +21,11 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# Date-time gems
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
+
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
@@ -63,3 +68,5 @@ gem "simple_token_authentication"
 
 #  Translation gems
 gem 'rails-i18n', '~> 5.0.0'
+
+
