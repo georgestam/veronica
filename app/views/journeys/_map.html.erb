@@ -10,6 +10,7 @@
         var map;
         var start = new google.maps.LatLng(<%= @journey.pick_up_location.latitude %>, <%= @journey.pick_up_location.longitude %>);
         var end = new google.maps.LatLng(<%= @journey.drop_off_location.latitude %>, <%= @journey.drop_off_location.longitude %>);
+        var waypoint = (52.540834, -1.790836);
 
         function initialize() {
           directionsDisplay = new google.maps.DirectionsRenderer();
@@ -25,6 +26,8 @@
           var request = {
             origin: start,
             destination: end,
+            waypoint: waypoint,
+            optimizeWaypoints: true,
             travelMode: 'DRIVING'
           };
           directionsService.route(request, function(response, status) {
