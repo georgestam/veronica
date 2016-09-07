@@ -9,7 +9,7 @@ class JourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
-    @passenger = @journey.passengers.build(user: current_user)
+    @passenger = Passenger.new(user: current_user, journey: @journey)
     set_passenger_locations # This sets which locations the passenger can pick from based on all PassengerLocations and the drivers departure location
     @car = @journey.car
   end

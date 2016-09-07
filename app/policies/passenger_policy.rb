@@ -20,4 +20,8 @@ class PassengerPolicy < ApplicationPolicy
   def update?
     record.user == user  # Passenger can update his/her ride
   end
+
+  def destroy?
+    record.user == user # Passenger can cancel their booking
+  end
 end
