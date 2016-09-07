@@ -4,7 +4,7 @@
       <h2 class="text-center"><%= t('passenger-journeys') %></h2>
       <% @journeys_as_passenger.each do |journey| %>
         <div class="product dashboard-card">
-          <%= image_tag "https://unsplash.it/500/300", { class: "product-image hidden-xs"} %>
+          <%= render 'map', { class: "product-image hidden-xs"} %>
           <div class='product-body'>
             <p><i class="fi-clock"></i> <%= l(journey.pick_up_time, format: :time_date)%> </p>
 
