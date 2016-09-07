@@ -107,11 +107,19 @@
                 <% elsif policy(@passenger).create? %>
                   <%= t ".only_remaining", count: @journey.remaining_seats %>
 
-                  <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn-booking" %>
+                  <%= simple_form_for([ @journey, @journey.passengers.build ]) do |f| %>
+                    <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
+                    <%= f.submit "Book this journey" %>
+                  <% end %>
                 <% end %>
 
               <% elsif user_signed_in? %>
-                <%= link_to "Book this journey", journey_passengers_path(@journey), method: :post, class: "btn-booking" %>
+                <%= simple_form_for([ @journey, @journey.passengers.build ]) do |f| %>
+                  <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
+                  <%= f.submit "Book this journey", class: "btn btn-primary" %>
+                <% end %>
+
+
               <% else %>
 
               <% end %>

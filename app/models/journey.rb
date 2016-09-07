@@ -3,6 +3,8 @@ class Journey < ApplicationRecord
   belongs_to :car
   has_many :passengers
 
+  has_many :passenger_locations, through: :passengers
+
   belongs_to :pick_up_location, class_name: "Location"
   belongs_to :drop_off_location, class_name: "Location"
   accepts_nested_attributes_for :pick_up_location
