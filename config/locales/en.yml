@@ -103,6 +103,9 @@ en:
   pick_up_location_html: "<strong>Pick up location:</strong> %{location}"
   pick_up_time: Pick up time
   preferences: Preferences
+  avg_journey_time_html: "<strong>Avg. journey time:</strong>"
+  num_of_journeys_driven_html: "<strong>No. of journeys driven:</strong> %{number}"
+  num_of_journeys_passenger_html: "<strong>No. of journeys as passenger:</strong> %{number}"
   profiles:
     dashboard:
       account-settings:
@@ -115,15 +118,11 @@ en:
       notifications:
         no_notifications: You don't have any notifications yet!
       overview:
-        avg_journey_time_html: "<strong>Avg. journey time:</strong>"
         car_verified: Car verified
         email_verified: Email verified
         journey_stats: Journey stats
         no_cars: You haven't uploaded your car details yet!
         no_reviews: You haven't been reviewed yet!
-        num_of_journeys_driven_html: "<strong>No. of journeys driven:</strong> %{number}"
-        num_of_journeys_passenger_html: "<strong>No. of journeys as passenger:</strong>
-          %{number}"
         payment_verified: Payment verified
         rating_html: "<strong>Rating:</strong>"
         student_verified: Student ID verified

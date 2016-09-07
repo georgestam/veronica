@@ -1,0 +1,32 @@
+ .public-profile {
+  display: flex;
+ }
+
+ .left-column {
+  flex: 0 0 50%;
+  h2{
+    text-align: center;
+  }
+ }
+
+ .right-column {
+  flex: 0 0 50%;
+ }
+
+ .profile-tabs {
+  display: flex;
+}
+
+.profile-tab {
+  flex: 0 0 50%;
+  text-align:center;
+}
+
+.profile-tab:first-child {
+  border-radius: 10px 0 0 0;
+  border-left: 1px solid $gray-light;
+}
+.profile-tab:last-child {
+  border-radius: 0 10px 0 0;
+  border-right: 1px solid $gray-light;
+}

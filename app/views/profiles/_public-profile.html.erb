@@ -1,77 +1,34 @@
 <div class="public-profile">
   <div class="left-column">
     <% if @user.photo? %>
-      <%= cl_image_tag @user.photo.path, class: "avatar-xl" %>
+      <%= cl_image_tag @user.photo.path, class: "avatar-xl text-center" %>
     <% else %>
       <% avatar_url = @user.facebook_picture_url || "http://placehold.it/100x100" %>
-      <%= image_tag avatar_url, class: "avatar-xl" %>
+      <%= image_tag avatar_url, class: "avatar-xl text-center" %>
     <% end %>
     <h2><%= @user.full_name %></h2>
 
-    <h2><%= t('.verification') %></h2>
-    <div class="<%= @email_verification ? 'verified' : "unverified" %>" id="email"><p><%= t('.email_verified')%></p></div>
-    <div class="<%= @payment_verification ? 'verified' : "unverified" %>" id="payment"><p><%= t('.payment_verified')%></p></div>
-    <div class="<%= @student_id_verification ? 'verified' : "unverified" %>" id="student_id"><p><%= t('.student_verified')%></p></div>
-    <div class="<%= @car_verification ? 'verified' : "unverified" %>" id="car"><p><%= t('.car_verified')%></p></div>
+    <h2>Driver stats</h2>
+    <p><%= t('num_of_journeys_driven_html', number: @journeys_as_driver.count)%></p>
+    <p><%= t('num_of_journeys_passenger_html', number: @journeys_as_passenger.count)%></p>
+    <p><%= t('avg_journey_time_html')%></p>
   </div>
   <div class="right-column">
     <div class="container">
       <div class="row">
-        <div class="profile-tabs">
-          <a class="profile-tab active" href="#" data-target="#journey-stats">
-            <h3>Journey stats</h3>
-          </a>
-          <a class="profile-tab" href="#" data-target="#bio">
-            <h3>Biography</h3>
-          </a>
-        </div>
+        <h2>Bio</h2>
+        <p>Description: <%= @user.description %></p>
+
+        <h2>University information</h2>
+        <p>Student ID: <%= @user.student_id %></p>
+        <p>Year of study: <%= @user.year_of_study %></p>
+        <p>Course: <%= @user.uni_course %></p>
+
+        <h2><%= t('preferences') %></h2>
+        <p> <%= t('music_html', music: @user.music_habits) %> </p>
+        <p> <%= t('speaking_html', speaking: @user.speaking_habits) %> </p>
+        <p> <%= t('smoking_html')%> <%= @user.smoking ? "Yes" : "No" %> </p>
       </div>
     </div>
   </div>
-  </div>
-
-
-<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
-
-<% if @user.photo? %>
-  <%= cl_image_tag @user.photo.path, width: 240, height: 240, crop: :fill, class: "img-circle" %>
-<% else %>
-  <%= image_tag "default_avatar.png", class: "avatar-xl" %>
-<% end %>
-
-<h2>Driver personal information</h2>
-<p>Email: <%= @user.email %></p>
-<p>Phone number: <%= @user.phone_number %></p>
-<p>Gender: <%= @user.gender %></p>
-<p>DOB: <%= @user.date_of_birth %></p>
-
-<h2>Driver bio</h2>
-<p>Description: <%= @user.description %></p>
-
-<h2>Driver university information</h2>
-<p>Student ID: <%= @user.student_id %></p>
-<p>Year of study: <%= @user.year_of_study %></p>
-<p>Course: <%= @user.uni_course %></p>
-
-<h2>Driver preferences</h2>
-<p>Music: <%= @user.music_habits %></p>
-<p>Speaking: <%= @user.speaking_habits %></p>
-<p>Smoking: <%= @user.smoking %></p>
-
-<%= link_to "Edit user details", edit_profile_path, class: "btn btn-primary" %>
-
-<% if @user.cars.empty? && policy(Car).create?%>
-  <!-- Prompt user to add a car, if they don't have one -->
-  <%= link_to "Add new car", new_car_path, class: "btn btn-primary" %>
-<% else %>
-  <!-- Display user's car details -->
-  <h2>Car details</h2>
-  <% @cars.each do |car| %>
-    <p>Make: <%= car.make %></p>
-    <p>Model: <%= car.name %></p>
-    <p>Licence plate: <%= car.vrn %></p>
-    <p>Colour: <%= car.colour %></p>
-    <%= link_to "Edit car details", edit_car_path(car), class: "btn btn-primary" %>
-    <%= link_to "Delete car details", car_path(car), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-  <% end %>
-<% end %>
+</div>

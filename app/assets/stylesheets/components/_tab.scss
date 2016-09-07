@@ -42,22 +42,3 @@
   background-color: $gray-lighter;
   color: #78AED9;;
 }
-
-.profile-tabs {
-  display: flex;
-}
-
-.profile-tab {
-  flex: 0 0 50%;
-  text-align:center;
-  padding: 20px;
-}
-
-.profile-tab:first-child {
-  border-radius: 10px 0 0 0;
-  border-left: 1px solid $gray-light;
-}
-.profile-tab:last-child {
-  border-radius: 0 10px 0 0;
-  border-right: 1px solid $gray-light;
-}
