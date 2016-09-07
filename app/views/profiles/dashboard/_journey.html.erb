@@ -4,7 +4,9 @@
       <h2 class="text-center"><%= t('passenger-journeys') %></h2>
       <% @journeys_as_passenger.each do |journey| %>
         <div class="product dashboard-card">
-          <%= render 'map', { class: "product-image hidden-xs"} %>
+          <% if journey.car.photo? %>
+            <%= cl_image_tag journey.car.photo.path, { class: "product-image hidden-xs"} %>
+          <% end %>
           <div class='product-body'>
             <p><i class="fi-clock"></i> <%= l(journey.pick_up_time, format: :time_date)%> </p>
 
@@ -26,7 +28,9 @@
       <h2 class="text-center"><%= t('driver_journeys') %></h2>
       <% @journeys_as_driver.each do |journey| %>
         <div class="product dashboard-card">
-          <%= image_tag "https://unsplash.it/500/300", { class: "product-image hidden-xs"} %>
+          <% if journey.car.photo? %>
+            <%= cl_image_tag journey.car.photo.path, { class: "product-image hidden-xs"} %>
+          <% end %>
           <div class='product-body'>
             <p> <%= l(journey.pick_up_time, format: :time_date)%> </p>
 
