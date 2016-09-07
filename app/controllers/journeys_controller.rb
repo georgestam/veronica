@@ -3,13 +3,14 @@ class JourneysController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
     @journeys = policy_scope(Journey)
-    @available_journeys = @journeys.select{ |journey| journey.calc_seats_available > 0 }
+    @available_journeys = @journeys.select{ |journey| journey.remaining_seats > 0 }
     @available_journeys.sort { |x,y| x.pick_up_time <=> y.pick_up_time }
   end
 
   def show
     @journey = Journey.find(params[:id])
     @passenger = @journey.passengers.build(user: current_user)
+    set_passenger_locations # This sets which locations the passenger can pick from based on all PassengerLocations and the drivers departure location
     @car = @journey.car
   end
 
@@ -78,5 +79,9 @@ class JourneysController < ApplicationController
     passengers.each do |passenger|
       JourneyMailer.update_journey(passenger).deliver_now
     end
+  end
+
+  def set_passenger_locations
+    @passenger_locations = PassengerLocation.all
   end
 end
