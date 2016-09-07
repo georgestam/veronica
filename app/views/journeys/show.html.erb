@@ -41,7 +41,7 @@
                 <h4 class="modal-title" id="myModalLabel">Ride confirmation</h4>
               </div>
               <div class="modal-body">
-                <h3> Here is a recap of your next ride </h3>
+                <h3> ride status </h3>
                 <div class="journey-details">
                   <div class="from">
                     <h2><%= t('.departure') %></h2>
@@ -69,11 +69,12 @@
                     <% end %>
                   <% end %>
 
-                    <% if on_journey?(@journey) %>
-                      <% remove_passenger = @journey.passengers.where(user: current_user)[0] %>
-                      <%= link_to 'Cancel booking', journey_passenger_path(journey_id: @journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
-                  <% elsif @journey.full? %>
+                  <% if @journey.full? %>
                     <h4> Journey full </h4>
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                      <p> Sorry </p>
+                      </div>
                   <% elsif policy(@passenger).create? %>
                     <%= t ".only_remaining", count: @journey.remaining_seats %>
 
@@ -88,21 +89,10 @@
                       <p> * by confirming the booking, you are accepting our terms and conditions</p>
                   <% end %>
 
-                <% elsif user_signed_in? %>
-                  <%= simple_form_for([ @journey, @journey.passengers.build ]) do |f| %>
-                    <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    <%= f.submit "Confirm the booking", class: "btn btn-primary"%>
-                  <% end %>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 
-                    </div>
-
-                <% else %>
-                <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+                  <% else %>
+                  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
                 <% end %>
-
 
               </div>
             </div>
@@ -167,9 +157,14 @@
                 <% end %>
               </ul>
 
+              <% if on_journey?(@journey) %>
+                <% remove_passenger = @journey.passengers.where(user: current_user)[0] %>
+                <%= link_to 'Cancel booking', journey_passenger_path(journey_id: @journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
+                <% else %>
               <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bkg-confirmation-modal">
-                book this journey
+                Book this journey
               </button>
+              <% end %>
 
             </div>
           </div>
