@@ -1,8 +1,5 @@
 <div id="map" style="width: 100%; height: 410px;"></div>
 
-  <% @journey.passengers.each do |passenger| %>
-    <%= passenger.passenger_location.address %>
-  <% end %>
 
   <% content_for(:after_js) do %>
     <script>
@@ -12,7 +9,8 @@
         var map;
         var start = new google.maps.LatLng(<%= @journey.pick_up_location.latitude %>, <%= @journey.pick_up_location.longitude %>);
         var end = new google.maps.LatLng(<%= @journey.drop_off_location.latitude %>, <%= @journey.drop_off_location.longitude %>);
-        var waypoints = [{ location: new google.maps.LatLng(52.540834, -1.790836), stopover: true}];
+
+        var waypoints = [{location: "3 The Saplings, B76 1PF"}]
 
         function initialize() {
           directionsDisplay = new google.maps.DirectionsRenderer();

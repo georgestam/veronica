@@ -12,6 +12,7 @@ class JourneysController < ApplicationController
     @passenger = Passenger.new(user: current_user, journey: @journey)
     set_passenger_locations # This sets which locations the passenger can pick from based on all PassengerLocations and the drivers departure location
     @car = @journey.car
+    create_waypoints # This will create an array of waypoints to give to the map
   end
 
   def new
@@ -83,5 +84,11 @@ class JourneysController < ApplicationController
 
   def set_passenger_locations
     @passenger_locations = PassengerLocation.all
+  end
+
+  def create_waypoints
+    @waypoints = []
+    @journey.passengers.each { |passenger| @waypoints << { location: passenger.passenger_location.address.to_s } } # stopover is default true
+    @waypoints
   end
 end
