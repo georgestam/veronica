@@ -17,6 +17,8 @@
               <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= t("vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
               <li> <i class="fa fa-users" aria-hidden="true"></i>  <%= t('seats_available_html', seats_available: journey.remaining_seats) %> </li>
             </ul>
+            <% remove_passenger = journey.passengers.where(user: current_user)[0] %>
+            <%= link_to 'Cancel booking', journey_passenger_path(journey_id: journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
           </div>
           <%= link_to "", journey_path(journey), class: "product-link" %>
         </div>
@@ -41,6 +43,10 @@
               <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= t("vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
               <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('seats_available_html', seats_available: journey.remaining_seats) %> </li>
             </ul>
+            <%= simple_form_for [journey] do |f| %>
+              <%= f.hidden_field :completed, :value => true %>
+              <%= f.submit "Mark as Completed", class: 'btn-booking' %>
+            <% end %>
           </div>
           <%= link_to "", journey_path(journey), class: "product-link" %>
         </div>
