@@ -1,4 +1,4 @@
-<% content_for :title, "Journey #{@journey.id} | LiftIn" %>
+<% content_for :title, "Journey | LiftIn" %>
 <div class="wrapper">
   <div class="container">
     <div class="row">
@@ -23,18 +23,20 @@
             <div class="journey-passengers">
               <p> <%= t('seats_available', count: @journey.remaining_seats)%> - </p>
               <% @journey.passengers.each do |passenger| %>
-                <% if passenger.user.photo? %>
-                  <%= cl_image_tag passenger.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
-                <% else %>
-                  <% avatar_url = passenger.user.facebook_picture_url || "http://placehold.it/200x200" %>
-                  <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
+                <%= link_to profile_path(passenger.user) do  %>
+                  <% if passenger.user.photo? %>
+                    <%= cl_image_tag passenger.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
+                  <% else %>
+                    <% avatar_url = passenger.user.facebook_picture_url || "http://placehold.it/200x200" %>
+                    <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>
           </div>
         </div>
 
-        <div class="modal fade" id="bkg-confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade modal-journey" id="bkg-confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -42,7 +44,6 @@
                 <h4 class="modal-title" id="myModalLabel">Ride confirmation</h4>
               </div>
               <div class="modal-body">
-                <h3> Ride status </h3>
                 <div class="journey-details">
                   <div class="from">
                     <h2><%= t('.departure') %></h2>
@@ -60,13 +61,12 @@
                 </div>
                 <% if user_signed_in? %>
 
-                  <%= t ".only_remaining", count: @journey.remaining_seats %>
+                  <h3 class="text-center"><%= @journey.remaining_seats %> seats remaining</h3>
 
                   <%= simple_form_for([ @journey, @journey.passengers.build ]) do |f| %>
-                    <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
+                    <%= f.association :passenger_location, label: false, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last, prompt: "Where do we pick you up?" %>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    <%= f.submit "Confirm the booking*", class: "btn btn-primary" %>
+                    <%= f.submit "Confirm the booking*", class: "btn btn-primary", style: "width: 100%;" %>
                   <% end %>
 
                     </div>
@@ -81,7 +81,7 @@
 
 
 
-        <div class="user-card" id="journey">
+        <div class="user-card" id="journey" style="height: 400px;">
           <div class="user-card-info journey-body">
             <div class="driver-links">
               <ul class="list-inline">
@@ -103,6 +103,7 @@
                 <% end %>
               </ul>
             </div>
+            <%= link_to profile_path(@journey.user) do %>
             <div class="driver-card">
             <% if @journey.user.photo? %>
               <%= cl_image_tag @journey.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => @journey.user.first_name  %>
@@ -113,6 +114,7 @@
               <p class="name"><%= @journey.user.full_name %></p>
               <p class="car"><%= @journey.car.make %>, <%= @journey.car.colour %></p>
             </div>
+            <% end %>
             <div class="driver-description">
               <h4><%= t('.about_me') %></h4>
               <p><%= t('year_of_study_html', year_of_study: @journey.user.year_of_study) %></p>
@@ -151,16 +153,15 @@
 
                   <!-- If the journey is completed, notify user -->
                   <h4>Journey completed</h4>
+                <% elsif @journey.full? %>
 
+                  <!-- If the journey is full, notify user -->
+                  <h4>Journey is full!</h4>
                 <% elsif on_journey?(@journey) %>
 
                   <!-- If the user is already on the journey, allow them to cancel their booking -->
                   <% remove_passenger = @journey.passengers.where(user: current_user)[0] %>
                   <%= link_to 'Cancel booking', journey_passenger_path(journey_id: @journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
-                <% elsif @journey.full? %>
-
-                  <!-- If the journey is full, notify user -->
-                  <h4>Journey is full!</h4>
                 <% else %>
 
                   <!-- Allow a user to add themselves to the journey -> passenger#new -->
