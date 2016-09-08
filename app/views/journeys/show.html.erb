@@ -23,11 +23,13 @@
             <div class="journey-passengers">
               <p> <%= t('seats_available', count: @journey.remaining_seats)%> - </p>
               <% @journey.passengers.each do |passenger| %>
-                <% if passenger.user.photo? %>
-                  <%= cl_image_tag passenger.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
-                <% else %>
-                  <% avatar_url = passenger.user.facebook_picture_url || "http://placehold.it/200x200" %>
-                  <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
+                <%= link_to profile_path(passenger.user) do  %>
+                  <% if passenger.user.photo? %>
+                    <%= cl_image_tag passenger.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
+                  <% else %>
+                    <% avatar_url = passenger.user.facebook_picture_url || "http://placehold.it/200x200" %>
+                    <%= image_tag avatar_url, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => passenger.user.first_name  %>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>
@@ -101,6 +103,7 @@
                 <% end %>
               </ul>
             </div>
+            <%= link_to profile_path(@journey.user) do %>
             <div class="driver-card">
             <% if @journey.user.photo? %>
               <%= cl_image_tag @journey.user.photo.path, class: "avatar-large test", "aria-hidden" => "true", "data-toggle" => "tooltip", "data-placement" => "top", "title" => @journey.user.first_name  %>
@@ -111,6 +114,7 @@
               <p class="name"><%= @journey.user.full_name %></p>
               <p class="car"><%= @journey.car.make %>, <%= @journey.car.colour %></p>
             </div>
+            <% end %>
             <div class="driver-description">
               <h4><%= t('.about_me') %></h4>
               <p><%= t('year_of_study_html', year_of_study: @journey.user.year_of_study) %></p>
