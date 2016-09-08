@@ -35,7 +35,6 @@
           <% end %>
           <div class='product-body'>
             <p> <%= l(journey.pick_up_time, format: :time_date)%> </p>
-
             <ul>
               <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('pick_up_location_html', location: journey.pick_up_location.address) %></li>
               <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('destination_html', location: journey.drop_off_location.address) %></li>
