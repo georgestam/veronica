@@ -1,4 +1,4 @@
-<% content_for :title, "#{@car.user.first_name} #{@car.user.last_name}'s Car | LiftIn" %>
+<% content_for :title, "#{@car.user.full_name}'s Car | LiftIn" %>
 
 <h2>Car owner: <%= "#{@car.user.first_name} #{@car.user.last_name}" %></h2>
 <ul>
