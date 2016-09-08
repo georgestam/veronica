@@ -1,44 +1,11 @@
-<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
-
-<% if @user.photo? %>
-  <%= cl_image_tag @user.photo.path, width: 240, height: 240, crop: :fill, class: "img-circle" %>
-<% else %>
-  <%= image_tag "default_avatar.png", class: "avatar-xl" %>
-<% end %>
-
-<h2>Driver personal information</h2>
-<p>Email: <%= @user.email %></p>
-<p>Phone number: <%= @user.phone_number %></p>
-<p>Gender: <%= @user.gender %></p>
-<p>DOB: <%= @user.date_of_birth.strftime("%d-%m-%Y") %></p>
-
-<h2>Driver bio</h2>
-<p>Description: <%= @user.description %></p>
-
-<h2>Driver university information</h2>
-<p>Student ID: <%= @user.student_id %></p>
-<p>Year of study: <%= @user.year_of_study %></p>
-<p>Course: <%= @user.uni_course %></p>
-
-<h2>Driver preferences</h2>
-<p>Music: <%= @user.music_habits %></p>
-<p>Speaking: <%= @user.speaking_habits %></p>
-<p>Smoking: <%= @user.smoking %></p>
-
-<%= link_to "Edit user details", edit_profile_path, class: "btn btn-primary" %>
-
-<% if @user.cars.empty? && policy(Car).create?%>
-  <!-- Prompt user to add a car, if they don't have one -->
-  <%= link_to "Add new car", new_car_path, class: "btn btn-primary" %>
-<% else %>
-  <!-- Display user's car details -->
-  <h2>Car details</h2>
-  <% @cars.each do |car| %>
-    <p>Make: <%= car.make %></p>
-    <p>Model: <%= car.name %></p>
-    <p>Licence plate: <%= car.vrn %></p>
-    <p>Colour: <%= car.colour %></p>
-    <%= link_to "Edit car details", edit_car_path(car), class: "btn btn-primary" %>
-    <%= link_to "Delete car details", car_path(car), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-  <% end %>
-<% end %>
+<div class="dashboard-wrapper padded">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <div class="dashboard-card">
+          <%= render 'public-profile' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
