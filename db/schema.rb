@@ -108,10 +108,10 @@ ActiveRecord::Schema.define(version: 20160906160740) do
     t.boolean  "smoking"
     t.string   "phone_number"
     t.string   "student_id"
+    t.boolean  "admin",                             default: false, null: false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.boolean  "admin",                             default: false, null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"

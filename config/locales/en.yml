@@ -99,7 +99,7 @@ en:
   passenger-journeys: Passenger-journeys
   passenger_journeys: Passenger journeys
   pick_up_location_html: "<strong>Pick up location:</strong> %{location}"
-  pick_up_time: Pick up time
+  pick_up_time: Pick up
   preferences: Preferences
   avg_journey_time_html: "<strong>Avg. journey time:</strong>"
   num_of_journeys_driven_html: "<strong>No. of journeys driven:</strong> %{number}"
