@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div class="modal fade" id="bkg-confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade modal-journey" id="bkg-confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -41,7 +41,6 @@
                 <h4 class="modal-title" id="myModalLabel">Ride confirmation</h4>
               </div>
               <div class="modal-body">
-                <h3> Ride status </h3>
                 <div class="journey-details">
                   <div class="from">
                     <h2><%= t('.departure') %></h2>
@@ -59,13 +58,12 @@
                 </div>
                 <% if user_signed_in? %>
 
-                  <%= t ".only_remaining", count: @journey.remaining_seats %>
+                  <h3 class="text-center"><%= @journey.remaining_seats %> seats remaining</h3>
 
                   <%= simple_form_for([ @journey, @journey.passengers.build ]) do |f| %>
-                    <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
+                    <%= f.association :passenger_location, label: false, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last, prompt: "Where do we pick you up?" %>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    <%= f.submit "Confirm the booking*", class: "btn btn-primary" %>
+                    <%= f.submit "Confirm the booking*", class: "btn btn-primary", style: "width: 100%;" %>
                   <% end %>
 
                     </div>
@@ -80,7 +78,7 @@
 
 
 
-        <div class="user-card" id="journey">
+        <div class="user-card" id="journey" style="height: 400px;">
           <div class="user-card-info journey-body">
             <div class="driver-links">
               <ul class="list-inline">

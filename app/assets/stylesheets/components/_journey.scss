@@ -17,6 +17,9 @@
     font-size: 25px;
     color: #F4F4F4;
   }
+  .fi-clock {
+    margin-right: 5px;
+  }
   p {
     font-size: 14px;
     font-weight: bold;
@@ -66,7 +69,7 @@
     text-align: left;
     max-width: 100%;
     color: #37474f;
-    height: 450px;
+    height: 570px;
 }
 
 .journey-body {
@@ -134,4 +137,41 @@
 }
 .btn-booking {
   background-color: $orange;
+}
+
+
+.modal-journey {
+  h3 {
+    margin-bottom: 40px;
+    font-size: 21px;
+  }
+  .modal-header {
+    text-align: center;
+  }
+  .modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: none;
+    margin: 30px 0px;
+  }
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 15px;
+}
+
+.stat {
+  background: #f7f7f7;
+  flex: 1 1 auto;
+  h3 {
+    font-size: 23px;
+    margin-top: 5px;
+  }
+  p {
+    color: grey;
+  }
 }

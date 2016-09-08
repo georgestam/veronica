@@ -7,7 +7,7 @@
   <%= f.fields_for :drop_off_location do |l| %>
     <%= l.input :address, label: 'Drop-off Address', id: "drop_off_address", input_html: { class: :autocomplete } %>
   <% end %>
-  <%= f.button :submit, { class: "btn-custom btn-primary wide-btn"} %>
+  <%= f.button :submit, { class: "btn-custom btn-primary wide-btn", style: "width: 100%"} %>
 <% end %>
 
 

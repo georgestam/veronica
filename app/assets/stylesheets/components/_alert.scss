@@ -7,18 +7,25 @@
   text-align: center;
   color: white;
   z-index: 100;
-  position: relative;
+  position: fixed;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+  z-index: 10;
+  span {
+    margin-right: 30px;
+  }
 }
 .alert-info {
   text-align: center;
-  color: black;
+  color: white;
   padding: 10px;
   border-radius: 5px;
   background: $green;
 }
 .alert-warning {
   text-align: center;
-  color: black;
+  color: white;
   padding: 10px;
   border-radius: 5px;
   background: $red;
