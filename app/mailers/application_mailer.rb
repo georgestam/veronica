@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'warwick.car.sharing@gmail.com'
+  default from: 'contact@liftin.co.uk'
 
   layout 'mailer'
 
