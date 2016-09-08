@@ -1,5 +1,5 @@
 <div class="public-profile">
-  <div class="left-column">
+  <div class="left-column text-center">
     <% if @user.photo? %>
       <%= cl_image_tag @user.photo.path, class: "avatar-xl text-center" %>
     <% else %>
@@ -8,10 +8,6 @@
     <% end %>
     <h2><%= @user.full_name %></h2>
 
-    <h2>Driver stats</h2>
-    <p><%= t('num_of_journeys_driven_html', number: @journeys_as_driver.count)%></p>
-    <p><%= t('num_of_journeys_passenger_html', number: @journeys_as_passenger.count)%></p>
-    <p><%= t('avg_journey_time_html')%></p>
   </div>
   <div class="right-column">
     <div class="container">
@@ -28,6 +24,11 @@
         <p> <%= t('music_html', music: @user.music_habits) %> </p>
         <p> <%= t('speaking_html', speaking: @user.speaking_habits) %> </p>
         <p> <%= t('smoking_html')%> <%= @user.smoking ? "Yes" : "No" %> </p>
+
+        <h2>Driver stats</h2>
+        <p><%= t('num_of_journeys_driven_html', number: @journeys_as_driver.count)%></p>
+        <p><%= t('num_of_journeys_passenger_html', number: @journeys_as_passenger.count)%></p>
+        <p><%= t('avg_journey_time_html')%></p>
       </div>
     </div>
   </div>
