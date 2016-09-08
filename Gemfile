@@ -25,6 +25,10 @@ gem 'autoprefixer-rails'
 gem 'momentjs-rails', '~> 2.9'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
+group :development do
+  gem "rails_real_favicon"
+end
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

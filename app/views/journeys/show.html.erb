@@ -57,43 +57,22 @@
                     <p><%= l(@journey.pick_up_time, format: :time_date) %></p>
                   </div>
                 </div>
+                <% if user_signed_in? %>
 
-                <% if user_signed_in?  %>
+                  <%= t ".only_remaining", count: @journey.remaining_seats %>
 
-                  <% if @journey.completed %>
-                    Journey completed
-                  <% elsif policy(@journey).update? %>
-                    <%= simple_form_for [@journey] do |f| %>
-                      <%= f.hidden_field :completed, :value => true %>
-                      <%= f.submit "Mark as Completed", class: 'btn-booking' %>
-                    <% end %>
+                  <%= simple_form_for([ @journey, @journey.passengers.build ]) do |f| %>
+                    <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <%= f.submit "Confirm the booking*", class: "btn btn-primary" %>
                   <% end %>
 
-                  <% if @journey.full? %>
-                    <h4> Journey full </h4>
-                      <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                      <p> Sorry </p>
-                      </div>
-                  <% elsif policy(@passenger).create? %>
-                    <%= t ".only_remaining", count: @journey.remaining_seats %>
-
-                    <%= simple_form_for([ @journey, @journey.passengers.build ]) do |f| %>
-                      <%= f.association :passenger_location, collection: PassengerLocation.all.map { |p| [p.address, p.id.to_s] }, label_method: :first, value_method: :last %>
-                      <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                      <%= f.submit "Confirm the booking*", class: "btn btn-primary" %>
-                    <% end %>
-
-                      </div>
-                      <p> * by confirming the booking, you are accepting our terms and conditions</p>
-                  <% end %>
-
-
-                  <% else %>
+                    </div>
+                    <p> * by confirming the booking, you are accepting our terms and conditions</p>
+                <% else %>
                   <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
                 <% end %>
-
               </div>
             </div>
           </div>
@@ -103,7 +82,6 @@
 
         <div class="user-card" id="journey">
           <div class="user-card-info journey-body">
-
             <div class="driver-links">
               <ul class="list-inline">
                 <% if user_signed_in?  %>
@@ -157,15 +135,42 @@
                 <% end %>
               </ul>
 
-              <% if on_journey?(@journey) %>
-                <% remove_passenger = @journey.passengers.where(user: current_user)[0] %>
-                <%= link_to 'Cancel booking', journey_passenger_path(journey_id: @journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
-                <% else %>
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bkg-confirmation-modal">
-                Book this journey
-              </button>
-              <% end %>
 
+              <% if user_signed_in? %>
+
+                <!-- Give options to interact with journey -->
+                <% if policy(@journey).update? %>
+
+                  <!-- Allow the driver to mark the journey as complete -->
+                  <%= simple_form_for [@journey] do |f| %>
+                    <%= f.hidden_field :completed, :value => true %>
+                    <%= f.submit "Mark as Completed", class: 'btn-booking' %>
+                  <% end %>
+                <% elsif @journey.completed %>
+
+                  <!-- If the journey is completed, notify user -->
+                  <h4>Journey completed</h4>
+                <% elsif @journey.full? %>
+
+                  <!-- If the journey is full, notify user -->
+                  <h4>Journey is full!</h4>
+                <% elsif on_journey?(@journey) %>
+
+                  <!-- If the user is already on the journey, allow them to cancel their booking -->
+                  <% remove_passenger = @journey.passengers.where(user: current_user)[0] %>
+                  <%= link_to 'Cancel booking', journey_passenger_path(journey_id: @journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
+                <% else %>
+
+                  <!-- Allow a user to add themselves to the journey -> passenger#new -->
+                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#bkg-confirmation-modal">
+                    Book this journey
+                  </button>
+                <% end %>
+              <% else %>
+
+                <!-- Force user to sign in IOT book the journey -->
+                 <%= link_to "Sign to book", new_user_session_path, class: "btn btn-primary" %>
+              <% end %>
             </div>
           </div>
         </div> <!-- end of user-card-info -->

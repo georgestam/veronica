@@ -31,10 +31,26 @@ pick_up_locations = [
   "45C Lansdowne Crescent, Willes Road, Leamington Spa CV32 4PR, UK"]
 passenger_locations = []
 
+urls = [
+  "https://www.facebook.com/photo.php?fbid=10153305556957255&set=a.393745102254.165750.540587254&type=3&theater",
+  "https://www.facebook.com/photo.php?fbid=10204698295810578&set=a.1467211333558.67125.1631808436&type=3&theater",
+  "https://www.facebook.com/photo.php?fbid=10208287125150633&set=a.1510576839233.66983.1078713308&type=3&theater",
+  "https://www.facebook.com/photo.php?fbid=10209917022301075&set=a.1647925116886.85576.1199679679&type=3&theater",
+  "https://www.facebook.com/photo.php?fbid=10210127811571738&set=a.1626325977984.2085864.1231568856&type=3&theater",
+  "https://www.facebook.com/photo.php?fbid=1235898446420687&set=a.157881727555703.33305.100000016307106&type=3&theater",
+  "http://www.careerfaqs.com.au/images/news_pages/female_student_4981183.jpg",
+  "http://www.canberra.edu.au/__data/assets/image/0013/1060222/student-laughing-in-the-library.jpg",
+  "http://www.berkeley.edu/images/photo_uploads/sq-artstudent2.jpg",
+  "http://www-tc.pbs.org/wnet/tavissmiley/files/2016/06/Education.jpg",
+  "https://www.pokitpal.com/Content/img/www/graduating-students.jpg",
+  "https://www.britishcouncil.org/sites/default/files/13_korea_2012_907.jpg",
+  "https://www.pitchup.com/static/v8/uploads/Student.png"
+  ]
+
 20.times do
   x = rand(0..2)
 
-  users << User.create!({
+  user = User.new({
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.free_email,
@@ -50,6 +66,9 @@ passenger_locations = []
     smoking: Faker::Boolean.boolean,
     password: "123456789"
     })
+  user.photo = open(urls.sample)
+  user.save
+  users << user
 end
 
 x = 0

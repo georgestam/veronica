@@ -79,14 +79,13 @@ en:
       passenger: PASSENGER
       passenger_call_to_action: Jump on!
       passenger_subtitle: Want an easier ride to uni?
-      slogan: Save Money, Time and Stress
       step_one: STEP 1
       step_one_explanation: Find/Propose a lift
       step_three: STEP 3
       step_three_explanation: Travel to uni!
       step_two: STEP 2
       step_two_explanation: Jump on/Pick up!
-      subtitle: The first carsharing service of Warwick University
+      subtitle: Getting to uni just got easier
       testimonial_four_name: DJ Jordi from Spain
       testimonial_four_quote: Cheap but I really enjoy the music
       testimonial_one_name: Jean-claude from Belgium
@@ -95,9 +94,8 @@ en:
       testimonial_three_quote: Luke Breen approves this service!
       testimonial_two_name: Paul de Pologne
       testimonial_two_qoute: Testimonial two qoute
-      testimonial_two_quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      title: Warwick Car Sharing
+      testimonial_two_quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      title: LiftIn
   passenger-journeys: Passenger-journeys
   passenger_journeys: Passenger journeys
   pick_up_location_html: "<strong>Pick up location:</strong> %{location}"
