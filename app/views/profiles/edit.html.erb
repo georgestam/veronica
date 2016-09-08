@@ -9,7 +9,7 @@
           <h2>Personal info</h2>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
-          <%= f.input :date_of_birth %>
+          <%= f.input :date_of_birth, as: :date_picker %>
           <%= f.input :description %>
           <%= f.input :gender %>
 
@@ -29,7 +29,7 @@
 
           <%= f.input :photo, as: :attachinary %>
 
-          <%= f.button :submit, class: "btn btn-primary"%>
+          <%= f.button :submit, class: "btn-custom btn-primary"%>
         <% end %>
       </div>
     </div>

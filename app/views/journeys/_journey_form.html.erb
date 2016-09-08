@@ -1,11 +1,13 @@
 <%= simple_form_for [@journey.car, @journey] do |f| %>
   <%= f.input :seats_available, input_html: { min: '1', max: '7', step: 'any'} %>
-  <%= f.input :pick_up_time, as: :bootstrap_datepicker  %>
+  <%= f.input :pick_up_time, as: :datetime_picker %>
   <%= f.fields_for :pick_up_location do |l| %>
     <%= l.input :address, label: 'Pick-up Address', id: "pick_up_address", input_html: { class: :autocomplete } %>
   <% end %>
   <%= f.fields_for :drop_off_location do |l| %>
     <%= l.input :address, label: 'Drop-off Address', id: "drop_off_address", input_html: { class: :autocomplete } %>
   <% end %>
-  <%= f.button :submit, { class: "btn btn-danger wide-btn"} %>
+  <%= f.button :submit, { class: "btn-custom btn-primary wide-btn"} %>
 <% end %>
+
+
