@@ -10,7 +10,7 @@
 <p>Email: <%= @user.email %></p>
 <p>Phone number: <%= @user.phone_number %></p>
 <p>Gender: <%= @user.gender %></p>
-<p>DOB: <%= @user.date_of_birth %></p>
+<p>DOB: <%= @user.date_of_birth.strftime("%d-%m-%Y") %></p>
 
 <h2>Driver bio</h2>
 <p>Description: <%= @user.description %></p>

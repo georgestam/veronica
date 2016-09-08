@@ -21,6 +21,10 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# Date-time picker gems
+gem 'momentjs-rails', '~> 2.9'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
@@ -63,3 +67,5 @@ gem "simple_token_authentication"
 
 #  Translation gems
 gem 'rails-i18n', '~> 5.0.0'
+
+
