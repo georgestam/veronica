@@ -9,7 +9,6 @@ class JourneysController < ApplicationController
 
   def show
     @journey = Journey.find(params[:id])
-    @passenger = Passenger.new(user: current_user, journey: @journey)
     set_passenger_locations # This sets which locations the passenger can pick from based on all PassengerLocations and the drivers departure location
     @car = @journey.car
     create_waypoints # This will create an array of waypoints to give to the map

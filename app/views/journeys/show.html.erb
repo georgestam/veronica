@@ -151,15 +151,16 @@
 
                   <!-- If the journey is completed, notify user -->
                   <h4>Journey completed</h4>
-                <% elsif @journey.full? %>
 
-                  <!-- If the journey is full, notify user -->
-                  <h4>Journey is full!</h4>
                 <% elsif on_journey?(@journey) %>
 
                   <!-- If the user is already on the journey, allow them to cancel their booking -->
                   <% remove_passenger = @journey.passengers.where(user: current_user)[0] %>
                   <%= link_to 'Cancel booking', journey_passenger_path(journey_id: @journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
+                <% elsif @journey.full? %>
+
+                  <!-- If the journey is full, notify user -->
+                  <h4>Journey is full!</h4>
                 <% else %>
 
                   <!-- Allow a user to add themselves to the journey -> passenger#new -->
