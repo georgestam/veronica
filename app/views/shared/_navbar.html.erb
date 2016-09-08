@@ -56,6 +56,13 @@
           </div>
         </div>
 
+        <!-- Call to action for the user -->
+        <% if current_user.cars.empty? %>
+          <%= link_to t(".start_driving", default: "Start driving"), new_car_path, class: "navbar-wagon-item btn btn-primary" %>
+        <% else %>
+          <%= link_to t(".create_journey", default: "Create journey"), new_car_journey_path(car_id: current_user.cars[0].id), class: "navbar-wagon-item btn btn-primary" %>
+        <% end %>
+
       <% else %>
 
         <!-- Login text link -->
