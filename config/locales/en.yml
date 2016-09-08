@@ -79,14 +79,13 @@ en:
       passenger: PASSENGER
       passenger_call_to_action: Jump on!
       passenger_subtitle: Want an easier ride to uni?
-      slogan: Save Money, Time and Stress
       step_one: STEP 1
       step_one_explanation: Find/Propose a lift
       step_three: STEP 3
       step_three_explanation: Travel to uni!
       step_two: STEP 2
       step_two_explanation: Jump on/Pick up!
-      subtitle: The first carsharing service of Warwick University
+      subtitle: Getting to uni just got easier
       testimonial_four_name: DJ Jordi from Spain
       testimonial_four_quote: Cheap but I really enjoy the music
       testimonial_one_name: Jean-claude from Belgium
@@ -95,14 +94,16 @@ en:
       testimonial_three_quote: Luke Breen approves this service!
       testimonial_two_name: Paul de Pologne
       testimonial_two_qoute: Testimonial two qoute
-      testimonial_two_quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      title: Warwick Car Sharing
+      testimonial_two_quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      title: LiftIn
   passenger-journeys: Passenger-journeys
   passenger_journeys: Passenger journeys
   pick_up_location_html: "<strong>Pick up location:</strong> %{location}"
   pick_up_time: Pick up time
   preferences: Preferences
+  avg_journey_time_html: "<strong>Avg. journey time:</strong>"
+  num_of_journeys_driven_html: "<strong>No. of journeys driven:</strong> %{number}"
+  num_of_journeys_passenger_html: "<strong>No. of journeys as passenger:</strong> %{number}"
   profiles:
     dashboard:
       account-settings:
@@ -115,15 +116,11 @@ en:
       notifications:
         no_notifications: You don't have any notifications yet!
       overview:
-        avg_journey_time_html: "<strong>Avg. journey time:</strong>"
         car_verified: Car verified
         email_verified: Email verified
         journey_stats: Journey stats
         no_cars: You haven't uploaded your car details yet!
         no_reviews: You haven't been reviewed yet!
-        num_of_journeys_driven_html: "<strong>No. of journeys driven:</strong> %{number}"
-        num_of_journeys_passenger_html: "<strong>No. of journeys as passenger:</strong>
-          %{number}"
         payment_verified: Payment verified
         rating_html: "<strong>Rating:</strong>"
         student_verified: Student ID verified

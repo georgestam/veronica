@@ -4,6 +4,8 @@ class ProfilesController < ApplicationController
 
   def show
     @cars = Car.where(user: @user)
+
+    create_journey_arrays
   end
 
   def edit
@@ -18,11 +20,7 @@ class ProfilesController < ApplicationController
     @user = current_user
     authorize @user
 
-    @journeys = Journey.where(user: @user) #  Needed to calculate the avg_rating
-    calculate_avg_rating # This will return @avg-rating
-
-    @journeys_as_passenger = Passenger.where(user: current_user).map{|passenger| passenger.journey}
-    @journeys_as_driver = Journey.where(user: current_user)
+    create_journey_arrays
 
     calculate_account_progress # This will return @progress
     verifications
@@ -67,5 +65,13 @@ class ProfilesController < ApplicationController
     @payment_verification = false # Need to implement payment
     @student_id_verification = false # Need to implement student verificaiton
     @car_verification = true unless @user.cars.empty?
+  end
+
+  def create_journey_arrays
+    @journeys = Journey.where(user: @user) #  Needed to calculate the avg_rating
+    calculate_avg_rating # This will return @avg-rating
+
+    @journeys_as_passenger = Passenger.where(user: current_user).map{|passenger| passenger.journey}
+    @journeys_as_driver = Journey.where(user: current_user)
   end
 end

@@ -1,7 +1,7 @@
 class JourneyPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(completed: false)
+      scope.all
     end
   end
 
