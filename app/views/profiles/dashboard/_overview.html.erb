@@ -2,19 +2,66 @@
   <div class="col-xs-12 col-sm-4 hidden-xs">
     <div class="dashboard-card">
       <h2><%= t('.verification') %></h2>
-      <div class="<%= @email_verification ? 'verified' : "unverified" %>" id="email"><p><%= t('.email_verified')%></p></div>
-      <div class="<%= @payment_verification ? 'verified' : "unverified" %>" id="payment"><p><%= t('.payment_verified')%></p></div>
-      <div class="<%= @student_id_verification ? 'verified' : "unverified" %>" id="student_id"><p><%= t('.student_verified')%></p></div>
-      <div class="<%= @car_verification ? 'verified' : "unverified" %>" id="car"><p><%= t('.car_verified')%></p></div>
+      <div class="<%= @email_verification ? 'verified' : "unverified" %>" id="email">
+        <p>
+          <%= t('.email_verified')%>
+          <% if @email_verification %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @payment_verification ? 'verified' : "unverified" %>" id="payment">
+        <p>
+          <%= t('.payment_verified')%>
+          <% if @payment_verification %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @student_id_verification ? 'verified' : "unverified" %>" id="student_id">
+        <p>
+          <%= t('.student_id_verification')%>
+          <% if @student_id_verification %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @car_verification ? 'verified' : "unverified" %>" id="car">
+        <p>
+          <%= t('.car_verification')%>
+          <% if @car_verification %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
 
-      <h2>Journey stats</h2>
-      <p><%= t('num_of_journeys_driven_html', number: @journeys_as_driver.count)%></p>
-      <p><%= t('num_of_journeys_passenger_html', number: @journeys_as_passenger.count)%></p>
-      <p><%= t('avg_journey_time_html')%></p>
       <h2><%= t('preferences') %></h2>
       <p> <%= t('music_html', music: @user.music_habits) %> </p>
       <p> <%= t('speaking_html', speaking: @user.speaking_habits) %> </p>
       <p> <%= t('smoking_html')%> <%= @user.smoking ? "Yes" : "No" %> </p>
+
+      <div class="stats">
+        <div class="stat">
+          <h3><%= @journeys_as_driver.count %></h3>
+          <p>rides done</p>
+        </div>
+        <div class="stat">
+          <h3><%= @journeys_as_passenger.count%></h3>
+          <p>passengers taken</p>
+        </div>
+        <div class="stat">
+          <h3>35 min</h3>
+          <p>average ride</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-xs-12 col-sm-8">
@@ -27,7 +74,7 @@
         <% end %>
       <% else %>
         <% car = @user.cars[0] %>
-        <div class="container">
+        <div class="">
           <div class="row">
             <div class="col-xs-12 col-sm-3">
               <p><%= t('car_make_html', make: car.make) %></p>

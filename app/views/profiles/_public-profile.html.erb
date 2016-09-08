@@ -10,7 +10,7 @@
 
   </div>
   <div class="right-column">
-    <div class="container">
+    <div class="">
       <div class="row">
         <h2>Bio</h2>
         <p>Description: <%= @user.description %></p>
@@ -26,9 +26,21 @@
         <p> <%= t('smoking_html')%> <%= @user.smoking ? "Yes" : "No" %> </p>
 
         <h2>Driver stats</h2>
-        <p><%= t('num_of_journeys_driven_html', number: @journeys_as_driver.count)%></p>
-        <p><%= t('num_of_journeys_passenger_html', number: @journeys_as_passenger.count)%></p>
-        <p><%= t('avg_journey_time_html')%></p>
+
+        <div class="stats">
+          <div class="stat">
+            <h3><%= @journeys_as_driver.count %></h3>
+            <p>rides done</p>
+          </div>
+          <div class="stat">
+            <h3><%= @journeys_as_passenger.count%></h3>
+            <p>passengers taken</p>
+          </div>
+          <div class="stat">
+            <h3>35 min</h3>
+            <p>average ride</p>
+          </div>
+        </div
       </div>
     </div>
   </div>
