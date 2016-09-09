@@ -88,96 +88,82 @@
 
 <div class="wrapper-user-testify" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "Car-driver.jpg" %>');">
   <div class="container padded">
-
-    <div class="row">
-     <div class="col-xs-12 col-sm-6 padding-ajustment">
-      <div class="user-card" id="review">
-        <div class="user-card-info">
-        <div class="row">
-          <div class="col-xs-12 col-sm-6">
-            <%= image_tag "Bob-Ross.jpg", class:"responsive-img" %>
-          </div> <!-- end of col 1.3 -->
-          <div class="col-xs-12 col-sm-6">
-            <h3><%= t('.testimonial_one_name') %></h3>
-            <p> "<%= t('.testimonial_one_quote') %>" </p>
+    <div class="testimonial-carousel">
+      <div class="testimonial-carousel-item">
+        <div class="user-card">
+          <div class="testimonial-header">
+            <div>
+              <p>Amazing service, I'll never have to take the bus again. Yiha!!</p>
               <ul class="list-inline">
-                <li> <%= image_tag "yellow-rating.png" %> </li>
-                <li> <%= image_tag "yellow-rating.png" %> </li>
-                <li> <%= image_tag "yellow-rating.png" %> </li>
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
               </ul>
-          </div> <!-- end of col 1.2 -->
-          </div> <!-- end of row 1.2 -->
-        </div> <!-- end of user-card-info -->
-      </div> <!-- end of user-card -->
-    </div> <!-- end of col 1.1 -->
-  </div><!-- end of row 1.1 -->
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 padding-ajustment">
-      <div class="user-card" id="review">
-        <div class="user-card-info">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <%= image_tag "nico.jpg", class: "responsive-img" %>
-            </div> <!-- end of col 2.3 -->
-            <div class="col-xs-12 col-sm-6">
-              <h3><%= t('.testimonial_two_name')%></h3>
-              <p class="p-quote"> "<%= t('.testimonial_two_qoute')%>"</p>
-                <ul class="list-inline">
-                  <li> <%= image_tag "yellow-rating.png" %> </li>
-                  <li> <%= image_tag "yellow-rating.png" %> </li>
-                  <li> <%= image_tag "yellow-rating.png" %> </li>
-                  <li> <%= image_tag "yellow-rating.png" %> </li>
-                </ul>
-            </div> <!-- end of col 2.2 -->
-          </div> <!-- end of row 2.2 -->
-        </div> <!-- end of user-card-info -->
-      </div> <!-- end of user-card -->
-      </div> <!-- end of col 2.1 -->
-    </div> <!-- end of row -->
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 padding-ajustment">
-        <div class="user-card" id="review">
-          <div class="user-card-info">
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                  <%= image_tag "Luke.jpg", class: "responsive-img" %>
-              </div> <!-- end of col-3.3 -->
-              <div class="col-xs-12 col-sm-6">
-                <h3> <%= t('.testimonial_three_name')%></h3>
-                <p> "<%= t('.testimonial_three_quote')%>" </p>
-                <ul class="list-inline">
-                  <li> <%= image_tag "yellow-rating.png" %> </li>
-                  <li> <%= image_tag "yellow-rating.png" %> </li>
-                </ul>
-              </div> <!-- end of col-3.2 -->
-            </div> <!-- end of row 3.2 -->
-          </div> <!-- end of user-card-info 3 -->
-        </div> <!-- end of user-card 3 -->
-      </div> <!-- end of col 3.1 -->
-     </div> <!-- end of row 3 -->
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 padding-ajustment">
-        <div class="user-card" id="review">
-          <div class="user-card-info">
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <%= image_tag "Djjordy.jpg", class:"responsive-img" %>
-              </div> <!-- end of col 4.3 -->
-              <div class="col-xs-12 col-sm-6">
-                <h3> <%= t('.testimonial_four_name')%></h3>
-                <p> "<%= t('.testimonial_four_quote')%>" </p>
-                <ul class="list-inline">
-                  <li> <%= image_tag "yellow-rating.png" %> </li>
-                </ul>
-              </div> <!-- end of col 4.2 -->
-            </div> <!-- end of row 3.2 -->
-          </div> <!-- end of user-card-info -->
+            </div>
+          </div>
+          <div class="testimonial-footer">
+            <%= image_tag "Bob-Ross.jpg", class:"responsive-img", style: "width: 200px; border-radius: 50%;" %>
+            <h3><%= t('.testimonial_one_name') %></h3>
+          </div>
         </div> <!-- end of user-card -->
-      </div> <!-- end of col 4.1 -->
-    </div> <!-- end of row -->
+      </div>
+      <div class="testimonial-carousel-item">
+        <div class="user-card">
+          <div class="testimonial-header">
+            <div>
+              <p>Amazing service, I'll never have to take the bus again. Yiha!!</p>
+              <ul class="list-inline">
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+              </ul>
+            </div>
+          </div>
+          <div class="testimonial-footer">
+            <%= image_tag "Bob-Ross.jpg", class:"responsive-img", style: "width: 200px; border-radius: 50%;" %>
+            <h3><%= t('.testimonial_one_name') %></h3>
+          </div>
+        </div> <!-- end of user-card -->
+      </div>
+      <div class="testimonial-carousel-item">
+        <div class="user-card">
+          <div class="testimonial-header">
+            <div>
+              <p>Amazing service, I'll never have to take the bus again. Yiha!!</p>
+              <ul class="list-inline">
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+              </ul>
+            </div>
+          </div>
+          <div class="testimonial-footer">
+            <%= image_tag "Bob-Ross.jpg", class:"responsive-img", style: "width: 200px; border-radius: 50%;" %>
+            <h3><%= t('.testimonial_one_name') %></h3>
+          </div>
+        </div> <!-- end of user-card -->
+      </div>
+      <div class="testimonial-carousel-item">
+        <div class="user-card">
+          <div class="testimonial-header">
+            <div>
+              <p>Amazing service, I'll never have to take the bus again. Yiha!!</p>
+              <ul class="list-inline">
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+                <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
+              </ul>
+            </div>
+          </div>
+          <div class="testimonial-footer">
+            <%= image_tag "Bob-Ross.jpg", class:"responsive-img", style: "width: 200px; border-radius: 50%;" %>
+            <h3><%= t('.testimonial_one_name') %></h3>
+          </div>
+        </div> <!-- end of user-card -->
+      </div>
+    </div>
+
+
 
   </div> <!-- end of container -->
 </div> <!-- end of wrapper-user-->
