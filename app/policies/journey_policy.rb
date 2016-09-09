@@ -24,4 +24,8 @@ class JourneyPolicy < ApplicationPolicy
   def driver_journey?
     record.user == user
   end
+
+  def journey_information?
+    true
+  end
 end

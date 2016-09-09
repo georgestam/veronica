@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       namespace :v1 do
         get "journeys/driver", to: "journeys#driver", as: :journey_driver
         get "journeys/passenger", to: "journeys#passenger", as: :journey_passenger
+        get "journeys/information", to: "journeys#journey_information", as: :journey_information
         resources :journeys, only: [:index, :show, :update]
       end
     end

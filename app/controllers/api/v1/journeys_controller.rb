@@ -29,6 +29,35 @@ class Api::V1::JourneysController < Api::V1::BaseController
     @journeys_as_passenger = Passenger.where(user: current_user).map{|passenger| passenger.journey}
   end
 
+  def journey_information
+    journeys_information = policy_scope(Journey)
+    i = 0
+    @journeys = []
+    authorize journeys_information
+
+    journeys_information.each do |journey|
+      start = journey.pick_up_location.address
+      destination = journey.drop_off_location.address
+      time = journey.pick_up_time
+      driver = journey.user.full_name
+      passengers = {}
+
+      journey.passengers.each do |p|
+        passengers = p.user.full_name
+      end
+
+      @journeys[i] = {
+        driver: driver,
+        start: start,
+        destination: destination,
+        time: time,
+        passengers: passengers
+      }
+      i += 1
+    end
+    p @journeys
+  end
+
   private
 
   def set_journey
