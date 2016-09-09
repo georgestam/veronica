@@ -136,7 +136,18 @@
   opacity: 1;
 }
 .btn-booking {
-  background-color: $orange;
+background-color: #EEAA7B ;
+ width: auto;
+ padding: 15px;
+ border-bottom: 1px solid rgb(21, 126, 171);
+ font-weight: bold;
+ font-size: 19px;
+ transition: all 0.3s ease;
+ &:hover {
+   transform: translateY(-3px);
+   border-bottom-color: rgb(26, 159, 217);
+   background-color: rgb(62, 180, 232);
+  }
 }
 
 
