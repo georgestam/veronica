@@ -16,6 +16,7 @@ class PassengerMailer < ApplicationMailer
   def new_passenger(passenger)
     @journey = passenger.journey
     @user = @journey.user # This is the driver
+    @passenger = passenger # This is the passenger
 
     mail(to: @user.email, subject: "New passenger for your journey")
   end
