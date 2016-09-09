@@ -1,0 +1,28 @@
+.testimonial-footer, .testimonial-header  {
+  display: flex;
+  align-items: center;
+}
+.testimonial-footer {
+  justify-content: center;
+  img {
+    width: 80px !important;
+    border-radius: 50%;
+  }
+  h3 {
+    font-size: 14px;
+    /* font-weight: 100; */
+    padding-left: 10px;
+    margin-top: 0;
+    margin-bottom: 0
+  }
+}
+.testimonial-header {
+  justify-content: space-around;
+  text-align: center;
+  height: 200px;
+  p {
+    font-size: 19px;
+    margin-bottom: 30px;
+    color: #969696;
+  }
+}

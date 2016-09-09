@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-xs-12 col-md-6">
         <% if journey.user.photo? %>
-          <%= cl_image_tag journey.user.photo.path, class: "responsive-avatar text-center-xs" %>
+          <%= cl_image_tag journey.user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
         <% else %>
           <% avatar_url = journey.user.facebook_picture_url || "http://placehold.it/200x200" %>
           <%= image_tag avatar_url, class:"responsive-avatar text-center-xs" %>

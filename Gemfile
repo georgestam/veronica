@@ -20,6 +20,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+gem "jquery-slick-rails"
 
 # Date-time picker gems
 gem 'momentjs-rails', '~> 2.9'
