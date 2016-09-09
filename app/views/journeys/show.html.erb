@@ -88,14 +88,14 @@
                 <% if user_signed_in?  %>
                   <% if policy(@journey).update? %>
                     <li>
-                      <%= link_to edit_journey_path(@journey) do %>
+                      <%= link_to edit_journey_path(id: @journey.id) do %>
                         <i class="fa fa-pencil"></i>
                       <% end %>
                     </li>
                   <% end %>
                   <% if policy(@journey).destroy? %>
                     <li>
-                      <%= link_to journey_path(@journey), method: :delete do %>
+                      <%= link_to journey_path(id: @journey.id), method: :delete do %>
                         <i class="fa fa-trash"></i>
                       <% end %>
                     </li>

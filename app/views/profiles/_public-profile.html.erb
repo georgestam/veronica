@@ -1,7 +1,7 @@
 <div class="public-profile">
   <div class="left-column text-center">
     <% if @user.photo? %>
-      <%= cl_image_tag @user.photo.path, class: "avatar-xl text-center" %>
+      <%= cl_image_tag @user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
     <% else %>
       <% avatar_url = @user.facebook_picture_url || "http://placehold.it/100x100" %>
       <%= image_tag avatar_url, class: "avatar-xl text-center" %>
