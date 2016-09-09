@@ -36,9 +36,6 @@ class JourneysController < ApplicationController
   end
 
   def edit
-    @car = Car.find(params[:car_id])
-    @journey.car = @car
-    authorize @journey
   end
 
   def update
