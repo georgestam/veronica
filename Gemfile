@@ -26,6 +26,9 @@ gem "jquery-slick-rails"
 gem 'momentjs-rails', '~> 2.9'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
+# jednotka gem
+gem "compass-rails"
+
 group :development do
   gem "rails_real_favicon"
 end

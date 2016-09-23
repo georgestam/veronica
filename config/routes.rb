@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
 
+    get "test", to: "profiles#test", as: :test
+
     get "users/:id", to: "profiles#show", as: :profile
     get "/dashboard", to: "profiles#dashboard", as: :dashboard
     get "profile/:id/edit", to: "profiles#edit", as: :edit_profile

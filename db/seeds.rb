@@ -66,7 +66,7 @@ urls = [
     smoking: Faker::Boolean.boolean,
     password: "123456789"
     })
-  user.photo = open(urls.sample)
+  # user.photo = open(urls.sample)
   user.save
   users << user
 end

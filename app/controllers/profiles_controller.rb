@@ -26,6 +26,14 @@ class ProfilesController < ApplicationController
     verifications
   end
 
+  def test
+
+    @user = current_user
+    authorize @user
+
+
+  end
+
   private
 
   def find_user

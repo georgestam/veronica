@@ -1,0 +1,148 @@
+.carousel-blur {
+
+  .item {
+    text-align: center;
+  }
+
+  .big {
+    color: $carousel-blur-text-color;
+    margin-top: 54px;
+    @include font(36px); // 0.6
+
+    @include sm-only {
+      margin-top: 72px;
+      @include font(48px); // 0.8
+    }
+
+    @include md-plus {
+      margin-top: 90px;
+      @include font(60px); // 1.0
+    }
+  }
+
+  .normal {
+    @extend .big;
+    font-weight: 300;
+    margin: 0;
+    margin-top: 27px;
+    @include font(18px);
+
+    @include sm-only {
+      margin-top: 36px;
+      @include font(24px);
+    }
+
+    @include md-plus {
+      margin-top: 45px;
+      @include font(30px);
+    }
+  }
+
+  .btn.btn-lg {
+    margin-top: 50px;
+    margin-bottom: 95px;
+    font-size: 14px;
+    padding: 12px 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    @include text-shadow(1px 1px 1px rgba($black, .4));
+
+    @include sm-plus {
+      margin-top: 50px;
+      margin-bottom: 95px;
+    }
+  }
+}
+
+// free for combination with other carousels
+
+.hero-carousel.carousel-blur-arrows:hover {
+  .flex-direction-nav {
+    .flex-next, .flex-prev {
+      @include opacity(1);
+    }
+  }
+}
+
+.carousel-blur-arrows {
+  .flex-direction-nav {
+    .flex-next, .flex-prev {
+      margin-top: floor(-(($carousel-blur-controls-size/2)-($nav-height/2)));
+      color: $carousel-blur-controls-color;
+      border: 2px solid $carousel-blur-controls-color;
+      text-align: center;
+      vertical-align: middle;
+      line-height: $carousel-blur-controls-size;
+      @include border-radius(50%);
+      @include square($carousel-blur-controls-size);
+      @include opacity($carousel-blur-control-opacity);
+      @include transition(opacity $transition-duration-base);
+
+      &:before {
+        @include icon($fa-var-chevron-right);
+        position: relative;
+        top: -1px;
+        font-size: floor($carousel-blur-controls-size / 2);
+      }
+    }
+
+    .flex-prev {
+      left: -30px;
+
+      @include md-only {
+        left: 0px;
+      }
+
+      &:before { content: $fa-var-chevron-left; margin-left: -2px; }
+    }
+
+    .flex-next {
+      right: -30px;
+
+      @include md-only {
+        right: 0px;
+      }
+
+      &:before { content: $fa-var-chevron-right; margin-right: -2px; }
+    }
+  }
+}
+
+.carousel-blur-pagination {
+  .flex-control-paging {
+    bottom: $carousel-contrast-pagination-size;
+    height: $carousel-contrast-pagination-size + 2px;
+
+    a {
+      display: inline-block;
+      cursor: pointer;
+      color: transparent;
+      position: relative;
+      background-color: transparent;
+      border: 2px solid transparent;
+      text-indent: -9999px;
+      @include square($carousel-blur-pagination-size);
+      @include border-radius(50%);
+
+      &:before {
+        $dot-size: floor($carousel-blur-pagination-size/3);
+        content: '';
+        text-indent: -9999px;
+        display: block;
+        text-indent: -9999px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: floor(-$dot-size/2);
+        margin-top: floor(-$dot-size/2);
+        background-color: $carousel-blur-pagination-color;
+        @include square($dot-size);
+        @include border-radius(50%);
+      }
+
+      &:hover, &.flex-active {
+        border-color: $carousel-blur-pagination-color;
+      }
+    }
+  }
+}

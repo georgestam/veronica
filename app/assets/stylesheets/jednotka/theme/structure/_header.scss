@@ -1,0 +1,97 @@
+/*------------------------------------*\
+    $HEADER
+\*------------------------------------*/
+#header {
+  position: relative;
+  z-index: $zindex-minimum;
+
+  $nav-collapsed-breakpoint: $screen-sm;
+  $nav-default: ".navbar-default.navbar-collapsed-sm";
+  @import "navigation";
+  $nav-collapsed-breakpoint: $screen-sm;
+  $nav-default: ".navbar-default.navbar-collapsed-md";
+  @import "navigation";
+
+  &.header--fixed {
+    @include transition-property(margin-top);
+    @include transition-duration(0.5s);
+
+    position: fixed;
+    top: -91px;
+    left: 0;
+    width: 100%;
+    margin-top: 0;
+
+    &.header--default {
+      background: #fff;
+      border-bottom: solid 1px $very-light;
+
+      .navbar-default,
+      .navbar-default.navbar-collapsed-sm {
+        .navbar-nav {
+          a {
+            span {
+              @include text-shadow(none);
+              color: $medium;
+
+              @include sm-minus {
+                color: $white;
+              }
+            }
+
+            &:hover,
+            &:focus {
+              span {
+                color: $medium;
+
+                @include sm-minus {
+                  color: $white;
+                }
+              }
+            }
+          }
+
+          .active,
+          .open {
+            a {
+              span {
+                color: $medium;
+
+                @include sm-minus {
+                  color: $white;
+                }
+              }
+            }
+          }
+        }
+
+        .navbar-toggle {
+          color: $medium;
+          border-color: $medium;
+
+          .icon-bar {
+            background-color: $medium;
+          }
+        }
+      }
+
+      .dropdown-menu {
+        @include box-shadow(0 0px 12px rgba(0,0,0,0.175));
+        background-clip: initial;
+      }
+    }
+  }
+
+  &.header--visible {
+    @include transition-property(margin-top);
+    @include transition-duration(0.5s);
+
+    margin-top: 91px;
+  }
+}
+
+.main--header-fixed {
+    padding-top: 91px;
+}
+
+.lt-ie9 #header .navbar-right { margin-right: -30px; }
