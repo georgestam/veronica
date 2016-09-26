@@ -22,31 +22,14 @@
           <% end %>
         </p>
       </div>
-      <div class="<%= @student_id_verification ? 'verified' : "unverified" %>" id="student_id">
-        <p>
-          <%= t('.student_id_verification')%>
-          <% if @student_id_verification %>
-            <i class="fa fa-check"></i>
-          <% else %>
-            <i class="fa fa-close"></i>
-          <% end %>
-        </p>
-      </div>
-      <div class="<%= @car_verification ? 'verified' : "unverified" %>" id="car">
-        <p>
-          <%= t('.car_verification')%>
-          <% if @car_verification %>
-            <i class="fa fa-check"></i>
-          <% else %>
-            <i class="fa fa-close"></i>
-          <% end %>
-        </p>
-      </div>
+
+
+
 
       <h2><%= t('preferences') %></h2>
-      <p> <%= t('music_html', music: @user.music_habits) %> </p>
-      <p> <%= t('speaking_html', speaking: @user.speaking_habits) %> </p>
-      <p> <%= t('smoking_html')%> <%= @user.smoking ? "Yes" : "No" %> </p>
+      <p> <%#= t('music_html', music: @user.music_habits) %> </p>
+      <p> <%#= t('speaking_html', speaking: @user.speaking_habits) %> </p>
+      <p> <%#= t('smoking_html')%> <%#= @user.smoking ? "Yes" : "No" %> </p>
 
       <div class="stats">
         <div class="stat">

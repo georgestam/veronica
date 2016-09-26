@@ -32,14 +32,7 @@ en:
         email: Email
         first_name: First name
         gender: Gender
-        last_name: Last name
-        music_habits: Music habits
-        phone_number: Phone number
-        smoking: Smoking
-        speaking_habits: Speaking habits
-        student_id: Student ID
-        uni_course: University course
-        year_of_study: Year of study
+
     models:
       car: Car
       journey: Journey
