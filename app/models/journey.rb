@@ -3,6 +3,9 @@ class Journey < ApplicationRecord
   belongs_to :car
   has_many :passengers
 
+  # validates :start_time, :finish_time, :num_of_students, presence: true
+
+  # remove
   has_many :passenger_locations, through: :passengers
 
   belongs_to :pick_up_location, class_name: "Location"

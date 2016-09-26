@@ -5,6 +5,11 @@ class CreateLocations < ActiveRecord::Migration[5.0]
       t.float :latitude
       t.float :longitude
     end
+
+
+
+
+    # remove
     remove_column :journeys, :pick_up_location, :string
     remove_column :journeys, :drop_off_location, :string
     add_column :journeys, :pick_up_location_id, :integer
