@@ -32,23 +32,32 @@ ActiveRecord::Schema.define(version: 20160906160740) do
 
   create_table "cars", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "bio"
+    t.string   "video_URL"
+    t.string   "available_time"
+    t.string   "travel_distance"
+    t.string   "price_hour"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "make"
     t.string   "name"
     t.string   "vrn"
     t.string   "colour"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cars_on_user_id", using: :btree
   end
 
   create_table "journeys", force: :cascade do |t|
-    t.integer  "seats_available"
     t.integer  "user_id"
     t.integer  "car_id"
-    t.datetime "pick_up_time"
     t.boolean  "completed"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "num_of_students"
+    t.datetime "start_time"
+    t.datetime "finish_time"
+    t.string   "payment"
+    t.integer  "seats_available"
+    t.datetime "pick_up_time"
     t.float    "pick_up_latitude"
     t.float    "pick_up_longitude"
     t.float    "drop_off_latitude"
@@ -74,10 +83,14 @@ ActiveRecord::Schema.define(version: 20160906160740) do
   create_table "passengers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "journey_id"
-    t.integer  "driver_rating"
-    t.integer  "passenger_rating"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "parent_rating"
+    t.integer  "parent_review"
+    t.integer  "teacher_rating"
+    t.integer  "teacher_review"
+    t.integer  "driver_rating"
+    t.integer  "passenger_rating"
     t.integer  "passenger_location_id"
     t.index ["journey_id"], name: "index_passengers_on_journey_id", using: :btree
     t.index ["user_id"], name: "index_passengers_on_user_id", using: :btree
@@ -98,16 +111,21 @@ ActiveRecord::Schema.define(version: 20160906160740) do
     t.datetime "updated_at",                                        null: false
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "phone_number"
     t.text     "description"
     t.string   "gender"
+    t.boolean  "teacher"
+    t.string   "linkedin_URL"
+    t.string   "Facebook_URL"
+    t.string   "bank_account"
+    t.string   "passport_verification"
+    t.integer  "student_id"
     t.datetime "date_of_birth"
     t.string   "music_habits"
     t.string   "speaking_habits"
     t.integer  "year_of_study"
     t.string   "uni_course"
     t.boolean  "smoking"
-    t.string   "phone_number"
-    t.string   "student_id"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

@@ -1,3 +1,5 @@
+# remove
+
 class PassengerLocation < ApplicationRecord
 
   locations = [
