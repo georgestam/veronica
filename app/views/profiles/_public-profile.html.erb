@@ -16,14 +16,14 @@
         <p>Description: <%= @user.description %></p>
 
         <h2>University information</h2>
-        <p>Student ID: <%= @user.student_id %></p>
-        <p>Year of study: <%= @user.year_of_study %></p>
-        <p>Course: <%= @user.uni_course %></p>
+        <p>Student ID: <%#=  @user.student_id %></p>
+        <p>Year of study: <%#=  @user.year_of_study %></p>
+
 
         <h2><%= t('preferences') %></h2>
-        <p> <%= t('music_html', music: @user.music_habits) %> </p>
-        <p> <%= t('speaking_html', speaking: @user.speaking_habits) %> </p>
-        <p> <%= t('smoking_html')%> <%= @user.smoking ? "Yes" : "No" %> </p>
+        <p> <%#= t('music_html', music: @user.music_habits) %> </p>
+        <p> <%#= t('speaking_html', speaking: @user.speaking_habits) %> </p>
+        <p> <%#= t('smoking_html')%> <%#= @user.smoking ? "Yes" : "No" %> </p>
 
         <h2>Driver stats</h2>
 

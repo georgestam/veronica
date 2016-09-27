@@ -34,7 +34,7 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:photo, :first_name, :last_name, :email, :phone_number, :description, :gender, :student_id, :date_of_birth, :music_habits, :speaking_habits, :year_of_study, :uni_course, :smoking)
+    params.require(:user).permit(:photo, :first_name, :last_name, :email, :phone_number, :description, :gender)
   end
 
   def calculate_avg_rating
@@ -63,7 +63,7 @@ class ProfilesController < ApplicationController
   def verifications
     @email_verification = true if @user.confirmed?
     @payment_verification = false # Need to implement payment
-    @student_id_verification = false # Need to implement student verificaiton
+    # @student_id_verification = false # Need to implement student verificaiton
     @car_verification = true unless @user.cars.empty?
   end
 

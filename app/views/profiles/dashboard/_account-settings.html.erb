@@ -5,23 +5,23 @@
       <p><%= t('.email_html', email: @user.email) %></p>
       <p><%= t('.phone_number_html', phone_number: @user.phone_number) %></p>
       <p><%= t('.gender_html', gender: @user.gender) %></p>
-      <p><%= t('.date_of_birth_html')%> <%= l(@user.date_of_birth, format: :day_month_year) unless @user.date_of_birth.nil? %></p>
+      <p><%#= t('.date_of_birth_html')%> <%#= l(@user.date_of_birth, format: :day_month_year) unless @user.date_of_birth.nil? %></p>
       <%= link_to t('edit'), edit_profile_path(@user), class: "btn btn-primary" %>
 
       <div class="divider"></div>
 
       <h2><%= t("university_information") %></h2>
-      <p><%= t('student_id_html', student_id: @user.student_id) %></p>
-      <p><%= t('year_of_study_html', year_of_study: @user.year_of_study) %></p>
-      <p><%= t('uni_course_html', course: @user.uni_course) %></p>
+      <p><%#= t('student_id_html', student_id: @user.student_id) %></p>
+      <p><%#= t('year_of_study_html', year_of_study: @user.year_of_study) %></p>
+      <p><%#= t('uni_course_html', course: @user.uni_course) %></p>
       <%= link_to t('edit'), edit_profile_path(@user), class: "btn btn-primary" %>
 
       <div class="divider"></div>
 
       <h2><%= t('preferences') %></h2>
-      <p><%= t('music_html', music: @user.music_habits) %></p>
-      <p><%= t('speaking_html', speaking: @user.speaking_habits) %></p>
-      <p><%= t('smoking_html')%><%= @user.smoking ? "Yes" : "No" %></p>
+      <p><%#= t('music_html', music: @user.music_habits) %></p>
+      <p><%#= t('speaking_html', speaking: @user.speaking_habits) %></p>
+      <p><%#= t('smoking_html')%><%#= @user.smoking ? "Yes" : "No" %></p>
       <%= link_to t('edit'), edit_profile_path(@user), class: "btn btn-primary" %>
 
       <div class="divider"></div>
