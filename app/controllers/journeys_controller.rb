@@ -4,12 +4,12 @@ class JourneysController < ApplicationController
   def index
     @journeys = policy_scope(Journey)
     @available_journeys = @journeys.select{ |journey| journey.remaining_seats > 0 && journey.completed != true}
-    @available_journeys.sort { |x,y| x.pick_up_time <=> y.pick_up_time }
+    # @available_journeys.sort { |x,y| x.pick_up_time <=> y.pick_up_time }
   end
 
   def show
     @journey = Journey.find(params[:id])
-    set_passenger_locations # This sets which locations the passenger can pick from based on all PassengerLocations and the drivers departure location
+
     @car = @journey.car
     create_waypoints # This will create an array of waypoints to give to the map
   end
@@ -19,7 +19,7 @@ class JourneysController < ApplicationController
     @journey = Journey.new
     @journey.car = @car
     @journey.build_pick_up_location
-    @journey.build_drop_off_location
+
     authorize @journey
   end
 
@@ -64,11 +64,12 @@ class JourneysController < ApplicationController
 
   def journey_params
     params.require(:journey).permit(
-      :seats_available,
-      :pick_up_time,
+
       :completed,
-      pick_up_location_attributes: [ :address ],
-      drop_off_location_attributes: [ :address ]
+      :pick_up_time,
+      :seats_available,
+      pick_up_location_attributes: [ :address ]
+      # drop_off_location_attributes: [ :address ]
     )
   end
 
@@ -78,9 +79,6 @@ class JourneysController < ApplicationController
     end
   end
 
-  def set_passenger_locations
-    @passenger_locations = PassengerLocation.all
-  end
 
   def create_waypoints
     @waypoints = @journey.passengers.map do |passenger|

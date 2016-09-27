@@ -11,10 +11,10 @@
             <p><i class="fi-clock"></i> <%= l(journey.pick_up_time, format: :time_date)%> </p>
 
             <ul>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('pick_up_location_html', location: journey.pick_up_location.address) %></li>
-              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('destination_html', location: journey.drop_off_location.address) %></li>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%#= t('pick_up_location_html', location: journey.pick_up_location.address) %></li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%#= t('destination_html', location: journey.drop_off_location.address) %></li>
               <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('driver_name_html', name: journey.user.full_name) %></li>
-              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= t("vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
+              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%#= t("vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
               <li> <i class="fa fa-users" aria-hidden="true"></i>  <%= t('seats_available_html', seats_available: journey.remaining_seats) %> </li>
             </ul>
             <% remove_passenger = journey.passengers.where(user: current_user)[0] %>
@@ -36,10 +36,10 @@
           <div class='product-body'>
             <p> <%= l(journey.pick_up_time, format: :time_date)%> </p>
             <ul>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('pick_up_location_html', location: journey.pick_up_location.address) %></li>
-              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('destination_html', location: journey.drop_off_location.address) %></li>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%#= t('pick_up_location_html', location: journey.pick_up_location.address) %></li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%#= t('destination_html', location: journey.drop_off_location.address) %></li>
               <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('num_of_passengers_html') %> <%= journey.passengers.count %></li>
-              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%= t("vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
+              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%#= t("vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
               <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('seats_available_html', seats_available: journey.remaining_seats) %> </li>
             </ul>
             <%= simple_form_for [journey] do |f| %>

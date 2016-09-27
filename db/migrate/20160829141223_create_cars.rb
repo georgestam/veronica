@@ -11,11 +11,7 @@ class CreateCars < ActiveRecord::Migration[5.0]
 
       t.timestamps
 
-      # delete
-      t.string :make
-      t.string :name
-      t.string :vrn
-      t.string :colour
+
 
     end
   end

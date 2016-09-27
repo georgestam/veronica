@@ -8,11 +8,11 @@
         <p> <%= journey.pick_up_time%> </p>
 
         <ul>
-          <li><i class="fa fa-calendar" aria-hidden="true"></i> <%= journey.pick_up_location %></li>
-          <li><i class="fa fa-map-marker" aria-hidden="true"> </i> <%= journey.drop_off_location %></li>
+          <li><i class="fa fa-calendar" aria-hidden="true"></i> <%#= journey.pick_up_location %></li>
+          <li><i class="fa fa-map-marker" aria-hidden="true"> </i> <%#= journey.drop_off_location %></li>
           <li> <i class="fa fa-money" aria-hidden="true"></i> <%= journey.user %> £ p/p </li>
           <li> <i class="fa fa-cutlery" aria-hidden="true"></i> <%= journey.car %></li>
-          <li> <i class="fa fa-users" aria-hidden="true"></i> <%= journey.seats_available %> </li>
+          <li> <i class="fa fa-users" aria-hidden="true"></i> <%#= journey.seats_available %> </li>
         </ul>
       </div>
       <%= link_to "", journey_path(journey), class: "product-link" %>
@@ -30,11 +30,11 @@
         <p> <%= journey.pick_up_time%> </p>
 
         <ul>
-          <li><i class="fa fa-calendar" aria-hidden="true"></i> <%= journey.pick_up_location %></li>
-          <li><i class="fa fa-map-marker" aria-hidden="true"> </i> <%= journey.drop_off_location %></li>
-          <li> <i class="fa fa-money" aria-hidden="true"></i> <%= journey.passengers %> £ p/p </li>
+          <li><i class="fa fa-calendar" aria-hidden="true"></i> <%#= journey.pick_up_location %></li>
+          <li><i class="fa fa-map-marker" aria-hidden="true"> </i> <%#= journey.drop_off_location %></li>
+          <li> <i class="fa fa-money" aria-hidden="true"></i> <%#= journey.passengers %> £ p/p </li>
           <li> <i class="fa fa-cutlery" aria-hidden="true"></i> <%= journey.car %></li>
-          <li> <i class="fa fa-users" aria-hidden="true"></i> <%= journey.seats_available %> </li>
+          <li> <i class="fa fa-users" aria-hidden="true"></i> <%#= journey.seats_available %> </li>
         </ul>
       </div>
       <%= link_to "", journey_path(journey), class: "product-link" %>

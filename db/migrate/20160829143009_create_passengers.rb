@@ -6,15 +6,11 @@ class CreatePassengers < ActiveRecord::Migration[5.0]
 
       t.timestamps
 
-      t.integer :parent_rating
-      t.integer :parent_review
-      t.integer :teacher_rating
-      t.integer :teacher_review
-
-      # delete
-
       t.integer :driver_rating
       t.integer :passenger_rating
+
+      t.integer :driver_review
+      t.integer :passenger_review
 
     end
   end

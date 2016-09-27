@@ -1,10 +1,8 @@
 <%= simple_form_for @car do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :make %>
-  <%= f.input :name %>
-  <%= f.input :vrn %>
-  <%= f.input :colour %>
+  <%#= f.input :make %>
+
   <%= f.input :photo, as: :attachinary %>
 
   <%= f.button :submit, class: "btn btn-primary wide-btn" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906160740) do
+ActiveRecord::Schema.define(version: 20160905103427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,6 @@ ActiveRecord::Schema.define(version: 20160906160740) do
     t.string   "price_hour"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "make"
-    t.string   "name"
-    t.string   "vrn"
-    t.string   "colour"
     t.index ["user_id"], name: "index_cars_on_user_id", using: :btree
   end
 
@@ -50,20 +46,13 @@ ActiveRecord::Schema.define(version: 20160906160740) do
     t.integer  "user_id"
     t.integer  "car_id"
     t.boolean  "completed"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "num_of_students"
-    t.datetime "start_time"
-    t.datetime "finish_time"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "Duration"
     t.string   "payment"
-    t.integer  "seats_available"
     t.datetime "pick_up_time"
-    t.float    "pick_up_latitude"
-    t.float    "pick_up_longitude"
-    t.float    "drop_off_latitude"
-    t.float    "drop_off_longitude"
+    t.integer  "seats_available"
     t.integer  "pick_up_location_id"
-    t.integer  "drop_off_location_id"
     t.index ["car_id"], name: "index_journeys_on_car_id", using: :btree
     t.index ["user_id"], name: "index_journeys_on_user_id", using: :btree
   end
@@ -74,24 +63,15 @@ ActiveRecord::Schema.define(version: 20160906160740) do
     t.float  "longitude"
   end
 
-  create_table "passenger_locations", force: :cascade do |t|
-    t.string "address"
-    t.float  "latitude"
-    t.float  "longitude"
-  end
-
   create_table "passengers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "journey_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.integer  "parent_rating"
-    t.integer  "parent_review"
-    t.integer  "teacher_rating"
-    t.integer  "teacher_review"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "driver_rating"
     t.integer  "passenger_rating"
-    t.integer  "passenger_location_id"
+    t.integer  "driver_review"
+    t.integer  "passenger_review"
     t.index ["journey_id"], name: "index_passengers_on_journey_id", using: :btree
     t.index ["user_id"], name: "index_passengers_on_user_id", using: :btree
   end
@@ -119,13 +99,6 @@ ActiveRecord::Schema.define(version: 20160906160740) do
     t.string   "Facebook_URL"
     t.string   "bank_account"
     t.string   "passport_verification"
-    t.integer  "student_id"
-    t.datetime "date_of_birth"
-    t.string   "music_habits"
-    t.string   "speaking_habits"
-    t.integer  "year_of_study"
-    t.string   "uni_course"
-    t.boolean  "smoking"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -144,10 +117,8 @@ ActiveRecord::Schema.define(version: 20160906160740) do
 
   add_foreign_key "cars", "users"
   add_foreign_key "journeys", "cars"
-  add_foreign_key "journeys", "locations", column: "drop_off_location_id"
   add_foreign_key "journeys", "locations", column: "pick_up_location_id"
   add_foreign_key "journeys", "users"
   add_foreign_key "passengers", "journeys"
-  add_foreign_key "passengers", "passenger_locations"
   add_foreign_key "passengers", "users"
 end

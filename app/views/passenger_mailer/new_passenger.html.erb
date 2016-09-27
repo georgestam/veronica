@@ -1,6 +1,6 @@
 <p>Hello <% @user.first_name%>,</p>
 
-<p>A new passenger has joined your journey to <strong><%= @journey.drop_off_location.address %></strong> on <strong><%= l(@journey.pick_up_time, format: :time_date) %></strong></p>
+<p>A new passenger has joined your journey to <strong><%#= @journey.drop_off_location.address %></strong> on <strong><%= l(@journey.pick_up_time, format: :time_date) %></strong></p>
 
 <p>Please see their details below:</p>
 

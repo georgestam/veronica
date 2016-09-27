@@ -60,10 +60,8 @@
         <div class="">
           <div class="row">
             <div class="col-xs-12 col-sm-3">
-              <p><%= t('car_make_html', make: car.make) %></p>
-              <p><%= t('car_model_html', name: car.name) %></p>
-              <p><%= t('car_colour_html', colour: car.colour) %></p>
-              <p><%= t('car_vrn_html', vrn: car.vrn) %></p>
+              <p><%#= t('car_make_html', make: car.make) %></p>
+
             </div>
             <div class="col-xs-12 col-sm-3 col-sm-offset-1">
               <%= link_to t('update_car'), edit_car_path(car), class: "btn btn-primary" %>
