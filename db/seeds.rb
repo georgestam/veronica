@@ -133,10 +133,11 @@ end
     user: users.sample,
     car: cars.sample,
     seats_available: rand(1..4),
-    pick_up_time: Faker::Time.forward(7, :morning) ,
+    pick_up_time: Faker::Time.forward(7, :morning),
+    duration: rand(1..4),
     pick_up_location: locations.sample,
-    Duration: rand(1..3),
-    completed: false
+    duration: rand(1..3),
+    completed: false,
     })
 end
 

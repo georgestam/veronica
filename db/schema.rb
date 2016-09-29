@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20160928104810) do
   end
 
   create_table "availabilities", force: :cascade do |t|
-    t.string   "migration"
     t.string   "weekday"
     t.datetime "start"
     t.datetime "finish"
@@ -58,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160928104810) do
     t.boolean  "completed"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "Duration"
+    t.integer  "duration"
     t.string   "payment"
     t.datetime "pick_up_time"
     t.integer  "seats_available"
@@ -105,7 +104,6 @@ ActiveRecord::Schema.define(version: 20160928104810) do
     t.text     "description"
     t.string   "gender"
     t.string   "address"
-    t.boolean  "teacher"
     t.string   "linkedin_URL"
     t.string   "facebook_URL"
     t.string   "bank_account"

@@ -12,7 +12,7 @@ class CreateJourneys < ActiveRecord::Migration[5.0]
 
       # t.references :location, foreign_key: true
 
-      t.string :Duration
+      t.integer :duration
       t.string :payment
 
       t.datetime :pick_up_time
