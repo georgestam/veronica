@@ -5,7 +5,6 @@ class CreateCars < ActiveRecord::Migration[5.0]
 
       t.string :bio
       t.string :video_URL
-      t.string :available_time
       t.string :travel_distance
       t.string :price_hour
 

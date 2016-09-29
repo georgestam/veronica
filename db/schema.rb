@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905103427) do
+ActiveRecord::Schema.define(version: 20160928104810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,21 @@ ActiveRecord::Schema.define(version: 20160905103427) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
+  create_table "availabilities", force: :cascade do |t|
+    t.string   "migration"
+    t.string   "weekday"
+    t.datetime "start"
+    t.datetime "finish"
+    t.integer  "car_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_availabilities_on_car_id", using: :btree
+  end
+
   create_table "cars", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "bio"
     t.string   "video_URL"
-    t.string   "available_time"
     t.string   "travel_distance"
     t.string   "price_hour"
     t.datetime "created_at",      null: false
@@ -94,9 +104,10 @@ ActiveRecord::Schema.define(version: 20160905103427) do
     t.integer  "phone_number"
     t.text     "description"
     t.string   "gender"
+    t.string   "address"
     t.boolean  "teacher"
     t.string   "linkedin_URL"
-    t.string   "Facebook_URL"
+    t.string   "facebook_URL"
     t.string   "bank_account"
     t.string   "passport_verification"
     t.string   "confirmation_token"
@@ -115,6 +126,7 @@ ActiveRecord::Schema.define(version: 20160905103427) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "availabilities", "cars"
   add_foreign_key "cars", "users"
   add_foreign_key "journeys", "cars"
   add_foreign_key "journeys", "locations", column: "pick_up_location_id"
