@@ -14,26 +14,18 @@ Rails.application.routes.draw do
 
     resources :cars do
       resources :journeys, only:[:new, :create]
+      resources :availabilities, only:[:new, :create, :destroy]
     end
 
     resources :journeys, only:[:index, :show, :destroy, :update, :edit] do
       resources :passengers, only:[:create, :destroy]
     end
 
-    namespace :user do
-      resources :journeys, only:[:index]
-    end
-
     resources :passengers, only:[:update]
 
-    namespace :api, defaults: { format: :json } do
-      namespace :v1 do
-        get "journeys/driver", to: "journeys#driver", as: :journey_driver
-        get "journeys/passenger", to: "journeys#passenger", as: :journey_passenger
-        get "journeys/information", to: "journeys#journey_information", as: :journey_information
-        resources :journeys, only: [:index, :show, :update]
-      end
-    end
+    # namespace :user do
+      # resources :journeys, only:[:index]
+    # end
   end
 
   mount Attachinary::Engine => "/attachinary"
