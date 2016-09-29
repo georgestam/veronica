@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'faker'
 
 Passenger.destroy_all
@@ -12,15 +13,20 @@ Journey.destroy_all
 Car.destroy_all
 User.destroy_all
 Location.destroy_all
-PassengerLocation.destroy_all
+
 
 journeys = []
 cars = []
 users = []
-speaking_habits = ["Talkative", "Chatty", "SILENCE!"]
-uni_course = ["History", "Economics", "Engineering"]
-car_make = %w(Ferrari Porsche BMW Mercedes Mazda Ford Toyota Peugot Audi Mini)
-vrn = %w(VA52ZAB G4ALS S9EAO V651GAR M30SAK W200CAK VW55MAL CH55BAW TI33AAG JAZ605R)
+avaliabilities = []
+locations = []
+
+price_per_hour = [15, 20, 10, 22]
+
+
+weekdays = %w(Mondays Tuesdays Wednesday, Thursday, Friday, Saturday, Sunday)
+
+
 pick_up_locations = [
   "107 Tachbrook Road, Leamington Spa CV31 3EA, UK",
   "Leamington Spa Train Station, UK",
@@ -29,7 +35,7 @@ pick_up_locations = [
   "49 Kenilworth Road, Leamington Spa CV32, UK",
   "8A Clarendon Place, Leamington Spa CV32 5QN, UK",
   "45C Lansdowne Crescent, Willes Road, Leamington Spa CV32 4PR, UK"]
-passenger_locations = []
+
 
 urls = [
   "https://www.facebook.com/photo.php?fbid=10153305556957255&set=a.393745102254.165750.540587254&type=3&theater",
@@ -47,7 +53,28 @@ urls = [
   "https://www.pitchup.com/static/v8/uploads/Student.png"
   ]
 
-20.times do
+urls_linkedin = [
+"https://www.linkedin.com/in/jordi-fernandez-msc-ceng-bb42ab12?trk=nav_responsive_tab_profile",
+"https://www.linkedin.com/in/einateyal?trk=pub-pbmap",
+"https://www.linkedin.com/in/juanherrada?trk=pub-pbmap",
+"https://es.linkedin.com/in/cristina-crucianu-415268b0/en"
+]
+
+urls_facebook = [
+"https://www.facebook.com/alfredo.glz.glz?pnref=lhc.unseen",
+"https://www.facebook.com/laura.ludmany?pnref=lhc.unseen",
+"https://https://www.facebook.com/james.bunt?pnref=lhc.friends",
+"https://www.facebook.com/alfredo.glz.glz?pnref=lhc.unseen"
+]
+
+videos_url = [
+"https://www.youtube.com/watch?v=Bdw2wAXe97Y",
+"https://www.youtube.com/watch?v=zE_iwkMoGbQ",
+"https://www.youtube.com/watch?v=hBCWeJVkb0Q",
+"https://www.youtube.com/watch?v=8tMENwHyTOU"
+]
+
+10.times do
   x = rand(0..2)
 
   user = User.new({
@@ -57,55 +84,59 @@ urls = [
     phone_number: Faker::PhoneNumber.phone_number,
     description: Faker::Lorem.paragraph,
     gender: Faker::Boolean.boolean ? "male" : "female",
-    student_id: Faker::Number.number(7),
-    date_of_birth: Faker::Date.between(6570.days.ago, 10000.days.ago),
-    music_habits: Faker::Music.instrument ,
-    speaking_habits: speaking_habits.sample,
-    year_of_study: rand(1..4),
-    uni_course: uni_course.sample,
-    smoking: Faker::Boolean.boolean,
-    password: "123456789"
+    password: "123456789",
+    linkedin_URL: Faker::Boolean.boolean ? urls_linkedin.sample : "",
+    facebook_URL: Faker::Boolean.boolean ? urls_facebook.sample : "",
+    bank_account: Faker::Number.number(7),
+    passport_verification: Faker::Boolean.boolean ? true : false,
+    address: Faker::Boolean.boolean ? pick_up_locations.sample : ""
     })
   user.photo = open(urls.sample)
   user.save
   users << user
 end
 
+
 x = 0
 
-10.times do
+5.times do
   cars << Car.create!({
     user: users.sample,
-    make: car_make.sample,
-    name: Faker::Pokemon.name,
-    vrn: vrn[x],
-    colour: Faker::Color.color_name,
+    video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
+    bio: Faker::Lorem.paragraphs,
+    price_hour: price_per_hour.sample
     })
   x += 1
 end
 
-#  Passenger pick-up locations
-pick_up_locations.each do |location|
-  passenger_locations << PassengerLocation.create!({
-    address: location
+end_time =
+
+30.times do
+  start_time = Faker::Time.forward(7, :evening)
+  end_time = start_time + 60*60*3
+  avaliabilities << Availability.create!({
+    car: cars.sample,
+    weekday: weekdays.sample,
+    start: start_time,
+    finish: end_time
     })
 end
 
-# Driver drop-off location
-drop_off_location = Location.create!(address: "University of Warwick, Gibbet Hill Road, UK")
-
-# Driver departure location
-departure_location = Location.create!(address: "73 Brunswick Street, Leamington, UK")
+10.times do
+  locations << Location.create!({
+    address: pick_up_locations.sample,
+    })
+end
 
 10.times do
   journeys << Journey.create!({
     user: users.sample,
     car: cars.sample,
-    seats_available: rand(3..4),
+    seats_available: rand(1..4),
     pick_up_time: Faker::Time.forward(7, :morning) ,
-    pick_up_location: departure_location,
-    drop_off_location: drop_off_location,
-    completed: false,
+    pick_up_location: locations.sample,
+    Duration: rand(1..3),
+    completed: false
     })
 end
 
@@ -113,8 +144,9 @@ end
   Passenger.create!({
     user: users.sample,
     journey: journeys.sample,
-    passenger_location_id: passenger_locations.sample.id,
-    driver_rating: nil,
-    passenger_rating: nil,
+    driver_rating: rand(1..5),
+    passenger_rating: rand(1..5)
     })
 end
+
+
