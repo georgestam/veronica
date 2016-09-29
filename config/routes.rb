@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     resources :cars do
       resources :journeys, only:[:new, :create]
-      resources :availabilities, only:[:new, :create, :destroy]
+      resources :availabilities, only:[:new, :create,]
     end
 
     resources :journeys, only:[:index, :show, :destroy, :update, :edit] do
