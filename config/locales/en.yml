@@ -1,5 +1,8 @@
 ---
 en:
+  cars:
+    new:
+      title: Write something about yourself as a teacher
   abort: Abort
   activerecord:
     attributes:

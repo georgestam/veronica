@@ -1,9 +1,22 @@
 <%= simple_form_for @car do |f| %>
   <%= f.error_notification %>
 
-  <%#= f.input :make %>
-
-  <%= f.input :photo, as: :attachinary %>
+  <%= f.input :bio %>
+  <%= f.input :video_URL %>
+  <%= f.input :travel_distance %>
+  <%= f.input :price_hour %>
 
   <%= f.button :submit, class: "btn btn-primary wide-btn" %>
 <% end %>
+
+
+  <div class="cta">
+    <%= link_to t('.passenger_call_to_action') , journeys_path, {class: "btn btn-primary"} %>
+    <% if user_signed_in? && @user.cars.count != 0 %>
+    <%= link_to t('.driver_call_to_action'), new_car_journey_path(@user.cars[0].id), {class: "btn btn-primary"} %>
+    <% elsif policy(Car).create? %>
+    <%= link_to t('.driver_call_to_action'), new_car_path, {class: "btn btn-primary"} %>
+    <% else %>
+    <%= link_to t('.driver_call_to_action'), new_user_registration_path, {class: "btn btn-primary"} %>
+    <% end %>
+  </div>

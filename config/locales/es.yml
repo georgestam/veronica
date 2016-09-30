@@ -1,0 +1,30 @@
+---
+es:
+  pages:
+    home:
+      driver: Profesor
+      driver_call_to_action: Empieza a enseñar
+      driver_subtitle: Quieres ganar dinero?
+      how_it_works: Como funciona?
+      passenger: Padre
+      passenger_call_to_action: Encuentra un profesor
+      passenger_subtitle: Quieres que tus hijos esten preparados para el futuro?
+      step_one: STEP 1
+      step_one_explanation: Encuentra un profesor cerca tuyo
+      step_three: STEP 3
+      step_three_explanation: Disfruta viendo como tu hijo aprende un lenguage!
+      step_two: STEP 2
+      step_two_explanation: Contacta al profesor para venga a tu casa
+      subtitle: Haz tus ninos aprendan un idioma en casa mientras tu disfrutas de tu tiempo
+      testimonial_four_name: DJ Jordi from Spain
+      testimonial_four_quote: Cheap but I really enjoy it
+      testimonial_one_name: Jean-claude from Belgium
+      testimonial_one_quote: Amazing
+      testimonial_three_name: Luke breen from Birmingham
+      testimonial_three_quote: Luke Breen approves this service!
+      testimonial_two_name: Paul de Pologne
+      testimonial_two_qoute: Testimonial two qoute
+      testimonial_two_quote: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      title: veronica
+
