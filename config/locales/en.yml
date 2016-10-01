@@ -2,7 +2,8 @@
 en:
   cars:
     new:
-      title: Write something about yourself as a teacher
+      title: Create your teacher profile
+
   abort: Abort
   activerecord:
     attributes:
