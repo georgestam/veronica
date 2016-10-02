@@ -14,6 +14,7 @@ class CarsController < ApplicationController
   def new
     @car = Car.new
     authorize @car
+    @user = current_user
   end
 
   def create
@@ -21,12 +22,18 @@ class CarsController < ApplicationController
     @user = current_user
     @car.user = @user
     authorize @car
-    if @user.cars.count == 0 && @car.save
+    if @user.cars.count < 2 && @car.save
+      if user_signed_in? && @user.photo == nil
+      redirect_to edit_profile_path(@user)
+      else
       redirect_to dashboard_path
-    elsif @user.cars.count > 0
-      flash[:exceed_car_limit] = "You can only upload one car."
+      end
+
+    elsif @user.cars.count > 2
+      flash[:exceed_car_limit] = "You can only have one teacher profile."
       render :new
     else
+      raise
       render :new
     end
   end
@@ -56,6 +63,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:photo)
+    params.require(:car).permit(:bio, :video_URL, :travel_distance, :price_hour)
   end
 end

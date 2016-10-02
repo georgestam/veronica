@@ -4,7 +4,7 @@ class Car < ApplicationRecord
   has_many :availabilities
   has_attachment :photo
 
-  # validates :bio, :travel_distance, :price_hour, presence: true
+  validates :bio, :travel_distance, :price_hour, presence: true
 
 
 end

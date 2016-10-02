@@ -88,7 +88,8 @@ videos_url = [
     linkedin_URL: Faker::Boolean.boolean ? urls_linkedin.sample : "",
     facebook_URL: Faker::Boolean.boolean ? urls_facebook.sample : "",
     bank_account: Faker::Number.number(7),
-    passport_verification: Faker::Boolean.boolean ? true : false,
+    interview_verif: Faker::Boolean.boolean ? true : false,
+    date_of_birth: Faker::Date.between(6570.days.ago, 10000.days.ago),
     address: Faker::Boolean.boolean ? pick_up_locations.sample : ""
     })
   user.photo = open(urls.sample)
@@ -104,7 +105,8 @@ x = 0
     user: users.sample,
     video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
     bio: Faker::Lorem.paragraphs,
-    price_hour: price_per_hour.sample
+    price_hour: price_per_hour.sample,
+    travel_distance: rand(1..10)
     })
   x += 1
 end
@@ -136,7 +138,6 @@ end
     pick_up_time: Faker::Time.forward(7, :morning),
     duration: rand(1..4),
     pick_up_location: locations.sample,
-    duration: rand(1..3),
     completed: false,
     })
 end

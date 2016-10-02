@@ -1,9 +1,13 @@
 <%= simple_form_for @car do |f| %>
   <%= f.error_notification %>
 
-  <%#= f.input :make %>
-
-  <%= f.input :photo, as: :attachinary %>
+  <%= f.input :bio %>
+  <%= f.input :video_URL %>
+  <%= f.input :travel_distance %>
+  <%= f.input :price_hour %>
 
   <%= f.button :submit, class: "btn btn-primary wide-btn" %>
+
 <% end %>
+
+
