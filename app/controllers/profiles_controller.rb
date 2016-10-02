@@ -34,7 +34,7 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:photo, :first_name, :last_name, :email, :phone_number, :description, :gender, :facebook_URL)
+    params.require(:user).permit(:photo, :id_document, :first_name, :last_name, :email, :phone_number, :description, :gender, :facebook_URL, :linkedin_URL, :address, :date_of_birth)
   end
 
   def calculate_avg_rating

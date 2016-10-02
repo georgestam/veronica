@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :cars
   has_many :journeys
   has_attachment :photo
+  has_attachment :id_document
 
   acts_as_token_authenticatable #  This is for API authentication
 
