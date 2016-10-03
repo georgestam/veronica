@@ -1,0 +1,147 @@
+.carousel-image {
+
+  .big {
+    color: $carousel-blur-text-color;
+    margin-top: 54px;
+    @include font(36px);
+
+    @include sm-only {
+      margin-top: 72px;
+      @include font(48px); // 0.8
+    }
+
+    @include md-plus {
+      margin-top: 90px;
+      @include font(60px); // 1.0
+    }
+  }
+
+  .normal {
+    @extend .big;
+    font-weight: 300;
+    margin: 0;
+    margin-top: 24px;
+    @include font(18px);
+
+    @include sm-only {
+      margin-top: 32px;
+      @include font(24px); // 0.8
+    }
+
+    @include md-plus {
+      margin-top: 40px;
+      @include font(30px); // 1.0
+    }
+  }
+
+  .btn.btn-lg {
+    margin-top: 50px;
+    margin-bottom: 95px;
+    font-size: 16px;
+    padding: 12px 40px;
+    font-weight: 500;
+    @include text-shadow(1px 1px 1px rgba($black, .4));
+  }
+}
+
+// free for combination with other carousels
+
+.hero-carousel.carousel-image-arrows:hover {
+  .flex-direction-nav {
+    .flex-next, .flex-prev {
+      @include rgba-fallback(rgba($carousel-image-controls-color, $carousel-image-control-opacity * 2), "background-color");
+    }
+  }
+}
+
+.lt-ie9 {
+  .carousel-image-arrows .flex-direction-nav .flex-next, .carousel-image-arrows .flex-direction-nav .flex-prev {
+    background-color: transparent;
+    border: 1px solid $carousel-image-controls-color;
+  }
+
+  .carousel-image-arrows .flex-direction-nav .flex-next {
+    border-right: none;
+  }
+
+  .carousel-image-arrows .flex-direction-nav .flex-prev {
+    border-left: none;
+  }
+}
+
+.carousel-image-arrows {
+  .flex-direction-nav {
+    top: 0;
+    left: 0;
+    display: none;
+    @include square(100%);
+
+    @include md-only {
+      display: block;
+      margin-left: 0;
+      @include square(100%);
+    }
+
+    @include lg-plus {
+      display: block;
+      margin-left: 0;
+      @include square(100%);
+    }
+
+    .flex-next, .flex-prev {
+      margin-top: floor(-(($carousel-image-controls-size/2)-($nav-height/2)));
+      color: $carousel-image-controls-color;
+      text-align: center;
+      vertical-align: middle;
+      line-height: $carousel-image-controls-size;
+      @include rgba-fallback(rgba($carousel-image-controls-color, $carousel-image-control-opacity), "background-color");
+      @include square($carousel-image-controls-size);
+      @include transition(background-color $transition-duration-base);
+
+      &:before {
+        @include icon($fa-var-chevron-right );
+        position: relative;
+        font-size: floor($carousel-image-controls-size / 2.5);
+      }
+    }
+
+    .flex-prev {
+      left: 0;
+      @include border-right-radius($border-radius-base);
+
+      &:before { content: $fa-var-chevron-left; margin-left: -2px; }
+    }
+
+    .flex-next {
+      right: 0;
+      @include border-left-radius($border-radius-base);
+
+      &:before { content: $fa-var-chevron-right ; margin-right: -2px; }
+    }
+  }
+}
+
+.carousel-image-pagination {
+  .flex-control-paging {
+    bottom: floor($carousel-image-pagination-size*2.5);
+    height: $carousel-image-pagination-size;
+
+    li {
+      margin: 0 4px;
+      @include square($carousel-image-pagination-size);
+    }
+
+    a {
+      display: inline-block;
+      cursor: pointer;
+      text-indent: -9999px;
+      @include border-radius(50%);
+      @include square($carousel-image-pagination-size);
+      @include rgba-fallback(rgba($carousel-image-pagination-color, .3), "background-color");
+
+      &:hover, &.flex-active {
+        background-color: $carousel-image-pagination-active;
+      }
+    }
+  }
+}

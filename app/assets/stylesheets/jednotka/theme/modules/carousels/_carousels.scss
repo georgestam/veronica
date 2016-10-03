@@ -1,0 +1,139 @@
+/*------------------------------------*\
+    $CAROUSELS
+\*------------------------------------*/
+
+@import "carousel-default";
+
+.hero-carousel, .hero-carousel .item {
+  height: 488px;
+  @include sm-only { height: 491px; }
+  @include md-plus { height: 528px; }
+}
+
+body.boxed {
+  .hero-carousel .flex-direction-nav .flex-prev { left: 0; }
+  .hero-carousel .flex-direction-nav .flex-next { right: 0; }
+}
+
+.hero-carousel {
+  position: relative;
+  min-height: $carousel-default-min-height;
+  top: -($nav-height + 1px); // 1px because of border-bottom on nav
+  margin-bottom: -($nav-height + 1px); // 1px because of border-bottom on nav
+
+  .item {
+    display: none;
+    padding-top: $nav-height + 1px; // 1px because of border-bottom on nav
+  }
+
+  .slides {
+    margin: 0;
+    padding: 0;
+    @include clearfix;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .big {
+    font-family: $font-family-headings;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .normal {
+    font-family: $font-family-headings;
+  }
+
+  .flex-direction-nav {
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: $screen-xs;
+    margin-left: floor(-($screen-xs/2));
+    overflow: visible;
+    display: none;
+
+    @include md-only {
+      display: block;
+      width: $screen-md;
+      margin-left: floor(-($screen-md/2));
+    }
+
+    @include lg-plus {
+      display: block;
+      width: $screen-lg;
+      margin-left: floor(-($screen-lg/2));
+    }
+
+    .flex-next, .flex-prev {
+      top: 50%;
+      position: absolute;
+      text-decoration: none;
+      z-index: $zindex-carousel-controls;
+    }
+  }
+
+  .flex-control-paging {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: 50%;
+    width: 60%;
+    margin-left: -30%;
+    text-align: center;
+    list-style: none;
+    z-index: $zindex-carousel-controls;
+
+    li {
+      display: inline-block;
+      margin: 2px;
+    }
+  }
+
+  $loader-size: 30px;
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: floor(-($loader-size / 2));
+    margin-left: floor(-($loader-size / 2));
+    font-size: $loader-size;
+    line-height: $loader-size;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    color: $carousel-blur-controls-color;
+    -moz-animation: spin 2s infinite linear;
+    -o-animation: spin 2s infinite linear;
+    -webkit-animation: spin 2s infinite linear;
+    animation: spin 2s infinite linear;
+    @include icon($fa-var-spinner);
+    @include transition(opacity $transition-duration-base);
+  }
+
+  &.fade-loading {
+    &:before {
+      @include opacity(0);
+    }
+  }
+}
+
+.lt-ie9 {
+  .hero-carousel {
+    &.fade-loading {
+      &:before {
+        display: none;
+      }
+    }
+  }
+}
+
+@import "carousel-blur";
+@import "carousel-contrast";
+@import "carousel-image";
