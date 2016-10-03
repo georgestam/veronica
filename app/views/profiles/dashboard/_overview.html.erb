@@ -1,21 +1,86 @@
+
+
 <div class="row">
   <div class="col-xs-12 col-sm-4 hidden-xs">
     <div class="dashboard-card">
-      <h2><%= t('.verification') %></h2>
-      <div class="<%= @email_verification ? 'verified' : "unverified" %>" id="email">
+      <% if @progress < 100 %>
+        <p class="text-left" id="manual_info"><%= t('.verification', progress: @progress.to_s) %></p>
+      <% end %>
+
+      <div class="<%= @email_verified ? 'verified' : "unverified" %>" id="email">
         <p>
           <%= t('.email_verified')%>
-          <% if @email_verification %>
+          <% if @email_verified %>
             <i class="fa fa-check"></i>
           <% else %>
             <i class="fa fa-close"></i>
           <% end %>
         </p>
       </div>
-      <div class="<%= @payment_verification ? 'verified' : "unverified" %>" id="payment">
+      <div class="<%= @photo_verified ? 'verified' : "unverified" %>" id="photo">
         <p>
-          <%= t('.payment_verified')%>
-          <% if @payment_verification %>
+          <%= t('.photo_verified')%>
+          <% if @photo_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @address_verified ? 'verified' : "unverified" %>" id="address">
+        <p>
+          <%= t('.address_verified')%>
+          <% if @address_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @availability_verified ? 'verified' : "unverified" %>" id="availability">
+        <p>
+          <%= t('.availability_verified')%>
+          <% if @availability_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @facebook_URL_verified ? 'verified' : "unverified" %>" id="facebook_URL">
+        <p>
+          <%= t('.facebook_URL_verified')%>
+          <% if @facebook_URL_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @linkedin_URL_verified ? 'verified' : "unverified" %>" id="linkedin_URL">
+        <p>
+          <%= t('.linkedin_URL_verified')%>
+          <% if @linkedin_URL_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @id_document_verified ? 'verified' : "unverified" %>" id="id_document">
+        <p>
+          <%= t('.id_document_verified')%>
+          <% if @id_document_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @interview_verified ? 'verified' : "unverified" %>" id="interview">
+        <p>
+          <%= t('.interview_verified')%>
+          <% if @interview_verified %>
             <i class="fa fa-check"></i>
           <% else %>
             <i class="fa fa-close"></i>
@@ -23,66 +88,61 @@
         </p>
       </div>
 
+      <h2 class="text-center" id="manual_info"><%= t('.summary') %></h2>
 
-
-
-      <h2><%= t('preferences') %></h2>
-      <p> <%#= t('music_html', music: @user.music_habits) %> </p>
-      <p> <%#= t('speaking_html', speaking: @user.speaking_habits) %> </p>
-      <p> <%#= t('smoking_html')%> <%#= @user.smoking ? "Yes" : "No" %> </p>
+      <div class="stats row">
+        <div class="col-xs-4">
+          <h3><%= 0 %></h3>
+          <p> Income to date </p>
+        </div>
+        <div class="col-xs-4">
+          <h3> <%= 0%> </h3>
+          <p> hours taught </p>
+        </div>
+        <div class="col-xs-4">
+          <h3> <%= @user.cars[0].price_hour %>   </h3>
+          <p> Pricer x hour </p>
+        </div>
+      </div>
 
       <div class="stats">
-        <div class="stat">
-          <h3><%= @journeys_as_driver.count %></h3>
-          <p>rides done</p>
+        <div class="col-xs-4">
+          <h3><%= 0  %></h3>
+          <p> Numbers of kids to date </p>
         </div>
-        <div class="stat">
-          <h3><%= @journeys_as_passenger.count%></h3>
-          <p>passengers taken</p>
+        <div class="col-xs-4">
+          <h3> 0 <%= @avg_rating %></h3>
+          <p>Average rating review  </p>
         </div>
-        <div class="stat">
-          <h3>35 min</h3>
-          <p>average ride</p>
+        <div class="col-xs-4">
+          <h3> 0 <%#= @avg_rating.count %> </h3>
+          <p> number of reviews </p>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-xs-12 col-sm-8">
-    <div class="dashboard-card car-card text-center">
-      <h2>Car details</h2>
-      <% if @user.cars.empty? %>
-        <p><%= t('.no_cars') %></p>
-        <% if policy(Car).create? %>
-          <%= link_to t('add_car'), new_car_path, class: "btn btn-primary" %>
-        <% end %>
-      <% else %>
-        <% car = @user.cars[0] %>
-        <div class="">
-          <div class="row">
-            <div class="col-xs-12 col-sm-3">
-              <p><%#= t('car_make_html', make: car.make) %></p>
-
-            </div>
-            <div class="col-xs-12 col-sm-3 col-sm-offset-1">
-              <%= link_to t('update_car'), edit_car_path(car), class: "btn btn-primary" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="dashboard-card review-card text-center">
-      <h2>Reviews</h2>
-      <% if @avg_rating.nil? %>
-        <p><%= t('.no_reviews') %></p>
-      <% else %>
-        <p><%= t('.rating_html') %> <%= @avg_rating %> </p>
-        <% @avg_rating.times do %>
-          <%= image_tag "yellow-rating.png" %>
-        <% end %>
-        <% (5 - @avg_rating).times do %>
-          <%= image_tag "empty-rating.png" %>
-        <% end %>
-      <% end %>
-    </div>
+  <div class="col-xs-12 col-sm-8 text-center" id="manual_info">
+    <% if @manual_check == false %>
+        <p> <%= t(".id_process") %> </p>
+    <% end %>
+  <div class="dashboard-card car-card text-center">
+    <% if @availability_verified == nil || @availability_verified == false %>
+      <%= link_to t('.create_avaliability'), new_car_availability_path(@user.cars[0]), class: "btn btn-primary" %>
+    <% end %>
   </div>
+  <div class="dashboard-card review-card text-center">
+    <h2>Reviews</h2>
+    <% if @avg_rating.nil? %>
+      <p><%= t('.no_reviews') %></p>
+    <% else %>
+      <p><%= t('.rating_html') %> <%= @avg_rating %> </p>
+      <% @avg_rating.times do %>
+        <%= image_tag "yellow-rating.png" %>
+      <% end %>
+      <% (5 - @avg_rating).times do %>
+        <%= image_tag "empty-rating.png" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 </div>

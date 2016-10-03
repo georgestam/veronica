@@ -113,21 +113,39 @@ en:
       notifications:
         no_notifications: You don't have any notifications yet!
       overview:
-        car_verified: Car verified
+        verification: Your teacher profile is %{progress} % completed. Parents are more likely to trust teachers' profiles of 100%.
         email_verified: Email verified
+        address_verified: Address verified
+        availability_verified: Availability
+        facebook_URL_verified: Facebook webpage
+        linkedin_URL_verified: Linkein Profile
+        id_document_verified: Id document
+        interview_verified: Interview
+        id_process: We are processing the verification of your details, we will let you contact you if something is not correct.
+        summary: Stats Summary
+        create_avaliability: Tell us when are your are available
+
+
+        car_verified: Car verified
+
         journey_stats: Journey stats
         no_cars: You haven't uploaded your car details yet!
         no_reviews: You haven't been reviewed yet!
         payment_verified: Payment verified
         rating_html: "<strong>Rating:</strong>"
         student_verified: Student ID verified
-        verification: Verification
+
       overview-header:
         complete: complete
+        teachers_dashboard: Teacher's Dashboard
+        view_teacher_profile: View Teacher Profile
       tab_account_settings: Account Settings
-      tab_journey: Journeys
+      tab_bookings: Bookings
       tab_notifications: Notifications
       tab_overview: Overview
+      tab_calendar: Calendar
+
+
   seats_available:
     one: There is only one seat left!
     other: There are %{count} seats available
@@ -137,6 +155,7 @@ en:
     home_navbar:
       sign_in: Sign in
     navbar:
+      search_for_teacher: Search teacher
       create_journey: Create journey
       dashboard: Dashboard
       profile: Profile

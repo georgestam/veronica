@@ -22,14 +22,14 @@ class CarsController < ApplicationController
     @user = current_user
     @car.user = @user
     authorize @car
-    if @user.cars.count < 2 && @car.save
+    if @user.cars.count < 1 && @car.save
       if user_signed_in? && @user.photo == nil
       redirect_to edit_profile_path(@user)
       else
       redirect_to dashboard_path
       end
 
-    elsif @user.cars.count > 2
+    elsif @user.cars.count > 1
       flash[:exceed_car_limit] = "You can only have one teacher profile."
       render :new
     else

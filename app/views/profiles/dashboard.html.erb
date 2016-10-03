@@ -1,4 +1,5 @@
-<% content_for :title, "Dashboard | LiftIn" %>
+<% content_for :title, "Dashboard" %>
+
 <div class="profile-wrapper">
   <div class="dashboard-wrapper padded">
     <div class="container">
@@ -12,16 +13,19 @@
       <div class="row">
         <div class="tabs">
           <a class="tab active" href="#" data-target="#overview">
-            <h3>Overview</h3>
+            <h3> <%= t(".tab_overview") %> </h3>
           </a>
-          <a class="tab" href="#" data-target="#journey">
-            <h3>Journeys</h3>
+          <a class="tab" href="#" data-target="#bookings">
+            <h3><%= t(".tab_bookings") %></h3>
+          </a>
+          <a class="tab" href="#" data-target="#calendar">
+            <h3><%= t(".tab_calendar") %></h3>
           </a>
           <a class="tab" href="#" data-target="#notifications">
-            <h3>Notifications</h3>
+            <h3><%= t(".tab_notifications") %></h3>
           </a>
           <a class="tab" href="#" data-target="#account-settings">
-            <h3>Account settings</h3>
+            <h3> <%= t(".tab_account_settings") %> </h3>
           </a>
         </div>
       </div>
@@ -32,7 +36,10 @@
       <div class="tab-content" id="overview">
         <%= render 'profiles/dashboard/overview' %>
       </div>
-      <div class="tab-content hidden" id="journey">
+      <div class="tab-content hidden" id="bookings">
+        <%= render 'profiles/dashboard/journey' %>
+      </div>
+      <div class="tab-content hidden" id="calendar">
         <%= render 'profiles/dashboard/journey' %>
       </div>
       <div class="tab-content hidden" id="notifications">
