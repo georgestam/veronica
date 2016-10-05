@@ -125,11 +125,22 @@
     <% if @manual_check == false %>
         <p> <%= t(".id_process") %> </p>
     <% end %>
-  <div class="dashboard-card car-card text-center">
+
     <% if @availability_verified == nil || @availability_verified == false %>
+      <div class="dashboard-card car-card text-center">
       <%= link_to t('.create_avaliability'), new_car_availability_path(@user.cars[0]), class: "btn btn-primary" %>
+      </div>
+    <% else %>
+      <div class="dashboard-card car-card">
+      <% @availabilities.each do |t| %>
+        <%= t.weekday %>
+        <%= t.start %>
+        <%= t.finish %>
+      <% end %>
+      <%= link_to t('.add_avaliability'), new_car_availability_path(@user.cars[0]), class: "btn btn-primary" %>
     <% end %>
-  </div>
+      </div>
+
   <div class="dashboard-card review-card text-center">
     <h2>Reviews</h2>
     <% if @avg_rating.nil? %>

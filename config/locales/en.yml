@@ -1,8 +1,19 @@
 ---
 en:
+  title: veronica
   cars:
     new:
       title: Create your teacher profile
+  availabilities:
+    availability_form:
+        title: Add or modify the time when you are free
+        monday: Monday
+        tuesday: Tuesday
+        wednesday: Wednesday
+        thursday: Thursday
+        friday: Friday
+        saturday: Saturday
+        sunday: Sunday
 
   abort: Abort
   activerecord:

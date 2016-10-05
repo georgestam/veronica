@@ -19,6 +19,8 @@ class ProfilesController < ApplicationController
   def dashboard
     @user = current_user
     authorize @user
+    @car = Car.where(user: @user)
+    @availabilities = Availability.where(car: @car)
 
     create_journey_arrays
 

@@ -1,4 +1,5 @@
-<% content_for :title,  t('.title') %>
+
+<% content_for :title,  t('title') %>
 
 <div class="wrapper">
   <div class="container">
@@ -7,7 +8,6 @@
           <% if flash[:exceed_car_limit] %>
             <div class="alert-warning"><%= flash[:exceed_car_limit] %></div>
           <% end %>
-        <h2> <%= t('.title') %> </h2>
         <%= render 'availability_form' %>
       </div>
     </div>

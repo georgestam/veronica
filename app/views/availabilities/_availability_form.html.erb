@@ -1,10 +1,16 @@
-<%= simple_form_for @availability do |f| %>
+<div class="dashboard-card">
+
+ <p class="text-center"> <%= t('.title') %> </p>
+
+<%= simple_form_for @availability, url: car_availabilities_path do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :weekday %>
+  <%= f.input :weekday, collection: [ t('.monday'), t('.tuesday') , t('.wednesday') , t('.thrusday') , t('.friday') , t('.saturday'), t('.sunday')  ] %>
   <%= f.input :start %>
   <%= f.input :finish %>
 
   <%= f.button :submit, class: "btn btn-primary wide-btn" %>
 
 <% end %>
+
+</div>
