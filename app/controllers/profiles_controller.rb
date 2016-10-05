@@ -22,8 +22,14 @@ class ProfilesController < ApplicationController
 
     create_journey_arrays
 
-    calculate_account_progress # This will return @progress
     verifications
+    calculate_account_progress # This will return @progress
+
+
+    if @user.cars == nil
+    render :dashboard_parent
+    end
+
   end
 
   private
@@ -54,17 +60,44 @@ class ProfilesController < ApplicationController
 
   def calculate_account_progress
     @progress = 0
-    @progress += 20 if @user.confirmed? # Email confirmation
-    # progress + 20 if payment confirmed
-    # progress + 20 if student_id confirmed
-    @progress += 20 unless @user.cars.empty?
+    @progress += 10 if @email_verified
+    @progress += 10 if @photo_verified
+    @progress += 10 if @address_verified
+    @progress += 10 if @availability_verified
+    @progress += 10 if @facebook_URL_verified
+    @progress += 10 if @linkedin_URL_verified
+    @progress += 20 if @id_document_verified
+    @progress += 30 if @interview_verified
+
   end
 
   def verifications
-    @email_verification = true if @user.confirmed?
-    @payment_verification = false # Need to implement payment
-    # @student_id_verification = false # Need to implement student verificaiton
-    @car_verification = true unless @user.cars.empty?
+    @email_verified = true if @user.confirmed?
+    @photo_verified = true if @user.photo
+    @address_verified = true if @user.address
+    @availability_verified = true unless @user.cars[0].availabilities.empty?
+    @facebook_URL_verified = true if @user.facebook_URL
+    @linkedin_URL_verified = true if @user.linkedin_URL
+    @id_document_verified = true if @user.id_document
+    @interview_verified = true if @user.interview_verif
+
+    manual_check_pending
+
+  end
+
+  def manual_check_pending
+
+    @manual_check = false
+
+    if @user.passport_verif == false && @id_document_verified
+      @manual_check = true
+    elsif @user.facebook_verif == false && @facebook_URL_verified
+      @manual_check = true
+    elsif @user.linkedin_verif == false && @linkedin_URL_verified
+      @manual_check = true
+    end
+
+
   end
 
   def create_journey_arrays
