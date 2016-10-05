@@ -33,7 +33,7 @@ class CarsController < ApplicationController
       flash[:exceed_car_limit] = "You can only have one teacher profile."
       render :new
     else
-      raise
+
       render :new
     end
   end
