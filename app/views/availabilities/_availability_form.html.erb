@@ -1,0 +1,10 @@
+<%= simple_form_for @availability do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :weekday %>
+  <%= f.input :start %>
+  <%= f.input :finish %>
+
+  <%= f.button :submit, class: "btn btn-primary wide-btn" %>
+
+<% end %>
