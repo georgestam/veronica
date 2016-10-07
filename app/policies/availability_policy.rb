@@ -10,12 +10,11 @@ class AvailabilityPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
     #  record - the car instance
     #  user - current_user
   end
 
   def destroy?
-    record.user == user
+    true
   end
 end

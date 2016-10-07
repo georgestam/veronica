@@ -1,19 +1,20 @@
 ---
 en:
   title: veronica
+  days:
+    monday: Monday
+    tuesday: Tuesday
+    wednesday: Wednesday
+    thursday: Thursday
+    friday: Friday
+    saturday: Saturday
+    sunday: Sunday
   cars:
     new:
       title: Create your teacher profile
   availabilities:
     availability_form:
         title: Add or modify the time when you are free
-        monday: Monday
-        tuesday: Tuesday
-        wednesday: Wednesday
-        thursday: Thursday
-        friday: Friday
-        saturday: Saturday
-        sunday: Sunday
 
   abort: Abort
   activerecord:
@@ -135,6 +136,7 @@ en:
         id_process: We are processing the verification of your details, we will let you contact you if something is not correct.
         summary: Stats Summary
         create_avaliability: Tell us when are your are available
+
 
 
         car_verified: Car verified

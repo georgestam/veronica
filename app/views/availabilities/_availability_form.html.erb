@@ -5,7 +5,7 @@
 <%= simple_form_for @availability, url: car_availabilities_path do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :weekday, collection: [ t('.monday'), t('.tuesday') , t('.wednesday') , t('.thrusday') , t('.friday') , t('.saturday'), t('.sunday')  ] %>
+  <%= f.input :weekday, collection: Availability::DAYS %>
   <%= f.input :start %>
   <%= f.input :finish %>
 
@@ -14,3 +14,4 @@
 <% end %>
 
 </div>
+

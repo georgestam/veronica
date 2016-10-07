@@ -1,0 +1,9 @@
+  <% content_for(:after_js) do %>
+    <script>
+      $(document).on('ready', function() {
+        buildMap(function() {
+          addMarkers(<%= raw @hash.to_json %>);
+        })
+      });
+    </script>
+  <% end %>

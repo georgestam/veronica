@@ -14,6 +14,13 @@ $(document).ready(function(){
     // Show target tab
     var tabSelector = $(this).data("target");
     $(tabSelector).removeClass("hidden");
+
   });
+
+  // Delete availablities
+  $(".clickable").click(function() {
+    window.location = $(this).data("href");
+  });
+
 });
 

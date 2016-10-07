@@ -1,13 +1,8 @@
 class AvailabilitiesController < ApplicationController
 
-  before_action :find_car, only: [:create, :show, :edit, :update, :destroy]
-  before_action :find_availability, only: [:show, :update, :destroy]
+  before_action :find_car, only: [:create, :destroy]
+  before_action :find_availability, only: [:destroy]
 
-  def index
-  end
-
-  def show
-  end
 
   def new
     @availability = Availability.new
@@ -26,15 +21,9 @@ class AvailabilitiesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    @availability.update(availability_params)
-    redirect_to dashboard_path
-  end
 
   def destroy
+    authorize @availability
     @availability.destroy
     redirect_to dashboard_path
   end
@@ -46,7 +35,7 @@ class AvailabilitiesController < ApplicationController
   end
 
   def find_availability
-    @availability = Avaliability.find(params[:id])
+    @availability = Availability.find(params[:id])
   end
 
   def availability_params
