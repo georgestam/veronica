@@ -1,4 +1,10 @@
+<div class="dashboard-card">
+<div class="row">
+  <div class="col-xs-12">
+
+
 <div class="public-profile">
+
   <div class="left-column text-center">
     <% if @user.photo? %>
       <%= cl_image_tag @user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
@@ -6,43 +12,33 @@
       <% avatar_url = @user.facebook_picture_url || "http://placehold.it/100x100" %>
       <%= image_tag avatar_url, class: "avatar-xl text-center" %>
     <% end %>
-    <h2><%= @user.full_name %></h2>
 
   </div>
-  <div class="right-column">
-    <div class="">
-      <div class="row">
-        <h2>Bio</h2>
-        <p>Description: <%= @user.description %></p>
+      <div class="right-column">
+            <h4> <%= @car[0].user.first_name.capitalize %> <%= @car[0].user.last_name.capitalize %></h4>
 
-        <h2>University information</h2>
-        <p>Student ID: <%#=  @user.student_id %></p>
-        <p>Year of study: <%#=  @user.year_of_study %></p>
+            <p>
+            <i class="fa fa-usd" aria-hidden="true"></i>
+            15/hr<%#= @car[0].price %>
+            </p>
 
-
-        <h2><%= t('preferences') %></h2>
-        <p> <%#= t('music_html', music: @user.music_habits) %> </p>
-        <p> <%#= t('speaking_html', speaking: @user.speaking_habits) %> </p>
-        <p> <%#= t('smoking_html')%> <%#= @user.smoking ? "Yes" : "No" %> </p>
-
-        <h2>Driver stats</h2>
-
-        <div class="stats">
-          <div class="stat">
-            <h3><%#= @journeys_as_driver.count %></h3>
-            <p>rides done</p>
-          </div>
-          <div class="stat">
-            <h3><%#= @journeys_as_passenger.count%></h3>
-            <p>passengers taken</p>
-          </div>
-          <div class="stat">
-            <h3>35 min</h3>
-            <p>average ride</p>
-          </div>
-        </div
+            <p>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            Plaça de la Paeria, 1, 25007 Lleida, Spain
+            </p>
       </div>
     </div>
   </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+        <p class='text-center' style='font-size:12px'>   </p>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @progress %>"
+          aria-valuemin="0" aria-valuemax="100" style="width:<%=@progress.to_i%>%" id="account-progress">
+          <span id="progress"><%= @progress %></span>% <%= t('.verification_score_completed') %>
+          </div>
+      </div>
+ </div>
 </div>
 </div>

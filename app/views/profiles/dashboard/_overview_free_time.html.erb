@@ -1,5 +1,5 @@
 
-<p> <%= t(".Teacher's availablity") %> </p>
+<p> <%= t(".Teacher's availablity") %>  (<%= t('click_to_delete_times') %> ) </p>
 
 <table class="table" >
   <thead >
@@ -11,7 +11,7 @@
   </thead>
 
 
-<tbody >
+<tbody class='text-center' >
       <% c1 = 0 %>
       <% c2 = 0 %>
       <% c3 = 0 %>
@@ -142,7 +142,7 @@
   </tbody>
 
 
-  <tbody id="second-row-table">
+  <tbody class='text-center' id="second-row-table">
 
         <% c1 -= 1 if c1 >= 1 %>
         <% c2 -= 1 if c2 >= 1 %>
@@ -280,4 +280,4 @@
 
 </table>
 
-<p> <%= t('click_to_delete_times') %> </p>
+
