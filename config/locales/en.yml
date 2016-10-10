@@ -129,8 +129,6 @@ en:
         email_verified: Email verified
         address_verified: Address verified
         availability_verified: Availability
-        facebook_URL_verified: Facebook webpage
-        linkedin_URL_verified: Linkein Profile
         id_document_verified: Id document
         interview_verified: Interview
         id_process: We are processing the verification of your details, we will let you contact you if something is not correct.
