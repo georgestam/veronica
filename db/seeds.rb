@@ -148,7 +148,9 @@ end
     user: users.sample,
     journey: journeys.sample,
     driver_rating: rand(1..5),
-    passenger_rating: rand(1..5)
+    passenger_rating: rand(1..5),
+    driver_review: Faker::Lorem.paragraphs,
+    passenger_review: Faker::Lorem.paragraphs
     })
 end
 

@@ -28,4 +28,8 @@ class JourneyPolicy < ApplicationPolicy
   def journey_information?
     true
   end
+
+  def teacher?
+    true
+  end
 end

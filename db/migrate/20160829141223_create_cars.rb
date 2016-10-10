@@ -3,7 +3,7 @@ class CreateCars < ActiveRecord::Migration[5.0]
     create_table :cars do |t|
       t.references :user, foreign_key: true
 
-      t.string :bio
+      t.text :bio
       t.string :video_URL
       t.string :travel_distance
       t.string :price_hour

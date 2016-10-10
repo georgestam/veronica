@@ -9,8 +9,8 @@ class CreatePassengers < ActiveRecord::Migration[5.0]
       t.integer :driver_rating
       t.integer :passenger_rating
 
-      t.integer :driver_review
-      t.integer :passenger_review
+      t.text :driver_review
+      t.text :passenger_review
 
     end
   end

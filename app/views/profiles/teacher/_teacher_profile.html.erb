@@ -18,13 +18,13 @@
             <h4> <%= @car[0].user.first_name.capitalize %> <%= @car[0].user.last_name.capitalize %></h4>
 
             <p>
-            <i class="fa fa-usd" aria-hidden="true"></i>
-            30/hr<%#= @car[0].price %>
+            <i class="fa fa-eur" aria-hidden="true"></i>
+            <%= @car[0].price_hour %>/hr
             </p>
 
             <p>
             <i class="fa fa-map-marker" aria-hidden="true"></i>
-            Plaça de la Paeria, 1, 25007 Lleida, Spain
+             <%= @user.address %>
             </p>
       </div>
     </div>

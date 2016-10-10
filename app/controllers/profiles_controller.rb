@@ -40,14 +40,26 @@ class ProfilesController < ApplicationController
     @user = current_user
     authorize @user
     @car = Car.where(user: @user)
-    @availabilities = Availability.where(car: @car)
 
-    create_journey_arrays
+    @availabilities = Availability.where(car: @car)
 
     verifications
     calculate_account_progress # This will return @progress
 
     map_availabilities
+
+    @journeys = Journey.where(car: @car)
+
+    @kids = 0
+
+    @journeys.each do |journey|
+       @kids += journey.seats_available
+    end
+
+    calculate_avg_rating
+
+    @reviews = Passenger.where(journey: @car) # continue here.
+    @reviews = Review.where(booking_id: Booking.where(profile: @profile).pluck(:id))
 
   end
 
@@ -63,18 +75,29 @@ class ProfilesController < ApplicationController
   end
 
   def calculate_avg_rating
-    ratings = []
+    @ratings = []
+    @comments = []
 
     @journeys.each do |journey|
       journey.passengers.each do |passenger|
         unless passenger.driver_rating.nil?
           #  This will remove any future journeys as the driver will not have been rated, therefore rating = nil
-          ratings << passenger.driver_rating
+          @ratings << passenger.driver_rating
         end
       end
     end
 
-    @avg_rating = ratings.inject(0){|sum,x| sum + x } / ratings.count if ratings.count != 0
+    @avg_rating = @ratings.inject(0){|sum,x| sum + x } / @ratings.count if @ratings.count != 0
+
+    @journeys.each do |journey|
+      journey.passengers.each do |passenger|
+        unless passenger.driver_review.nil?
+          #  This will remove any future journeys as the driver will not have been rated, therefore rating = nil
+          @comments << passenger.driver_review
+        end
+      end
+    end
+
   end
 
   def calculate_account_progress
