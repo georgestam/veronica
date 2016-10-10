@@ -5,10 +5,10 @@
     <h1><%= t('.title') %></h1>
     <p><%= t('.subtitle') %> </p>
     <div class="cta">
-      <%= link_to t('.passenger_call_to_action') , journeys_path, {class: "btn btn-primary"} %>
-      <% if user_signed_in? && @user.cars.count != 0 %>
+       <%= link_to t('.passenger_call_to_action') , journeys_path, {class: "btn btn-primary"} %>
+      <% if user_signed_in? && @user.cars[0] != nil %>
       <%= link_to t('.driver_call_to_action'), dashboard_path, {class: "btn btn-primary"} %>
-      <% elsif policy(Car).create? %>
+      <% elsif user_signed_in? && @user.cars[0] == nil  %>
       <%= link_to t('.driver_call_to_action'), new_car_path, {class: "btn btn-primary"} %>
       <% else %>
       <%= link_to t('.driver_call_to_action'), new_user_registration_path, {class: "btn btn-primary"} %>
@@ -54,7 +54,7 @@
       <div class="col-xs-12 col-sm-6">
         <div class="user-card-home">
           <div class="thumbnail">
-            <%= image_tag "main/main-picture-parent.jpg", {class: "responsive-img"} %>
+            <%= image_tag "main/main-picture-parent.jpg", {class: "responsive-img-fix-size"} %>
             <div class="caption">
                 <h3><%= t('.passenger')%></h3>
                 <p><%= t('.passenger_subtitle')%></p>
@@ -66,8 +66,8 @@
 
       <div class="col-xs-12 col-sm-6">
         <div class="user-card-home">
-          <div class="thumbnail">
-            <%= image_tag "main/main-picture-teacher.jpg", {class: "responsive-img"} %>
+          <div class="thumbnail" >
+            <%= image_tag "main/main-picture-teacher.jpg", {class: "responsive-img-fix-size"} %>
             <div class="caption">
               <h3><%= t('.driver')%></h3>
               <p><%= t('.driver_subtitle')%></p>
@@ -87,14 +87,14 @@
   </div> <!-- end of banner-container -->
 <!-- </div> end of banner -->
 
-<div class="wrapper-user-testify" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "Car-driver.jpg" %>');">
+<div class="wrapper-user-testify" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "vero/blackboard.jpg" %>');">
   <div class="container padded">
     <div class="testimonial-carousel">
       <div class="testimonial-carousel-item">
         <div class="user-card">
           <div class="testimonial-header">
             <div>
-              <p>Really affordable and I met my girlfriend through LiftIn!</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tum ille timide vel potius verecunde</p>
               <ul class="list-inline">
                 <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
                 <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
@@ -105,7 +105,7 @@
           </div>
           <div class="testimonial-footer">
             <%= image_tag "nico.jpg", class:"responsive-img", style: "width: 200px; border-radius: 50%;" %>
-            <h3>Nico from London</h3>
+            <h3><%= t('.testimonial_name_one') %></h3>
           </div>
         </div> <!-- end of user-card -->
       </div>
@@ -113,7 +113,7 @@
         <div class="user-card">
           <div class="testimonial-header">
             <div>
-              <p>Amazing service, I'll never have to take the bus again. Yiha!!</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tum ille timide vel potius verecunde</p>
               <ul class="list-inline">
                 <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
                 <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
@@ -123,7 +123,7 @@
           </div>
           <div class="testimonial-footer">
             <%= image_tag "Bob-Ross.jpg", class:"responsive-img", style: "width: 200px; border-radius: 50%;" %>
-            <h3><%= t('.testimonial_one_name') %></h3>
+            <h3> XXX </h3>
           </div>
         </div> <!-- end of user-card -->
       </div>
@@ -131,7 +131,7 @@
         <div class="user-card">
           <div class="testimonial-header">
             <div>
-              <p>Is great to have company and people to share fuel costs with.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tum ille timide vel potius verecunde</p>
               <ul class="list-inline">
                 <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
                 <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
@@ -143,7 +143,7 @@
           </div>
           <div class="testimonial-footer">
             <%= image_tag "Luke.jpg", class:"responsive-img", style: "width: 200px; border-radius: 50%;" %>
-            <h3>Luke from Birmingham</h3>
+            <h3>XXX </h3>
           </div>
         </div> <!-- end of user-card -->
       </div>
@@ -151,7 +151,7 @@
         <div class="user-card">
           <div class="testimonial-header">
             <div>
-              <p>LiftIn is fantastic, plus I get to listen to so much great music!</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tum ille timide vel potius verecunde</p>
               <ul class="list-inline">
                 <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
                 <li> <i class="fa fa-star" style="color: #ffef00; font-size: 24px;"></i> </li>
@@ -162,7 +162,7 @@
           </div>
           <div class="testimonial-footer">
             <%= image_tag "Djjordy.jpg", class:"responsive-img", style: "width: 200px; border-radius: 50%;" %>
-            <h3>DJ Jordy from Spain</h3>
+            <h3> XXX</h3>
           </div>
         </div> <!-- end of user-card -->
       </div>
