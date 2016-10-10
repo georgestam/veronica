@@ -1,11 +1,9 @@
 <div class="navbar-wagon navbar-wagon-home">
-  <!-- Logo -->
-  <div class="navbar-left">
-     <%= link_to t("About us"), "#", class: "navbar-wagon-item navbar-wagon-link" %>
-  </div>
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+ <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "vero/logo.png" %>
   <% end %>
+  <!-- Logo -->
+
 
   <div class="navbar-wagon-right">
     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>

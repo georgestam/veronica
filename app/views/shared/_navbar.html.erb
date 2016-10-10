@@ -21,13 +21,13 @@
       <% if user_signed_in? %>
 
         <!-- Notification -->
-       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-          <div class="badge-container">
-            <i class="fa fa-envelope-o"></i>
-            <div class="badge badge-blue">3</div>
-          </div>
+       <%#= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+          <!-- <div class="badge-container"> -->
+            <!-- <i class="fa fa-envelope-o"></i> -->
+            <!-- <div class="badge badge-blue">3</div> -->
+          <!-- </div> -->
 
-        <% end %>
+        <%# end %>
 
         <%= link_to dashboard_path, class: "navbar-wagon-item navbar-wagon-link" do %>
           <div class="badge-container">
@@ -38,7 +38,9 @@
         <div class="navbar-wagon-item">
           <div class="dropdown">
             <% if current_user.photo? %>
-              <%= cl_image_tag current_user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
+
+              <%= cl_image_tag current_user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% else %>
               <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
               <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
