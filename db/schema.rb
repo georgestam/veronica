@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20160928104810) do
 
   create_table "availabilities", force: :cascade do |t|
     t.string   "weekday"
-    t.datetime "start"
-    t.datetime "finish"
+    t.time     "start"
+    t.time     "finish"
     t.integer  "car_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

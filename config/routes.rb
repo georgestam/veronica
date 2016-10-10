@@ -12,9 +12,11 @@ Rails.application.routes.draw do
     get "profile/:id/edit", to: "profiles#edit", as: :edit_profile
     patch "/profile/:id", to: "profiles#update", as: :update_profile
 
-    resources :cars do
+    get "/profile/:id/", to: "profiles#teacher", as: :teacher_profile
+
+    resources :cars, only:[:new, :create, :edit, :update] do
       resources :journeys, only:[:new, :create]
-      resources :availabilities, only:[:new, :create,]
+      resources :availabilities, only:[:new, :create, :destroy]
     end
 
     resources :journeys, only:[:index, :show, :destroy, :update, :edit] do

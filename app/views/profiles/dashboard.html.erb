@@ -1,3 +1,5 @@
+<div class='lift-bacground'>
+
 <% content_for :title, "Dashboard" %>
 
 <div class="profile-wrapper">
@@ -18,8 +20,6 @@
           <a class="tab" href="#" data-target="#bookings">
             <h3><%= t(".tab_bookings") %></h3>
           </a>
-          <a class="tab" href="#" data-target="#calendar">
-            <h3><%= t(".tab_calendar") %></h3>
           </a>
           <a class="tab" href="#" data-target="#notifications">
             <h3><%= t(".tab_notifications") %></h3>
@@ -39,9 +39,6 @@
       <div class="tab-content hidden" id="bookings">
         <%= render 'profiles/dashboard/journey' %>
       </div>
-      <div class="tab-content hidden" id="calendar">
-        <%= render 'profiles/dashboard/journey' %>
-      </div>
       <div class="tab-content hidden" id="notifications">
         <%= render 'profiles/dashboard/notifications' %>
       </div>
@@ -50,5 +47,7 @@
       </div>
     </div>
   </div>
+</div>
+
 </div>
 

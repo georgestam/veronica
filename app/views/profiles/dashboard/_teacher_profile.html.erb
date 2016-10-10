@@ -1,0 +1,44 @@
+<div class="dashboard-card">
+<div class="row">
+  <div class="col-xs-12">
+
+
+<div class="public-profile">
+
+  <div class="left-column text-center">
+    <% if @user.photo? %>
+      <%= cl_image_tag @user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
+    <% else %>
+      <% avatar_url = @user.facebook_picture_url || "http://placehold.it/100x100" %>
+      <%= image_tag avatar_url, class: "avatar-xl text-center" %>
+    <% end %>
+
+  </div>
+      <div class="right-column">
+            <h4> <%= @car[0].user.first_name.capitalize %> <%= @car[0].user.last_name.capitalize %></h4>
+
+            <p>
+            <i class="fa fa-usd" aria-hidden="true"></i>
+            30/hr<%#= @car[0].price %>
+            </p>
+
+            <p>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            Plaça de la Paeria, 1, 25007 Lleida, Spain
+            </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+        <p class='text-center' style='font-size:12px'>   </p>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @progress %>"
+          aria-valuemin="0" aria-valuemax="100" style="width:<%=@progress.to_i%>%" id="account-progress">
+          <span id="progress"><%= @progress %></span>% <%= t('.verification_score_completed') %>
+          </div>
+      </div>
+ </div>
+</div>
+</div>

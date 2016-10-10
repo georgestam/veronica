@@ -1,41 +1,30 @@
 class AvailabilitiesController < ApplicationController
 
-  before_action :find_car, only: [:show, :edit, :update, :destroy]
-  before_action :find_avaliability, only: [:show, :update, :destroy]
+  before_action :find_car, only: [:create, :destroy]
+  before_action :find_availability, only: [:destroy]
 
-  def index
-  end
-
-  def show
-  end
 
   def new
-    @car = Avaliability.new
-    authorize @avaliability
-    @user = current_user
+    @availability = Availability.new
+    authorize @availability
   end
 
   def create
-    @avaliability = Avaliability.new(avaliability_params)
-    @avaliability.car = @car
-    authorize @avaliability
-    if  @avaliability.save
+    @availability = Availability.new(availability_params)
+    @availability.car = @car
+    authorize @availability
+    if  @availability.save
+      flash[:message] = t("create_new_time")
       redirect_to dashboard_path
     else
       render :new
     end
   end
 
-  def edit
-  end
-
-  def update
-    @avaliability.update(avaliability_params)
-    redirect_to dashboard_path
-  end
 
   def destroy
-    @avaliability.destroy
+    authorize @availability
+    @availability.destroy
     redirect_to dashboard_path
   end
 
@@ -45,12 +34,12 @@ class AvailabilitiesController < ApplicationController
     @car = Car.find(params[:car_id])
   end
 
-  def find_avaliability
-    @avaliability = Avaliability.find(params[:id])
+  def find_availability
+    @availability = Availability.find(params[:id])
   end
 
-  def avaliability_params
-    params.require(:avaliability).permit(:weekday, :start, :finish, :car_id)
+  def availability_params
+    params.require(:availability).permit(:weekday, :start, :finish)
   end
 
 

@@ -1,5 +1,5 @@
 .banner {
-  color: #7B428E;
+  color: white;
   text-align: center;
   height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
@@ -101,4 +101,10 @@ video#bgvid {
     transform: translateX(-50%) translateY(-50%);
     background: url(polina.jpg) no-repeat;
     background-size: cover;
+}
+
+
+.results-banner {
+  height: 40vh;
+  background-position: center;
 }

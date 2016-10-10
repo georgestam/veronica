@@ -49,7 +49,7 @@
       </div>
       <div class="<%= @facebook_URL_verified ? 'verified' : "unverified" %>" id="facebook_URL">
         <p>
-          <%= t('.facebook_URL_verified')%>
+          <%= t('.facebook_check')%>
           <% if @facebook_URL_verified %>
             <i class="fa fa-check"></i>
           <% else %>
@@ -59,7 +59,7 @@
       </div>
       <div class="<%= @linkedin_URL_verified ? 'verified' : "unverified" %>" id="linkedin_URL">
         <p>
-          <%= t('.linkedin_URL_verified')%>
+          <%= t('.linkedin_check')%>
           <% if @linkedin_URL_verified %>
             <i class="fa fa-check"></i>
           <% else %>
@@ -125,24 +125,34 @@
     <% if @manual_check == false %>
         <p> <%= t(".id_process") %> </p>
     <% end %>
-  <div class="dashboard-card car-card text-center">
+
     <% if @availability_verified == nil || @availability_verified == false %>
+      <div class="dashboard-card car-card">
       <%= link_to t('.create_avaliability'), new_car_availability_path(@user.cars[0]), class: "btn btn-primary" %>
-    <% end %>
-  </div>
-  <div class="dashboard-card review-card text-center">
-    <h2>Reviews</h2>
-    <% if @avg_rating.nil? %>
-      <p><%= t('.no_reviews') %></p>
+      </div>
     <% else %>
-      <p><%= t('.rating_html') %> <%= @avg_rating %> </p>
-      <% @avg_rating.times do %>
-        <%= image_tag "yellow-rating.png" %>
-      <% end %>
-      <% (5 - @avg_rating).times do %>
-        <%= image_tag "empty-rating.png" %>
-      <% end %>
+      <div class="dashboard-card car-card">
+      <%= render 'profiles/dashboard/overview_free_time' %>
+      </div>
+     <%= link_to t('.add_avaliability'), new_car_availability_path(@user.cars[0]), class: "btn btn-primary" %>
     <% end %>
+
+
+
+
+    <div class="dashboard-card review-card text-center">
+      <h2>Reviews</h2>
+      <% if @avg_rating.nil? %>
+        <p><%= t('.no_reviews') %></p>
+      <% else %>
+        <p><%= t('.rating_html') %> <%= @avg_rating %> </p>
+        <% @avg_rating.times do %>
+          <%= image_tag "yellow-rating.png" %>
+        <% end %>
+        <% (5 - @avg_rating).times do %>
+          <%= image_tag "empty-rating.png" %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>

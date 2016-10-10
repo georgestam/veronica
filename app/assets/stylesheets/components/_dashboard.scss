@@ -108,6 +108,17 @@
     color: #9a9a9a;
     padding-bottom: 10px;
   }
+
+  h4 {
+    font-size: 20px;
+    font-weight: bold;
+    /* text-shadow: 0px 1px rgba(0, 0, 0, 0.2); */
+    font-weight: 400;
+    color: #494949;
+    padding-bottom: 10px;
+  }
+
+
   .btn {
     width: auto;
     padding: 15px;
@@ -126,7 +137,7 @@
 }
 
 .car-card {
-  margin-bottom: 30px;;
+  margin-bottom: 10px;;
   height: 240px;
   .btn {
     width: auto;
@@ -141,8 +152,13 @@
       background-color: rgb(62, 180, 232);
     }
   }
-  p {
-    font-weight:bolder;
+
+  th {
+  text-align: center;
+  }
+
+  td {
+  border-top: 0px solid #ddd !important;
   }
 }
 
@@ -160,7 +176,23 @@
   font-weight: bolder;
 }
 
+ #text-times {
+
+    color: #535353;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+        color: #FF0000;
+    }
+}
+
 #manual_info  {
   color: grey;
   font-size: 12px;
+}
+
+#second-row-table {
+  border-top: 0px solid #ddd !important;
 }

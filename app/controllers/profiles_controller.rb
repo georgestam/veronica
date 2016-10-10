@@ -19,16 +19,35 @@ class ProfilesController < ApplicationController
   def dashboard
     @user = current_user
     authorize @user
+    @car = Car.where(user: @user)
+    @availabilities = Availability.where(car: @car)
 
     create_journey_arrays
 
     verifications
     calculate_account_progress # This will return @progress
 
+    map_availabilities
 
     if @user.cars == nil
     render :dashboard_parent
     end
+
+  end
+
+  def teacher
+
+    @user = current_user
+    authorize @user
+    @car = Car.where(user: @user)
+    @availabilities = Availability.where(car: @car)
+
+    create_journey_arrays
+
+    verifications
+    calculate_account_progress # This will return @progress
+
+    map_availabilities
 
   end
 
@@ -99,6 +118,41 @@ class ProfilesController < ApplicationController
 
 
   end
+
+  def map_availabilities
+
+    monday = []
+    tuesday = []
+    wednesday = []
+    thursday = []
+    friday = []
+    saturday = []
+    sunday = []
+
+    @availabilities.each do |aval|
+      if aval.weekday == 'Monday'
+        monday << aval
+      elsif aval.weekday == 'Tuesday'
+        tuesday << aval
+      elsif aval.weekday == 'Wednesday'
+        wednesday << aval
+      elsif aval.weekday == 'Thursday'
+        thursday << aval
+      elsif aval.weekday == 'Friday'
+        friday << aval
+      elsif aval.weekday == 'Saturday'
+        saturday << aval
+      elsif aval.weekday == 'Sunday'
+        sunday << aval
+      end
+    end
+
+    @days = [monday, tuesday, wednesday, thursday,friday, saturday, sunday ]
+
+
+
+  end
+
 
   def create_journey_arrays
     @journeys = Journey.where(user: @user) #  Needed to calculate the avg_rating

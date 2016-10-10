@@ -1,0 +1,265 @@
+<% content_for :title, "#{@car[0].user.first_name}'" %>
+
+<div style='background: #F2F2F2'>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5">
+        <div>
+            <%#= link_to "Book", new_profile_booking_path(@profile) , :class => "btn btn-success" %>
+          <%= render 'profiles/dashboard/teacher_profile' %>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div class='dashboard-card car-card' id="manual_info">
+          <%= render 'profiles/dashboard/overview_free_time' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <div class="dashboard-card">
+      <div class="row">
+        <div class="text-center">
+          <div class="col-xs-3">
+              <h3> <%= 83 %> </h3>
+              <p> hours taught </p>
+            </div>
+            <div class="col-xs-3">
+              <h3><%= 10  %></h3>
+              <p> Numbers of kids to date </p>
+            </div>
+            <div class="col-xs-3">
+              <h3> 4.5 <%= @avg_rating %></h3>
+              <p>Average rating review  </p>
+            </div>
+            <div class="col-xs-3">
+              <h3> 2 <%#= @avg_rating.count %> </h3>
+              <p> number of reviews </p>
+           </div>
+          </div>
+        </div>
+
+
+
+        <hr class='hr-half'>
+
+        <h4> <strong>Bio</strong> </h4>
+        <p><%= @car[0].bio %></p>
+
+        <br>
+
+        <h4> <strong>Video </strong> </h4>
+
+
+        <% if @car[0].video_URL != "" %>
+
+
+         <h4> <%= @car[0].video_URL %>  </h4>
+
+
+        <% elsif %>
+
+        <p> <%= @car[0].user.first_name %> does not have any video </p>
+
+        <% end %>
+
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <br>
+      <div>
+         <%= link_to "Book ", journey_path(@car[0]), :class => "btn btn-danger" %>
+      </div>
+      <br>
+
+      <p class='fa fa-calendar'></p>
+      <span> Since 09-10-16<%#= @car[0].created_at, short%></span>
+        <br>
+        <p class='fa fa-comments'></p>
+        <span>2 comments</span>
+
+         <hr class='hr-half'>
+
+
+      <% if @car[0].user == current_user %>
+
+        <%#= link_to "Delete ", profile_path(@profile), :class => "btn btn-danger",
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+              <%#= link_to "Edit ", edit_profile_path(@profile), :class => "btn btn-danger" %>
+      <% end %>
+
+
+      <div class="<%= @photo_verified ? 'verified' : "unverified" %>" id="photo">
+        <p>
+          <%= t('.photo_verified')%>
+          <% if @photo_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @facebook_URL_verified ? 'verified' : "unverified" %>" id="facebook_URL">
+        <p>
+          <%= t('.facebook_check')%>
+          <% if @facebook_URL_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @linkedin_URL_verified ? 'verified' : "unverified" %>" id="linkedin_URL">
+        <p>
+          <%= t('.linkedin_check')%>
+          <% if @linkedin_URL_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @id_document_verified ? 'verified' : "unverified" %>" id="id_document">
+        <p>
+          <%= t('.id_document_verified')%>
+          <% if @id_document_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+      <div class="<%= @interview_verified ? 'verified' : "unverified" %>" id="interview">
+        <p>
+          <%= t('.bank_account_verified')%>
+          <% if @interview_verified %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-close"></i>
+          <% end %>
+        </p>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10">
+       <%# if @reviews.length > 0 %>
+    <div class="dashboard-card" >
+
+      <h4> <strong>Reviews</strong> </h4>
+      <%# @reviews.each do |review| %>
+      <ul >
+        <li>
+          <%# review.rating.times do |i|  %>
+          <!-- <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i> -->
+          <%# end %>
+          <%# (5-review.rating).times do |i|  %>
+          <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+          <%# end %>
+
+          <%#= review.description %></li>
+      </ul>
+      <%# end %>
+
+      <ul >
+        <li>
+          <%# review.rating.times do |i|  %>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <%# end %>
+          <%# (5-review.rating).times do |i|  %>
+
+          <%# end %>
+
+          <%#= review.description %></li>
+      </ul>
+
+      <div class='media'>
+        <div class='pull-left'>
+          <%#= image_tag @user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
+          <%= image_tag "Djjordy.jpg", width: 60, height: 60, crop: :thumb, gravity: :face , class: ""  %>
+        </div>
+        <div class='media-body'>
+          <div class='content staff'>
+            <div class='toolbar'>
+              <h4 class='title'>
+                Jordi Fernandez
+                <span class='label label-contrast'>Staff</span>
+              </h4>
+            </div>
+            <p>Proin eu ullamcorper urna. Nullam eu mi vel metus faucibus mollis. Nulla rutrum fermentum dui quis ullamcorper. Integer metus nunc, interdum non libero a, semper fringilla ligula.</p>
+            <p class='time'>
+              <a href="#">14 Sep, 2016</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+       <ul >
+        <li>
+          <%# review.rating.times do |i|  %>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <%# end %>
+          <%# (5-review.rating).times do |i|  %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <%# end %>
+
+          <%#= review.description %></li>
+      </ul>
+
+      <div class='media'>
+        <div class='pull-left'>
+          <%#= image_tag @user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
+          <%= image_tag "Luke.jpg", width: 60, height: 60, crop: :thumb, gravity: :face , class: ""  %>
+        </div>
+        <div class='media-body'>
+          <div class='content staff'>
+            <div class='toolbar'>
+              <h4 class='title'>
+                Lluis Gonzalez
+                <span class='label label-contrast'>Staff</span>
+              </h4>
+            </div>
+            <p>Proin eu ullamcorper urna. Nullam eu mi vel metus faucibus mollis. Nulla rutrum fermentum dui quis ullamcorper. Integer metus nunc, interdum non libero a, semper fringilla ligula.</p>
+            <p class='time'>
+              <a href="#">1 Oct, 2016</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+        <div class="container" style="padding-bottom:10px;">
+          <div class="row">
+            <div class="col-xs-12">
+              <div id="map" style="width: 100%; height: 300px;">
+                <%= render 'shared/map' %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+</div>
+
+
+
+

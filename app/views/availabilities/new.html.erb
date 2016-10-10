@@ -1,6 +1,5 @@
 <div class='lift-bacground'>
-
-<% content_for :title, "Add a Car | LiftIn" %>
+<% content_for :title,  t('title') %>
 
 <div class="wrapper">
   <div class="container">
@@ -9,10 +8,9 @@
           <% if flash[:exceed_car_limit] %>
             <div class="alert-warning"><%= flash[:exceed_car_limit] %></div>
           <% end %>
-        <%= render 'car_form' %>
+        <%= render 'availability_form' %>
       </div>
     </div>
   </div>
 </div>
-
 </div>
