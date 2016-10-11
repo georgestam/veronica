@@ -12,7 +12,7 @@ Passenger.destroy_all
 Journey.destroy_all
 Car.destroy_all
 User.destroy_all
-Location.destroy_all
+Availability.destroy_all
 
 
 journeys = []
@@ -105,9 +105,7 @@ x = 0
   cars << Car.create!({
     user: users.sample,
     video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
-    bio:
-
-    ,
+    bio: Faker::Lorem.paragraphs,
     price_hour: price_per_hour.sample,
     travel_distance: rand(1..10)
     })
@@ -128,19 +126,13 @@ end_time = 0
 end
 
 10.times do
-  locations << Location.create!({
-    address: pick_up_locations.sample,
-    })
-end
-
-10.times do
   journeys << Journey.create!({
     user: users.sample,
     car: cars.sample,
     seats_available: rand(1..4),
     pick_up_time: Faker::Time.forward(7, :morning),
     duration: rand(1..4),
-    pick_up_location: locations.sample,
+    address: pick_up_locations.sample,
     completed: false,
     })
 end
@@ -206,7 +198,7 @@ end
     seats_available: rand(1..4),
     pick_up_time: Faker::Time.forward(7, :morning),
     duration: rand(1..4),
-    pick_up_location: locations.sample,
+    address: pick_up_locations.sample,
     completed: false,
     })
 end

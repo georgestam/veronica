@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160928104810) do
 
   create_table "cars", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "bio"
+    t.text     "bio"
     t.string   "video_URL"
     t.string   "travel_distance"
     t.string   "price_hour"
@@ -54,22 +54,18 @@ ActiveRecord::Schema.define(version: 20160928104810) do
   create_table "journeys", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "car_id"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
     t.boolean  "completed"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "duration"
     t.string   "payment"
     t.datetime "pick_up_time"
     t.integer  "seats_available"
-    t.integer  "pick_up_location_id"
     t.index ["car_id"], name: "index_journeys_on_car_id", using: :btree
     t.index ["user_id"], name: "index_journeys_on_user_id", using: :btree
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.string "address"
-    t.float  "latitude"
-    t.float  "longitude"
   end
 
   create_table "passengers", force: :cascade do |t|
@@ -79,8 +75,8 @@ ActiveRecord::Schema.define(version: 20160928104810) do
     t.datetime "updated_at",       null: false
     t.integer  "driver_rating"
     t.integer  "passenger_rating"
-    t.integer  "driver_review"
-    t.integer  "passenger_review"
+    t.text     "driver_review"
+    t.text     "passenger_review"
     t.index ["journey_id"], name: "index_passengers_on_journey_id", using: :btree
     t.index ["user_id"], name: "index_passengers_on_user_id", using: :btree
   end
@@ -104,6 +100,8 @@ ActiveRecord::Schema.define(version: 20160928104810) do
     t.text     "description"
     t.string   "gender"
     t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "linkedin_URL"
     t.string   "facebook_URL"
     t.string   "bank_account"
@@ -131,7 +129,6 @@ ActiveRecord::Schema.define(version: 20160928104810) do
   add_foreign_key "availabilities", "cars"
   add_foreign_key "cars", "users"
   add_foreign_key "journeys", "cars"
-  add_foreign_key "journeys", "locations", column: "pick_up_location_id"
   add_foreign_key "journeys", "users"
   add_foreign_key "passengers", "journeys"
   add_foreign_key "passengers", "users"
