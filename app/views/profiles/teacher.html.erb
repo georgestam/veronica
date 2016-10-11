@@ -161,36 +161,40 @@
                     <% end %>
 
                   </div>
-                  <div class='media-body'>
-                    <div class='content staff'>
-                      <div class='toolbar'>
+                <div class='media-body'>
+                  <div class='content staff'>
+                    <div class='toolbar'>
                         <h4 class='title'>
                           <%= passenger.user.first_name %> <%= passenger.user.last_name %>
                           <span class='label label-contrast'>Staff</span>
                         </h4>
-                      </div>
+                    </div>
                       <p><%= passenger.driver_review %> </li> </p>
                       <p class='time'>
                         <%= l passenger.created_at, format: :short %>
                       </p>
-                    </div>
+                  </div>
                   </div>
                 </div>
                  <% end %>
+              </div>
             </div>
-           </div>
+            <br>
            </div>
 
+
+         <div class='continer'>
             <div class="row">
               <div class="col-xs-10">
-                <div id="map" style="width: 100%; height: 565px;">
-                  <div class='dashboard-card'>
-                   <%= render 'shared/map' %>
-                   </div>
-                </div>
-              </div>
+                <div class='user-card-info'>
+                    <div id="map" style="width: 100%; height: 300px;"></div>
+                      <%= render 'shared/map' %>
+                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
 
 
         </div>

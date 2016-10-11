@@ -4,6 +4,9 @@ class CreateJourneys < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
       t.references :car, foreign_key: true
 
+      t.string :address
+      t.float :latitude
+      t.float :longitude
 
       t.boolean :completed
 

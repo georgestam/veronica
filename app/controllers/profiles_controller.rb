@@ -60,6 +60,12 @@ class ProfilesController < ApplicationController
 
     @passengers = Passenger.where(journey_id: Journey.where(car: @car[0]))
     # @reviews = Review.where(booking_id: Booking.where(profile: @profile).pluck(:id))
+    #
+    @hash = Gmaps4rails.build_markers(@car[0].user) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+      marker.infowindow user.first_name
+    end
 
   end
 
