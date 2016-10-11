@@ -58,8 +58,8 @@ class ProfilesController < ApplicationController
 
     calculate_avg_rating
 
-    @reviews = Passenger.where(journey: @car) # continue here.
-    @reviews = Review.where(booking_id: Booking.where(profile: @profile).pluck(:id))
+    @passengers = Passenger.where(journey_id: Journey.where(car: @car[0]))
+    # @reviews = Review.where(booking_id: Booking.where(profile: @profile).pluck(:id))
 
   end
 

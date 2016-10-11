@@ -89,7 +89,7 @@ videos_url = [
     password: "123456789",
     linkedin_URL: Faker::Boolean.boolean ? urls_linkedin.sample : "",
     facebook_URL: Faker::Boolean.boolean ? urls_facebook.sample : "",
-    bank_account: Faker::Number.number(7),
+    # bank_account: Faker::Number.number(7),
     interview_verif: Faker::Boolean.boolean ? true : false,
     date_of_birth: Faker::Date.between(6570.days.ago, 10000.days.ago),
     address: Faker::Boolean.boolean ? pick_up_locations.sample : ""
@@ -105,7 +105,9 @@ x = 0
   cars << Car.create!({
     user: users.sample,
     video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
-    bio: Faker::Lorem.paragraphs,
+    bio:
+
+    ,
     price_hour: price_per_hour.sample,
     travel_distance: rand(1..10)
     })
@@ -167,7 +169,7 @@ admin = User.new({
     password: "password",
     linkedin_URL: "",
     facebook_URL: "",
-    bank_account: "1234567",
+    # bank_account: "1234567",
     interview_verif: false,
     date_of_birth: Time.new(2002, 10, 31),
     address: "Plaça de la Paeria, 1, 25007 Lleida, Spain"
