@@ -43,7 +43,7 @@ class CarsController < ApplicationController
 
   def update
     @car.update(car_params)
-    redirect_to dashboard_path
+    redirect_to teacher_profile_path(@car)
   end
 
   def destroy

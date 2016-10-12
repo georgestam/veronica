@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     get "/profile/:id/", to: "profiles#teacher", as: :teacher_profile
 
-    resources :cars, only:[:new, :create, :edit, :update] do
+    resources :cars, only:[:new, :create, :edit, :update,:destroy] do
       resources :journeys, only:[:new, :create]
       resources :availabilities, only:[:new, :create, :destroy]
     end
