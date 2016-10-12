@@ -1,0 +1,38 @@
+<%= link_to teacher_profile_path(car.id) do %>
+
+<div class="car-card">
+  <div class="row">
+    <div class="col-xs-3 text-center">
+      <% if car.user.photo? %>
+        <%= cl_image_tag car.user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
+      <% else %>
+        <% avatar_url = car.user.facebook_picture_url || "http://placehold.it/100x100" %>
+        <%= image_tag avatar_url, class: "avatar-xl text-center" %>
+      <% end %>
+    </div>
+    <div class="col-xs-7">
+          <h4> <%= car.user.first_name.capitalize %> <%= car.user.last_name.capitalize %></h4>
+          <p>
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+
+           <%=    car.user.city %>
+          </p>
+          <p> <%= truncate(car.bio, length:200).gsub("[","")  %> </p>
+
+    </div>
+    <div class="col-xs-2">
+      <p>
+          <i class="fa fa-eur" aria-hidden="true"></i>
+          <strong> <%= car.price_hour %>/hr </strong>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+
+
+   </div>
+  </div>
+</div>
+
+<% end%>

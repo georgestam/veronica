@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(version: 20160928104810) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "city"
+    t.string   "country"
     t.string   "linkedin_URL"
     t.string   "facebook_URL"
     t.string   "bank_account"

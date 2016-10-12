@@ -5,7 +5,7 @@
     <h1><%= t('.title') %></h1>
     <p><%= t('.subtitle') %> </p>
     <div class="cta">
-       <%= link_to t('.passenger_call_to_action') , journeys_path, {class: "btn btn-primary"} %>
+       <%= link_to t('.passenger_call_to_action') ,cars_path, {class: "btn btn-primary"} %>
       <% if user_signed_in? && @user.cars[0] != nil %>
       <%= link_to t('.driver_call_to_action'), dashboard_path, {class: "btn btn-primary"} %>
       <% elsif user_signed_in? && @user.cars[0] == nil  %>

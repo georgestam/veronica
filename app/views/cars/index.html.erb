@@ -1,11 +1,36 @@
-<% content_for :title, %>
+<% content_for :title, I18n.t('.teachers') %>
 
-<h1>All cars - ADMIN ONLY</h1>
+<div class='soft-background'>
 
-<% @cars.each do |car| %>
-  <h2>Car owner: <%= "#{car.user.first_name} #{car.user.last_name}" %></h2>
-  <ul>
-    <li>Make: <%#= car.make %></li>
+<div class='container'>
 
-  </ul>
-<% end %>
+  <div class="search-card">
+
+  <%= render 'search' %>
+  <%#= render 'search', remote: true %>
+  <div id="car-list"'>
+    <h3 class="text-center"> <strong> <%= t('.we_have') %> <%= @cars.count %> <%= t('.teachers_for_you_in_this_search')%> </strong> </h3>
+  </div>
+
+  <hr class='hr-half'>
+
+  <div style="padding-bottom:5px; padding-top:30px;">
+    <div id="map" style="width: 100%; height: 300px;">
+      <%= render 'shared/map' %>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <% @cars.each do |j| %>
+    <div class="col-xs-12 col-sm-6">
+      <%= render "card", car: j %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+</div>

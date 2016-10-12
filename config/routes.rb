@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     get "/profile/:id/", to: "profiles#teacher", as: :teacher_profile
 
-    resources :cars, only:[:new, :create, :edit, :update,:destroy] do
+    resources :cars, only:[:index, :new, :create, :edit, :update,:destroy] do
       resources :journeys, only:[:new, :create]
       resources :availabilities, only:[:new, :create, :destroy]
     end
@@ -22,8 +22,6 @@ Rails.application.routes.draw do
     resources :journeys, only:[:index, :show, :destroy, :update, :edit] do
       resources :passengers, only:[:create, :destroy]
     end
-
-    resources :passengers, only:[:update]
 
     # namespace :user do
       # resources :journeys, only:[:index]

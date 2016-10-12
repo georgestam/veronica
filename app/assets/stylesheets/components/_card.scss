@@ -44,3 +44,92 @@
 }
 
 
+.car-card {
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  height: 300px;
+
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #ffffff;
+  margin-top: 10px;
+  color: grey;
+  font-weight: 100;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  &:hover {
+      border: 1px solid green;
+  }
+
+  .btn {
+    width: auto;
+    padding: 15px;
+    border-bottom: 5px solid rgb(21, 126, 171);
+    font-weight: bold;
+    font-size: 19px;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: translateY(-10px);
+      border-bottom-color: rgb(26, 159, 217);
+      background-color: rgb(62, 180, 232);
+    }
+  }
+
+  th {
+  text-align: center;
+  }
+
+  td {
+  border-top: 0px solid #ddd !important;
+  }
+}
+
+.timetable-card {
+  margin-bottom: 10px;;
+  height: 240px;
+  .btn {
+    width: auto;
+    padding: 15px;
+    border-bottom: 5px solid rgb(21, 126, 171);
+    font-weight: bold;
+    font-size: 19px;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: translateY(-3px);
+      border-bottom-color: rgb(26, 159, 217);
+      background-color: rgb(62, 180, 232);
+    }
+  }
+
+  th {
+  text-align: center;
+  }
+
+  td {
+  border-top: 0px solid #ddd !important;
+  }
+}
+
+.search-card {
+
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 10px;
+  background-color: #ffffff;
+  color: #9a9a9a;
+
+  .btn {
+    transition: all 0.3s ease;
+    }
+}
+
+
+ #car-list {
+  h3 {
+    color: grey;
+    font-size: 25px;
+  }
+}
+
+

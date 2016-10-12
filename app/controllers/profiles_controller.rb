@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
 
   before_action :find_user, only: [:show, :edit, :update]
+  before_action :find_car, only: [:teacher]
+  skip_before_action :authenticate_user!, only: [ :teacher]
 
   def show
     @cars = Car.where(user: @user)
@@ -37,9 +39,6 @@ class ProfilesController < ApplicationController
 
   def teacher
 
-    @user = current_user
-    authorize @user
-    @car = Car.where(user: @user)
 
     @availabilities = Availability.where(car: @car)
 
@@ -58,10 +57,10 @@ class ProfilesController < ApplicationController
 
     calculate_avg_rating
 
-    @passengers = Passenger.where(journey_id: Journey.where(car: @car[0]))
+    @passengers = Passenger.where(journey_id: Journey.where(car: @car))
     # @reviews = Review.where(booking_id: Booking.where(profile: @profile).pluck(:id))
     #
-    @hash = Gmaps4rails.build_markers(@car[0].user) do |user, marker|
+    @hash = Gmaps4rails.build_markers(@car.user) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
       marker.infowindow user.first_name
@@ -74,6 +73,11 @@ class ProfilesController < ApplicationController
   def find_user
     @user = User.find(params[:id])
     authorize @user
+  end
+
+  def find_car
+    @car = Car.find(params[:id])
+    authorize @car
   end
 
   def user_params
@@ -121,15 +125,15 @@ class ProfilesController < ApplicationController
   end
 
   def verifications
-    @email_verified = true if @user.confirmed?
-    @photo_verified = true if @user.photo
-    @address_verified = true if @user.address
-    @availability_verified = true unless @user.cars[0].availabilities.empty?
-    @upload_video = true if @user.cars[0].video_URL != ""
-    @facebook_URL_verified = true if @user.facebook_URL != ""
-    @linkedin_URL_verified = true if @user.linkedin_URL != ""
-    @id_document_verified = true if @user.id_document
-    @bank_verified = true if @user.bank_account
+    @email_verified = true if @car.user.confirmed?
+    @photo_verified = true if @car.user.photo
+    @address_verified = true if @car.user.address
+    @availability_verified = true unless @car.user.cars[0].availabilities.empty?
+    @upload_video = true if @car.user.cars[0].video_URL != ""
+    @facebook_URL_verified = true if @car.user.facebook_URL != ""
+    @linkedin_URL_verified = true if @car.user.linkedin_URL != ""
+    @id_document_verified = true if @car.user.id_document
+    @bank_verified = true if @car.user.bank_account
 
     manual_check_pending
 
@@ -139,11 +143,11 @@ class ProfilesController < ApplicationController
 
     @manual_check = false
 
-    if @user.passport_verif == false && @id_document_verified
+    if @car.user.passport_verif == false && @id_document_verified
       @manual_check = true
-    elsif @user.facebook_verif == false && @facebook_URL_verified
+    elsif @car.user.facebook_verif == false && @facebook_URL_verified
       @manual_check = true
-    elsif @user.linkedin_verif == false && @linkedin_URL_verified
+    elsif @car.user.linkedin_verif == false && @linkedin_URL_verified
       @manual_check = true
     end
 
