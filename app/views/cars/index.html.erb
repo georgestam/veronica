@@ -1,36 +1,41 @@
 <% content_for :title, I18n.t('.teachers') %>
 
+
+
 <div class='soft-background'>
 
 <div class='container'>
 
-  <div class="search-card">
 
-  <%= render 'search' %>
-  <%#= render 'search', remote: true %>
-  <div id="car-list"'>
-    <h3 class="text-center"> <strong> <%= t('.we_have') %> <%= @cars.count %> <%= t('.teachers_for_you_in_this_search')%> </strong> </h3>
-  </div>
 
-  <hr class='hr-half'>
 
-  <div style="padding-bottom:5px; padding-top:30px;">
-    <div id="map" style="width: 100%; height: 300px;">
-      <%= render 'shared/map' %>
+    <div class="search-card">
+
+      <%= render 'search' %>
+      <%#= render 'search', remote: true %>
+      <div id="car-list"'>
+        <h3 class="text-center"> <strong> <%= t('.we_have') %> <%= @cars.count %> <%= t('.teachers_for_you_in_this_search')%> </strong> </h3>
+      </div>
+
+      <hr class='hr-half'>
+
+      <div style="padding-bottom:5px; padding-top:30px;">
+        <div id="map" style="width: 100%; height: 300px;">
+          <%= render 'shared/map' %>
+        </div>
+      </div>
     </div>
+
+
+
+
+      <div class="row">
+        <% @cars.each do |j| %>
+        <div class="col-xs-12 col-sm-6">
+          <%= render "card", car: j %>
+        </div>
+        <% end %>
+      </div>
+
   </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <% @cars.each do |j| %>
-    <div class="col-xs-12 col-sm-6">
-      <%= render "card", car: j %>
-    </div>
-    <% end %>
-  </div>
-</div>
-
-
 </div>

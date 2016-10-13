@@ -35,6 +35,7 @@ class CarsController < ApplicationController
 
     end
 
+     @car = Car.new
 
 
   end

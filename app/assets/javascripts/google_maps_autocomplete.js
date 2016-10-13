@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+
   $('.autocomplete').each(function(i, item) {
     var defaultBounds = new google.maps.LatLngBounds(
       new google.maps.LatLng(52.320806, -1.635384),
@@ -7,7 +9,8 @@ $(document).ready(function() {
     var options = {
       bounds: defaultBounds,
       componentRestrictions: {
-        country: 'UK'
+        country: 'UK',
+        country: 'ES'
       },
       types: ['geocode']
     };
