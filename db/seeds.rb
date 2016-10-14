@@ -68,10 +68,10 @@ urls_facebook = [
 ]
 
 videos_url = [
-"https://www.youtube.com/watch?v=Bdw2wAXe97Y",
-"https://www.youtube.com/watch?v=zE_iwkMoGbQ",
-"https://www.youtube.com/watch?v=hBCWeJVkb0Q",
-"https://www.youtube.com/watch?v=8tMENwHyTOU"
+"https://www.youtube.com/embed/ePbKGoIGAXY",
+"https://www.youtube.com/embed/ePbKGoIGAXY",
+"https://www.youtube.com/embed/ePbKGoIGAXY",
+"https://www.youtube.com/embed/ePbKGoIGAXY"
 ]
 
 
@@ -107,7 +107,7 @@ x = 0
     video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
     bio: Faker::Lorem.paragraphs,
     price_hour: price_per_hour.sample,
-    travel_distance: rand(1..10)
+    travel_distance: rand(1..10),
     })
   x += 1
 end
@@ -172,10 +172,10 @@ admin = User.new({
 
 car_admin = Car.create!({
     user: admin,
-    video_URL: "",
+    video_URL: "https://www.youtube.com/embed/ePbKGoIGAXY",
     bio: "I am a self-made woman entrepreneur and proficient linguist in English, Spanish, French, Italian, Catalan and Rumanian. I am a team worker, with high compromise, responsibility and positive attitude to achieve short and long-term objectives. I apply constant effort in the areas of productivity and quality of every performed work. I am also an entrepreneur, polifacetic and charismatic English teacher. I am willing to continue progressing in my teaching career and combine it with my other passion: entrepreneurship. Creative, ambitious and energetic, always ready to roll sleeves up and establish plans and solutions in order to achieve strategic business initiatives and deliver results. I have total availability at the moment and may be contacted in the referred email anytime.",
     price_hour: 30,
-    travel_distance: 20
+    travel_distance: 20,
     })
 
 end_time = 0

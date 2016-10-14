@@ -6,8 +6,6 @@
 
 
 
-
-
   <div class="container">
     <div class="row">
       <div class="col-sm-5">
@@ -26,68 +24,13 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-10">
-        <div class="dashboard-card">
+        <div class="teacher-profile">
           <div class="row">
             <div class="text-center">
-              <div class="col-xs-2">
-
-              <ul >
-                <li>
-                  <% @avg_rating.times do |i|  %>
-                  <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
-                  <% end %>
-                  <% (5-@avg_rating).times do |i|  %>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <% end %>
-                  <li>
-                </ul>
-
-
-                <div id="container"></div>
-                 <% content_for(:after_js) do %>
-                  <script>
-
-                    var bar = new ProgressBar.Circle(container, {
-                      color: '#aaa',
-                      // This has to be the same size as the maximum width to
-                      // prevent clipping
-                      strokeWidth: 4,
-                      trailWidth: 1,
-                      easing: 'easeInOut',
-                      duration: 1400,
-                      text: {
-                        autoStyleContainer: false
-                      },
-                      from: { color: '#aaa', width: 1 },
-                      to: { color: '#333', width: 4 },
-                      // Set default step function for all animate calls
-                      step: function(state, circle) {
-                        circle.path.setAttribute('stroke', state.color);
-                        circle.path.setAttribute('stroke-width', state.width);
-
-                        var value = Math.round(circle.value() * 100);
-                        if (value === 0) {
-                          circle.setText('');
-                        } else {
-                          circle.setText(value);
-                        }
-
-                      }
-                    });
-                    bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-                    bar.text.style.fontSize = '2rem';
-
-                    bar.animate(<%= @progress %>/100);  // Number from 0.0 to 1.0
-
-
-                  </script>
-                <% end %>
-
-
-
+              <div class="col-xs-3">
 
                 <h3> <%= @journeys.count %> </h3>
-                <p> bookings to date </p>
+                <p> bookings </p>
               </div>
               <div class="col-xs-3">
                 <h3><%= @kids  %></h3>
@@ -111,9 +54,15 @@
           <br>
           <h4> <strong>Video</strong> </h4>
           <% if @car.video_URL != "" %>
-          <h4> <%= @car.video_URL %>  </h4>
+
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="<%= @car.video_URL %>"></iframe>
+
+          </div>
+
           <% elsif %>
           <p> <%= @car.user.first_name  %>  <%= t('.no_videos')%> </p>
+
           <% end %>
         </div>
       </div>
@@ -137,9 +86,9 @@
        <span> <%= l @car.created_at, format: :short %></span>
        <br>
        <p class='fa fa-comments'></p>
-       <span><%= @comments.count %> <%= t('comments') %> </span>
-
-       <hr class='hr-half'>
+       <%= @comments.count %> <%= t('comments') %>
+       <br>
+       <br>
 
 
 
@@ -193,6 +142,45 @@
                   <% end %>
                 </p>
               </div>
+              <br>
+               <p class=''> <%= t('score_based_in_teacher_verification') %> </p>
+              <div class='row'>
+                <div class='col-xs-8'>
+                 <div class='text-center' id="container"></div>
+                   <% content_for(:after_js) do %>
+                    <script>
+
+                      var bar = new ProgressBar.Circle(container, {
+                        color: '#FC443F',
+                        trailColor: '#eee',
+                        trailWidth: 1,
+                        duration: 1400,
+                        easing: 'bounce',
+                        strokeWidth: 6,
+                        from: {color: '#FC443F', a:0},
+                        to: {color: '#41BE2E', a:1},
+                        // Set default step function for all animate calls
+                        step: function(state, circle) {
+
+
+                          var value = Math.round(circle.value() * 100);
+                          if (value === 0) {
+                            circle.setText('');
+                          } else {
+                            circle.setText(value);
+                          }
+
+                        }
+                      });
+                      bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+                      bar.text.style.fontSize = '2rem';
+
+                      bar.animate(<%= @progress %>/100);  // Number from 0.0 to 1.0
+
+                    </script>
+                  <% end %>
+                  </div>
+                </div>
 
             </div>
           </div>
