@@ -35,9 +35,6 @@ class CarsController < ApplicationController
 
     end
 
-     @car = Car.new
-
-
   end
 
   def new
@@ -93,4 +90,25 @@ class CarsController < ApplicationController
   def car_params
     params.require(:car).permit(:bio, :video_URL, :travel_distance, :price_hour)
   end
+
+  # copy from profile controllers
+
+  def calculate_avg_rating
+    @ratings = []
+    @comments = []
+
+    @journeys.each do |journey|
+      journey.passengers.each do |passenger|
+        unless passenger.driver_rating.nil?
+          #  This will remove any future journeys as the driver will not have been rated, therefore rating = nil
+          @ratings << passenger.driver_rating
+        end
+      end
+    end
+
+    @avg_rating = @ratings.inject(0){|sum,x| sum + x } / @ratings.count if @ratings.count != 0
+
+  end
+
+
 end

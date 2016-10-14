@@ -22,9 +22,6 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "jquery-slick-rails"
 
-# progress bar
-gem 'rails-assets-progressbar.js', source: 'https://rails-assets.org'
-
 # Date-time picker gems
 gem 'momentjs-rails', '~> 2.9'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true

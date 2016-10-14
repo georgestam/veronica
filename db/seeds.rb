@@ -92,7 +92,7 @@ videos_url = [
     # bank_account: Faker::Number.number(7),
     interview_verif: Faker::Boolean.boolean ? true : false,
     date_of_birth: Faker::Date.between(6570.days.ago, 10000.days.ago),
-    address: Faker::Boolean.boolean ? pick_up_locations.sample : ""
+    address: pick_up_locations.sample
     })
   user.photo = open(urls.sample)
   user.save

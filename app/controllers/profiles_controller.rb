@@ -4,6 +4,11 @@ class ProfilesController < ApplicationController
   before_action :find_car, only: [:teacher]
   skip_before_action :authenticate_user!, only: [ :teacher]
 
+  def index
+
+
+  end
+
   def show
     @cars = Car.where(user: @user)
 
