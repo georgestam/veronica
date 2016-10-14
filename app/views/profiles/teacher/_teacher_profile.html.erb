@@ -1,4 +1,4 @@
-<div class="dashboard-card">
+<div class="teacher-profile-top">
 <div class="row">
   <div class="col-xs-12">
 
@@ -6,39 +6,44 @@
 <div class="public-profile">
 
   <div class="left-column text-center">
-    <% if @user.photo? %>
-      <%= cl_image_tag @user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
+    <% if @car.user.photo? %>
+      <%= cl_image_tag @car.user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
     <% else %>
-      <% avatar_url = @user.facebook_picture_url || "http://placehold.it/100x100" %>
+      <% avatar_url = @car.user.facebook_picture_url || "http://placehold.it/100x100" %>
       <%= image_tag avatar_url, class: "avatar-xl text-center" %>
     <% end %>
 
   </div>
       <div class="right-column">
-            <h4> <%= @car[0].user.first_name.capitalize %> <%= @car[0].user.last_name.capitalize %></h4>
+            <h4> <%= @car.user.first_name.capitalize %> <%= @car.user.last_name.capitalize %></h4>
 
             <p>
             <i class="fa fa-eur" aria-hidden="true"></i>
-            <%= @car[0].price_hour %>/hr
+            <%= @car.price_hour %>/hr
             </p>
 
             <p>
             <i class="fa fa-map-marker" aria-hidden="true"></i>
-             <%= @user.address %>
+             <%= @car.user.address %>
             </p>
+
+            <ul >
+                <li>
+                  <% @avg_rating.times do |i|  %>
+                  <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+                  <% end %>
+                  <% (5-@avg_rating).times do |i|  %>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <% end %>
+                <li>
+          </ul>
       </div>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
-        <p class='text-center' style='font-size:12px'>   </p>
-        <div class="progress">
-          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @progress %>"
-          aria-valuemin="0" aria-valuemax="100" style="width:<%=@progress.to_i%>%" id="account-progress">
-          <span id="progress"><%= @progress %></span>% <%= t('.verification_score_completed') %>
-          </div>
-      </div>
+  <div class="col-md-6 col-md-offset-4 text-center">
+
  </div>
 </div>
 </div>

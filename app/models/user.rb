@@ -19,6 +19,14 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, only: :address_changed?
 
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.city    = geo.city
+      obj.country = geo.country_code
+    end
+  end
+  after_validation :reverse_geocode
+
   after_create :send_welcome_email
 
   def full_name

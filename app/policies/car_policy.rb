@@ -18,4 +18,9 @@ class CarPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def teacher?
+    true
+  end
+
 end

@@ -1,0 +1,37 @@
+<div class="row">
+
+
+
+  <%#= form_tag(profiles_path, :method => "get", id: "search-form", class: "form-inline", remote: remote) do %>
+  <%= form_tag(cars_path, :method => "get", id: "search-form", class: "input-block-level") do %>
+
+
+  <div class="col-xs-6" >
+     <%= text_field_tag :your_location, nil, :placeholder => I18n.t('.where_to_find_teacher', default: 'Where to find teachers?' ), :class => "form-control autocomplete", label: 'Personal Address' %>
+  </div>
+
+   <div class="col-xs-3">
+    <%= select_tag :max_distance, options_for_select([0,10,25,50,100,250]), :prompt => I18n.t('.search_distance', default: 'Search Distance' ), :class => "form-control"  %>
+  </div>
+  <!--   </div>
+    <div class="search-box-item"> -->
+    <!-- Budget:
+    <input id="ex6" type="text"
+    name="price_range"
+    data-provide="slider"
+    data-slider-min="0"
+    data-slider-max="500000"
+    data-slider-range="true"
+    data-slider-step="10000"
+    data-slider-value="[150000,350000]"
+    data-slider-tooltip="hide"
+    data-slider-handle="square"
+    "/>
+    <span id="budgetReadout"><span id="ex6SliderVal">£150k - £350k </span></span>
+  <!--   </div>
+    <div class="search-box-item"> -->
+    <div class="col-xs-3">
+    <%= submit_tag "Submit", class: "btn btn-primary btn-block" %>
+    </div>
+</div>
+<% end %>

@@ -1,3 +1,4 @@
+
 /* -------------------------------------
  * Utilities classes
  * These are examples of utilities classes
@@ -36,3 +37,33 @@ body {
 .lift-bacground {
   background-image: linear-gradient(rgba(0, 0, 0, 0.79), rgba(0,0,0,0.3));
 }
+
+.soft-background {
+  background: #F2F2F2;
+}
+
+.no-decoration {
+
+  text-decoration: none !important;
+
+}
+
+a:hover {
+    color: white;
+}
+
+
+.limit-to-x-lines {
+
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   // line-height: 16px;     /* fallback */
+   // max-height: 200px;      /* fallback */
+   -webkit-line-clamp: 6; /* number of lines to show */
+   -webkit-box-orient: vertical;
+   margin: 10px 10px 0px 10px;
+
+}
+
+

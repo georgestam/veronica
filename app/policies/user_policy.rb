@@ -28,4 +28,6 @@ class UserPolicy < ApplicationPolicy
   def teacher?
     record == user
   end
+
+
 end

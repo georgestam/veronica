@@ -1,0 +1,31 @@
+  <% if @profiles.length == 0 %>
+  <div class="container padded">
+  <div class="row">
+  <div class="col-xs-12 col-sm-12">
+  <p>Sorry, no results found.  Try broadening your search</p>
+  </div>
+  </div>
+  </div>
+    <% else %>
+
+<div class="container">
+  <div class="row">
+    <% @profiles.each do |profile| %>
+      <% distance_away = Geocoder::Calculations.distance_between(Geocoder.coordinates(@your_location), [profile.user.latitude,profile.user.longitude ]) %>
+
+      <div class="col-xs-12 col-sm-4 padding-images">
+        <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
+        <div class="card text-center" style="background-image: url('<%= card_photo %>');">
+          <div class="card-category"><%= distance_away.round %>km</div>
+          <div class="card-user">£<%= profile.price_hour/1000 %>k</div>
+          <div class="card-description">
+              <p><%= profile.dj_name %></p>
+            </div>
+             <%= link_to "", profile_path(profile), class: 'card-link' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% end %>

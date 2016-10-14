@@ -1,6 +1,11 @@
-<% content_for :title, "#{@car[0].user.first_name}" %>
+<% content_for :title, "#{@car.user.first_name}" %>
 
-<div style='background: #F2F2F2'>
+
+
+<div class='soft-background'>
+
+
+
   <div class="container">
     <div class="row">
       <div class="col-sm-5">
@@ -9,7 +14,7 @@
         </div>
       </div>
       <div class="col-sm-7">
-        <div class='dashboard-card car-card' id="manual_info">
+        <div class='dashboard-card timetable-card' id="manual_info">
           <%= render 'profiles/dashboard/overview_free_time' %>
         </div>
       </div>
@@ -19,12 +24,13 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-10">
-        <div class="dashboard-card">
+        <div class="teacher-profile">
           <div class="row">
             <div class="text-center">
               <div class="col-xs-3">
+
                 <h3> <%= @journeys.count %> </h3>
-                <p> bookings to date </p>
+                <p> bookings </p>
               </div>
               <div class="col-xs-3">
                 <h3><%= @kids  %></h3>
@@ -44,13 +50,19 @@
           <hr class='hr-half'>
 
           <h4> <strong>Bio</strong> </h4>
-          <p><%=  @car[0].bio  %></p>
+          <p><%=  @car.bio.gsub(/[\[\]]/,"")  %></p>
           <br>
           <h4> <strong>Video</strong> </h4>
-          <% if @car[0].video_URL != "" %>
-          <h4> <%= @car[0].video_URL %>  </h4>
+          <% if @car.video_URL != "" %>
+
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="<%= @car.video_URL %>"></iframe>
+
+          </div>
+
           <% elsif %>
-          <p> <%= @car[0].user.first_name  %>  <%= t('.no_videos')%> </p>
+          <p> <%= @car.user.first_name  %>  <%= t('.no_videos')%> </p>
+
           <% end %>
         </div>
       </div>
@@ -59,24 +71,24 @@
         <br>
         <div>
 
-        <% if @car[0].user == current_user %>
-        <%= link_to "Edit ", edit_car_path(@car[0]), :class => "btn btn-primary btn-block" %>
-        <%= link_to "Delete", car_path(@car[0]), :class => "btn btn-danger btn-block",
+        <% if @car.user == current_user %>
+        <%= link_to "Edit ", edit_car_path(@car), :class => "btn btn-primary btn-block" %>
+        <%= link_to "Delete", car_path(@car), :class => "btn btn-danger btn-block",
               method: :delete,
               data: { confirm: I18n.t('.Are_you sure?') } %>
           <% else %>
-           <%= link_to t('.book_me'), journey_path(@car[0]), :class => "btn btn-success btn-block" %>
+           <%= link_to t('.book_me'), journey_path(@car), :class => "btn btn-success btn-block" %>
           <% end %>
        </div>
        <br>
 
        <p class='fa fa-calendar'></p>
-       <span> <%= l @car[0].created_at, format: :short %></span>
+       <span> <%= l @car.created_at, format: :short %></span>
        <br>
        <p class='fa fa-comments'></p>
-       <span><%= @comments.count %> <%= t('comments') %> </span>
-
-       <hr class='hr-half'>
+       <%= @comments.count %> <%= t('comments') %>
+       <br>
+       <br>
 
 
 
@@ -130,6 +142,45 @@
                   <% end %>
                 </p>
               </div>
+              <br>
+               <p class=''> <%= t('score_based_in_teacher_verification') %> </p>
+              <div class='row'>
+                <div class='col-xs-8'>
+                 <div class='text-center' id="container"></div>
+                   <% content_for(:after_js) do %>
+                    <script>
+
+                      var bar = new ProgressBar.Circle(container, {
+                        color: '#FC443F',
+                        trailColor: '#eee',
+                        trailWidth: 1,
+                        duration: 1400,
+                        easing: 'bounce',
+                        strokeWidth: 6,
+                        from: {color: '#FC443F', a:0},
+                        to: {color: '#41BE2E', a:1},
+                        // Set default step function for all animate calls
+                        step: function(state, circle) {
+
+
+                          var value = Math.round(circle.value() * 100);
+                          if (value === 0) {
+                            circle.setText('');
+                          } else {
+                            circle.setText(value);
+                          }
+
+                        }
+                      });
+                      bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+                      bar.text.style.fontSize = '2rem';
+
+                      bar.animate(<%= @progress %>/100);  // Number from 0.0 to 1.0
+
+                    </script>
+                  <% end %>
+                  </div>
+                </div>
 
             </div>
           </div>
@@ -199,6 +250,8 @@
 
         </div>
       </div>
+
+
 
 
 

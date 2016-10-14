@@ -1,14 +1,40 @@
 class CarsController < ApplicationController
 
-  before_action :find_car, only: [:show, :edit, :update, :destroy]
-  before_action :find_user, only: [:show, :update, :destroy]
+  before_action :find_car, only: [:edit, :update, :destroy]
+  before_action :find_user, only: [:update, :destroy]
+  skip_before_action :authenticate_user!, only: [ :index]
 
   def index
-    @cars = policy_scope(Car)
-  end
 
-  def show
-    @user = @car.user
+    @cars = policy_scope(Car)
+
+
+    # extract search parameters and use defualts if not entered by user
+    @min_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[0] : 0
+    @max_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[1] : 1000
+    @max_distance = params[:max_distance] && params[:max_distance] !="" ? params[:max_distance] : 10000
+    @your_location = params[:your_location] && params[:your_location] !="" ? params[:your_location] : "London"
+
+    user_ids = User.near(@your_location, @max_distance).map(&:id)
+    @cars = Car.where(user_id: user_ids)
+
+
+    # @car = Car.where(price_hour: @min_price..@max_price, user_id: user_ids)
+
+    @hash = Gmaps4rails.build_markers(@cars) do |car, marker|
+      marker.lat car.user.latitude
+      marker.lng car.user.longitude
+      link = view_context.link_to "#{car.user.first_name}", teacher_profile_path(car), class: "no-decoration"
+      description = "#{link}"
+      marker.infowindow description
+      #marker.picture({
+        #: ActionController::Base.helpers.image_path("vero/logo.png"),
+        # width: 30,
+        # height: 30
+      #})
+
+    end
+
   end
 
   def new
@@ -55,7 +81,6 @@ class CarsController < ApplicationController
 
   def find_car
     @car = Car.find(params[:id])
-    authorize @car
   end
 
   def find_user
@@ -65,4 +90,25 @@ class CarsController < ApplicationController
   def car_params
     params.require(:car).permit(:bio, :video_URL, :travel_distance, :price_hour)
   end
+
+  # copy from profile controllers
+
+  def calculate_avg_rating
+    @ratings = []
+    @comments = []
+
+    @journeys.each do |journey|
+      journey.passengers.each do |passenger|
+        unless passenger.driver_rating.nil?
+          #  This will remove any future journeys as the driver will not have been rated, therefore rating = nil
+          @ratings << passenger.driver_rating
+        end
+      end
+    end
+
+    @avg_rating = @ratings.inject(0){|sum,x| sum + x } / @ratings.count if @ratings.count != 0
+
+  end
+
+
 end

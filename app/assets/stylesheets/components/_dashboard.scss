@@ -97,7 +97,7 @@
   padding: 20px;
   background-color: #ffffff;
   margin-top: 10px;
-  color: black;
+  color: grey;
   font-weight: 100;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   h2 {
@@ -136,31 +136,7 @@
   }
 }
 
-.car-card {
-  margin-bottom: 10px;;
-  height: 240px;
-  .btn {
-    width: auto;
-    padding: 15px;
-    border-bottom: 5px solid rgb(21, 126, 171);
-    font-weight: bold;
-    font-size: 19px;
-    transition: all 0.3s ease;
-    &:hover {
-      transform: translateY(-3px);
-      border-bottom-color: rgb(26, 159, 217);
-      background-color: rgb(62, 180, 232);
-    }
-  }
 
-  th {
-  text-align: center;
-  }
-
-  td {
-  border-top: 0px solid #ddd !important;
-  }
-}
 
 .review-card {
   height: 290px;
