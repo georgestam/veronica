@@ -14,11 +14,12 @@ class JourneyPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == user || record.car == user.cars[0]
   end
 
   def destroy?
-    record.user == user
+    record.user == user || record.car == user.cars[0]
+
   end
 
   def driver_journey?

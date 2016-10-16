@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-xs-12">
-    <% unless @journeys_as_passenger.empty? %>
+    <% unless @journeys == nil  %>
       <h2 class="text-center"><%= t('passenger-journeys') %></h2>
-      <% @journeys_as_passenger.each do |journey| %>
+      <% @journeys.each do |journey| %>
         <div class="product dashboard-card">
-          <% if journey.car.photo? %>
-            <%= cl_image_tag journey.car.photo.path, { class: "product-image hidden-xs"} %>
+          <% if journey.car.user.photo? %>
+            <%= cl_image_tag journey.car.user.photo.path, { class: "product-image hidden-xs"} %>
           <% end %>
           <div class='product-body'>
             <p><i class="fi-clock"></i> <%= l(journey.pick_up_time, format: :time_date)%> </p>
@@ -18,38 +18,95 @@
               <li> <i class="fa fa-users" aria-hidden="true"></i>  <%= t('seats_available_html', seats_available: journey.remaining_seats) %> </li>
             </ul>
             <% remove_passenger = journey.passengers.where(user: current_user)[0] %>
-            <%= link_to 'Cancel booking', journey_passenger_path(journey_id: journey, id: remove_passenger.id), data: { confirm: 'Are you sure?' }, method: :delete %>
+            <%= link_to 'Cancel booking', journey_path(journey), data: { confirm: 'Are you sure?' }, method: :delete %>
           </div>
           <%= link_to "", journey_path(journey), class: "product-link" %>
         </div>
       <% end %>
     <% end %>
   </div>
+
   <div class="col-xs-12">
-    <% unless @journeys_as_driver.empty? %>
-      <h2 class="text-center"><%= t('driver_journeys') %></h2>
-      <% @journeys_as_driver.each do |journey| %>
+    <% unless @journeys == nil %>
+      <h2 class="text-center"><%= t('user_bookings') %></h2>
+      <% @journeys.each do |journey| %>
+
         <div class="product dashboard-card">
-          <% if journey.car.photo? %>
-            <%= cl_image_tag journey.car.photo.path, { class: "product-image hidden-xs"} %>
+          <%= journey.id %>
+          <% if journey.car.user.photo? %>
+          <%= cl_image_tag journey.car.user.photo.path, { class: "product-image hidden-xs"} %>
+          <% else %>
+          <% avatar_url = "http://placehold.it/200x200" %>
+          <%= cl_image_tag avatar_url, { class: "product-image hidden-xs"} %>
+
           <% end %>
           <div class='product-body'>
-            <p> <%= l(journey.pick_up_time, format: :time_date)%> </p>
+            <p> <%= journey.car.user.first_name.capitalize %> </p>
             <ul>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%#= t('pick_up_location_html', location: journey.pick_up_location.address) %></li>
-              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%#= t('destination_html', location: journey.drop_off_location.address) %></li>
-              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('num_of_passengers_html') %> <%= journey.passengers.count %></li>
-              <li> <i class="fa fa-cutlery" aria-hidden="true"></i>  <%#= t("vehicle_html", make: journey.car.make, name: journey.car.name) %></li>
-              <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('seats_available_html', seats_available: journey.remaining_seats) %> </li>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(journey.pick_up_time, format: :time_date) %></li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('.location') %>:<%= journey.address %> </li>
+              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>: <%= journey.duration.to_i*journey.car.price_hour.to_i %></li>
+              <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.duration') %>:<%= journey.duration %> h </li>
+              <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('.children') %>: <%= journey.remaining_seats %> </li>
             </ul>
             <%= simple_form_for [journey] do |f| %>
               <%= f.hidden_field :completed, :value => true %>
-              <%= f.submit "Mark as Completed", class: 'btn-booking' %>
+              <%= f.submit "Mark as Completed", class: 'btn btn-primary' %>
             <% end %>
+             <%= link_to 'Cancel booking', journey_path(journey), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-primary' %>
           </div>
-          <%= link_to "", journey_path(journey), class: "product-link" %>
+          <%#= link_to "", edit_journey_path(journey), class: "product-link" %>
+
         </div>
       <% end %>
     <% end %>
   </div>
+
+
+
+  <div class="col-xs-12">
+    <% unless @journeys == nil %>
+      <h2 class="text-center"><%= t('teacher_bookings') %></h2>
+      <% @journeys.each do |journey| %>
+        <div class="product dashboard-card">
+          <% if journey.user.photo? %>
+          <%= cl_image_tag journey.user.photo.path, { class: "product-image hidden-xs"} %>
+          <% else %>
+          <% avatar_url = journey.user.facebook_picture_url || "http://placehold.it/200x200" %>
+          <%= cl_image_tag avatar_url, { class: "product-image hidden-xs"} %>
+
+          <% end %>
+          <div class='product-body'>
+            <p> <%= journey.user.first_name.capitalize %> </p>
+            <ul>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(journey.pick_up_time, format: :time_date) %></li>
+              <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('.location') %>:<%= journey.address %> </li>
+              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>: <%= journey.duration.to_i*journey.car.price_hour.to_i %></li>
+              <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.duration') %>:<%= journey.duration %> h </li>
+              <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('.children') %>: <%= journey.remaining_seats %> </li>
+            </ul>
+            <ul>
+              <il>
+                <%= simple_form_for [journey] do |f| %>
+                    <% if journey.completed %>
+                    <%= f.hidden_field :completed, :value => false %>
+                    <%= f.submit "Completed", class: 'btn btn-success custom-btn-width' %>
+                    <% else %>
+                    <%= f.hidden_field :completed, :value => true %>
+                    <%= f.submit "Mark as Completed", class: 'btn btn-primary custom-btn-width' %>
+                   <% end %>
+                <% end %>
+              </il>
+              <il>
+                <%= link_to 'Cancel booking', journey_path(journey), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger custom-btn-width' %>
+              </il>
+            </ul>
+          </div>
+          <%#= link_to "", edit_journey_path(journey), class: "product-link" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+
 </div>

@@ -1,7 +1,7 @@
 class Journey < ApplicationRecord
   belongs_to :user
   belongs_to :car
-  has_many :passengers
+  has_many :passengers, dependent: :destroy
 
   # validates :start_time, :finish_time, :num_of_students, presence: true
 

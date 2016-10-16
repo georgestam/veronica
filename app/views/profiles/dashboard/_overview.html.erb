@@ -102,12 +102,12 @@
 
       <div class="stats row">
         <div class="col-xs-4">
-          <h3><%= 0 %></h3>
-          <p> Income to date </p>
+          <h3> <%= @journeys.count %> </h3>
+          <p> bookings </p>
         </div>
         <div class="col-xs-4">
-          <h3> <%= 0%> </h3>
-          <p> hours taught </p>
+          <h3><%= @kids  %></h3>
+          <p> kids to date </p>
         </div>
         <div class="col-xs-4">
           <h3> <%= @user.cars[0].price_hour %>   </h3>
@@ -117,18 +117,15 @@
 
       <div class="stats">
         <div class="col-xs-4">
-          <h3><%= 0  %></h3>
-          <p> Numbers of kids to date </p>
-        </div>
-        <div class="col-xs-4">
-          <h3> 0 <%= @avg_rating %></h3>
+          <h3> <%= @avg_rating %></h3>
           <p>Average rating review  </p>
         </div>
         <div class="col-xs-4">
-          <h3> 0 <%#= @avg_rating.count %> </h3>
+          <h3> <%= @ratings.count %> </h3>
           <p> number of reviews </p>
         </div>
       </div>
+
     </div>
   </div>
   <div class="col-xs-12 col-sm-8 text-center" id="manual_info">
