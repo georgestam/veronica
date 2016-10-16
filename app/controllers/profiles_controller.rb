@@ -27,10 +27,21 @@ class ProfilesController < ApplicationController
 
     @user = current_user
     authorize @user
+    @teacher = false
 
     if @user.cars[0] == nil
-    render :dashboard_parent
+
+
+    @journeys = Journey.where(user: @user)
+
+    calculate_avg_rating
+
+    @passengers = Passenger.where(journey_id: Journey.where(user: @car))
+
+
     else
+
+    @teacher = true
     cars= Car.where(user: @user)
     @car= cars[0]
     @availabilities = Availability.where(car: @car)
@@ -51,8 +62,6 @@ class ProfilesController < ApplicationController
     calculate_avg_rating
 
     @passengers = Passenger.where(journey_id: Journey.where(car: @car))
-
-
 
     end
 

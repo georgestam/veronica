@@ -30,12 +30,15 @@ class JourneysController < ApplicationController
     authorize @journey
     if @journey.save
       redirect_to dashboard_path
+      #PassengerMailer.confirmation_of_booking(@passenger).deliver_now # This sends email confirmation to the passenger
+      #PassengerMailer.new_passenger(@passenger).deliver_now # This send a notification to the driver
     else
       render :new
     end
   end
 
   def edit
+    authorize @journey
   end
 
   def update

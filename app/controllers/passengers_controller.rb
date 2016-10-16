@@ -1,20 +1,32 @@
 class PassengersController < ApplicationController
 
-  before_action :find_journey, only: [:create, :update]
+  before_action :find_journey, only: [:new, :create, :update]
   before_action :find_passenger, only: [:update, :destroy]
 
-  def create
-    @passenger = Passenger.new(params.require(:passenger).permit(:passenger_location_id))
+  def new
+    @passenger = Passenger.new
     @passenger.user = current_user
-    @passenger.journey = @journey
     authorize @passenger
-    if @passenger.save
-      PassengerMailer.confirmation_of_booking(@passenger).deliver_now # This sends email confirmation to the passenger
-      PassengerMailer.new_passenger(@passenger).deliver_now # This send a notification to the driver
+
+  end
+
+  def create
+    @passenger = Passenger.new(passenger_params_to_create)
+    @passenger.journey = @journey
+    @passenger.user = current_user
+    @journey.completed = true
+    authorize @passenger
+
+    if @passenger.save && @journey.save
+
+
+      redirect_to dashboard_path
+
     else
-      flash[:alert] = "There was an error booking you on this journey!"
+      flash[:alert] = "There was an error writting the review!"
+      render :new
     end
-    redirect_to journey_path(@journey)
+
   end
 
   def update
@@ -36,6 +48,12 @@ class PassengersController < ApplicationController
   def find_passenger
     @passenger = Passenger.find(params[:id])
     authorize @passenger
+  end
+
+  def passenger_params_to_create # Only used for update
+
+    params.require(:passenger).permit(:journey, :driver_rating, :passenger_rating, :driver_review, :passenger_review)
+
   end
 
   def passenger_params # Only used for update

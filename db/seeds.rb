@@ -205,7 +205,6 @@ end
 
 1.times do
   Passenger.create!({
-    user: users.sample,
     journey: journeys.last,
     driver_rating: rand(1..5),
     passenger_rating: rand(1..5),
@@ -213,6 +212,7 @@ end
     passenger_review: Faker::Lorem.paragraphs
     })
 end
+
 
 
 
