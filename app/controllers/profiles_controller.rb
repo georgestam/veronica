@@ -36,7 +36,7 @@ class ProfilesController < ApplicationController
 
     calculate_avg_rating
 
-    @passengers = Passenger.where(journey_id: Journey.where(user: @car))
+    @passengers = Passenger.where(journey_id: Journey.where(user: @user))
 
 
     else

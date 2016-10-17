@@ -97,7 +97,6 @@
           <% end %>
         </p>
       </div>
-
       <h2 class="text-center" id="manual_info"><%= t('.summary') %></h2>
 
       <div class="stats row">
@@ -128,78 +127,85 @@
 
     </div>
   </div>
-  <div class="col-xs-12 col-sm-8 text-center" id="manual_info">
-    <% if @manual_check == false %>
-        <p> <%= t(".id_process") %> </p>
-    <% end %>
 
-    <% if @availability_verified == nil || @availability_verified == false %>
-      <div class="dashboard-card timetable-card">
-      <%= link_to t('.create_avaliability'), new_car_availability_path(@user.cars[0]), class: "btn btn-primary" %>
+  <div class="col-xs-12 col-sm-8">
+    <div class="row">
+        <div class="text-center" id="manual_info">
+            <% if @manual_check == false %>
+                <p> <%= t(".id_process") %> </p>
+            <% end %>
+
+            <% if @availability_verified == nil || @availability_verified == false %>
+              <div class="dashboard-card timetable-card">
+              <%= link_to t('.create_avaliability'), new_car_availability_path(@user.cars[0]), class: "btn btn-primary" %>
+              </div>
+            <% else %>
+              <div class="dashboard-card timetable-card">
+              <%= render 'profiles/dashboard/overview_free_time' %>
+              </div>
+             <%= link_to t('.add_avaliability'), new_car_availability_path(@user.cars[0]), class: "btn btn-primary" %>
+             <%= t('click_times_to_delete') %>
+            <% end %>
+        </div>
       </div>
-    <% else %>
-      <div class="dashboard-card timetable-card">
-      <%= render 'profiles/dashboard/overview_free_time' %>
-      </div>
-     <%= link_to t('.add_avaliability'), new_car_availability_path(@user.cars[0]), class: "btn btn-primary" %>
-     <%= t('click_times_to_delete') %>
-    <% end %>
 
+        <div class="row">
 
-         <%# if @reviews.length > 0 %>
-      <div class="dashboard-card" >
-
-         <h2>Reviews</h2>
-         <% if @avg_rating.nil? %>
-           <p><%= t('.no_reviews') %></p>
-         <% else %>
-               <% @avg_rating.times do %>
-                 <%= image_tag "yellow-rating.png" %>
-               <% end %>
-               <% (5 - @avg_rating).times do %>
-                 <%= image_tag "empty-rating.png" %>
-               <% end %>
-
-              <h4> <strong> <%= t('.reviews') %> </strong> </h4>
-              <% @passengers.each do |passenger| %>
-              <ul >
-                <li>
-                  <% passenger.driver_rating.times do |i|  %>
-                  <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
-                  <% end %>
-                  <% (5-passenger.driver_rating).times do |i|  %>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <% end %>
-
-                </ul>
-                <div class='media'>
-                  <div class='pull-left'>
-                    <% if passenger.user.photo? %>
-                    <%= cl_image_tag passenger.user.photo.path, width: 60, height: 60, crop: :thumb, gravity: :face , class: "" %>
-                    <% else %>
-                    <% avatar_url = passenger.user.facebook_picture_url || "http://placehold.it/60x60" %>
-                    <%= image_tag avatar_url, width: 60, height: 60, crop: :thumb, gravity: :face, class: "" %>
-                    <% end %>
-
-                  </div>
-                <div class='media-body'>
-                  <div class='content staff'>
-                    <div class='toolbar'>
-                        <h4 class='title'>
-                          <%= passenger.user.first_name.capitalize %>
-                          <span class='label label-contrast'>Staff</span>
-                        </h4>
-                    </div>
-                      <p><%= passenger.driver_review %> </li> </p>
-                      <p class='time'>
-                        <%= l passenger.created_at, format: :short %>
-                      </p>
-                  </div>
-                  </div>
+            <div class="dashboard-card" >
+              <div class="text-center">
+                 <h2>Reviews</h2>
+                 <% if @avg_rating.nil? %>
+                   <p><%= t('.no_reviews') %></p>
+                 <% else %>
+                       <% @avg_rating.times do %>
+                         <%= image_tag "yellow-rating.png" %>
+                       <% end %>
+                       <% (5 - @avg_rating).times do %>
+                         <%= image_tag "empty-rating.png" %>
+                       <% end %>
                 </div>
-               <% end %>
-        <% end %>
-      </div>
-    </div>
+                    <h4> <strong> <%= t('.reviews') %> </strong> </h4>
+                    <% @passengers.each do |passenger| %>
+                    <ul >
+                      <li>
+                        <% passenger.driver_rating.times do |i|  %>
+                        <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+                        <% end %>
+                        <% (5-passenger.driver_rating).times do |i|  %>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <% end %>
+                       </li>
+                      </ul>
+                      <div class='media'>
+                        <div class='pull-left'>
+                          <% if passenger.user.photo? %>
+                          <%= cl_image_tag passenger.user.photo.path, width: 60, height: 60, crop: :thumb, gravity: :face , class: "" %>
+                          <% else %>
+                          <% avatar_url = passenger.user.facebook_picture_url || "http://placehold.it/60x60" %>
+                          <%= image_tag avatar_url, width: 60, height: 60, crop: :thumb, gravity: :face, class: "" %>
+                          <% end %>
+
+                        </div>
+                      <div class='media-body'>
+                        <div class='content staff'>
+                          <div class='toolbar'>
+                              <h4 class='title'>
+                                <%= passenger.user.first_name.capitalize %>
+                                <span class='label label-contrast'>Staff</span>
+                              </h4>
+
+                            <p><%= passenger.driver_review %> </p>
+                            <p class='time'>
+                              <%= l passenger.created_at, format: :short %>
+                            </p>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+
+                       <% end %>
+                     <% end %>
+                </div>
+              </div>
   </div>
 </div>

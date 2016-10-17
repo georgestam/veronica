@@ -32,10 +32,10 @@
                     <% if journey.completed %>
 
                       <div class='padded-small'>
-                          <% @avg_rating.times do %>
+                          <% journey.passengers[0].driver_rating.times do %>
                             <%= image_tag "yellow-rating.png" %>
                           <% end %>
-                          <% (5 - @avg_rating).times do %>
+                          <% (5 - journey.passengers[0].driver_rating).times do %>
                             <%= image_tag "empty-rating.png" %>
                           <% end %>
                       </div>

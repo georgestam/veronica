@@ -1,59 +1,90 @@
+
+
 <div class="row">
   <div class="col-xs-12 col-sm-4 hidden-xs">
-    <div class="dashboard-card">
+      <div class="dashboard-card">
 
-      <h2 class="text-center" id="manual_info"><%= t('.summary') %></h2>
+        <h2 class="text-center" id="manual_info"><%= t('.summary') %></h2>
 
-      <% if @journeys.nil? %>
+        <% if @journeys.nil? %>
 
-      <p> <%= t('.no_bookings_yet') %> </p>
+        <p> <%= t('.no_bookings_yet') %> </p>
 
-      <% else %>
+        <% else %>
 
-      <div class="stats row">
-        <div class="col-xs-4">
-          <h3> <%= @journeys.count %> </h3>
-          <p> bookings </p>
+        <div class="stats row">
+          <div class="col-xs-4">
+            <h3> <%= @journeys.count %> </h3>
+            <p> bookings </p>
+          </div>
+          <div class="col-xs-4">
+            <h3><%= @journeys.last.seats_available  %></h3>
+            <p> Your kids </p>
+          </div>
+          <div class="col-xs-4">
+            <h3> <%= @journeys.last.car.price_hour %>  </h3>
+            <p> Last booking price per hour </p>
+          </div>
         </div>
-        <div class="col-xs-4">
-          <h3><%= @journeys.last.seats_available  %></h3>
-          <p> Your kids </p>
+
+        <div class="stats">
+          <div class="col-xs-4">
+            <h3> <%= @ratings.count %> </h3>
+            <p> number of reviews </p>
+          </div>
         </div>
-        <div class="col-xs-4">
-          <h3> <%= @journeys.last.car.price_hour %>  </h3>
-          <p> Last booking price per hour </p>
-        </div>
+
+        <% end %>
+
       </div>
-
-      <div class="stats">
-        <div class="col-xs-4">
-          <h3> <%= @ratings.count %> </h3>
-          <p> number of reviews </p>
-        </div>
-      </div>
-
-      <% end %>
-
-    </div>
   </div>
-  <div class="col-xs-12 col-sm-8 text-center" id="manual_info">
 
-    <div class="dashboard-card review-card text-center">
-      <h2>Reviews</h2>
-      <% if @avg_rating.nil? %>
-        <p><%= t('.no_reviews') %></p>
-      <% else %>
+  <div class="col-xs-12 col-sm-8">
+        <div class="row">
 
+            <div class="dashboard-card" >
+                    <h4> <strong> <%= t('.reviews') %> </strong> </h4>
+                    <% @passengers.each do |passenger| %>
+                    <ul >
+                      <li>
+                        <% passenger.driver_rating.times do |i|  %>
+                        <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+                        <% end %>
+                        <% (5-passenger.driver_rating).times do |i|  %>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <% end %>
+                       </li>
+                      </ul>
+                      <div class='media'>
+                        <div class='pull-left'>
+                          <% if passenger.journey.car.user.photo? %>
+                          <%= cl_image_tag passenger.journey.car.user.photo.path, width: 60, height: 60, crop: :thumb, gravity: :face , class: "" %>
+                          <% else %>
+                          <% avatar_url = passenger.journey.car.user.facebook_picture_url || "http://placehold.it/60x60" %>
+                          <%= image_tag avatar_url, width: 60, height: 60, crop: :thumb, gravity: :face, class: "" %>
+                          <% end %>
 
+                        </div>
+                      <div class='media-body'>
+                        <div class='content staff'>
+                          <div class='toolbar'>
+                              <h4 class='title'>
+                                Teacher
+                                <%= passenger.journey.car.user.first_name.capitalize %>
+                                <span class='label label-contrast'>Staff</span>
+                              </h4>
 
-        <p><%= t('.rating_html') %> <%= @avg_rating %> </p>
-        <% @avg_rating.times do %>
-          <%= image_tag "yellow-rating.png" %>
-        <% end %>
-        <% (5 - @avg_rating).times do %>
-          <%= image_tag "empty-rating.png" %>
-        <% end %>
-      <% end %>
-    </div>
+                            <p><%= passenger.driver_review %> </p>
+                            <p class='time'>
+                              <%= l passenger.created_at, format: :short %>
+                            </p>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+
+                       <% end %>
+                </div>
+              </div>
   </div>
 </div>
