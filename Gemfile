@@ -29,6 +29,9 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 # jednotka gem
 gem "compass-rails"
 
+# mailchimp
+gem 'gibbon'
+
 group :development do
   gem "rails_real_favicon"
 end
