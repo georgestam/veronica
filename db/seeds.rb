@@ -131,16 +131,19 @@ end
     })
 end
 
-5.times do
+i = 0
+10.times do
   Passenger.create!({
     user: users.sample,
-    journey: journeys.sample,
+    journey: journeys[i],
     driver_rating: rand(1..5),
     passenger_rating: rand(1..5),
     driver_review: Faker::Lorem.paragraphs,
     passenger_review: Faker::Lorem.paragraphs
     })
+i += 1
 end
+
 
 
 # admin user
@@ -186,7 +189,7 @@ end_time = 0
     })
 end
 
-3.times do
+5.times do
   journeys << Journey.create!({
     user: users.sample,
     car: car_admin,
@@ -198,14 +201,18 @@ end
     })
 end
 
-1.times do
+i = 11
+3.times do
   Passenger.create!({
-    journey: journeys.last,
+    journey: journeys[i],
     driver_rating: rand(1..5),
     passenger_rating: rand(1..5),
     driver_review: Faker::Lorem.paragraphs,
     passenger_review: Faker::Lorem.paragraphs
     })
+
+i += 1
+
 end
 
 
