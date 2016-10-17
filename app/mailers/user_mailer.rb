@@ -5,11 +5,11 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome.subject
   #
-  def welcome(user)
-    @user = user  # Instance variable => available in view
+  def welcome(user_id)
 
+    @user = User.find(user_id)
     # This will render a view in `app/views/user_mailer`!
-    mail(to: @user.email, subject: 'Welcome to Warwick Car Share')
+    mail(to: @user.email, subject: 'Vienvenid@ a Veronica!')
   end
 
   # def reset_password_instructions(user, token, options)

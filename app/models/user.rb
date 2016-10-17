@@ -1,3 +1,4 @@
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -28,6 +29,7 @@ class User < ApplicationRecord
   after_validation :reverse_geocode
 
   after_create :send_welcome_email
+  after_create :subscribe_to_newsletter
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -36,7 +38,12 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.welcome(self).deliver_now
+    UserMailer.welcome(self.id).deliver_now
+  end
+
+  def subscribe_to_newsletter
+    # SubscribeToNewsletterJob.perform_now(self.id)
+    SubscribeToNewsletterService.new(self).call
   end
 
   def self.find_for_facebook_oauth(auth)

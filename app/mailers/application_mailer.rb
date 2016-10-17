@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'contact@liftin.co.uk'
+  default from: 'contact@helloveronica.com'
 
   layout 'mailer'
 
