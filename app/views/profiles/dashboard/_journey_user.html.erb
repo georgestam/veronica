@@ -1,26 +1,31 @@
 <div class="row">
 
   <div class="col-xs-12">
-      <h2 class="text-center"><%= t('your_bookings_as_teacher') %></h2>
-      <% current_user.cars[0].journeys.each do |journey| %>
+      <h2 class="text-center"><%= t('your_bookings') %></h2>
+      <% current_user.journeys.each do |journey| %>
         <div class="product dashboard-card">
-          <% if journey.user.photo? %>
-          <%= cl_image_tag journey.user.photo.path, { class: "product-image hidden-xs"} %>
+          <% if journey.car.user.photo? %>
+          <%= cl_image_tag journey.car.user.photo.path, { class: "product-image hidden-xs"} %>
           <% else %>
-          <% avatar_url = journey.user.facebook_picture_url || "http://placehold.it/200x200" %>
+          <% avatar_url = journey.car.user.facebook_picture_url || "http://placehold.it/200x200" %>
           <%= cl_image_tag avatar_url, { class: "product-image hidden-xs"} %>
-
           <% end %>
+
           <div class='product-body'>
-            <p> <%= journey.user.first_name.capitalize %> <%= journey.user.last_name.capitalize %> </p>
+            <p> <%= journey.car.user.first_name.capitalize %> <%= journey.car.user.last_name.capitalize %> </p>
             <ul>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(journey.pick_up_time, format: :time_date) %></li>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i> dsd addsd addsd ad  <%= l(journey.pick_up_time, format: :time_date) %></li>
               <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('.location') %>:<%= journey.address %> </li>
               <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>: <%= journey.duration.to_i*journey.car.price_hour.to_i %></li>
               <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.duration') %>:<%= journey.duration %> h </li>
               <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('.children') %>: <%= journey.remaining_seats %> </li>
             </ul>
             <ul>
+              <li>
+                <% if journey.passengers[0].nil? %>
+                <%= link_to I18n.t('.write_review', default: 'Write Review' ), new_journey_passenger_path(journey) , class: 'btn btn-primary custom-btn-width' %>
+                <% end %>
+              </li>
               <il>
                 <%= simple_form_for [journey] do |f| %>
 

@@ -1,23 +1,22 @@
-<% content_for :title, "Update your Journey | LiftIn" %>
-<div class="form-wrapper">
+<% content_for :title, "bookings" %>
+
+
+
+
+<div class='lift-bacground'>
+<% content_for :title, "Sign up" %>
+<div class="wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-        <div class="form" id="edit-journey-form">
-          <h2> Edit your Journey </h2>
-          <%= simple_form_for [@journey] do |f| %>
-          <%= f.input :seats_available, input_html: { min: '1', max: '7', step: 'any'} %>
-          <%= f.input :pick_up_time, as: :datetime_picker %>
-          <%= f.fields_for :pick_up_location do |l| %>
-            <%= l.input :address, label: 'Pick-up Address', id: "pick_up_address", input_html: { class: :autocomplete } %>
-          <% end %>
-          <%#= f.fields_for :drop_off_location do |l| %>
-            <%#= l.input :address, label: 'Drop-off Address', id: "drop_off_address", input_html: { class: :autocomplete } %>
-          <%# end %>
-          <%#= f.button :submit, { class: "btn-custom btn-primary wide-btn", style: "width: 100%"} %>
-        <% end %>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="login-form">
+          <h2 style="font-size: 25px"> <%= t('.edit') %>  </h2>
+            <div class="form-actions">
+              <%= render 'journey_form' %>
+            </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

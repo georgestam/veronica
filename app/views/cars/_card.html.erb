@@ -17,7 +17,7 @@
           <% ratings << passenger.driver_rating %>
          <% end %>
         <% end %>
-
+        <% avg_rating = 0 %>
         <% avg_rating = ratings.inject(0){|sum,x| sum + x } / ratings.count if ratings.count != 0 %>
         <br>
         <br>

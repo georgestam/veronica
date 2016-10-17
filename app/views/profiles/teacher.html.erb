@@ -77,7 +77,7 @@
               method: :delete,
               data: { confirm: I18n.t('.Are_you sure?') } %>
           <% else %>
-           <%= link_to t('.book_me'), journey_path(@car), :class => "btn btn-success btn-block" %>
+           <%= link_to t('.book_me'), new_car_journey_path(@car), :class => "btn btn-success btn-block" %>
           <% end %>
        </div>
        <br>
@@ -207,8 +207,8 @@
                     <% if passenger.user.photo? %>
                     <%= cl_image_tag passenger.user.photo.path, width: 60, height: 60, crop: :thumb, gravity: :face , class: "" %>
                     <% else %>
-                    <% avatar_url = @user.facebook_picture_url || "http://placehold.it/60x60" %>
-                    <%= image_tag avatar_url, width: 60, height: 60, crop: :thumb, gravity: :face, class: "avatar-xl text-center" %>
+                    <% avatar_url = passenger.user.facebook_picture_url || "http://placehold.it/60x60" %>
+                    <%= image_tag avatar_url, width: 60, height: 60, crop: :thumb, gravity: :face, class: "" %>
                     <% end %>
 
                   </div>
@@ -216,7 +216,7 @@
                   <div class='content staff'>
                     <div class='toolbar'>
                         <h4 class='title'>
-                          <%= passenger.user.first_name %> <%= passenger.user.last_name %>
+                          <%= passenger.user.first_name.capitalize %>
                           <span class='label label-contrast'>Staff</span>
                         </h4>
                     </div>

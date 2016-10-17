@@ -14,7 +14,7 @@ class PassengerPolicy < ApplicationPolicy
   end
 
   def create?
-    record.journey.user != user  # Driver cannot book his/her own journey.
+    record.user == user
   end
 
   def update?

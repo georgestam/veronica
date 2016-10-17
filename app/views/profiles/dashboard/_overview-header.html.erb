@@ -9,14 +9,18 @@
   <% end %>
   <div class="header-info">
     <h3><%= @user.full_name %></h3>
+    <% if @teacher %>
     <%= link_to t(".view_teacher_profile"), teacher_profile_path(@user.cars[0]) %>
+     <% end %>
   </div>
-  <div class="header-progress">
-    <div class="progress">
-      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @progress %>"
-      aria-valuemin="0" aria-valuemax="100" style="width:<%=@progress.to_i%>%" id="account-progress">
-      <span id="progress"><%= @progress %></span>% <%= t('.complete') %>
+    <% if @teacher %>
+      <div class="header-progress">
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @progress %>"
+          aria-valuemin="0" aria-valuemax="100" style="width:<%=@progress.to_i%>%" id="account-progress">
+          <span id="progress"><%= @progress %></span>% <%= t('.complete') %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+   <% end %>
 </div>

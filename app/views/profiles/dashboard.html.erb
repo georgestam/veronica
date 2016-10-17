@@ -34,10 +34,10 @@
   <div class="container">
     <div class="content-wrapper">
       <div class="tab-content" id="overview">
-        <%= render 'profiles/dashboard/overview' %>
+        <%= @teacher ? (render 'profiles/dashboard/overview') : (render 'profiles/dashboard/overview_user') %>
       </div>
       <div class="tab-content hidden" id="bookings">
-        <%= render 'profiles/dashboard/journey' %>
+        <%= @teacher ? (render 'profiles/dashboard/journey') : (render 'profiles/dashboard/journey_user') %>
       </div>
       <div class="tab-content hidden" id="notifications">
         <%= render 'profiles/dashboard/notifications' %>

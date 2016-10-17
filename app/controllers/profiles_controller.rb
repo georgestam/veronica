@@ -12,7 +12,6 @@ class ProfilesController < ApplicationController
   def show
     @cars = Car.where(user: @user)
 
-    create_journey_arrays
   end
 
   def edit
@@ -24,20 +23,46 @@ class ProfilesController < ApplicationController
   end
 
   def dashboard
+
+
     @user = current_user
     authorize @user
-    @car = Car.where(user: @user)
-    @availabilities = Availability.where(car: @car)
+    @teacher = false
 
-    create_journey_arrays
+    if @user.cars[0] == nil
+
+
+    @journeys = Journey.where(user: @user)
+
+    calculate_avg_rating
+
+    @passengers = Passenger.where(journey_id: Journey.where(user: @user))
+
+
+    else
+
+    @teacher = true
+    cars= Car.where(user: @user)
+    @car= cars[0]
+    @availabilities = Availability.where(car: @car)
 
     verifications
     calculate_account_progress # This will return @progress
 
     map_availabilities
 
-    if @user.cars == nil
-    render :dashboard_parent
+    @journeys = Journey.where(car: @car)
+
+    @kids = 0
+
+    @journeys.each do |journey|
+       @kids += journey.seats_available
+    end
+
+    calculate_avg_rating
+
+    @passengers = Passenger.where(journey_id: Journey.where(car: @car))
+
     end
 
   end
@@ -102,6 +127,7 @@ class ProfilesController < ApplicationController
       end
     end
 
+    @avg_rating = 0
     @avg_rating = @ratings.inject(0){|sum,x| sum + x } / @ratings.count if @ratings.count != 0
 
     @journeys.each do |journey|
@@ -193,12 +219,4 @@ class ProfilesController < ApplicationController
 
   end
 
-
-  def create_journey_arrays
-    @journeys = Journey.where(user: @user) #  Needed to calculate the avg_rating
-    calculate_avg_rating # This will return @avg-rating
-
-    @journeys_as_passenger = Passenger.where(user: current_user).map{|passenger| passenger.journey}
-    @journeys_as_driver = Journey.where(user: current_user)
-  end
 end

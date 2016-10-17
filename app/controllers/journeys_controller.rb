@@ -18,7 +18,7 @@ class JourneysController < ApplicationController
     @car = Car.find(params[:car_id])
     @journey = Journey.new
     @journey.car = @car
-    @journey.build_pick_up_location
+
 
     authorize @journey
   end
@@ -29,26 +29,29 @@ class JourneysController < ApplicationController
     @journey.user = current_user
     authorize @journey
     if @journey.save
-      redirect_to journey_path(@journey)
+      redirect_to dashboard_path
+      #PassengerMailer.confirmation_of_booking(@passenger).deliver_now # This sends email confirmation to the passenger
+      #PassengerMailer.new_passenger(@passenger).deliver_now # This send a notification to the driver
     else
       render :new
     end
   end
 
   def edit
+    authorize @journey
   end
 
   def update
     @journey.update(journey_params)
     email_all_passengers(@journey.passengers) unless @journey.completed?
     authorize @journey
-    redirect_to journey_path(@journey)
+    redirect_to dashboard_path
   end
 
   def destroy
     @journey.destroy
     authorize @journey
-    redirect_to journeys_path
+    redirect_to dashboard_path
   end
 
   private
@@ -59,7 +62,7 @@ class JourneysController < ApplicationController
 
   def set_journey
     @journey = Journey.find(params[:id])
-    authorize @journey
+
   end
 
   def journey_params
@@ -68,8 +71,11 @@ class JourneysController < ApplicationController
       :completed,
       :pick_up_time,
       :seats_available,
-      pick_up_location_attributes: [ :address ]
-      # drop_off_location_attributes: [ :address ]
+      :address,
+      :latitude,
+      :longitude,
+      :duration,
+      :payment
     )
   end
 

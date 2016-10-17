@@ -19,8 +19,8 @@ Rails.application.routes.draw do
       resources :availabilities, only:[:new, :create, :destroy]
     end
 
-    resources :journeys, only:[:index, :show, :destroy, :update, :edit] do
-      resources :passengers, only:[:create, :destroy]
+    resources :journeys, only:[:index, :show, :new, :create, :destroy, :update, :edit] do
+      resources :passengers, only:[:new, :create, :destroy]
     end
 
     # namespace :user do

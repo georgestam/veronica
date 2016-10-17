@@ -38,12 +38,6 @@ pick_up_locations = [
 
 
 urls = [
-  "https://www.facebook.com/photo.php?fbid=10153305556957255&set=a.393745102254.165750.540587254&type=3&theater",
-  "https://www.facebook.com/photo.php?fbid=10204698295810578&set=a.1467211333558.67125.1631808436&type=3&theater",
-  "https://www.facebook.com/photo.php?fbid=10208287125150633&set=a.1510576839233.66983.1078713308&type=3&theater",
-  "https://www.facebook.com/photo.php?fbid=10209917022301075&set=a.1647925116886.85576.1199679679&type=3&theater",
-  "https://www.facebook.com/photo.php?fbid=10210127811571738&set=a.1626325977984.2085864.1231568856&type=3&theater",
-  "https://www.facebook.com/photo.php?fbid=1235898446420687&set=a.157881727555703.33305.100000016307106&type=3&theater",
   "http://www.careerfaqs.com.au/images/news_pages/female_student_4981183.jpg",
   "http://www.canberra.edu.au/__data/assets/image/0013/1060222/student-laughing-in-the-library.jpg",
   "http://www.berkeley.edu/images/photo_uploads/sq-artstudent2.jpg",
@@ -164,7 +158,8 @@ admin = User.new({
     # bank_account: "1234567",
     interview_verif: false,
     date_of_birth: Time.new(2002, 10, 31),
-    address: "Plaça de la Paeria, 1, 25007 Lleida, Spain"
+    address: "Plaça de la Paeria, 1, 25007 Lleida, Spain",
+    admin: true
     })
   admin.photo = open("http://res.cloudinary.com/georgestam/image/upload/v1476103177/dtwp5e5fj2vqiv0mkacn.jpg")
   admin.save
@@ -205,7 +200,6 @@ end
 
 1.times do
   Passenger.create!({
-    user: users.sample,
     journey: journeys.last,
     driver_rating: rand(1..5),
     passenger_rating: rand(1..5),
@@ -213,6 +207,7 @@ end
     passenger_review: Faker::Lorem.paragraphs
     })
 end
+
 
 
 

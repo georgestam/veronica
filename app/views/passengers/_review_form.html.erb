@@ -1,0 +1,16 @@
+
+<div class="dashboard-card">
+
+ <hp class="text-center"> </hp>
+
+<%= simple_form_for @passenger, url:  journey_passengers_path do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :driver_review, :size => 500, placeholder: "Amazing!" %>
+  <%= f.input :driver_rating, collection: Passenger::RATINGS, prompt: "1 to 5" %>
+
+  <%= f.button :submit, class: "btn btn-primary" %>
+
+<% end %>
+
+</div>
