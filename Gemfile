@@ -32,6 +32,9 @@ gem "compass-rails"
 # mailchimp
 gem 'gibbon'
 
+# raygun
+gem 'raygun4ruby'
+
 group :development do
   gem "rails_real_favicon"
 end
