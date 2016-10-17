@@ -29,9 +29,8 @@ class JourneysController < ApplicationController
     @journey.user = current_user
     authorize @journey
     if @journey.save
+      JourneyMailer.confirmation_of_booking(@journey).deliver_now
       redirect_to dashboard_path
-      #PassengerMailer.confirmation_of_booking(@passenger).deliver_now # This sends email confirmation to the passenger
-      #PassengerMailer.new_passenger(@passenger).deliver_now # This send a notification to the driver
     else
       render :new
     end
@@ -43,7 +42,7 @@ class JourneysController < ApplicationController
 
   def update
     @journey.update(journey_params)
-    email_all_passengers(@journey.passengers) unless @journey.completed?
+    JourneyMailer.update_journey(@journey).deliver_now unless @journey.completed?
     authorize @journey
     redirect_to dashboard_path
   end
@@ -77,12 +76,6 @@ class JourneysController < ApplicationController
       :duration,
       :payment
     )
-  end
-
-  def email_all_passengers(passengers)
-    passengers.each do |passenger|
-      JourneyMailer.update_journey(passenger).deliver_now
-    end
   end
 
 

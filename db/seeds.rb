@@ -204,6 +204,7 @@ end
 i = 11
 3.times do
   Passenger.create!({
+    user: journeys[i].user,
     journey: journeys[i],
     driver_rating: rand(1..5),
     passenger_rating: rand(1..5),

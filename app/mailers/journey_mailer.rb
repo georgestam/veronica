@@ -1,12 +1,23 @@
 class JourneyMailer < ApplicationMailer
 
-  def update_journey(passenger)
-    @user = passenger.user # This is the passenger
-    @journey = passenger.journey
-    @driver = @journey.user # This is the driver
+  def confirmation_of_booking(journey)
+    @user = journey.user
+    @journey = journey
     @car = @journey.car
 
-    mail(to: @user.email, subject: 'Change to your journey')
+    mail(to: @user.email, subject: 'Booking confirmation')
+    mail(to: @car.user.email, subject: 'Booking confirmation')
+
+  end
+
+
+  def update_journey(journey)
+    @user = journey.user
+    @journey = journey
+    @car = @journey.car
+
+    mail(to: @user.email, subject: 'Your teacher booking have changed')
+    mail(to: @car.user.email, subject: 'Your teacher booking have changed')
   end
 
 end

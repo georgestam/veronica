@@ -13,6 +13,8 @@ class Journey < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, only: :address_changed?
 
+
+
   def journey_date_cannot_be_in_the_past
     if pick_up_time < Date.today
       errors.add(:pick_up_time, "Cannot be in the past")
