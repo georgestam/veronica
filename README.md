@@ -1,1 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Prototype for an Airbnb clone to book teachers for kids. 
+
+I started the work from a Rail template which was generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), which was mainly created during the [Le Wagon coding bootcamp](https://www.lewagon.com) by Disha, Maximilien and Luke.
