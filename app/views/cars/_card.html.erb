@@ -60,7 +60,7 @@
       </div>
        <div class="row">
          <div class="col-xs-12">
-         <p class='limit-to-x-lines'> <%= car.bio.gsub("[","")  %> </p>
+         <p class='limit-to-x-lines'> <%= car.bio.first(200).html_safe  %> ...</p>
         </div>
          </div>
       </div>
@@ -82,7 +82,7 @@
           <% journeys.each do |journey|%>
           <% kids += journey.seats_available %>
           <% end %>
-        <p> <strong>  <%= kids %> </strong><%= t('kids_tought') %></p>
+        <p> <strong>  <%= kids %> </strong><%= t('kids_taught') %></p>
     </li>
     <li>
       <p>

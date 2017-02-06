@@ -6,6 +6,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
         <div class="dashboard-card">
+
+
+
           <h1></h1>
           <%= simple_form_for current_user, url: update_profile_path do |f| %>
             <%= f.error_notification %>
@@ -14,7 +17,11 @@
             <%= f.input :first_name, placeholder: 'Bob' %>
             <%= f.input :last_name, placeholder: 'Fernandez' %>
             <%= f.input :date_of_birth, as: :date_picker %>
-            <%= f.input :description, placeholder: 'bla bla' %>
+
+
+            <%= f.input :description, label: I18n.t('views.profiles.edit.What_do_you_expect_from_this_platform', default: 'What do you expect from this platform'), as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } }, placeholder: 'bla bla' %>
+
+
             <%= f.input :gender, as:  :radio_buttons,  collection: ['Male', 'Female'], wrapper: :vertical_radio_and_checkboxes %>
 
             <%= f.input :address, placeholder: '36 longmore road', label: 'Personal Address', input_html: { class: :autocomplete } %>
@@ -24,11 +31,11 @@
 
             <h2>Contact info</h2>
             <%= f.input :email, placeholder: 'bob@bob.com' %>
-            <%= f.input :phone_number, placeholder: '432432432414'%>
+            <%= f.input :phone_number, placeholder: '0044 933715178'%>
 
             <h2>Verification details </h2>
-            <%= f.input :linkedin_URL, placeholder: 'http://dfdfdfdafs' %>
-            <%= f.input :facebook_URL, placeholder: 'http://dfdfdfdafs'  %>
+            <%= f.input :linkedin_URL, placeholder: 'https://uk.linkedin.com/in/lorenzobernardiuk' %>
+            <%= f.input :facebook_URL, placeholder: 'https://www.facebook.com/angie.allbones'  %>
 
             <%= f.input :id_document, as: :attachinary %>
 
@@ -36,9 +43,16 @@
             <%= f.button :submit, class: "btn-custom btn-primary"%>
           <% end %>
           </div>
+
+  >
+
       </div>
     </div>
   </div>
 </div>
 
 </div>
+
+
+
+
