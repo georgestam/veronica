@@ -3,7 +3,7 @@ es:
   _update: Update
   availabilities:
     availability_form:
-      title: Add or modify the time when you are free
+      title: Title
   bookings: Bookings
   cars:
     card:
@@ -19,10 +19,8 @@ es:
     search:
       search_distance: Search distance
       where_to_find_teacher: Where to find teacher
-  class_starts_at: Class starts at
   click_times_to_delete: Click times to delete
   comments: Comments
-  create_class: Create class
   create_new_time: Create new time
   datepicker:
     dformat: "%d/%m/%Y"
@@ -36,7 +34,7 @@ es:
     thursday: Thursday
     tuesday: Tuesday
     wednesday: Wednesday
-  destination_html: "<strong>Destination:</strong> %{location}"
+  destination_html: Destination html
   edit: Edit
   journey_mailer:
     confirmation_of_booking:
@@ -54,38 +52,40 @@ es:
       preferences: Preferences
     edit:
       edit: Edit
+    new:
+      teacher_booking: Teacher booking
   kids_tought: Kids tought
   number_of_students: Number of students
   pages:
     home:
-      driver: Teacher
-      driver_call_to_action: Start teaching
-      driver_subtitle: Want to make money?
-      how_it_works: How does it work?
-      passenger: Parent
-      passenger_call_to_action: Find a teacher
-      passenger_subtitle: Want your children to be prepared for the future?
-      step_one_explanation: Find a language teacher close to you
-      step_three_explanation: Enjoy seeing how your children learn!
-      step_two_explanation: Contact him to come to your home
-      subtitle: Learning languages just got easier
+      driver: Driver
+      driver_call_to_action: Driver call to action
+      driver_subtitle: Driver subtitle
+      how_it_works: How it works
+      passenger: Passenger
+      passenger_call_to_action: Passenger call to action
+      passenger_subtitle: Passenger subtitle
+      step_one_explanation: Step one explanation
+      step_three_explanation: Step three explanation
+      step_two_explanation: Step two explanation
+      subtitle: Subtitle
       testimonial_name_one: Testimonial name one
-      title: veronica
-  pick_up_time: Pick up
+      title: Title
+  pick_up_time: Pick up time
   profiles:
     dashboard:
       account-settings:
         bank_account: Bank account
-        date_of_birth_html: "<strong>DOB:</strong>"
+        date_of_birth_html: Date of birth html
         description: Description
-        email_html: "<strong>Email:</strong> %{email}"
+        email_html: Email html
         facebook_URL: Facebook url
-        gender_html: "<strong>Gender:</strong> %{gender}"
+        gender_html: Gender html
         id_uploaded: Id uploaded
         linkedin_URL: Linkedin url
         'no': 'No'
         personal-information: Personal-information
-        phone_number_html: "<strong>Phone number:</strong> %{phone_number}"
+        phone_number_html: Phone number html
         verification_information: Verification information
         'yes': 'Yes'
       journey:
@@ -108,40 +108,38 @@ es:
         price: Price
         write_review: Write review
       notifications:
-        no_notifications: You don't have any notifications yet!
+        no_notifications: No notifications
       overview:
         add_avaliability: Add avaliability
         address_verified: Address verified
-        availability_verified: Availability
+        availability_verified: Availability verified
         bank_verified: Bank verified
-        create_avaliability: Tell us when are your are available
+        create_avaliability: Create avaliability
         email_verified: Email verified
         facebook_check: Facebook check
-        id_document_verified: Id document
-        id_process: We are processing the verification of your details, we will let
-          you contact you if something is not correct.
+        id_document_verified: Id document verified
+        id_process: Id process
         linkedin_check: Linkedin check
-        no_reviews: You haven't been reviewed yet!
+        no_reviews: No reviews
         photo_verified: Photo verified
         reviews: Reviews
-        summary: Stats Summary
+        summary: Summary
         uploaded_video: Uploaded video
-        verification: Your teacher profile is %{progress} % completed. Parents are
-          more likely to trust teachers' profiles of 100%.
+        verification: Verification
       overview-header:
-        complete: complete
-        teachers_dashboard: Teacher's Dashboard
-        view_teacher_profile: View Teacher Profile
+        complete: Complete
+        teachers_dashboard: Teachers dashboard
+        view_teacher_profile: View teacher profile
       overview_free_time:
         availablity: Availablity
       overview_user:
         no_bookings_yet: No bookings yet
         reviews: Reviews
         summary: Summary
-      tab_account_settings: Account Settings
-      tab_bookings: Bookings
-      tab_notifications: Notifications
-      tab_overview: Overview
+      tab_account_settings: Tab account settings
+      tab_bookings: Tab bookings
+      tab_notifications: Tab notifications
+      tab_overview: Tab overview
     teacher:
       bank_verified: Bank verified
       book_me: Book me
@@ -152,7 +150,7 @@ es:
       photo_verified: Photo verified
       reviews: Reviews
   score_based_in_teacher_verification: Score based in teacher verification
-  seats_available_html: "<strong>Seats available:</strong> %{seats_available}"
+  seats_available_html: Seats available html
   shared:
     home_navbar:
       sign_in: Sign in
@@ -160,13 +158,18 @@ es:
     navbar:
       dashboard: Dashboard
       profile: Profile
-      search_for_teacher: Search teacher
+      search_for_teacher: Search for teacher
       sign_in: Sign in
       sign_out: Sign out
   teachers: Teachers
   timepicker:
     dformat: "%R"
     pformat: HH:mm
-  title: veronica
+  title: Title
+  views:
+    journeys:
+      new:
+        class_starts_at: Class starts at
+        create_class: Create class
   your_bookings: Your bookings
   your_bookings_as_teacher: Your bookings as teacher
