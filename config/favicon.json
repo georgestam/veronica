@@ -34,7 +34,7 @@
             "picture_aspect": "no_change",
             "theme_color": "#ffffff",
             "manifest": {
-                "name": "LiftIn",
+                "name": "HelloVeronica",
                 "display": "standalone",
                 "orientation": "not_set",
                 "on_conflict": "override",

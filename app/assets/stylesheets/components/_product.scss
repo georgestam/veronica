@@ -16,7 +16,7 @@
     &:hover {
       transform: translateY(-3px);
       border-bottom-color: rgb(26, 159, 217);
-      background-color: rgb(62, 180, 232);
+      background-color: rgb(62, 180, 232) !important;
     }
   }
 }

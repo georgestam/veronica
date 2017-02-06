@@ -143,20 +143,20 @@ class ProfilesController < ApplicationController
 
   def calculate_account_progress
     @progress = 0
-    @progress += 5 if @email_verified
-    @progress += 5 if @photo_verified
-    @progress += 10 if @address_verified
-    @progress += 10 if @availability_verified
-    @progress += 15 if @upload_video
+    @progress += 20 if @email_verified
+    @progress += 25 if @photo_verified
+    @progress += 20 if @address_verified
+    @progress += 5 if @availability_verified
+    @progress += 0 if @upload_video
     @progress += 10 if @facebook_URL_verified
     @progress += 10 if @linkedin_URL_verified
-    @progress += 20 if @id_document_verified
-    @progress += 15 if @bank_verified
+    @progress += 10 if @id_document_verified
+    @progress += 0 if @bank_verified
 
   end
 
   def verifications
-    @email_verified = true if @car.user.confirmed?
+    @email_verified = true if @car.user.email
     @photo_verified = true if @car.user.photo
     @address_verified = true if @car.user.address
     @availability_verified = true unless @car.user.cars[0].availabilities.empty?

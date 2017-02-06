@@ -38,13 +38,18 @@ pick_up_locations = [
 
 
 urls = [
-  "http://www.careerfaqs.com.au/images/news_pages/female_student_4981183.jpg",
-  "http://www.canberra.edu.au/__data/assets/image/0013/1060222/student-laughing-in-the-library.jpg",
-  "http://www.berkeley.edu/images/photo_uploads/sq-artstudent2.jpg",
-  "http://www-tc.pbs.org/wnet/tavissmiley/files/2016/06/Education.jpg",
-  "https://www.pokitpal.com/Content/img/www/graduating-students.jpg",
-  "https://www.britishcouncil.org/sites/default/files/13_korea_2012_907.jpg",
-  "https://www.pitchup.com/static/v8/uploads/Student.png"
+  asset_path 'faces/1.jpg',
+  asset_path 'faces/2.jpg',
+  asset_path 'faces/3.jpg',
+  asset_path 'faces/4.jpg',
+  asset_path 'faces/5.jpg',
+  asset_path 'faces/6.jpg',
+  asset_path 'faces/7.jpg',
+  asset_path 'faces/8.jpg',
+  asset_path 'faces/10.jpg',
+  asset_path 'faces/11.jpg',
+  asset_path 'faces/12.jpg'
+
   ]
 
 urls_linkedin = [
@@ -62,15 +67,15 @@ urls_facebook = [
 ]
 
 videos_url = [
-"https://www.youtube.com/embed/ePbKGoIGAXY",
-"https://www.youtube.com/embed/ePbKGoIGAXY",
-"https://www.youtube.com/embed/ePbKGoIGAXY",
-"https://www.youtube.com/embed/ePbKGoIGAXY"
+# "https://www.youtube.com/embed/ePbKGoIGAXY",
+# "https://www.youtube.com/embed/ePbKGoIGAXY",
+# "https://www.youtube.com/embed/ePbKGoIGAXY",
+# "https://www.youtube.com/embed/ePbKGoIGAXY"
 ]
 
 
 
-10.times do
+5.times do
   x = rand(0..2)
 
   user = User.new({
@@ -95,7 +100,7 @@ end
 
 x = 0
 
-5.times do
+3.times do
   cars << Car.create!({
     user: users.sample,
     video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
@@ -108,7 +113,7 @@ end
 
 end_time = 0
 
-30.times do
+10.times do
   start_time = Faker::Time.forward(7, :evening)
   end_time = start_time + 60*60*3
   avaliabilities << Availability.create!({
@@ -119,7 +124,7 @@ end_time = 0
     })
 end
 
-10.times do
+5.times do
   journeys << Journey.create!({
     user: users.sample,
     car: cars.sample,
@@ -170,7 +175,7 @@ admin = User.new({
 
 car_admin = Car.create!({
     user: admin,
-    video_URL: "https://www.youtube.com/embed/ePbKGoIGAXY",
+    # video_URL: "https://www.youtube.com/embed/ePbKGoIGAXY",
     bio: "I am a self-made woman entrepreneur and proficient linguist in English, Spanish, French, Italian, Catalan and Rumanian. I am a team worker, with high compromise, responsibility and positive attitude to achieve short and long-term objectives. I apply constant effort in the areas of productivity and quality of every performed work. I am also an entrepreneur, polifacetic and charismatic English teacher. I am willing to continue progressing in my teaching career and combine it with my other passion: entrepreneurship. Creative, ambitious and energetic, always ready to roll sleeves up and establish plans and solutions in order to achieve strategic business initiatives and deliver results. I have total availability at the moment and may be contacted in the referred email anytime.",
     price_hour: 30,
     travel_distance: 20,

@@ -49,7 +49,7 @@
 
           <hr class='hr-half'>
 
-          <h4> <strong>Bio</strong> </h4>
+          <h4> <strong>About me</strong> </h4>
           <p><%=  @car.bio.gsub(/[\[\]]/,"")  %></p>
           <br>
           <h4> <strong>Video</strong> </h4>
@@ -132,7 +132,7 @@
                   <% end %>
                 </p>
               </div>
-              <div class="<%= @bank_verified ? 'verified' : "unverified" %>" id="bank">
+              <!-- <div class="<%= @bank_verified ? 'verified' : "unverified" %>" id="bank">
                 <p>
                   <%= t('.bank_verified')%>
                   <% if @bank_verified %>
@@ -140,8 +140,8 @@
                   <% else %>
                   <i class="fa fa-close"></i>
                   <% end %>
-                </p>
-              </div>
+                </p> -->
+              <!-- </div> -->
               <br>
                <p class=''> <%= t('score_based_in_teacher_verification') %> </p>
               <div class='row'>
@@ -151,7 +151,7 @@
                     <script>
 
                       var bar = new ProgressBar.Circle(container, {
-                        color: '#FC443F',
+                        color: '#32B796',
                         trailColor: '#eee',
                         trailWidth: 1,
                         duration: 1400,
