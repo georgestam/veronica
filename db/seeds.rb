@@ -38,18 +38,17 @@ pick_up_locations = [
 
 
 urls = [
-  asset_path 'faces/1.jpg',
-  asset_path 'faces/2.jpg',
-  asset_path 'faces/3.jpg',
-  asset_path 'faces/4.jpg',
-  asset_path 'faces/5.jpg',
-  asset_path 'faces/6.jpg',
-  asset_path 'faces/7.jpg',
-  asset_path 'faces/8.jpg',
-  asset_path 'faces/10.jpg',
-  asset_path 'faces/11.jpg',
-  asset_path 'faces/12.jpg'
-
+  'app/assets/images/faces/1.jpg',
+  'app/assets/images/faces/2.jpg',
+  'app/assets/images/faces/3.jpg',
+  'app/assets/images/faces/4.jpg',
+  'app/assets/images/faces/5.jpg',
+  'app/assets/images/faces/6.jpg',
+  'app/assets/images/faces/7.jpg',
+  'app/assets/images/faces/8.jpg',
+  'app/assets/images/faces/10.jpg',
+  'app/assets/images/faces/11.jpg',
+  'app/assets/images/faces/12.jpg'
   ]
 
 urls_linkedin = [
@@ -75,7 +74,7 @@ videos_url = [
 
 
 
-5.times do
+10.times do
   x = rand(0..2)
 
   user = User.new({
@@ -93,7 +92,7 @@ videos_url = [
     date_of_birth: Faker::Date.between(6570.days.ago, 10000.days.ago),
     address: pick_up_locations.sample
     })
-  user.photo = open(urls.sample)
+  user.photo = File.open(urls.sample)
   user.save
   users << user
 end
@@ -103,7 +102,7 @@ x = 0
 3.times do
   cars << Car.create!({
     user: users.sample,
-    video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
+    # video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
     bio: Faker::Lorem.paragraphs,
     price_hour: price_per_hour.sample,
     travel_distance: rand(1..10),
@@ -124,7 +123,7 @@ end_time = 0
     })
 end
 
-5.times do
+10.times do
   journeys << Journey.create!({
     user: users.sample,
     car: cars.sample,
@@ -137,7 +136,7 @@ end
 end
 
 i = 0
-10.times do
+2.times do
   Passenger.create!({
     user: users.sample,
     journey: journeys[i],
