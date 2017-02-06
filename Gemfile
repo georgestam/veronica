@@ -84,4 +84,6 @@ gem 'rails-i18n', '~> 5.0.0'
 gem 'devise-i18n'
 gem 'i18n-tasks', '~> 0.9.11'
 
+gem 'ckeditor'
+
 

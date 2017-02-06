@@ -65,9 +65,11 @@ class CarsController < ApplicationController
   end
 
   def edit
+    authorize @car
   end
 
   def update
+    authorize @car
     @car.update(car_params)
     redirect_to teacher_profile_path(@car)
   end
