@@ -38,12 +38,12 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.welcome(self.id).deliver_now
+    # UserMailer.welcome(self.id).deliver_now
   end
 
   def subscribe_to_newsletter
     # SubscribeToNewsletterJob.perform_now(self.id)
-    SubscribeToNewsletterService.new(self).call
+    # SubscribeToNewsletterService.new(self).call
   end
 
   def self.find_for_facebook_oauth(auth)
