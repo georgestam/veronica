@@ -27,7 +27,7 @@ gem 'momentjs-rails', '~> 2.9'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 # jednotka gem
-gem "compass-rails"
+gem 'compass-rails', github: 'Compass/compass-rails'
 
 # mailchimp
 gem 'gibbon'
