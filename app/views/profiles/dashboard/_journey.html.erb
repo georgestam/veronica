@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="col-xs-12">
-      <h2 class="text-center"><%= t('your_bookings_as_teacher') %></h2>
+      <h2 class="text-center"><%= t('.your_bookings_as_teacher') %></h2>
       <% current_user.cars[0].journeys.each do |journey| %>
         <div class="product dashboard-card">
           <% if journey.user.photo? %>
