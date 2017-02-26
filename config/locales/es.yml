@@ -240,6 +240,7 @@ es:
         availability_verified: Availability verified
         bank_verified: Bank verified
         car_verified: Car verified
+        click_any_availablity_to_delete: Click any availablity to delete
         create_avaliability: Create avaliability
         email_verified: Email verified
         facebook_check: Facebook check
@@ -360,6 +361,7 @@ es:
         first_day: First day
         search: Search
         send: Send
+        submit: Submit
     passenger:
       new:
         comfirm_review: Comfirm review
