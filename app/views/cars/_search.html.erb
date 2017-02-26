@@ -7,11 +7,11 @@
 
 
   <div class="col-xs-6" >
-     <%= text_field_tag :your_location, nil, :placeholder => I18n.t('.where_to_find_teacher', default: 'Where to find teachers?' ), :class => "form-control autocomplete", label: 'Personal Address' %>
+     <%= text_field_tag :your_location, nil, :placeholder => I18n.t('views.cars._search.where_to_find_teacher' ), :class => "form-control autocomplete", label: 'Personal Address' %>
   </div>
 
    <div class="col-xs-3">
-    <%= select_tag :max_distance, options_for_select([0,10,25,50,100,250]), :prompt => I18n.t('.search_distance', default: 'Search Distance in km' ), :class => "form-control"  %>
+    <%= select_tag :max_distance, options_for_select([0,10,25,50,100,250]), :prompt => I18n.t('views.cars._search.search_distance_in_km' ), :class => "form-control"  %>
   </div>
   <!--   </div>
     <div class="search-box-item"> -->
@@ -31,7 +31,8 @@
   <!--   </div>
     <div class="search-box-item"> -->
     <div class="col-xs-3">
-    <%= submit_tag "Submit", class: "btn btn-primary btn-block" %>
+    <%#= submit_tag "Submit", class: "btn btn-primary btn-block" %>
+    <%= submit_tag I18n.t('views.journeys.new.search' ), class: "btn btn-primary btn-block", style: "width: 100%"%>
     </div>
 </div>
 <% end %>

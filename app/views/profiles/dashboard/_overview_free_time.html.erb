@@ -1,5 +1,5 @@
 
-<p class="text-center"> <%= t(".availablity") %> </p>
+<p class="text-center"> <%= t('view.profiles.dashboard._overview_free_time.availablity') %> </p>
 
 <table class="table" >
   <thead >
@@ -29,8 +29,8 @@
 
               <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
               <div>
-                <p> from <%= l t.start, format: :time %> </p>
-                <p> to <%= l t.finish, format: :time %> </p>
+                <p> <%= t('view.profiles.dashboard._overview_free_time.from') %>') %>  <%= l t.start, format: :time %> </p>
+                <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l t.finish, format: :time %> </p>
               </div>
               <% end %>
             <% c1 += 1  %>
@@ -45,8 +45,8 @@
           <% if t != nil && c2 == 0 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l t.start, format: :time %> </p>
-              <p> to <%= l t.finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l t.start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l t.finish, format: :time %> </p>
             </div>
             <% end %>
             <% c2 += 1  %>
@@ -61,8 +61,8 @@
           <% if t != nil && c3 == 0 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l t.start, format: :time %> </p>
-              <p> to <%= l t.finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l t.start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l t.finish, format: :time %> </p>
             </div>
             <% end %>
             <% c3 += 1  %>
@@ -77,8 +77,8 @@
           <% if t != nil && c4 == 0 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l t.start, format: :time %> </p>
-              <p> to <%= l t.finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l t.start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l t.finish, format: :time %> </p>
             </div>
             <% end %>
             <% c4 += 1  %>
@@ -93,8 +93,8 @@
           <% if t != nil && c5 == 0 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l t.start, format: :time %> </p>
-              <p> to <%= l t.finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l t.start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l t.finish, format: :time %> </p>
             </div>
             <% end %>
             <% c5 += 1  %>
@@ -109,8 +109,8 @@
           <% if t != nil && c6 == 0 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l t.start, format: :time %> </p>
-              <p> to <%= l t.finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l t.start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l t.finish, format: :time %> </p>
             </div>
             <% end %>
             <% c6 += 1  %>
@@ -125,8 +125,8 @@
           <% if t != nil && c7 == 0 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l t.start, format: :time %> </p>
-              <p> to <%= l t.finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l t.start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l t.finish, format: :time %> </p>
             </div>
             <% end %>
             <% c7 += 1  %>
@@ -160,8 +160,8 @@
 
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l @days[0][c1].start, format: :time %> </p>
-              <p> to <%= l @days[0][c1].finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l @days[0][c1].start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l @days[0][c1].finish, format: :time %> </p>
             </div>
             <% end %>
             <% c1 += 1  %>
@@ -176,8 +176,8 @@
           <% if @days[1][c2] != nil && c2 == 1 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div >
-              <p> from <%= l @days[1][c2].start, format: :time %> </p>
-              <p> to <%= l @days[1][c2].finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l @days[1][c2].start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l @days[1][c2].finish, format: :time %> </p>
             </div>
             <% end %>
             <% c1 += 1  %>
@@ -193,8 +193,8 @@
           <% if @days[2][c3] != nil && c3 == 1 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l @days[2][c3].start, format: :time %> </p>
-              <p> to <%= l @days[2][c3].finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l @days[2][c3].start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l @days[2][c3].finish, format: :time %> </p>
             </div>
             <% end %>
             <% c1 += 1  %>
@@ -210,8 +210,8 @@
           <% if @days[3][c4] != nil && c4 == 1 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l @days[3][c4].start, format: :time %> </p>
-              <p> to <%= l @days[3][c4].finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l @days[3][c4].start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l @days[3][c4].finish, format: :time %> </p>
             </div>
             <% end %>
             <% c1 += 1  %>
@@ -227,8 +227,8 @@
           <% if @days[4][c5] != nil && c5 == 1 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l @days[4][c5].start, format: :time %> </p>
-              <p> to <%= l @days[4][c5].finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l @days[4][c5].start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l @days[4][c5].finish, format: :time %> </p>
             </div>
             <% end %>
             <% c1 += 1  %>
@@ -244,8 +244,8 @@
           <% if @days[5][c6] != nil && c6 == 1 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l @days[5][c6].start, format: :time %> </p>
-              <p> to <%= l @days[5][c6].finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l @days[5][c6].start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l @days[5][c6].finish, format: :time %> </p>
             </div>
             <% end %>
             <% c1 += 1  %>
@@ -261,8 +261,8 @@
           <% if @days[6][c7] != nil && c7 == 1 %>
             <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
             <div>
-              <p> from <%= l @days[6][c7].start, format: :time %> </p>
-              <p> to <%= l @days[6][c7].finish, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.from') %> <%= l @days[6][c7].start, format: :time %> </p>
+              <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l @days[6][c7].finish, format: :time %> </p>
             </div>
             <% end %>
             <% c1 += 1  %>

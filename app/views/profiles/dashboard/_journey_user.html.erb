@@ -14,10 +14,10 @@
           <div class='product-body'>
             <p> <%= journey.car.user.first_name.capitalize %> <%= journey.car.user.last_name.capitalize %> </p>
             <ul>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(journey.pick_up_time, format: :time_date) %></li>
+              <!-- <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%#= l(journey.pick_up_time, format: :time_date) %></li> -->
               <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('.location') %>:<%= journey.address %> </li>
-              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>: <%= journey.duration.to_i*journey.car.price_hour.to_i %></li>
-              <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.duration') %>:<%= journey.duration %> h </li>
+              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>:€ <%= journey.car.price_hour.to_i %>/hr</li>
+              <!-- <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%#= t('.duration') %>:<%= journey.duration %> h </li> -->
               <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('.children') %>: <%= journey.remaining_seats %> </li>
             </ul>
             <ul>

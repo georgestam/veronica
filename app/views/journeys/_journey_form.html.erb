@@ -1,9 +1,9 @@
 <%= simple_form_for [@car, @journey] do |f| %>
-  <%= f.input :seats_available, label: I18n.t('number_of_students', default: 'Number of Students' ), input_html: { min: '1', max: '7', step: 'any' } %>
-  <%= f.input :pick_up_time, label: I18n.t('views.journeys.new.class_starts_at' ), as: :datetime_picker %>
-  <%= f.input :duration, label: I18n.t('views.journeys.new.duration_in_hours', default: 'Duration in hours' ) %>
+  <%= f.input :seats_available, label: I18n.t('number_of_students' ), input_html: { min: '1', max: '7', step: 'any' } %>
+  <!-- <%= f.input :pick_up_time, label: I18n.t('views.journeys.new.first_day' ), as: :datetime_picker %> -->
+  <!-- <%= f.input :duration, label: I18n.t('views.journeys.new.duration_in_hours' ) %> -->
   <%= f.input :address, input_html: { class: :autocomplete } %>
-  <%= f.button :submit, I18n.t('views.journeys.new.create_class', default: 'create_class' ), class: "btn-primary wide-btn", style: "width: 100%"%>
+  <%= f.button :submit, I18n.t('views.journeys.new.create_class' ), class: "btn-primary wide-btn", style: "width: 100%"%>
 <% end %>
 
 

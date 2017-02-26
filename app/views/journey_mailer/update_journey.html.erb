@@ -1,31 +1,32 @@
-<p>Hello <%= @user.first_name %></p>
+<p><%= t('.hello') %> <%= @user.first_name %>,</p>
 
-<p>Your booking to <strong><%= @car.user.first_name %></strong>  <strong><%= l(@journey.pick_up_time, format: :time_date) %></strong> has been UPDATED.</p>
+<p> <%= t('.Your_booking_to') %> <strong><%= @car.user.first_name %></strong>  <strong><%#= l(@journey.pick_up_time, format: :time_date) %></strong>  <%= t('.has_been_UPDATED') %>. </p>
 
+<p><strong> <%= t('.Please_see_a_summary_of_your_booking_below') %>:</strong></p>
 
+<p><strong> <%= t('.parent') %> :</strong> <%= @journey.user.full_name %>, <%= @journey.user.email %>, <%= @journey.user.phone_number.presence || " " %></p>
 
-<p><strong>Please see a summary of your booking below:</strong></p>
-
-<p><strong> Parent :</strong> <%= @journey.user.full_name %></p>
-
-<p><strong> Teacher :</strong> <%= @journey.car.user.full_name %></p>
+<p><strong> <%= t('.teacher') %> :</strong> <%= @journey.car.user.full_name %>, <%= @journey.car.user.email %>, <%= @journey.car.user.phone_number.presence || " " %></p>
 
 <ul>
-    <li><i class="fa fa-calendar" aria-hidden="true"></i> <%= l(@journey.pick_up_time, format: :time_date) %></li>
+    <!-- <li><i class="fa fa-calendar" aria-hidden="true"></i> <%#= l(@journey.pick_up_time, format: :time_date) %></li> -->
     <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('.location') %>:<%= @journey.address %> </li>
-    <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>: <%= @journey.duration.to_i*@journey.car.price_hour.to_i %></li>
-    <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.duration') %>:<%= @journey.duration %> h </li>
+    <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>: €<%= @journey.car.price_hour.to_i %>/hr</li>
+    <!-- <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%#= t('.duration') %>:<%= @journey.duration %> h </li> -->
     <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('.children') %>: <%= @journey.remaining_seats %> </li>
 </ul>
 
-
-<p> Pleae recommend this teacher to a friend</p>
-
-<p>Thank you for booking with Veronica </p>
-
-<p>Please feel free to contact us with any feedback.</p>
-
-<p>Thanks,</p>
-
-
-<p><%= link_to 'View the teacher profile', teacher_profile_url(id: @car.id) %></p>
+<p> <%= t('.Please_recommend_this_teacher_to_a_friend') %>.
+<br>
+<br>
+<%= t('.thank you for booking with us') %>.
+<br>
+<br>
+<%= t('.please_feel_free_to_contact_us_with_any_feedback') %>.
+<br>
+<br>
+<%= t('.many_thanks') %>.
+<br>
+<br>
+<%= link_to t('.View_teacher_profile'), teacher_profile_url(id: @car.id) %>
+</p>

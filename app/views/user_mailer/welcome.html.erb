@@ -1,12 +1,14 @@
-<p>Hi <%= @user.first_name %>,</p>
+<p> <%= t'(.hello') %> <%= @user.first_name %>,</p>
 
-<p>Thank you for signing up to Veronica !</p>
+<p> <%= t'(.Thank_you_for_signing_up!') %> !</p>
 
-<p>Take your time to explore our website to fully utilise all our amazing features.</p>
+<p> <%= t'(.Take_your_time_to_explore_our_website_to_fully_utilise_all_our_amazing_features') %>.</p>
 
-<p>Veronica is a system to find realiable teachers</p>
+<p><%= t'(.we_provide_a_system_to_find_realiable_teachers') %> </p>
 
-<p>If you have any questions, please don't hesitate to ask.</p>
+<p><%= t'(.If_you_have_any_questions_please_do_not_hesitate_to_ask') %> </p>
 
-<p>Thanks,</p>
+<p><%= t'(.thanks') %>,</p>
+
+<%= link_to t('.see_our_teachers'), cars_url(id: @car.id) %>
 

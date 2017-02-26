@@ -1,6 +1,5 @@
-<h4 class="text-center"> <%= t(".teachers_dashboard") %> </h4>
+<h4 class="text-center"> <%= t("views.profiles.dashboard._overview-header.teachers_dashboard") %> </h4>
 <div class="overview-header">
-
   <% if @user.photo? %>
     <%= cl_image_tag @user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "avatar-large header-img" %>
   <% else %>

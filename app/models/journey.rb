@@ -6,7 +6,7 @@ class Journey < ApplicationRecord
   # validates :start_time, :finish_time, :num_of_students, presence: true
 
   validates :seats_available, presence: true, numericality: true, inclusion: {in: (1..7)}
-  validates :pick_up_time, presence: true
+  # validates :pick_up_time, presence: true
   validate :journey_date_cannot_be_in_the_past
 
   validates :address, presence: true
@@ -16,9 +16,9 @@ class Journey < ApplicationRecord
 
 
   def journey_date_cannot_be_in_the_past
-    if pick_up_time < Date.today
-      errors.add(:pick_up_time, "Cannot be in the past")
-    end
+    # if pick_up_time < Date.today
+    #   errors.add(:pick_up_time, "Cannot be in the past")
+    # end
   end
 
   def remaining_seats

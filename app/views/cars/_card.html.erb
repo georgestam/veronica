@@ -6,8 +6,8 @@
       <% if car.user.photo? %>
         <%= cl_image_tag car.user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs" %>
       <% else %>
-        <% avatar_url = car.user.facebook_picture_url || "http://placehold.it/100x100" %>
-        <%= image_tag avatar_url, class: "avatar-xl text-center" %>
+        <% avatar_url = car.user.facebook_picture_url || "http://placehold.it/200x200" %>
+        <%= image_tag avatar_url, class: "responsive-avatar text-center-xs" %>
       <% end %>
 
         <% passengers = Passenger.where(journey_id: Journey.where(car: car)) %>
@@ -51,12 +51,13 @@
          </p>
           <p>
             <div class="<%= car.video_URL != "" ? 'verified' : "unverified" %>" id="bank">
-            <% if car.video_URL != "" %>
+            <!-- <% if car.video_URL != "" %>
             <i class="fa fa-video-camera" aria-hidden="true"></i>
             <i class="fa fa-check"></i>
-            <% end %>
+            <% end %> -->
+            </div>
           </p>
-        </div>
+      
       </div>
        <div class="row">
          <div class="col-xs-12">
@@ -75,14 +76,14 @@
     </li>
     <li >
       <% journeys = Journey.where(car: car) %>
-       <strong> <%= journeys.count %>  </strong> <%= t('bookings') %>
+       <strong> <%= journeys.count %>  </strong> <%= t('.bookings') %>
     </li>
     <li>
         <% kids = 0 %>
           <% journeys.each do |journey|%>
           <% kids += journey.seats_available %>
           <% end %>
-        <p> <strong>  <%= kids %> </strong><%= t('kids_taught') %></p>
+        <p> <strong>  <%= kids %> </strong><%= t('.kids_taught') %></p>
     </li>
     <li>
       <p>
@@ -120,7 +121,6 @@
       </p>
     </li>
   </ul>
-
 
 </div>
 

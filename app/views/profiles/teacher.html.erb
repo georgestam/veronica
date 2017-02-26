@@ -1,10 +1,6 @@
 <% content_for :title, "#{@car.user.first_name}" %>
 
-
-
 <div class='soft-background'>
-
-
 
   <div class="container">
     <div class="row">
@@ -30,39 +26,39 @@
               <div class="col-xs-3">
 
                 <h3> <%= @journeys.count %> </h3>
-                <p> bookings </p>
+                <p> <%= t('.bookings') %> </p>
               </div>
               <div class="col-xs-3">
                 <h3><%= @kids  %></h3>
-                <p> Numbers of kids to date </p>
+                <p> <%= t('.numbers_of_kids_to_date') %> </p>
               </div>
               <div class="col-xs-3">
                 <h3> <%= @avg_rating %></h3>
-                <p>Average rating review  </p>
+                <p> <%= t('.average_rating_review') %>  </p>
               </div>
               <div class="col-xs-3">
                 <h3> <%= @ratings.count %> </h3>
-                <p> number of reviews </p>
+                <p> <%= t('.number_of_reviews') %> </p>
               </div>
             </div>
           </div>
 
           <hr class='hr-half'>
 
-          <h4> <strong>About me</strong> </h4>
+          <h4> <strong> <%= t('.about_me') %> </strong> </h4>
           <p><%=  @car.bio.html_safe %></p>
           <br>
-          <h4> <strong>Video</strong> </h4>
+          <!-- <h4> <strong>Video</strong> </h4> -->
           <% if @car.video_URL != "" %>
 
          <!--  <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" src="<%= @car.video_URL %>"></iframe> -->
 
-             <p> <%= @car.user.first_name.capitalize  %>  <%= t('.views.profile.teacher.has_no_videos')%> </p>
+             <p> <%#= @car.user.first_name.capitalize  %>  <%#= t('.views.profile.teacher.has_no_videos')%> </p>
          <!--  </div> -->
 
           <% elsif %>
-             <p> <%= @car.user.first_name.capitalize  %>  <%= t('.views.profile.teacher.has_no_videos')%> </p>
+             <p> <%#= @car.user.first_name.capitalize  %>  <%#= t('.views.profile.teacher.has_no_videos')%> </p>
 
           <% end %>
         </div>
@@ -73,8 +69,8 @@
         <div>
 
         <% if @car.user == current_user %>
-        <%= link_to "Edit ", edit_car_path(@car), :class => "btn btn-primary btn-block" %>
-        <%= link_to "Delete", car_path(@car), :class => "btn btn-danger btn-block",
+        <%= link_to t(".edit"), edit_car_path(@car), :class => "btn btn-primary btn-block" %>
+        <%= link_to t(".delete"), car_path(@car), :class => "btn btn-danger btn-block",
               method: :delete,
               data: { confirm: I18n.t('.Are_you sure?') } %>
           <% else %>

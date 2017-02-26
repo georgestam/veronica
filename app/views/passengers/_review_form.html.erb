@@ -6,8 +6,8 @@
 <%= simple_form_for @passenger, url:  journey_passengers_path do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :driver_review, label: I18n.t('.views.passenger.new.write_review', default: 'Write review' ), :size => 500, placeholder: "it was Amazing!" %>
-  <%= f.input :driver_rating, label: I18n.t('.views.passenger.new.rating', default: 'Rate' ), collection: Passenger::RATINGS, prompt: "1 to 5" %>
+  <%= f.input :driver_review, label: I18n.t('views.passengers._review_form.write_review' ), :size => 500 %>
+  <%= f.input :driver_rating, label: I18n.t('views.passengers._review_form.rating' ), collection: Passenger::RATINGS, prompt: "1 to 5" %>
 
   <%= f.button :submit, I18n.t('views.passenger.new.comfirm_review', default: 'comfirm_review' ), class: "btn btn-primary" %>
 

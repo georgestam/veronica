@@ -14,17 +14,17 @@
           <div class='product-body'>
             <p> <%= journey.user.first_name.capitalize %> <%= journey.user.last_name.capitalize %> </p>
             <ul>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%= l(journey.pick_up_time, format: :time_date) %></li>
+              <!-- <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%#= l(journey.pick_up_time, format: :time_date) %></li> -->
               <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('.location') %>:<%= journey.address %> </li>
-              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>: <%= journey.duration.to_i*journey.car.price_hour.to_i %></li>
-              <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.duration') %>:<%= journey.duration %> h </li>
+              <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>:€ <%= journey.car.price_hour.to_i %>/hr</li>
+              <!-- <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%#= t('.duration') %>:<%= journey.duration %> h </li> -->
               <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('.children') %>: <%= journey.remaining_seats %> </li>
             </ul>
             <ul>
               <il>
                 <%= simple_form_for [journey] do |f| %>
 
-                    <% if journey.completed %>
+                    <% if journey.completed && journey.passengers[0].present?  %>
 
                       <div class='padded-small'>
                           <% journey.passengers[0].driver_rating.times do %>
@@ -39,11 +39,11 @@
                       <%= f.submit I18n.t('.completed', default: 'Completed' ), class: 'btn btn-success custom-btn-width' %>
                     <% else %>
                       <%= f.hidden_field :completed, :value => true %>
-                      <%= f.submit I18n.t('.Mark_as_Completed', default:'Mark as Completed' ), class: 'btn btn-primary custom-btn-width' %>
+                      <%#= f.submit I18n.t('.Mark_as_Completed', default:'Mark as Completed' ), class: 'btn btn-primary custom-btn-width' %>
 
 
                        <%= link_to I18n.t('.Edit_booking', default: 'Edit Booking' ), edit_journey_path(journey), class: 'btn btn-primary custom-btn-width' %>
-                       <%= link_to I18n.t('.Cancel_booking', default: 'Cancel Booking' ), journey_path(journey), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger custom-btn-width' %>
+                       <%#= link_to I18n.t('.Cancel_booking', default: 'Cancel Booking' ), journey_path(journey), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger custom-btn-width' %>
                    <% end %>
                 <% end %>
               </il>

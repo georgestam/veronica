@@ -4,7 +4,7 @@
   <div class="col-xs-12 col-sm-4 hidden-xs">
       <div class="dashboard-card">
 
-        <h2 class="text-center" id="manual_info"><%= t('.summary') %></h2>
+        <h2 class="text-center" id="manual_info"><%= t('views.profiles.dashboard._overview-user.summary') %></h2>
 
         <% if @journeys.nil? %>
 
@@ -15,7 +15,7 @@
         <div class="stats row">
           <div class="col-xs-4">
             <h3> <%= @journeys.count %> </h3>
-            <p> bookings </p>
+            <p> <%= t('views.profiles.dashboard._overview-user.bookings') %> </p>
           </div>
           <!-- <div class="col-xs-4">
             <h3><%#= @journeys.last.seats_available  %></h3>
@@ -30,7 +30,7 @@
         <div class="stats">
           <div class="col-xs-4">
             <h3> <%= @ratings.count %> </h3>
-            <p> number of reviews </p>
+            <p> <%= t('views.profiles.dashboard._overview-user.number_of_reviews') %> </p>
           </div>
         </div>
 
@@ -43,7 +43,7 @@
         <div class="row">
 
             <div class="dashboard-card" >
-                    <h4> <strong> <%= t('.reviews') %> </strong> </h4>
+                    <h4> <strong> <%= t('views.profiles.dashboard._overview-user.reviews') %> </strong> </h4>
                     <% @passengers.each do |passenger| %>
                     <ul >
                       <li>
@@ -69,9 +69,9 @@
                         <div class='content staff'>
                           <div class='toolbar'>
                               <h4 class='title'>
-                                Teacher
+                                <%= t('views.profiles.dashboard._overview-user.teacher') %>
                                 <%= passenger.journey.car.user.first_name.capitalize %>
-                                <span class='label label-contrast'>Staff</span>
+                                <span class='label label-contrast'></span>
                               </h4>
 
                             <p><%= passenger.driver_review %> </p>

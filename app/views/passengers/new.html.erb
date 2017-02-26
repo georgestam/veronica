@@ -1,18 +1,18 @@
 <div class='lift-bacground'>
 
-<% content_for :title, "Add review" %>
+<% content_for :title, I18n.t('.add_review') %>
 
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-          <% if flash[:exceed_car_limit] %>
-            <div class="alert-warning"><%= flash[:exceed_car_limit] %></div>
-          <% end %>
-        <%= render 'review_form' %>
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <% if flash[:exceed_car_limit] %>
+              <div class="alert-warning"><%= flash[:exceed_car_limit] %></div>
+            <% end %>
+          <%= render 'review_form' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 </div>

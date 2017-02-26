@@ -14,33 +14,33 @@
             <%= f.error_notification %>
 
             <h2>Personal info</h2>
-            <%= f.input :first_name, placeholder: 'Bob' %>
-            <%= f.input :last_name, placeholder: 'Fernandez' %>
-            <%= f.input :date_of_birth, as: :date_picker %>
+            <%= f.input :first_name, label: I18n.t('views.profiles.edit.first_name'), placeholder: 'Bob' %>
+            <%= f.input :last_name, label: I18n.t('views.profiles.edit.last_name'), placeholder: 'Fernandez' %>
+            <%= f.input :date_of_birth, label: I18n.t('views.profiles.edit.date_of_birth'), as: :date_picker %>
 
 
-            <%= f.input :description, label: I18n.t('views.profiles.edit.What_do_you_expect_from_this_platform', default: 'What do you expect from this platform'), as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } }, placeholder: 'bla bla' %>
+            <%= f.input :description, label: I18n.t('views.profiles.edit.what_do_you_expect_from_this_platform'), as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } } %>
 
 
-            <%= f.input :gender, as:  :radio_buttons,  collection: ['Male', 'Female'], wrapper: :vertical_radio_and_checkboxes %>
+            <%= f.input :gender, label: I18n.t('views.profiles.edit.gender'), as:  :radio_buttons,  collection: [I18n.t('views.profiles.edit.Male'), I18n.t('views.profiles.edit.Female')], wrapper: :vertical_radio_and_checkboxes %>
 
-            <%= f.input :address, placeholder: '36 longmore road', label: 'Personal Address', input_html: { class: :autocomplete } %>
+            <%= f.input :address, label: I18n.t('views.profiles.edit.address'), placeholder: '36 longmore road', input_html: { class: :autocomplete } %>
 
             <%= f.input :photo, as: :attachinary %>
 
 
             <h2>Contact info</h2>
             <%= f.input :email, placeholder: 'bob@bob.com' %>
-            <%= f.input :phone_number, placeholder: '0044 933715178'%>
+            <%= f.input :phone_number, label: I18n.t('views_profiles.edit.phone_number'), placeholder: '0044 933715178'%>
 
             <h2>Verification details </h2>
             <%= f.input :linkedin_URL, placeholder: 'https://uk.linkedin.com/in/lorenzobernardiuk' %>
             <%= f.input :facebook_URL, placeholder: 'https://www.facebook.com/angie.allbones'  %>
 
-            <%= f.input :id_document, as: :attachinary %>
+            <%= f.input :id_document, label: I18n.t('views.profiles.edit.id_document'), as: :attachinary %>
 
-
-            <%= f.button :submit, class: "btn-custom btn-primary"%>
+            <%= f.button :submit, label: I18n.t('views.profiles.edit.submit' ), class: "btn btn-primary wide-btn" %>
+          
           <% end %>
           </div>
 

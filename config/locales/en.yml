@@ -1,31 +1,6 @@
 ---
 en:
-  title: veronica
-  days:
-    monday: Monday
-    tuesday: Tuesday
-    wednesday: Wednesday
-    thursday: Thursday
-    friday: Friday
-    saturday: Saturday
-    sunday: Sunday
-
-  cars:
-    index:
-      search_distance: this tag does not work!
-      teachers_for_you_in_this_search: Teacher for you in this search
-    new:
-      title: Create your teacher profile
-
-  views:
-    journeys:
-      new:
-        class_starts_at: Class starts at
-        create_class: book
-  availabilities:
-    availability_form:
-        title: Add or modify the time when you are free
-
+  _update: Update
   abort: Abort
   activerecord:
     attributes:
@@ -59,38 +34,125 @@ en:
       passenger: Passenger
       user: User
   add_car: Add you car details
+  availabilities:
+    availability_form:
+      title: Add or modify the time when you are free
   avg_journey_time_html: "<strong>Avg. journey time:</strong>"
   bio: Bio
+  bookings: Bookings
   car_colour_html: "<strong>Colour:</strong> %{colour}"
   car_make_html: "<strong>Make:</strong> %{make}"
   car_model_html: "<strong>Model:</strong> %{name}"
   car_vrn_html: "<strong>Licence:</strong> %{vrn}"
+  cars:
+    card:
+      bank_verified: Bank verified
+      bookings: Bookings
+      facebook_check: Facebook check
+      id_document_verified: Id document verified
+      kids_taught: Kids taught
+      linkedin_check: Linkedin check
+      reviews: Reviews
+    index:
+      search_distance: this tag does not work!
+      teachers: Teachers
+      teachers_for_you_in_this_search: Teachers for you in this search
+      we_have: We have
+    new:
+      create_a_teacher: Create a teacher
+      title: Create your teacher profile
+    search:
+      search_distance: Search distance
+      where_to_find_teacher: Testing
+  click_times_to_delete: Click times to delete
+  click_to_delete: Click to delete
+  comments: Comments
+  create_new_time: Create new time
   datepicker:
     dformat: "%d/%m/%Y"
     pformat: DD/MM/YYYY
   dayViewHeaderFormat: MMMM YYYY
+  days:
+    friday: Friday
+    monday: Monday
+    saturday: Saturday
+    sunday: Sunday
+    thursday: Thursday
+    tuesday: Tuesday
+    wednesday: Wednesday
   destination_html: "<strong>Destination:</strong> %{location}"
   driver_journeys: Driver journeys
   driver_name_html: "<strong>Driver name:</strong> %{name}"
   edit: Edit
   error: Error
   hello: Hello world
+  journey_mailer:
+    confirmation_of_booking:
+      Please_feel_free_to_contact_us_with_any_feedback:
+        ":": ":"
+      Please_recommend_this_teacher_to_a_friend: Please recommend this teacher to
+        a friend
+      Please_see_a_summary_of_your_booking_below: Please see a summary of your booking
+        below
+      View_teacher_profile: View teacher profile
+      Your_booking_to: Your booking to
+      children: Children
+      duration: Duration
+      has_been_confirmed: Has been confirmed
+      hello: Hello
+      location: Location
+      many_thanks: Many thanks
+      parent: Parent
+      please_feel_free_to_contact_us_with_any_feedback: Please feel free to contact
+        us with any feedback
+      price: Price
+      teacher: Teacher
+    update_journey:
+      Please_feel_free_to_contact_us_with_any_feedback:
+        ":": ":"
+      Please_recommend_this_teacher_to_a_friend: Please recommend this teacher to
+        a friend
+      Please_see_a_summary_of_your_booking_below: Please see a summary of your booking
+        below
+      View_teacher_profile: View teacher profile
+      Your_booking_to: Your booking to
+      children: Children
+      duration: Duration
+      has_been_UPDATED: Has been updated
+      hello: Hello
+      location: Location
+      many_thanks: Many thanks
+      parent: Parent
+      please_feel_free_to_contact_us_with_any_feedback: Please feel free to contact
+        us with any feedback
+      price: Price
+      teacher: Teacher
   journeys:
     card:
       about_me: About me
       car_html: "<strong>Car:</strong> %{make} %{name}"
       preferences: Preferences
+    edit:
+      edit: Edit
+      edit_booking: Edit booking
+    new:
+      bookings: Bookings
+      new_booking: New booking
+      teacher_booking: Teacher booking
     show:
       about_me: About me
       arrival: Arrival
       departure: Departure
       sign_in: Sign in
+  kids_taught: Kids taught
+  kids_tought: Kids tought
   music_html: "<strong>Music:</strong> %{music}"
   'no': 'No'
   num_of_journeys_driven_html: "<strong>No. of journeys driven:</strong> %{number}"
   num_of_journeys_passenger_html: "<strong>No. of journeys as passenger:</strong>
     %{number}"
   num_of_passengers_html: "<strong>Number of passengers:</strong>"
+  number_of_students: Number of students
   pages:
     home:
       driver: Teacher
@@ -109,6 +171,7 @@ en:
       subtitle: Learning languages just got easier
       testimonial_four_name: DJ Jordi from Spain
       testimonial_four_quote: Cheap but I really enjoy it
+      testimonial_name_one: Testimonial name one
       testimonial_one_name: Jean-claude from Belgium
       testimonial_one_quote: Amazing
       testimonial_three_name: Luke breen from Birmingham
@@ -120,55 +183,121 @@ en:
       title: veronica
   passenger-journeys: Passenger-journeys
   passenger_journeys: Passenger journeys
+  passengers:
+    new:
+      add_review: Add review
+    review_form:
+      views:
+        passenger:
+          new:
+            rating: Rating
+            write_review: Write review
   pick_up_location_html: "<strong>Pick up location:</strong> %{location}"
   pick_up_time: Pick up
   preferences: Preferences
   profiles:
-    teacher:
-      no_videos: has no videos.
     dashboard:
+      Dashboard: Dashboard
       account-settings:
+        bank_account: Bank account
         date_of_birth_html: "<strong>DOB:</strong>"
+        description: Description
         email_html: "<strong>Email:</strong> %{email}"
+        facebook_URL: Facebook url
         gender_html: "<strong>Gender:</strong> %{gender}"
+        id_uploaded: Id uploaded
+        linkedin_URL: Linkedin url
+        'no': 'No'
         personal-information: Personal-information
         personal_information: Personal information
         phone_number_html: "<strong>Phone number:</strong> %{phone_number}"
+        verification_information: Verification information
+        'yes': 'Yes'
+      journey:
+        Cancel_booking: Cancel booking
+        Edit_booking: Edit booking
+        Mark_as_Completed: Mark as completed
+        children: Children
+        completed: Completed
+        duration: Duration
+        location: Location
+        price: Price
+      journey_user:
+        Cancel_booking: Cancel booking
+        Edit_booking: Edit booking
+        Mark_as_Completed: Mark as completed
+        children: Children
+        completed: Completed
+        duration: Duration
+        location: Location
+        price: Price
+        write_review: Write review
       notifications:
         no_notifications: You don't have any notifications yet!
       overview:
-        verification: Your teacher profile is %{progress} % completed. Parents are more likely to trust teachers' profiles of 100%.
-        email_verified: Email verified
+        add_avaliability: Add avaliability
         address_verified: Address verified
         availability_verified: Availability
-        id_document_verified: Id document
-        interview_verified: Interview
-        id_process: We are processing the verification of your details, we will let you contact you if something is not correct.
-        summary: Stats Summary
-        create_avaliability: Tell us when are your are available
-
-
-
+        bank_verified: Bank verified
         car_verified: Car verified
-
+        create_avaliability: Tell us when are your are available
+        email_verified: Email verified
+        facebook_check: Facebook check
+        id_document_verified: Id document
+        id_process: We are processing the verification of your details, we will let
+          you contact you if something is not correct.
+        interview_verified: Interview
         journey_stats: Journey stats
+        linkedin_check: Linkedin check
         no_cars: You haven't uploaded your car details yet!
         no_reviews: You haven't been reviewed yet!
         payment_verified: Payment verified
+        photo_verified: Photo verified
         rating_html: "<strong>Rating:</strong>"
+        reviews: Reviews
         student_verified: Student ID verified
-
+        summary: Stats Summary
+        uploaded_video: Uploaded video
+        verification: Your teacher profile is %{progress} % completed. Parents are
+          more likely to trust teachers' profiles of 100%.
       overview-header:
         complete: complete
         teachers_dashboard: Teacher's Dashboard
         view_teacher_profile: View Teacher Profile
+      overview_free_time:
+        availablity: Availablity
+      overview_user:
+        no_bookings_yet: No bookings yet
+        reviews: Reviews
+        summary: Summary
       tab_account_settings: Account Settings
       tab_bookings: Bookings
+      tab_calendar: Calendar
       tab_notifications: Notifications
       tab_overview: Overview
-      tab_calendar: Calendar
-
-
+    edit:
+      What_do_you_expect_from_this_platform: What do you expect from this platform
+    teacher:
+      about_me: About me
+      average_rating_review: Average rating review
+      bank_verified: Bank verified
+      book_me: Book me
+      bookings: Bookings
+      delete: Delete
+      edit: Edit
+      facebook_check: Facebook check
+      id_document_verified: Id document verified
+      linkedin_check: Linkedin check
+      no_videos: has no videos.
+      number_of_reviews: Number of reviews
+      numbers_of_kids_to_date: Numbers of kids to date
+      photo_verified: Photo verified
+      reviews: Reviews
+      views:
+        profile:
+          teacher:
+            has_no_videos: Has no videos
+  score_based_in_teacher_verification: Score based in teacher verification
   seats_available:
     one: There is only one seat left!
     other: There are %{count} seats available
@@ -177,17 +306,19 @@ en:
   shared:
     home_navbar:
       sign_in: Sign in
+      sign_up: Sign up
     navbar:
-      search_for_teacher: Search teacher
       create_journey: Create journey
       dashboard: Dashboard
       profile: Profile
+      search_for_teacher: Search teacher
       sign_in: Sign in
       sign_out: Sign out
       start_driving: Start driving
   smoking_html: "<strong>Smoker:</strong>"
   speaking_html: "<strong>Speaking:</strong> %{speaking}"
   student_id_html: "<strong>Student ID:</strong> %{student_id}"
+  teachers: Teachers
   time:
     formats:
       day_month_year: "%d %b %Y"
@@ -196,9 +327,75 @@ en:
   timepicker:
     dformat: "%R"
     pformat: HH:mm
+  title: veronica
   uni_course_html: "<strong>Course:</strong> %{course}"
   university_information: University information
   update_car: Update your car details
+  user_mailer:
+    welcome:
+      see_our_teachers: See our teachers
   vehicle_html: "<strong>Car details:</strong> %{make} %{name}"
+  view:
+    profiles:
+      dashboard:
+        _overview_free_time:
+          availablity: Availablity
+          from: From
+          to: To
+        availablity: Availablity
+  views:
+    cars:
+      _car_form:
+        max_travel_distance_in_km: Max travel distance in km
+        price_hour: Price hour
+        price_hour_in_euros: Price hour in euros
+      _search:
+        search_distance: Search distance
+        search_distance_in_km: Search distance in km
+        where_to_find_teacher: Where to find teacher
+    journeys:
+      new:
+        class_starts_at: Class starts at
+        create_class: book
+        create_teacher: Create teacher
+        duration_in_hours: Duration in hours
+        first_day: First day
+        search: Search
+        send: Send
+    passenger:
+      new:
+        comfirm_review: Comfirm review
+    passengers:
+      _review_form:
+        rating: Rating
+        write_review: Write review
+    profiles:
+      dashboard:
+        _overview-header:
+          teachers_dashboard: Teachers dashboard
+        _overview-user:
+          bookings: Bookings
+          number_of_reviews: Number of reviews
+          reviews: Reviews
+          summary: Summary
+          teacher: Teacher
+      edit:
+        Female: Female
+        Male: Male
+        What_do_you_expect_from_this_platform: What do you expect from this platform
+        address: Address
+        date_of_birth: Date of birth
+        first_name: First name
+        gender: Gender
+        id_document: Id document
+        last_name: Last name
+        submit: Submit
+        what_do_you_expect_from_this_platform: What do you expect from this platform
+  views_profiles:
+    edit:
+      phone_number: Phone number
+      what_do_you_expect_from_this_platform: What do you expect from this platform
   year_of_study_html: "<strong>Year of study:</strong> %{year_of_study}"
   'yes': 'Yes'
+  your_bookings: Your bookings
+  your_bookings_as_teacher: Your bookings as teacher

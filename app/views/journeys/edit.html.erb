@@ -1,16 +1,12 @@
-<% content_for :title, "bookings" %>
-
-
-
+<% content_for :title, I18n.t('.edit_booking') %>
 
 <div class='lift-bacground'>
-<% content_for :title, "Sign up" %>
 <div class="wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
         <div class="login-form">
-          <h2 style="font-size: 25px"> <%= t('.edit') %>  </h2>
+          <h2 style="font-size: 25px"> <%= t('.edit_booking') %>  </h2>
             <div class="form-actions">
               <%= render 'journey_form' %>
             </div>
