@@ -34,6 +34,7 @@ en:
     thursday: Thursday
     tuesday: Tuesday
     wednesday: Wednesday
+  edit: Edit
   journey_mailer:
     confirmation_of_booking:
       Please_recommend_this_teacher_to_a_friend: Please recommend this teacher to
@@ -99,6 +100,20 @@ en:
   profiles:
     dashboard:
       Dashboard: Dashboard
+      account-settings:
+        bank_account: Bank account
+        date_of_birth_html: Date of birth html
+        description: Description
+        email_html: Email html
+        facebook_URL: Facebook url
+        gender_html: Gender html
+        id_uploaded: Id uploaded
+        linkedin_URL: Linkedin url
+        'no': 'No'
+        personal-information: Personal-information
+        phone_number_html: Phone number html
+        verification_information: Verification information
+        'yes': 'Yes'
       journey:
         Edit_booking: Edit booking
         children: Children
@@ -185,7 +200,16 @@ en:
   title: veronica
   user_mailer:
     welcome:
+      If_you_have_any_questions_please_do_not_hesitate_to_ask: If you have any questions
+        please do not hesitate to ask
+      Take_your_time_to_explore_our_website_to_fully_utilise_all_our_amazing_features: Take
+        your time to explore our website to fully utilise all our amazing features
+      Thank_you_for_signing_up!: Thank you for signing up!
+      hello: Hello
       see_our_teachers: See our teachers
+      thanks: Thanks
+      we_provide_a_system_to_find_realiable_teachers: We provide a system to find
+        realiable teachers
   view:
     profiles:
       dashboard:
