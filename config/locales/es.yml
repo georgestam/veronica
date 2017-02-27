@@ -12,14 +12,9 @@ es:
       kids_taught: Kids taught
       linkedin_check: Linkedin check
       reviews: Reviews
-    edit:
-      update: Update
     index:
-      teachers: Teachers
       teachers_for_you_in_this_search: Teachers for you in this search
       we_have: We have
-    new:
-      create_a_teacher: Create a teacher
   comments: Comments
   create_new_time: Create new time
   datepicker:
@@ -76,7 +71,6 @@ es:
     edit:
       edit_booking: Edit booking
     new:
-      new_booking: New booking
       teacher_booking: Teacher booking
   number_of_students: Number of students
   pages:
@@ -94,12 +88,8 @@ es:
       subtitle: Learning languages just got easier
       testimonial_name_one: Testimonial name one
       title: veronica
-  passengers:
-    new:
-      add_review: Add review
   profiles:
     dashboard:
-      Dashboard: Dashboard
       account-settings:
         bank_account: Bank account
         date_of_birth_html: Date of birth html
@@ -197,7 +187,6 @@ es:
   timepicker:
     dformat: "%R"
     pformat: HH:mm
-  title: veronica
   user_mailer:
     welcome:
       If_you_have_any_questions_please_do_not_hesitate_to_ask: If you have any questions
@@ -218,6 +207,9 @@ es:
           from: From
           to: To
   views:
+    availabilities:
+      new:
+        create_a_teacher: Create a teacher
     cars:
       _car_form:
         max_travel_distance_in_km: Max travel distance in km
@@ -225,13 +217,24 @@ es:
       _search:
         search_distance_in_km: Search distance in km
         where_to_find_teacher: Where to find teacher
+      edit:
+        update: Update
+      index:
+        teachers: Teachers
+      new:
+        create_a_teacher: Create a teacher
     journeys:
+      edit:
+        edit_booking: Edit booking
       new:
         create_class: book
         duration_in_hours: Duration in hours
         first_day: First day
+        new_booking: New booking
         search: Search
         submit: Submit
+      passengers:
+        add_review: Add review
     passenger:
       new:
         comfirm_review: Comfirm review
@@ -249,11 +252,13 @@ es:
           reviews: Reviews
           summary: Summary
           teacher: Teacher
+        dashboard: Dashboard
       edit:
         Female: Female
         Male: Male
         address: Address
         date_of_birth: Date of birth
+        edit_profile: Edit profile
         first_name: First name
         gender: Gender
         id_document: Id document
