@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  scope '(:locale)', locale: /fr|es/ do
+  scope '(:locale)', locale: /en|es/ do
 
     root to: 'pages#home'
 

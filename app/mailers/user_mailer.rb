@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
 
     @user = User.find(user_id)
     # This will render a view in `app/views/user_mailer`!
-    mail(to: @user.email, subject: 'Vienvenid@ a Veronica!')
+    mail(to: @user.email, subject: 'Welcome to Veronica!')
   end
 
   # def reset_password_instructions(user, token, options)
