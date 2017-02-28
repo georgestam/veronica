@@ -5,11 +5,17 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome.subject
   #
+  
   def welcome(user_id)
-
     @user = User.find(user_id)
     # This will render a view in `app/views/user_mailer`!
-    mail(to: @user.email, subject: 'Welcome to Veronica!')
+    
+    if @user.domain == 'http://www.diverlang.com' || @user.domain == 'http://diverlang.com'
+      mail(from: 'contact@diverlang.com', to: @user.email, subject: 'Welcome to Diverlang!')
+    else
+      mail(from: 'contact@helloveronica.com', to: @user.email, subject: 'Welcome to Veronica!')
+    end   
+  
   end
 
   # def reset_password_instructions(user, token, options)

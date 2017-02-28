@@ -1,19 +1,44 @@
 <div class='lift-bacground'>
-<% content_for :title, t('.title') %>
-<div class="banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0, 0, 0, 0.79)), url('<%= image_path "main/main-picture.jpg" %>');">
-  <div class="banner-content">
-    <h1><%= t('.title') %></h1>
-    <p><%= t('.subtitle') %> </p>
-    <div class="cta">
-       <%= link_to t('.passenger_call_to_action') ,cars_path, {class: "btn btn-primary"} %>
-      <% if user_signed_in? && @user.cars[0] != nil %>
-      <%= link_to t('.driver_call_to_action'), dashboard_path, {class: "btn btn-primary"} %>
-      <% else %>
-      <%= link_to t('.driver_call_to_action'), new_car_path, {class: "btn btn-primary"} %>
-      <% end %>
+  
+<% if request.base_url == 'http://www.diverlang.com/' || request.base_url == 'http://diverlang.com/' %>
+
+  <% content_for :title, 'Divelang' %>
+  <div class="banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0, 0, 0, 0.79)), url('<%= image_path "main/dive.jpg" %>');">
+    <div class="banner-content">
+      <h1> Divelang </h1>
+      <p><%= t('.subtitle') %> </p>
+      <div class="cta">
+         <%= link_to t('.passenger_call_to_action') ,cars_path, {class: "btn btn-primary"} %>
+        <% if user_signed_in? && @user.cars[0] != nil %>
+        <%= link_to t('.driver_call_to_action'), dashboard_path, {class: "btn btn-primary"} %>
+        <% else %>
+        <%= link_to t('.driver_call_to_action'), new_car_path, {class: "btn btn-primary"} %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+
+  <% else %>
+
+  <% content_for :title, t('.title') %>
+  <div class="banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0, 0, 0, 0.79)), url('<%= image_path "main/main-picture.jpg" %>');">
+    <div class="banner-content">
+      <h1><%= t('.title') %></h1>
+      <p><%= t('.subtitle') %> </p>
+      <div class="cta">
+         <%= link_to t('.passenger_call_to_action') ,cars_path, {class: "btn btn-primary"} %>
+        <% if user_signed_in? && @user.cars[0] != nil %>
+        <%= link_to t('.driver_call_to_action'), dashboard_path, {class: "btn btn-primary"} %>
+        <% else %>
+        <%= link_to t('.driver_call_to_action'), new_car_path, {class: "btn btn-primary"} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+<% end %>
+  
+
 
 <div class="wrapper text-center" id="how-it-works">
   <div class="container">

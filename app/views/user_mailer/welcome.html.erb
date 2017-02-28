@@ -10,7 +10,11 @@
 
 <p><%= t('.thanks') %>,</p>
 
-<p> Cristina </p>
+<% if @user.domain == 'http://www.diverlang.com' || @user.domain == 'http://diverlang.com' %>
+  <p> Joan Fernandez </p>
+<% else %>
+  <p> Cristina Crucianu</p>
+<% end %>
 
 <p> <%= link_to t('.see_our_teachers'), cars_url %> </p>
 
