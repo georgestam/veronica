@@ -2,267 +2,266 @@
 es:
   availabilities:
     availability_form:
-      title: Add or modify the time when you are free
+      title: Modifica tu disponibilidad
   cars:
     card:
-      bank_verified: Bank verified
-      bookings: Bookings
-      facebook_check: Facebook check
-      id_document_verified: Id document verified
-      kids_taught: Kids taught
-      linkedin_check: Linkedin check
-      reviews: Reviews
+      bank_verified: Cuenta bancaria verificada
+      bookings: Reservas
+      facebook_check: Facebook verificado
+      id_document_verified: DNI verificado
+      kids_taught: Alumnos hasta ahora
+      linkedin_check: Linkedin verificado
+      reviews: Opiniones
     index:
-      teachers_for_you_in_this_search: Teachers for you in this search
-      we_have: We have
-  comments: Comments
-  create_new_time: Create new time
+      teachers_for_you_in_this_search: Profesores disponibles
+      we_have: Tenemos
+  comments: Comentarios
+  create_new_time: Crea nueva franja horaria
   datepicker:
     dformat: "%d/%m/%Y"
     pformat: DD/MM/YYYY
   dayViewHeaderFormat: MMMM YYYY
   days:
-    friday: Friday
-    monday: Monday
-    saturday: Saturday
-    sunday: Sunday
-    thursday: Thursday
-    tuesday: Tuesday
-    wednesday: Wednesday
-  edit: Edit
+    friday: Viernes
+    monday: Lunes
+    saturday: Sábado
+    sunday: Domingo
+    thursday: Jueves
+    tuesday: Martes
+    wednesday: Miércoles
+  edit: Modifica
   journey_mailer:
     confirmation_of_booking:
-      Please_recommend_this_teacher_to_a_friend: Please recommend this teacher to
-        a friend
-      Please_see_a_summary_of_your_booking_below: Please see a summary of your booking
-        below
-      View_teacher_profile: View teacher profile
-      Your_booking_to: Your booking to
-      children: Children
-      duration: Duration
-      has_been_confirmed: Has been confirmed
-      hello: Hello
-      location: Location
-      many_thanks: Many thanks
-      parent: Parent
-      please_feel_free_to_contact_us_with_any_feedback: Please feel free to contact
-        us with any feedback
-      price: Price
-      teacher: Teacher
+      Please_recommend_this_teacher_to_a_friend: Recomienda este profesor a un amigo.
+      Please_see_a_summary_of_your_booking_below: Vea un resúmen de su reserva abajo
+      View_teacher_profile: Ver el perfil del profesor
+      Your_booking_to: Tu reserva con
+      children: Alumnos
+      duration: Duración
+      has_been_confirmed: Ha sido confirmada
+      hello: Hola
+      location: Localidad
+      many_thanks: Muchas gracias
+      parent: Padres
+      please_feel_free_to_contact_us_with_any_feedback: Su opinión es importante. Déjenos su feedback
+      price: Precio
+      teacher: Profesor
     update_journey:
-      Please_recommend_this_teacher_to_a_friend: Please recommend this teacher to
-        a friend
-      Please_see_a_summary_of_your_booking_below: Please see a summary of your booking
-        below
-      View_teacher_profile: View teacher profile
-      Your_booking_to: Your booking to
-      children: Children
-      duration: Duration
-      has_been_UPDATED: Has been updated
-      hello: Hello
-      location: Location
-      many_thanks: Many thanks
-      parent: Parent
-      please_feel_free_to_contact_us_with_any_feedback: Please feel free to contact
-        us with any feedback
-      price: Price
-      teacher: Teacher
+      Please_recommend_this_teacher_to_a_friend: Sharing is caring. Recomienda este
+        profesor a un amigo.
+      Please_see_a_summary_of_your_booking_below: Vea un resúmen de su reserva a continuación
+      View_teacher_profile: Ver el perfil del profesor
+      Your_booking_to: Tu reserva con
+      children: Alumnos
+      duration: Duración
+      has_been_UPDATED: Ha sido actualizada
+      hello: Hola
+      location: Localidad
+      many_thanks: Muchas gracias
+      parent: Padres
+      please_feel_free_to_contact_us_with_any_feedback: Su opinion es importante. Déjenos su feedback.
+      price: Precio
+      teacher: Profesor
   journeys:
     edit:
-      edit_booking: Edit booking
+      edit_booking: Modificar reserva
     new:
-      teacher_booking: Teacher booking
-  number_of_students: Number of students
+      teacher_booking: Reservas
+  number_of_students: Número de estudiantes
   pages:
     home:
-      driver: Teacher
-      driver_call_to_action: Start teaching
-      driver_subtitle: Want to make money?
-      how_it_works: How does it work?
-      passenger: Parent
-      passenger_call_to_action: Find a teacher
-      passenger_subtitle: do you want your children to be prepared for the future?
-      step_one_explanation: Find a language teacher close to you
-      step_three_explanation: Enjoy seeing how your children learn!
-      step_two_explanation: Contact him to come to your home
-      subtitle: Learning languages just got easier
+      driver: Profesor
+      driver_call_to_action: Profesores
+      driver_subtitle: Quieres ganar dinero?
+      how_it_works: Cómo funciona?
+      passenger: Padres
+      passenger_call_to_action: Encuentra un profesor
+      passenger_subtitle: Quieres que tus niños hablen inglés?
+      step_one_explanation: Encuentra un profesor de inglés cerca
+      step_three_explanation: Disfruta viendo como tus niños hablan inglés!
+      step_two_explanation: Contacta tu profesor
+      subtitle: Hablar inglés nunca ha sido más fácil y divertido
       testimonial_name_one: Testimonial name one
       title: veronica
   profiles:
     dashboard:
       account-settings:
-        bank_account: Bank account
-        date_of_birth_html: Date of birth html
-        description: Description
+        bank_account: Cuenta bancaria
+        date_of_birth_html: Fecha de nacimiento html
+        description: Descripción
         email_html: Email html
         facebook_URL: Facebook url
-        gender_html: Gender html
-        id_uploaded: Id uploaded
+        gender_html: Género html
+        id_uploaded: DNI uploaded
         linkedin_URL: Linkedin url
         'no': 'No'
-        personal-information: Personal-information
-        phone_number_html: Phone number html
-        verification_information: Verification information
-        'yes': 'Yes'
+        personal-information: Información-personal
+        phone_number_html: Número de teléfono html
+        verification_information: Información verificada
+        'yes': 'Si'
       journey:
-        Edit_booking: Edit booking
-        children: Children
-        completed: Completed
-        duration: Duration
-        location: Location
-        price: Price
-        your_bookings_as_teacher: Your bookings as teacher
+        Edit_booking: Modificar reserva
+        children: Alumnos
+        completed: Completo
+        duration: Duración
+        location: Localidad
+        price: Precio
+        your_bookings_as_teacher: Tus reservas
       journey_user:
-        Cancel_booking: Cancel booking
-        Edit_booking: Edit booking
-        Mark_as_Completed: Mark as completed
-        children: Children
+        Cancel_booking: Cancela reserva
+        Edit_booking: Modificar reserva
+        Mark_as_Completed: Reserva Finalizada
+        children: Alumnos
         completed: Completed
-        duration: Duration
-        location: Location
-        price: Price
-        write_review: Write review
-        your_bookings: Your bookings
+        duration: Duración
+        location: Localidad
+        price: Precio
+        write_review: Deja una opinión
+        your_bookings: Tus reservas
       notifications:
-        no_notifications: You don't have any notifications yet!
+        no_notifications: No le han dejado ninguna opinion
       overview:
-        add_avaliability: Add avaliability
-        address_verified: Address verified
-        availability_verified: Availability
-        bank_verified: Bank verified
-        click_any_availablity_to_delete: Click any availablity to delete
-        create_avaliability: Tell us when are your are available
-        email_verified: Email verified
-        facebook_check: Facebook check
-        id_document_verified: Id document
-        id_process: We are processing the verification of your details, we will let
-          you contact you if something is not correct.
-        linkedin_check: Linkedin check
-        no_reviews: You haven't been reviewed yet!
-        photo_verified: Photo verified
-        reviews: Reviews
-        summary: Stats Summary
-        uploaded_video: Uploaded video
-        verification: Your teacher profile is %{progress} % completed. Parents are
-          more likely to trust teachers' profiles of 100%.
+        add_avaliability: Añada disponibilidad
+        address_verified: Dirección verificada
+        availability_verified: Disponibilidad
+        bank_verified: Cuenta bancaria verificada
+        click_any_availablity_to_delete: Haga click para borrar disponibilidad
+        create_avaliability: Díganos tu disponibilidad
+        email_verified: Email verificado
+        facebook_check: Facebook verificado
+        id_document_verified: DNI verificado
+        id_process: Estamos verificando tu perfil. Nos pondremos en contacto contigo
+          si hay algún error.
+        linkedin_check: Linkedin verificado
+        no_reviews: No le han dejado ninguna opinion
+        photo_verified: Foto verificada
+        reviews: Opiniones
+        summary: Resúmen
+        uploaded_video: Suba video
+        verification: Tu perfil está %{progress} % completo. Recuerda que los padres
+          confían un perfil que está 100% completo
       overview-header:
-        complete: complete
-        view_teacher_profile: View Teacher Profile
+        complete: completo
+        view_teacher_profile: Ver el perfil del profesor
       overview_user:
-        no_bookings_yet: No bookings yet
-      tab_account_settings: Account Settings
-      tab_bookings: Bookings
-      tab_notifications: Notifications
+        no_bookings_yet: No tiene ninguna reserva
+      tab_account_settings: Configura tu perfil
+      tab_bookings: Reservas
+      tab_notifications: Notificaciones
       tab_overview: Overview
     teacher:
-      about_me: About me
-      average_rating_review: Average rating review
-      bank_verified: Bank verified
-      book_me: Book me
-      bookings: Bookings
-      delete: Delete
-      edit: Edit
-      facebook_check: Facebook check
-      id_document_verified: Id document verified
-      linkedin_check: Linkedin check
-      number_of_reviews: Number of reviews
-      numbers_of_kids_to_date: Numbers of kids to date
-      photo_verified: Photo verified
-      reviews: Reviews
-      score_based_in_teacher_verification: Score based in teacher verification
+      about_me: Sobre mi
+      average_rating_review: Porcentaje revisiones recibidas
+      bank_verified: Cuenta bancaria verificada
+      book_me: Reserva tu clase
+      bookings: Reservas
+      delete: Borra
+      edit: Modifica
+      facebook_check: Facebook verificado
+      id_document_verified: DNI verificado
+      linkedin_check: Linkedin verificado
+      number_of_reviews: Revisiones recibidas
+      numbers_of_kids_to_date: Alumnos enseñados
+      photo_verified: Foto verificada
+      reviews: Opiniones
+      score_based_in_teacher_verification: Porcentaje verificación
       views:
         profile:
           teacher:
-            has_no_videos: Has no videos
+            has_no_videos: Aún no tienes vídeos
   shared:
     home_navbar:
-      sign_in: Sign in
-      sign_up: Sign up
+      sign_in: Entra
+      sign_up: Regístrate
     navbar:
       dashboard: Dashboard
-      profile: Profile
-      search_for_teacher: Search teacher
-      sign_in: Sign in
-      sign_out: Sign out
+      profile: Perfil
+      search_for_teacher: Busca tu profesor
+      sign_in: Entrar
+      sign_out: Salir
+  time:
+    formats:
+      day_month_year: "%d %b %Y"
+      time: "%H:%M"
+      time_date: "%H:%M on %e %b"
   timepicker:
     dformat: "%R"
     pformat: HH:mm
   user_mailer:
     welcome:
-      If_you_have_any_questions_please_do_not_hesitate_to_ask: If you have any questions
-        please do not hesitate to ask
-      Take_your_time_to_explore_our_website_to_fully_utilise_all_our_amazing_features: Take
-        your time to explore our website to fully utilise all our amazing features
-      Thank_you_for_signing_up!: Thank you for signing up!
-      hello: Hello
-      see_our_teachers: See our teachers
-      thanks: Thanks
-      we_provide_a_system_to_find_realiable_teachers: We provide a system to find
-        realiable teachers
+      If_you_have_any_questions_please_do_not_hesitate_to_ask: Si tiene dudas, contáctenos.
+      Take_your_time_to_explore_our_website_to_fully_utilise_all_our_amazing_features: Explora
+        nuestra página y descubra nuestros servicios
+      Thank_you_for_signing_up!: Gracias por confiar en nosotros.
+      hello: Hola
+      see_our_teachers: Profesores disponibles
+      thanks: Gracias
+      we_provide_a_system_to_find_realiable_teachers: Deja el inglés de tu niño en
+        nuestras manos.
   view:
     profiles:
       dashboard:
         _overview_free_time:
-          availablity: Availablity
-          from: From
-          to: To
+          availablity: Disponibilidad
+          from: Desde
+          to: Hasta
   views:
     availabilities:
       new:
-        create_a_teacher: Create a teacher
+        create_a_teacher: Crea tu perfil
     cars:
       _car_form:
-        max_travel_distance_in_km: Max travel distance in km
-        price_hour_in_euros: Price hour in euros
+        max_travel_distance_in_km: Distancia máx. en km
+        price_hour_in_euros: Precio por hora
       _search:
-        search_distance_in_km: Search distance in km
-        where_to_find_teacher: Where to find teacher
+        search_distance_in_km: Busca distancia en km
+        where_to_find_teacher: Dónde encontrar un profesor
       edit:
-        update: Update
+        update: actualíza
       index:
-        teachers: Teachers
+        teachers: Profesores
       new:
-        create_a_teacher: Create a teacher
+        create_a_teacher: Crea tu perfil
     journeys:
       edit:
-        edit_booking: Edit booking
+        edit_booking: Modificar reserva
       new:
-        create_class: book
-        duration_in_hours: Duration in hours
-        first_day: First day
-        new_booking: New booking
-        search: Search
-        submit: Submit
+        create_class: Reserva
+        duration_in_hours: Duración in horas
+        first_day: Primer día de clase
+        new_booking: Nueva reserva
+        search: Busca
+        submit: Envía
       passengers:
-        add_review: Add review
+        add_review: Añade opinión
     passenger:
       new:
-        comfirm_review: Comfirm review
+        comfirm_review: Comfirma opinión
     passengers:
       _review_form:
         rating: Rating
-        write_review: Write review
+        write_review: Deja una opinión
     profiles:
       dashboard:
         _overview-header:
-          teachers_dashboard: Teachers dashboard
+          teachers_dashboard: Panel del profesor
         _overview-user:
-          bookings: Bookings
-          number_of_reviews: Number of reviews
-          reviews: Reviews
-          summary: Summary
-          teacher: Teacher
-        dashboard: Dashboard
+          bookings: Reservas
+          number_of_reviews: Revisiones recibidas
+          reviews: Opiniones
+          summary: Resúmen
+          teacher: Profesor
+        dashboard: Panel
       edit:
-        Female: Female
-        Male: Male
-        address: Address
-        date_of_birth: Date of birth
-        edit_profile: Edit profile
-        first_name: First name
-        gender: Gender
-        id_document: Id document
-        last_name: Last name
-        phone_number: Phone number
-        submit: Submit
-        what_do_you_expect_from_this_platform: What do you expect from this platform
+        Female: Mujer
+        Male: Hombre
+        address: Dirección
+        date_of_birth: Fecha de nacimiento
+        edit_profile: Modificar perfil
+        first_name: Nombre
+        gender: Género
+        id_document: DNI
+        last_name: Apellido
+        phone_number: Número de teléfono
+        submit: Envía
+        what_do_you_expect_from_this_platform: Cómo podemos ayudarte?

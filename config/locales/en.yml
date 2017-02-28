@@ -2,7 +2,7 @@
 en:
   availabilities:
     availability_form:
-      title: Add or modify the time when you are free
+      title: Add or modify your availability
   cars:
     card:
       bank_verified: Bank verified
@@ -135,8 +135,8 @@ en:
         email_verified: Email verified
         facebook_check: Facebook check
         id_document_verified: Id document
-        id_process: We are processing the verification of your details, we will let
-          you contact you if something is not correct.
+        id_process: We are processing the verification of your details, we will contact
+          you if something is not correct.
         linkedin_check: Linkedin check
         no_reviews: You haven't been reviewed yet!
         photo_verified: Photo verified
@@ -144,7 +144,7 @@ en:
         summary: Stats Summary
         uploaded_video: Uploaded video
         verification: Your teacher profile is %{progress} % completed. Parents are
-          more likely to trust teachers' profiles of 100%.
+          more likely to trust 100% teachers' profiles.
       overview-header:
         complete: complete
         view_teacher_profile: View Teacher Profile
@@ -166,7 +166,7 @@ en:
       id_document_verified: Id document verified
       linkedin_check: Linkedin check
       number_of_reviews: Number of reviews
-      numbers_of_kids_to_date: Numbers of kids to date
+      numbers_of_kids_to_date: Alumnos enseñados
       photo_verified: Photo verified
       reviews: Reviews
       score_based_in_teacher_verification: Score based in teacher verification
@@ -184,6 +184,11 @@ en:
       search_for_teacher: Search teacher
       sign_in: Sign in
       sign_out: Sign out
+  time:
+    formats:
+      day_month_year: "%d %b %Y"
+      time: "%H:%M"
+      time_date: "%H:%M on %e %b"
   timepicker:
     dformat: "%R"
     pformat: HH:mm
