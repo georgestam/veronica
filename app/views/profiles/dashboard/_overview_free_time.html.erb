@@ -29,7 +29,7 @@
 
               <%= link_to car_availability_path(@car.id, t), method: :delete, :id => "text-times" do %>
               <div>
-                <p> <%= t('view.profiles.dashboard._overview_free_time.from') %>') %>  <%= l t.start, format: :time %> </p>
+                <p> <%= t('view.profiles.dashboard._overview_free_time.from') %>  <%= l t.start, format: :time %> </p>
                 <p> <%= t('view.profiles.dashboard._overview_free_time.to') %> <%= l t.finish, format: :time %> </p>
               </div>
               <% end %>
