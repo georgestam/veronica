@@ -57,6 +57,13 @@
             <% end %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li>
+                <% if current_user.cars[0] %>
+                  <%= link_to edit_car_path(current_user.cars[0])  do %>
+                    <i class="fa fa-users"></i> <%= t(".teacher_profile", default: "teacher_profile") %>
+                  <% end %>
+                <% end %>
+              </li>
+              <li>
                 <%= link_to edit_profile_path(current_user) do %>
                   <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
                 <% end %>
