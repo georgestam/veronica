@@ -12,9 +12,19 @@
 
 <% if @user.domain == 'http://www.diverlang.com' || @user.domain == 'http://diverlang.com' %>
   <p> Joan Fernandez </p>
+  <a href="http://www.diverlang.com"> www.diverlang.com </a>
+  <br>
+  <br>
+  <a href="http://www.diverlang.com/cars"> <%= t('.see_our_teachers') %> </a>
 <% else %>
   <p> Cristina Crucianu</p>
+  <a href="http://www.helloveronica.com"> www.helloveronica.com </a>
+  <br>
+  <br>
+  <a href="http://www.helloveronica.com/cars"> <%= t('.see_our_teachers') %> </a>
 <% end %>
 
-<p> <%= link_to t('.see_our_teachers'), cars_url %> </p>
+
+
+
 
