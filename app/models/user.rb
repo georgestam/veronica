@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, only: :address_changed?
+  
+  validates :address, presence: true, on: :update
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     if geo = results.first

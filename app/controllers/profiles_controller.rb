@@ -18,8 +18,14 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to dashboard_path
+
+    if @user.update(user_params)
+      redirect_to dashboard_path
+    else
+      flash[:error_date] = "Please add a correct address"
+      render :edit
+    end
+    
   end
 
   def dashboard
