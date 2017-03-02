@@ -15,16 +15,16 @@ RailsAdmin.config do |config|
   config.authorize_with :pundit
 
 
-  config.model User do
-    edit do
-      # For RailsAdmin >= 0.5.0
-      field :description, :ck_editor
-      # For RailsAdmin < 0.5.0
-      # field :description do
-      #   ckeditor true
-      # end
-    end
-  end
+  # config.model User do
+  #   edit do
+  #     # For RailsAdmin >= 0.5.0
+  #     field :description, :ck_editor
+  #     # For RailsAdmin < 0.5.0
+  #     # field :description do
+  #     #   ckeditor true
+  #     # end
+  #   end
+  # end
 
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0

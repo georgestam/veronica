@@ -1,3 +1,4 @@
+
 <div class="wrapper-footer">
   <div class="made">
 
@@ -5,12 +6,23 @@
 
   </div>
   <div class="share-links">
-    <a href="https://www.facebook.com/veronicatuprofesoradomicilio/" class="share-link bg-facebook">
-      <i class="fa fa-facebook"></i>
-    </a>
-    <a class='share-link bg-email' href="mailto:contact@helloveronica.com?Subject=Feedback" target="_top">
-      <i class='fa fa-envelope'></i>
-    </a>
+    <% if request.base_url == 'http://www.diverlang.com' || request.base_url == 'http://diverlang.com' %>
+    
+      <a class='share-link bg-email' href="mailto:contact@diverlang.com?Subject=Feedback" target="_top">
+        <i class='fa fa-envelope'></i>
+      </a>
+      
+    <% else %>
+    
+      <a href="https://www.facebook.com/veronicatuprofesoradomicilio/" class="share-link bg-facebook">
+        <i class="fa fa-facebook"></i>
+      </a>
+      <a class='share-link bg-email' href="mailto:contact@helloveronica.com?Subject=Feedback" target="_top">
+        <i class='fa fa-envelope'></i>
+      </a>
+    
+    <% end %>
+    
   </div>
 
  <div class="text-center">
