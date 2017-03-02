@@ -29,7 +29,12 @@ class JourneysController < ApplicationController
     @journey.user = current_user
     authorize @journey
     if @journey.save
-      JourneyMailer.confirmation_of_booking(@journey).deliver_now
+      # send booking to parent https://subvisual.co/blog/posts/66-sending-multiple-emails-with-actionmailer
+      JourneyMailer.confirmation_of_booking(@journey.user.email, @journey).deliver_now
+      # send booking to teacher
+      # JourneyMailer.confirmation_of_booking(@journey.car.user.email, @journey).deliver_now
+      # send booking to admin
+      JourneyMailer.confirmation_of_booking('diverlang.adm@gmail.com', @journey).deliver_now
       redirect_to dashboard_path
     else
       render :new

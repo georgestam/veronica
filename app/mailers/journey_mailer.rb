@@ -1,35 +1,35 @@
 class JourneyMailer < ApplicationMailer
 
-  def confirmation_of_booking(journey)
+  def confirmation_of_booking(recipient, journey)
     @user = journey.user
     @journey = journey
     @car = @journey.car
     
-    if @user.domain == 'http://www.diverlang.com' || @user.domain == 'http://diverlang.com'
-      mail(from: 'contact@diverlang.com', to: @user.email, subject: 'Booking confirmation')
-      mail(from: 'contact@diverlang.com', to: @car.user.email, subject: 'Booking confirmation')
-    else
-      mail(from: 'contact@helloveronica.com', to: @user.email, subject: 'Booking confirmation')
-      mail(from: 'contact@helloveronica.com', to: @car.user.email, subject: 'Booking confirmation')
-    end 
+    
+    from = select_from
+
+    mail(from: from, to: recipient, subject: 'Booking confirmation')
 
   end
 
 
-  def update_journey(journey)
+  def update_journey(recipient, journey)
     @user = journey.user
     @journey = journey
     @car = @journey.car
+    
+    from = select_from
 
+    mail(from: from, to: recipient, subject: 'Your teacher booking have changed')
+    
+  end
+  
+  def select_from
     if @user.domain == 'http://www.diverlang.com' || @user.domain == 'http://diverlang.com'
-      mail(from: 'contact@diverlang.com', to: @user.email, subject: 'Your teacher booking have changed')
-      mail(from: 'contact@diverlang.com', to: @car.user.email, subject: 'Your teacher booking have changed')
+      'contact@diverlang.com'
     else
-      mail(from: 'contact@helloveronica.com', to: @user.email, subject: 'Your teacher booking have changed')
-      mail(from: 'contact@helloveronica.com', to: @car.user.email, subject: 'Your teacher booking have changed')
+      'contact@helloveronica.com'
     end  
-    
-    
-  end
+  end 
 
 end
