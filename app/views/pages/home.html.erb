@@ -114,6 +114,30 @@
   </div> <!-- end of banner-container -->
 <!-- </div> end of banner -->
 
+<% if request.base_url == 'http://www.diverlang.com' || request.base_url == 'http://diverlang.com' %>
+
+<div class="" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "vero/blackboard.jpg" %>');">
+  <div class="container padded-large">
+    <div class="car-card-home text-center">
+  
+      <div class="row">
+        <%= image_tag "joan.jpg", class:"responsive-img", style: "width: 100px; border-radius: 50%;" %>
+      </div>
+      <div class="row">
+        <h3> Joan Fernandez Oromi </h3>
+        <p> <strong> Diverlang Founder </strong>  </p>
+      </div>
+      <div class="row">
+        <p><%= t('.joan_bio') %></p>
+        <p><%= t('.joan_bio1') %></p>
+        <p><%= t('.joan_bio2') %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
 <!-- <div class="wrapper-user-testify" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "vero/blackboard.jpg" %>');">
   <div class="container padded">
     <div class="testimonial-carousel">
@@ -194,9 +218,7 @@
         </div>
       </div>
     </div>
-
-
-
-  </div> <!-- end of container -->
-</div> <!-- end of wrapper-user-->
+  </div> -->
+    
 </div>
+    

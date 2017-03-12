@@ -43,7 +43,8 @@ es:
       location: Localidad
       many_thanks: Muchas gracias
       parent: Padres
-      please_feel_free_to_contact_us_with_any_feedback: Su opinión es importante. Déjenos su feedback
+      please_feel_free_to_contact_us_with_any_feedback: Su opinión es importante.
+        Déjenos su feedback
       price: Precio
       teacher: Profesor
     update_journey:
@@ -59,7 +60,8 @@ es:
       location: Localidad
       many_thanks: Muchas gracias
       parent: Padres
-      please_feel_free_to_contact_us_with_any_feedback: Su opinion es importante. Déjenos su feedback.
+      please_feel_free_to_contact_us_with_any_feedback: Su opinion es importante.
+        Déjenos su feedback.
       price: Precio
       teacher: Profesor
   journeys:
@@ -74,6 +76,12 @@ es:
       driver_call_to_action: Profesores
       driver_subtitle: Quieres ganar dinero?
       how_it_works: Cómo funciona?
+      joan_bio: Soy profesor de inglés viviendo en Lleida y Barcelona con 5 años de experiencia en pedagogía, enseñando a niños y adultos. Puedo enseñar o mejorar tu inglés en cualquier nivel. 
+
+      joan_bio1: ¡Por eso cree diverlang.com!
+
+      joan_bio2: Podemos preparar a tus niños y a ti para pasar cualquier examen, escuela de Cambridge, TOEFL ... para todas las edades.
+
       passenger: Padres
       passenger_call_to_action: Encuentra un profesor
       passenger_subtitle: Quieres que tus niños hablen inglés?
@@ -98,7 +106,7 @@ es:
         personal-information: Información-personal
         phone_number_html: Número de teléfono html
         verification_information: Información verificada
-        'yes': 'Si'
+        'yes': Si
       journey:
         Edit_booking: Modificar reserva
         children: Alumnos
@@ -179,6 +187,7 @@ es:
       search_for_teacher: Busca tu profesor
       sign_in: Entrar
       sign_out: Salir
+      teacher_profile: Teacher profile
   time:
     formats:
       day_month_year: "%d %b %Y"
