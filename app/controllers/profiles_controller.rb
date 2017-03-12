@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
     if @user.update(user_params)
       redirect_to dashboard_path
     else
-      flash[:error_date] = "Please add a correct address"
+      flash[:alert] = @user.errors.full_messages
       render :edit
     end
     
