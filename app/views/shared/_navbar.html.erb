@@ -126,9 +126,11 @@
     
     <div class="navbar-wagon navbar-wagon-home">
 
+      <% if @articles %>
       <div class="navbar-wagon-right">
-        <%= link_to t(".blog", default: "BLOG"), articles_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to t(".blog"), articles_path, class: "navbar-wagon-item navbar-wagon-link" %>
       </div>
+      <% end %>
 
     </div>
     

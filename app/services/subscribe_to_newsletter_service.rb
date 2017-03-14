@@ -6,15 +6,20 @@ class SubscribeToNewsletterService
   end
 
   def call
-    @gibbon.lists(@list_id).members.create(
-      body: {
-        email_address: @user.email,
-        status: "subscribed",
-        # merge_fields: {
-        #   FNAME: @user.first_name,
-        #   LNAME: @user.last_name
-        # }
-      }
-    )
+    begin
+      @gibbon.lists(@list_id).members.create(
+        body: {
+          email_address: @user.email,
+          status: "subscribed",
+          # merge_fields: {
+          #   FNAME: @user.first_name,
+          #   LNAME: @user.last_name
+          # }
+        }
+      )
+    rescue => e
+      Rails.logger.error e
+      raise e unless Rails.env.development?
+    end 
   end
 end

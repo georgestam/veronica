@@ -36,7 +36,7 @@ gem 'gibbon'
 gem 'raygun4ruby'
 
 # add posts
-gem 'friendly_id', '~> 5.1.0'
+gem 'friendly_id', '~> 5.1'
 gem 'carrierwave', '~> 1.0'
 
 group :development do
@@ -77,9 +77,8 @@ source 'https://rails-assets.org' do
 end
 
 #  Admin dashboard gems
-gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'remotipart', '~> 1.2'
 gem 'rails_admin', '>= 1.0.0.rc'
-gem 'remotipart', github: 'mshibuya/remotipart'
 
 #  API gem
 gem "simple_token_authentication"

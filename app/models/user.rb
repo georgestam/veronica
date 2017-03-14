@@ -31,8 +31,8 @@ class User < ApplicationRecord
   after_validation :reverse_geocode
 
   after_create :send_welcome_email
-  # after_create :subscribe_to_newsletter
-
+  after_create :subscribe_to_newsletter
+  
   def full_name
     "#{self.first_name} #{self.last_name}"
   end

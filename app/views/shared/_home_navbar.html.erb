@@ -12,9 +12,11 @@
     <%= link_to url_for( :locale => 'en') do %>
       <%= image_tag "flags/UK_flag.png", class: "flags" %>
     <% end %>
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to t(".blog", default: "BLOG"), articles_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t(".sign_in"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t(".sign_up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% if @articles %>
+      <%= link_to t(".blog"), articles_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
   </div>
 
 </div>

@@ -4,8 +4,9 @@ class Article < ApplicationRecord
   
   LANGUAGES = ['es', 'en']
   
-  validates :title, :description, presence: true, length: { minimum: 10 }
-  validates :locale,  inclusion: { in: LANGUAGES, allow_nil: false }
+  validates :title, presence: true, length: { minimum: 10 }
+  validates :description, presence: true, length: { minimum: 50 }
+  validates :locale, inclusion: { in: LANGUAGES }
   
   friendly_id :title, use: :slugged
                                   

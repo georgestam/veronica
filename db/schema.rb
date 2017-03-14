@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20170313204258) do
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.string   "locale"
+    t.string   "title",                      null: false
+    t.string   "description",                null: false
+    t.string   "locale",                     null: false
     t.string   "slug",                       null: false
     t.boolean  "private",     default: true
     t.datetime "created_at",                 null: false
