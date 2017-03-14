@@ -1,0 +1,68 @@
+<% content_for :title, "#{@article.title}" %>
+
+  <div id='main' role='main'>
+
+    <div class="banner-small" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.0) 0%, rgba(0,36,61,0.2) 50%), url('<%= cl_image_path( @article.photo.presence || "at/apple.jpg", :client_hints=>true, :transformation=>[{:width=>1700, :height=>850, :dpr=>"auto", :gravity=>"south", :crop=>"fill"}]) %>');">
+      <div>
+         <h1 class='big fadeInRightBig animated'> <%=  @article.title %></h1>
+      </div>
+    </div>
+
+        <div id='main-content'>
+          <div class='container'>
+            <div class='row'>
+              <div class='col-sm-12'>
+              <!-- <div class='col-md-pull-3 col-sm-pull-4 col-sm-8 col-md-9'> -->
+                <div class='text-boxes'>
+                  <div class='row text-box text-box-title-above text-box-big-image'>
+                    <div class='col-sm-12'>
+                      
+                      <h2 class='title'>
+                      </h2>
+                      <div class='toolbar'>
+                        <i class='fa fa-calendar'></i>
+                        <%= @article.created_at.strftime("%B %d %Y") %> 
+                        </a>
+                      </div>
+                      <div class='row'>
+            
+                  </div>
+                  <div class='row padded'>
+                    <div class='col-sm-12'>
+
+                      <%= @article.description.html_safe %>
+
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-sm-12'>
+                      <div class='author-box'>
+                        <div class='row'>
+                          <div class='col-sm-3 col-lg-2'>
+                            <%= cl_image_tag 'veronica/cristina.jpg', width: 200, height: 200, crop: :thumb, gravity: :face , class: "responsive-avatar text-center-xs"  %>
+                          </div>
+                          <div class='col-sm-9 col-lg-10'>
+                            <h3 class='title'>About the author</h3>
+                            <p> I am a self-made woman entrepreneur and proficient linguist in English, Spanish, French, Italian, Catalan and Rumanian. I am a team worker, with high compromise, responsibility and positive attitude to achieve short and long-term objectives. I apply constant effort in the areas of productivity and quality of every performed work. I am also an entrepreneur, polifacetic and charismatic English teacher. I am willing to continue progressing in my teaching career and combine it with my other passion: entrepreneurship. Creative, ambitious and energetic, always ready to roll sleeves up and establish plans and solutions in order to achieve strategic business initiatives and deliver results. I have total availability at the moment and may be contacted in the referred email anytime.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=''>
+                  <%= link_to 'Back', articles_path, class: "btn btn-primary"  %>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='fade' id='scroll-to-top'>
+          <i class='fa fa-chevron-up'></i>
+        </div>
+      </div>
+
+    </div>
+    
+

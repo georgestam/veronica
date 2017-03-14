@@ -79,10 +79,12 @@ en:
       driver_call_to_action: Start teaching
       driver_subtitle: Want to make money?
       how_it_works: How does it work?
-      joan_bio: I'm an English teacher living in Lleida and Barcelona with 5 years experience in pedagogics, teaching children and adults. I can teach or improve your English in any level. 
+      joan_bio: I'm an English teacher living in Lleida and Barcelona with 5 years
+        experience in pedagogics, teaching children and adults. I can teach or improve
+        your English in any level.
       joan_bio1: That’s why I created diverlang.com!
-      joan_bio2: We can train you and your kids properly and get you ready to pass any exam, school, Cambridge, TOEFL... for all ages.
-
+      joan_bio2: We can train you and your kids properly and get you ready to pass
+        any exam, school, Cambridge, TOEFL... for all ages.
       passenger: Parent
       passenger_call_to_action: Find a teacher
       passenger_subtitle: do you want your children to be prepared for the future?
@@ -180,9 +182,11 @@ en:
             has_no_videos: Has no videos
   shared:
     home_navbar:
+      blog: Blog
       sign_in: Sign in
       sign_up: Sign up
     navbar:
+      blog: Blog
       dashboard: Dashboard
       profile: Profile
       search_for_teacher: Search teacher
@@ -217,6 +221,9 @@ en:
           from: From
           to: To
   views:
+    articles:
+      index:
+        articles: Articles
     availabilities:
       new:
         create_a_teacher: Create a teacher

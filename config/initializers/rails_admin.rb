@@ -1,5 +1,20 @@
 RailsAdmin.config do |config|
 
+  config.model Article do
+    # new do
+    #   field :title, :text
+    #   field :text, :ck_editor
+    #   field :description, :text
+    # end
+    edit do
+      field :title, :string
+      field :description, :ck_editor
+      field :locale, :string
+      field :private, :boolean
+      field :photo, :carrierwave
+    end
+  end
+  
   ### Popular gems integration
 
   ## == Devise ==

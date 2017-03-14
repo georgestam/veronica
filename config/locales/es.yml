@@ -76,12 +76,12 @@ es:
       driver_call_to_action: Profesores
       driver_subtitle: Quieres ganar dinero?
       how_it_works: Cómo funciona?
-      joan_bio: Soy profesor de inglés viviendo en Lleida y Barcelona con 5 años de experiencia en pedagogía, enseñando a niños y adultos. Puedo enseñar o mejorar tu inglés en cualquier nivel. 
-
-      joan_bio1: ¡Por eso cree diverlang.com!
-
-      joan_bio2: Podemos preparar a tus niños y a ti para pasar cualquier examen, escuela de Cambridge, TOEFL ... para todas las edades.
-
+      joan_bio: Soy profesor de inglés viviendo en Lleida y Barcelona con 5 años de
+        experiencia en pedagogía, enseñando a niños y adultos. Puedo enseñar o mejorar
+        tu inglés en cualquier nivel.
+      joan_bio1: "¡Por eso cree diverlang.com!"
+      joan_bio2: Podemos preparar a tus niños y a ti para pasar cualquier examen,
+        escuela de Cambridge, TOEFL ... para todas las edades.
       passenger: Padres
       passenger_call_to_action: Encuentra un profesor
       passenger_subtitle: Quieres que tus niños hablen inglés?
@@ -179,9 +179,11 @@ es:
             has_no_videos: Aún no tienes vídeos
   shared:
     home_navbar:
+      blog: Blog
       sign_in: Entra
       sign_up: Regístrate
     navbar:
+      blog: Blog
       dashboard: Dashboard
       profile: Perfil
       search_for_teacher: Busca tu profesor
@@ -215,6 +217,9 @@ es:
           from: Desde
           to: Hasta
   views:
+    articles:
+      index:
+        articles: Articles
     availabilities:
       new:
         create_a_teacher: Crea tu perfil
