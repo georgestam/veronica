@@ -21,13 +21,7 @@
 
       <!-- Different navigation if login or not -->
       <% if user_signed_in? %>
-      
-      <%= link_to url_for( :locale => 'es') do %>
-        <%= image_tag "flags/Spain_flag.png", class: "flags" %>
-      <% end %>
-      <%= link_to url_for( :locale => 'en') do %>
-        <%= image_tag "flags/UK_flag.png", class: "flags" %>
-      <% end %>
+    
       
 
         <!-- Notification -->
@@ -38,11 +32,15 @@
           <!-- </div> -->
 
         <%# end %>
-
-        <%= link_to dashboard_path, class: "navbar-wagon-item navbar-wagon-link" do %>
-          <div class="badge-container">
-            <i class="fa fa-tachometer"></i> </div>
-        <% end %>
+        
+          <div class="navbar-wagon navbar-wagon-home">
+            <%= link_to t(".dashboard"), dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
+            <% if @articles %>
+            <div class="navbar-wagon-right">
+              <%= link_to t(".blog"), articles_path, class: "navbar-wagon-item navbar-wagon-link" %>
+            </div>
+            <% end %>
+          </div>
 
         <!-- Profile picture and dropdown -->
         <div class="navbar-wagon-item">
@@ -91,9 +89,15 @@
 
       <% if current_user != nil && current_user.admin? %>
         <%= link_to "Admin", "/admin", class: "navbar-wagon-item btn btn-primary" %>
-      <% else %>
-
       <% end %>
+      
+      <%= link_to url_for( :locale => 'es') do %>
+        <%= image_tag "flags/Spain_flag.png", class: "flags" %>
+      <% end %>
+      <%= link_to url_for( :locale => 'en') do %>
+        <%= image_tag "flags/UK_flag.png", class: "flags" %>
+      <% end %>
+      
     </div>
 
     <!-- Dropdown list appearing on mobile only -->
@@ -123,17 +127,6 @@
         <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
       <% end %>
     </div>
-    
-    <div class="navbar-wagon navbar-wagon-home">
-
-      <% if @articles %>
-      <div class="navbar-wagon-right">
-        <%= link_to t(".blog"), articles_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      </div>
-      <% end %>
-
-    </div>
-    
   </div>
 <% else %>
   <%= render "shared/home_navbar" %>
