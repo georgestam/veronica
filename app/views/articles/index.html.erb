@@ -1,0 +1,63 @@
+<% content_for :title, I18n.t('views.articles.index.articles') %>
+
+  <div id='main' role='main'>
+
+    <div class="banner-small" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.0) 0%, rgba(0,36,61,0.2) 50%), url('<%= cl_image_path("at/ship.jpg", :client_hints=>true, :transformation=>[{:width=>1700, :height=>850, :dpr=>"auto", :gravity=>"south", :crop=>"fill"}]) %>');">
+      <div>
+         <h1 class='big fadeInRightBig animated'>Blog</h1>
+      </div>
+    </div>
+
+    <div id='main-content'>
+      <div class='container'>
+        <div class="description-center">
+          <%#= link_to "Olivia, write something!", new_article_path, class: "btn btn-primary" %>
+        </div>
+        <div class='row'>
+          <div class='col-sm-12 col-sm-12 col-md-12'>
+            <div class='text-boxes'>
+
+            <% @articles.each do |article| %>
+              
+              <div class='row text-box text-box-title-above'>
+                <div class='col-sm-12'>
+                  <h2>
+                  <%= link_to article.title.capitalize, article_path(article), class: '', style:'text-decoration: none' %>
+                  </h2>
+                  <div class='toolbar'>
+                    <div class='btn btn-link' style:'text-decoration: none'>
+                      
+                    </div>
+                  </div>
+                  <div class='row'>
+                    <div class='col-sm-3'>
+                    <p class:'text-center'></p>
+                      <%= cl_image_tag(article.photo.presence || "at/apple.jpg", 
+                          :client_hints=>true, 
+                          :transformation=>[{:height => 180, :width => 300, :dpr=>"auto", :gravity=>"", :crop=>"fill"}], 
+                          :class => "img-responsive center-block img-rounded-half" ) %>
+                    </div>
+                    <div class='col-sm-9'>
+                      <p> <%= article.description.first(500).html_safe %></p>
+                      <i class='fa fa-calendar'></i>
+                      <%= article.created_at.strftime("%B %d %Y") %> 
+                      
+                      <%= link_to "Mas informacion", article_path(article), class: "btn btn-contrast" %>
+                      
+                    </div>
+                  </div>
+                  <hr class='hr-half'>
+                </div>
+              </div>
+              
+              <% end %>
+
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class='fade' id='scroll-to-top'>
+      <i class='fa fa-chevron-up'></i>
+    </div>
+  </div>
+</div>

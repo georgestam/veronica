@@ -221,5 +221,27 @@ i += 1
 end
 
 
+articles = []
+5.times do
+  articles << Article.create!({
+    title: Faker::ChuckNorris.fact,
+    description: Faker::Lorem.paragraphs,
+    locale: 'es'
+    })
+end
+
+5.times do
+  articles << Article.create!({
+    title: Faker::ChuckNorris.fact,
+    description: Faker::Lorem.paragraphs,
+    locale: 'en'
+    })
+end
+
+url = "http://static.giantbomb.com/uploads/original/9/99864/2419866-nes_console_set.png"
+article = Article.first
+article.photo = url
+article.save!
+
 
 

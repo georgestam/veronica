@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :users, controllers: { registrations: 'registrations/base', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   scope '(:locale)', locale: /en|es/ do
@@ -22,10 +21,9 @@ Rails.application.routes.draw do
     resources :journeys, only:[:index, :show, :new, :create, :destroy, :update, :edit] do
       resources :passengers, only:[:new, :create, :destroy]
     end
+    
+    resources :articles, only:[:index, :show]
 
-    # namespace :user do
-      # resources :journeys, only:[:index]
-    # end
   end
 
   mount Attachinary::Engine => "/attachinary"
