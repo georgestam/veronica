@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313204258) do
+ActiveRecord::Schema.define(version: 20170320090300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,17 @@ ActiveRecord::Schema.define(version: 20170313204258) do
     t.index ["user_id"], name: "index_journeys_on_user_id", using: :btree
   end
 
+  create_table "logs", force: :cascade do |t|
+    t.integer  "minutes"
+    t.datetime "date"
+    t.integer  "minutes_paid"
+    t.datetime "date_paid"
+    t.integer  "journey_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["journey_id"], name: "index_logs_on_journey_id", using: :btree
+  end
+
   create_table "passengers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "journey_id"
@@ -156,6 +167,7 @@ ActiveRecord::Schema.define(version: 20170313204258) do
   add_foreign_key "cars", "users"
   add_foreign_key "journeys", "cars"
   add_foreign_key "journeys", "users"
+  add_foreign_key "logs", "journeys"
   add_foreign_key "passengers", "journeys"
   add_foreign_key "passengers", "users"
 end
