@@ -2,7 +2,15 @@
 <html>
   <head>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    
+    <% if test? %>
+      <script type="text/javascript">
+        window.errors = []
+        window.onerror = function(a, b, c){
+          window.errors.push([a, b, c]);
+          return false; // false: don't swallow exceptions.
+        }
+      </script>
+    <% end %> 
     <title><%= yield(:title) %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="Make your kids to learn languages just now!">
