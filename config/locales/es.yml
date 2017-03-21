@@ -69,6 +69,16 @@ es:
       edit_booking: Modificar reserva
     new:
       teacher_booking: Reservas
+  logs:
+    index:
+      date: Date
+      date_paid: Date paid
+      delete_time: Delete time
+      hours: Hours
+      hours_paid: Hours paid
+      list_hours_paid: List hours paid
+      list_hours_worked: List hours worked
+      logged_hours: Logged hours
   number_of_students: Número de estudiantes
   pages:
     home:
@@ -109,11 +119,19 @@ es:
         'yes': Si
       journey:
         Edit_booking: Modificar reserva
+        add_hours: Add hours
         children: Alumnos
         completed: Completo
+        date: Date
         duration: Duración
+        hours_not_paid: Hours not paid
+        hours_paid: Hours paid
         location: Localidad
+        minutes: Minutes
+        new_entry: New entry
         price: Precio
+        see_logs: See logs
+        total_hours: Total hours
         your_bookings_as_teacher: Tus reservas
       journey_user:
         Cancel_booking: Cancela reserva

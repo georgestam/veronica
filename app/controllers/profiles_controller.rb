@@ -45,7 +45,7 @@ class ProfilesController < ApplicationController
     @passengers = Passenger.where(journey_id: Journey.where(user: @user))
 
 
-    else
+    elsif @user.cars[0]
 
     @teacher = true
     cars= Car.where(user: @user)
@@ -70,6 +70,8 @@ class ProfilesController < ApplicationController
     @passengers = Passenger.where(journey_id: Journey.where(car: @car))
 
     end
+    
+    @log = Log.new
 
   end
 
@@ -221,8 +223,28 @@ class ProfilesController < ApplicationController
 
     @days = [monday, tuesday, wednesday, thursday,friday, saturday, sunday ]
 
+  end
+  
+  helper_method :calculate_hours
 
 
+  def calculate_hours(journey)
+  
+    logs = Log.where(journey_id: journey)
+    hours = { total_hours:0, hours_paid:0, hours_not_paid:0 }
+    
+    logs.each do |log| 
+      hours[:total_hours] += (log.minutes.to_f/60)
+      hours[:hours_paid] += (log.minutes_paid.to_f/60)
+    end 
+    
+    hours[:hours_not_paid] = hours[:total_hours] - hours[:hours_paid]
+    
+    hours.each do |key, value|
+      hours[key] = value.round(2)
+    end
+    
+    return hours
   end
 
 end
