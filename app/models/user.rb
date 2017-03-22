@@ -5,9 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
-  has_many :passengers
-  has_many :cars
-  has_many :journeys
+  has_many :passengers, dependent: :destroy
+  has_many :cars, dependent: :destroy
+  has_many :journeys, dependent: :destroy
   has_attachment :photo
   has_attachment :id_document
 
