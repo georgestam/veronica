@@ -30,6 +30,16 @@ es:
     tuesday: Martes
     wednesday: Miércoles
   edit: Modifica
+  imparted_hours:
+    index:
+      date: Date
+      date_paid: Date paid
+      delete_time: Delete time
+      hours: Hours
+      hours_paid: Hours paid
+      imparted_hours: Imparted hours
+      list_hours_paid: List hours paid
+      list_hours_worked: List hours worked
   journey_mailer:
     confirmation_of_booking:
       Please_recommend_this_teacher_to_a_friend: Recomienda este profesor a un amigo.
@@ -69,16 +79,6 @@ es:
       edit_booking: Modificar reserva
     new:
       teacher_booking: Reservas
-  logs:
-    index:
-      date: Date
-      date_paid: Date paid
-      delete_time: Delete time
-      hours: Hours
-      hours_paid: Hours paid
-      list_hours_paid: List hours paid
-      list_hours_worked: List hours worked
-      logged_hours: Logged hours
   number_of_students: Número de estudiantes
   pages:
     home:
@@ -124,13 +124,14 @@ es:
         completed: Completo
         date: Date
         duration: Duración
+        history: History
         hours_not_paid: Hours not paid
         hours_paid: Hours paid
         location: Localidad
         minutes: Minutes
         new_entry: New entry
         price: Precio
-        see_logs: See logs
+        see_imparted_hours: See imparted_hours
         total_hours: Total hours
         your_bookings_as_teacher: Tus reservas
       journey_user:

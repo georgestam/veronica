@@ -13,7 +13,7 @@ Journey.destroy_all
 Car.destroy_all
 User.destroy_all
 Availability.destroy_all
-Log.destroy_all
+ImpartedHour.destroy_all
 
 
 journeys = []
@@ -239,10 +239,6 @@ article.photo = url
 article.save!
 
 4.times do
-  FactoryGirl.create :log, journey: journeys.last 
-end
-
-4.times do
-  FactoryGirl.create :log, :paid, journey: journeys.last 
+  FactoryGirl.create :imparted_hour, journey: journeys.last 
 end
 

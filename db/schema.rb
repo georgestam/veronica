@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(version: 20170320090300) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
+  create_table "imparted_hours", force: :cascade do |t|
+    t.integer  "minutes",     null: false
+    t.datetime "date"
+    t.integer  "price_cents", null: false
+    t.integer  "journey_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["journey_id"], name: "index_imparted_hours_on_journey_id", using: :btree
+  end
+
   create_table "journeys", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "car_id"
@@ -89,17 +99,6 @@ ActiveRecord::Schema.define(version: 20170320090300) do
     t.integer  "seats_available"
     t.index ["car_id"], name: "index_journeys_on_car_id", using: :btree
     t.index ["user_id"], name: "index_journeys_on_user_id", using: :btree
-  end
-
-  create_table "logs", force: :cascade do |t|
-    t.integer  "minutes"
-    t.datetime "date"
-    t.integer  "minutes_paid"
-    t.datetime "date_paid"
-    t.integer  "journey_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["journey_id"], name: "index_logs_on_journey_id", using: :btree
   end
 
   create_table "passengers", force: :cascade do |t|
@@ -165,9 +164,9 @@ ActiveRecord::Schema.define(version: 20170320090300) do
 
   add_foreign_key "availabilities", "cars"
   add_foreign_key "cars", "users"
+  add_foreign_key "imparted_hours", "journeys"
   add_foreign_key "journeys", "cars"
   add_foreign_key "journeys", "users"
-  add_foreign_key "logs", "journeys"
   add_foreign_key "passengers", "journeys"
   add_foreign_key "passengers", "users"
 end

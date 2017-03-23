@@ -35,7 +35,7 @@ class ProfilesController < ApplicationController
     authorize @user
     @teacher = false
 
-    if @user.cars[0] == nil
+    if @user.cars.first == nil
 
 
     @journeys = Journey.where(user: @user)
@@ -45,11 +45,11 @@ class ProfilesController < ApplicationController
     @passengers = Passenger.where(journey_id: Journey.where(user: @user))
 
 
-    elsif @user.cars[0]
+    elsif @user.teacher?
 
     @teacher = true
     cars= Car.where(user: @user)
-    @car= cars[0]
+    @car= cars.first
     @availabilities = Availability.where(car: @car)
 
     verifications
@@ -71,7 +71,7 @@ class ProfilesController < ApplicationController
 
     end
     
-    @log = Log.new
+    @imparted_hour = ImpartedHour.new
 
   end
 
@@ -167,8 +167,8 @@ class ProfilesController < ApplicationController
     @email_verified = true if @car.user.email
     @photo_verified = true if @car.user.photo
     @address_verified = true if @car.user.address
-    @availability_verified = true unless @car.user.cars[0].availabilities.empty?
-    @upload_video = true if @car.user.cars[0].video_URL != ""
+    @availability_verified = true unless @car.user.cars.first.availabilities.empty?
+    @upload_video = true if @car.user.cars.first.video_URL != ""
     @facebook_URL_verified = true if @car.user.facebook_URL != ""
     @linkedin_URL_verified = true if @car.user.linkedin_URL != ""
     @id_document_verified = true if @car.user.id_document
@@ -229,22 +229,22 @@ class ProfilesController < ApplicationController
 
 
   def calculate_hours(journey)
-  
-    logs = Log.where(journey_id: journey)
-    hours = { total_hours:0, hours_paid:0, hours_not_paid:0 }
     
-    logs.each do |log| 
-      hours[:total_hours] += (log.minutes.to_f/60)
-      hours[:hours_paid] += (log.minutes_paid.to_f/60)
-    end 
+    if journey.imparted_hours.first
+      imparted_hours = ImpartedHour.where(journey_id: journey)
+      hours = { total_hours:0, hours_paid:0, hours_not_paid:0 }
     
-    hours[:hours_not_paid] = hours[:total_hours] - hours[:hours_paid]
+      imparted_hours.each do |imparted_hour| 
+        hours[:total_hours] += (imparted_hour.minutes.to_f/60)
+      end 
     
-    hours.each do |key, value|
-      hours[key] = value.round(2)
+      hours[:hours_not_paid] = hours[:total_hours] # to be completed once stripe is implemented. 
+      
+      hours.each do |key, value|
+        hours[key] = value.round(2)
+      end
+      hours
     end
-    
-    return hours
   end
 
 end

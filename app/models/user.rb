@@ -33,6 +33,10 @@ class User < ApplicationRecord
   after_create :send_welcome_email
   after_create :subscribe_to_newsletter
   
+  def teacher? 
+    self.cars.first
+  end 
+  
   def full_name
     "#{self.first_name} #{self.last_name}"
   end

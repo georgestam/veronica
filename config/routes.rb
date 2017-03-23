@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     resources :journeys, only:[:index, :show, :new, :create, :destroy, :update, :edit] do
       resources :passengers, only:[:new, :create, :destroy]
-      resources :logs, only:[:index, :new, :create, :destroy]
+      resources :imparted_hours, only:[:index, :new, :create, :destroy]
     end
     
     resources :articles, only:[:index, :create, :show]

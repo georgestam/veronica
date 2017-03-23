@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="text-center"> <%= t('.logged_hours') %> </h2>
+  <h2 class="text-center"> <%= t('.imparted_hours') %> </h2>
   <p> <%= t('.list_hours_worked') %>  </p>            
   <table class="table table-bordered">
     <thead>
@@ -11,13 +11,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @logs.each do |log| %>
+      <% @imparted_hours.each do |imparted_hour| %>
       <tr>
-        <td>  <%= log.id %> </td>
-        <td>  <%= (log.minutes.to_f/60).round(2) %> </td>
-        <td>  <%= l log.date, format: :day_month_year %> </td>
+        <td>  <%= imparted_hour.id %> </td>
+        <td>  <%= (imparted_hour.minutes.to_f/60).round(2) %> </td>
+        <td>  <%= l imparted_hour.date, format: :day_month_year %> </td>
         <td class="text-center"> 
-          <%= link_to journey_log_path(log.journey, log), data: { confirm: 'Are you sure?' }, method: :delete do %>
+          <%= link_to journey_imparted_hour_path(imparted_hour.journey, imparted_hour), data: { confirm: 'Are you sure?' }, method: :delete do %>
             <i class="fa fa-times"></i> 
           <% end %>
         </td>
@@ -36,13 +36,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @logs_paid.each do |log| %>
-      <tr>
-        <td>  <%= log.id %> </td>
-        <td>  <%= (log.minutes_paid.to_f/60).round(2) %> </td>
-        <td>  <%= l log.date_paid, format: :day_month_year %> </td>
-      </tr>
-      <% end %>
+    
     </tbody>
   </table>
 </div>
