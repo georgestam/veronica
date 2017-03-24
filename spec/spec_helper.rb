@@ -30,7 +30,7 @@ ActiveRecord::Migration.maintain_test_schema!
 WebMock.disable_net_connect!(allow_localhost: true)
 
 Capybara.server_host = 'localhost' # no 127.0.0.1. Cleaner and FB expects it too
-# Capybara.server_port = Veronica::Application.port
+Capybara.server_port = Veronica::Application.port
 Capybara.app_host = Rails.application.config.asset_host
 
 Timecop.safe_mode = true

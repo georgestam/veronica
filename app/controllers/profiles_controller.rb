@@ -30,48 +30,45 @@ class ProfilesController < ApplicationController
 
   def dashboard
 
-
     @user = current_user
     authorize @user
     @teacher = false
 
-    if @user.cars.first == nil
+    if car = @user.cars.first
 
+      @teacher = true
+      cars= Car.where(user: @user)
+      @car= car
+      @availabilities = Availability.where(car: @car)
 
-    @journeys = Journey.where(user: @user)
+      verifications
+      calculate_account_progress # This will return @progress
 
-    calculate_avg_rating
+      map_availabilities
 
-    @passengers = Passenger.where(journey_id: Journey.where(user: @user))
+      @journeys = Journey.where(car: @car)
 
+      @kids = 0
 
-    elsif @user.teacher?
+      @journeys.each do |journey|
+         @kids += journey.seats_available
+      end
 
-    @teacher = true
-    cars= Car.where(user: @user)
-    @car= cars.first
-    @availabilities = Availability.where(car: @car)
+      calculate_avg_rating
 
-    verifications
-    calculate_account_progress # This will return @progress
+      @passengers = Passenger.where(journey_id: Journey.where(car: @car))
 
-    map_availabilities
-
-    @journeys = Journey.where(car: @car)
-
-    @kids = 0
-
-    @journeys.each do |journey|
-       @kids += journey.seats_available
-    end
-
-    calculate_avg_rating
-
-    @passengers = Passenger.where(journey_id: Journey.where(car: @car))
-
-    end
+      end
+      
+      @imparted_hour = ImpartedHour.new
     
-    @imparted_hour = ImpartedHour.new
+    else
+    
+      @journeys = Journey.where(user: @user)
+
+      calculate_avg_rating
+
+      @passengers = Passenger.where(journey_id: Journey.where(user: @user))
 
   end
 
