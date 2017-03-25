@@ -22,6 +22,14 @@ module Veronica
       
     eval File.read(Rails.root.join('config', 'initializers', 'global_functions.rb'))
     
+    def self.port
+      if test?
+        @@application_port ||= "5#{1000 + (Random.rand * 8999).to_i}".to_i
+      else
+        nil
+      end
+    end
+    
   end
 end
 
