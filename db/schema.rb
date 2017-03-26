@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313204258) do
+ActiveRecord::Schema.define(version: 20170320090300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,16 @@ ActiveRecord::Schema.define(version: 20170313204258) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
+  create_table "imparted_hours", force: :cascade do |t|
+    t.integer  "minutes",     null: false
+    t.datetime "date"
+    t.integer  "price_cents", null: false
+    t.integer  "journey_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["journey_id"], name: "index_imparted_hours_on_journey_id", using: :btree
   end
 
   create_table "journeys", force: :cascade do |t|
@@ -154,6 +164,7 @@ ActiveRecord::Schema.define(version: 20170313204258) do
 
   add_foreign_key "availabilities", "cars"
   add_foreign_key "cars", "users"
+  add_foreign_key "imparted_hours", "journeys"
   add_foreign_key "journeys", "cars"
   add_foreign_key "journeys", "users"
   add_foreign_key "passengers", "journeys"

@@ -30,46 +30,45 @@ class ProfilesController < ApplicationController
 
   def dashboard
 
-
     @user = current_user
     authorize @user
     @teacher = false
 
-    if @user.cars[0] == nil
+    if car = @user.cars.first
 
+      @teacher = true
+      cars= Car.where(user: @user)
+      @car= car
+      @availabilities = Availability.where(car: @car)
 
-    @journeys = Journey.where(user: @user)
+      verifications
+      calculate_account_progress # This will return @progress
 
-    calculate_avg_rating
+      map_availabilities
 
-    @passengers = Passenger.where(journey_id: Journey.where(user: @user))
+      @journeys = Journey.where(car: @car)
 
+      @kids = 0
 
+      @journeys.each do |journey|
+         @kids += journey.seats_available
+      end
+
+      calculate_avg_rating
+
+      @passengers = Passenger.where(journey_id: Journey.where(car: @car))
+
+      end
+      
+      @imparted_hour = ImpartedHour.new
+    
     else
+    
+      @journeys = Journey.where(user: @user)
 
-    @teacher = true
-    cars= Car.where(user: @user)
-    @car= cars[0]
-    @availabilities = Availability.where(car: @car)
+      calculate_avg_rating
 
-    verifications
-    calculate_account_progress # This will return @progress
-
-    map_availabilities
-
-    @journeys = Journey.where(car: @car)
-
-    @kids = 0
-
-    @journeys.each do |journey|
-       @kids += journey.seats_available
-    end
-
-    calculate_avg_rating
-
-    @passengers = Passenger.where(journey_id: Journey.where(car: @car))
-
-    end
+      @passengers = Passenger.where(journey_id: Journey.where(user: @user))
 
   end
 
@@ -165,8 +164,8 @@ class ProfilesController < ApplicationController
     @email_verified = true if @car.user.email
     @photo_verified = true if @car.user.photo
     @address_verified = true if @car.user.address
-    @availability_verified = true unless @car.user.cars[0].availabilities.empty?
-    @upload_video = true if @car.user.cars[0].video_URL != ""
+    @availability_verified = true unless @car.user.cars.first.availabilities.empty?
+    @upload_video = true if @car.user.cars.first.video_URL != ""
     @facebook_URL_verified = true if @car.user.facebook_URL != ""
     @linkedin_URL_verified = true if @car.user.linkedin_URL != ""
     @id_document_verified = true if @car.user.id_document
@@ -221,8 +220,28 @@ class ProfilesController < ApplicationController
 
     @days = [monday, tuesday, wednesday, thursday,friday, saturday, sunday ]
 
+  end
+  
+  helper_method :calculate_hours
 
 
+  def calculate_hours(journey)
+    
+    if journey.imparted_hours.first
+      imparted_hours = ImpartedHour.where(journey_id: journey)
+      hours = { total_hours:0, hours_paid:0, hours_not_paid:0 }
+    
+      imparted_hours.each do |imparted_hour| 
+        hours[:total_hours] += (imparted_hour.minutes.to_f/60)
+      end 
+    
+      hours[:hours_not_paid] = hours[:total_hours] # to be completed once stripe is implemented. 
+      
+      hours.each do |key, value|
+        hours[key] = value.round(2)
+      end
+      hours
+    end
   end
 
 end

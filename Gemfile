@@ -49,8 +49,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
 
-  gem 'pry-byebug'
-  gem 'pry-rails'
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -60,7 +58,9 @@ group :development, :test do
   gem 'awesome_print'
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.7'
+
   gem 'pry-nav'
+  gem 'pry-rails'
   gem 'pry-stack_explorer'
 end
 

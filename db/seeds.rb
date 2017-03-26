@@ -13,6 +13,7 @@ Journey.destroy_all
 Car.destroy_all
 User.destroy_all
 Availability.destroy_all
+ImpartedHour.destroy_all
 
 
 journeys = []
@@ -194,16 +195,10 @@ end_time = 0
 end
 
 5.times do
-  journeys << Journey.create!({
-    user: users.sample,
-    car: car_admin,
-    seats_available: rand(1..4),
-    pick_up_time: Faker::Time.forward(7, :morning),
-    duration: rand(1..4),
-    address: pick_up_locations.sample,
-    completed: false,
-    })
+   FactoryGirl.create :journey, user: users.sample, car: car_admin
 end
+
+journeys = Journey.all
 
 i = 11
 3.times do
@@ -243,5 +238,7 @@ article = Article.first
 article.photo = url
 article.save!
 
-
+4.times do
+  FactoryGirl.create :imparted_hour, journey: journeys.last 
+end
 

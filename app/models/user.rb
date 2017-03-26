@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   geocoded_by :address
-  after_validation :geocode, only: :address_changed?
+  after_validation :geocode, if: :address_changed_and_development_or_production?
   
   validates :address, presence: true, on: :update
 
@@ -31,7 +31,11 @@ class User < ApplicationRecord
   after_validation :reverse_geocode
 
   after_create :send_welcome_email
-  after_create :subscribe_to_newsletter
+  after_create :subscribe_to_newsletter, if: :development_or_production?
+  
+  def teacher? 
+    self.cars.first
+  end 
   
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -67,5 +71,6 @@ class User < ApplicationRecord
 
     return user
   end
+  
 end
 
