@@ -4,13 +4,11 @@ class CreateCars < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
 
       t.text :bio
-      t.string :video_URL
+      t.string :video_url
       t.string :travel_distance
       t.string :price_hour
 
       t.timestamps
-
-
 
     end
   end

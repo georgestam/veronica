@@ -12,8 +12,8 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :city, :string
     add_column :users, :country, :string
 
-    add_column :users, :linkedin_URL, :string
-    add_column :users, :facebook_URL, :string
+    add_column :users, :linkedin_url, :string
+    add_column :users, :facebook_url, :string
     add_column :users, :bank_account, :string
 
     add_column :users, :date_of_birth, :datetime

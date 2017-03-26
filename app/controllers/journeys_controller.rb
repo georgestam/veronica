@@ -1,9 +1,9 @@
 class JourneysController < ApplicationController
-  before_action :set_journey, only:[:show, :edit, :update, :destroy, :driver_journey]
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  before_action :set_journey, only: [:show, :edit, :update, :destroy, :driver_journey]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @journeys = policy_scope(Journey)
-    @available_journeys = @journeys.select{ |journey| journey.remaining_seats > 0 && journey.completed != true}
+    @available_journeys = @journeys.select{ |journey| journey.remaining_seats.positive? && journey.completed != true}
     # @available_journeys.sort { |x,y| x.pick_up_time <=> y.pick_up_time }
   end
 
@@ -18,7 +18,6 @@ class JourneysController < ApplicationController
     @car = Car.find(params[:car_id])
     @journey = Journey.new
     @journey.car = @car
-
 
     authorize @journey
   end
@@ -82,7 +81,6 @@ class JourneysController < ApplicationController
       :payment
     )
   end
-
 
   def create_waypoints
     @waypoints = @journey.passengers.map do |passenger|

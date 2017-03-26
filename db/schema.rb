@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20170320090300) do
   create_table "cars", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "bio"
-    t.string   "video_URL"
+    t.string   "video_url"
     t.string   "travel_distance"
     t.string   "price_hour"
     t.datetime "created_at",      null: false
@@ -137,8 +137,8 @@ ActiveRecord::Schema.define(version: 20170320090300) do
     t.float    "longitude"
     t.string   "city"
     t.string   "country"
-    t.string   "linkedin_URL"
-    t.string   "facebook_URL"
+    t.string   "linkedin_url"
+    t.string   "facebook_url"
     t.string   "bank_account"
     t.datetime "date_of_birth"
     t.boolean  "passport_verif"

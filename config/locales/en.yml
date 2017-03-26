@@ -111,10 +111,10 @@ en:
         date_of_birth_html: Date of birth html
         description: Description
         email_html: Email html
-        facebook_URL: Facebook url
+        facebook_url: Facebook url
         gender_html: Gender html
         id_uploaded: Id uploaded
-        linkedin_URL: Linkedin url
+        linkedin_url: Linkedin url
         'no': 'No'
         personal-information: Personal-information
         phone_number_html: Phone number html
