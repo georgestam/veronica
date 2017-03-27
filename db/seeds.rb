@@ -161,7 +161,7 @@ admin = User.new({
     admin: true
     })
 admin.photo = open("http://res.cloudinary.com/georgestam/image/upload/v1476103177/dtwp5e5fj2vqiv0mkacn.jpg")
-admin.save
+admin.save!
 
 car_admin = Car.create!({
     user: admin,
