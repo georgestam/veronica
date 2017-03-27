@@ -7,10 +7,14 @@ class PassengerPolicy < ApplicationPolicy
 
   def permitted_attributes
     if record.journey.user == user  # Driver
-      [ :passenger_rating ]
+      [:passenger_rating]
     else
-      [ :driver_rating ]
+      [:driver_rating]
     end
+  end
+
+  def new?
+    create?
   end
 
   def create?

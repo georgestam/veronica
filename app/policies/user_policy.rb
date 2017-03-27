@@ -4,9 +4,13 @@ class UserPolicy < ApplicationPolicy
       scope.all
     end
   end
-
+  
   def create?
     true
+  end
+  
+  def edit?
+    update?
   end
 
   def update?
@@ -28,6 +32,5 @@ class UserPolicy < ApplicationPolicy
   def teacher?
     record == user
   end
-
 
 end

@@ -57,6 +57,7 @@ es:
         Déjenos su feedback
       price: Precio
       teacher: Profesor
+      thank_you_for_booking_with_us: Thank you for booking with us
     update_journey:
       Please_recommend_this_teacher_to_a_friend: Sharing is caring. Recomienda este
         profesor a un amigo.
@@ -74,6 +75,7 @@ es:
         Déjenos su feedback.
       price: Precio
       teacher: Profesor
+      thank_you_for_booking_with_us: Thank you for booking with us
   journeys:
     edit:
       edit_booking: Modificar reserva

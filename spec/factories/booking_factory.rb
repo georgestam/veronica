@@ -7,7 +7,8 @@ FactoryGirl.define do
     "2 Kenilworth Road, Leamington Spa CV32, UK",
     "49 Kenilworth Road, Leamington Spa CV32, UK",
     "8A Clarendon Place, Leamington Spa CV32 5QN, UK",
-    "45C Lansdowne Crescent, Willes Road, Leamington Spa CV32 4PR, UK"]
+    "45C Lansdowne Crescent, Willes Road, Leamington Spa CV32 4PR, UK"
+  ]
   
   factory :journey do
     

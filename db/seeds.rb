@@ -15,18 +15,14 @@ User.destroy_all
 Availability.destroy_all
 ImpartedHour.destroy_all
 
-
 journeys = []
 cars = []
 users = []
 avaliabilities = []
-locations = []
 
 price_per_hour = [15, 20, 10, 22]
 
-
 weekdays = %w(Mondays Tuesdays Wednesday Thursday Friday Saturday Sunday)
-
 
 pick_up_locations = [
   "107 Tachbrook Road, Leamington Spa CV31 3EA, UK",
@@ -35,8 +31,8 @@ pick_up_locations = [
   "2 Kenilworth Road, Leamington Spa CV32, UK",
   "49 Kenilworth Road, Leamington Spa CV32, UK",
   "8A Clarendon Place, Leamington Spa CV32 5QN, UK",
-  "45C Lansdowne Crescent, Willes Road, Leamington Spa CV32 4PR, UK"]
-
+  "45C Lansdowne Crescent, Willes Road, Leamington Spa CV32 4PR, UK"
+]
 
 urls = [
   'app/assets/images/faces/1.jpg',
@@ -50,33 +46,30 @@ urls = [
   'app/assets/images/faces/10.jpg',
   'app/assets/images/faces/11.jpg',
   'app/assets/images/faces/12.jpg'
-  ]
+]
 
 urls_linkedin = [
-"https://www.linkedin.com/in/jordi-fernandez-msc-ceng-bb42ab12?trk=nav_responsive_tab_profile",
-"https://www.linkedin.com/in/einateyal?trk=pub-pbmap",
-"https://www.linkedin.com/in/juanherrada?trk=pub-pbmap",
-"https://es.linkedin.com/in/cristina-crucianu-415268b0/en"
+  "https://www.linkedin.com/in/jordi-fernandez-msc-ceng-bb42ab12?trk=nav_responsive_tab_profile",
+  "https://www.linkedin.com/in/einateyal?trk=pub-pbmap",
+  "https://www.linkedin.com/in/juanherrada?trk=pub-pbmap",
+  "https://es.linkedin.com/in/cristina-crucianu-415268b0/en"
 ]
 
 urls_facebook = [
-"https://www.facebook.com/alfredo.glz.glz?pnref=lhc.unseen",
-"https://www.facebook.com/laura.ludmany?pnref=lhc.unseen",
-"https://https://www.facebook.com/james.bunt?pnref=lhc.friends",
-"https://www.facebook.com/alfredo.glz.glz?pnref=lhc.unseen"
+  "https://www.facebook.com/alfredo.glz.glz?pnref=lhc.unseen",
+  "https://www.facebook.com/laura.ludmany?pnref=lhc.unseen",
+  "https://https://www.facebook.com/james.bunt?pnref=lhc.friends",
+  "https://www.facebook.com/alfredo.glz.glz?pnref=lhc.unseen"
 ]
 
 videos_url = [
-# "https://www.youtube.com/embed/ePbKGoIGAXY",
-# "https://www.youtube.com/embed/ePbKGoIGAXY",
-# "https://www.youtube.com/embed/ePbKGoIGAXY",
-# "https://www.youtube.com/embed/ePbKGoIGAXY"
+  "https://www.youtube.com/embed/ePbKGoIGAXY",
+  "https://www.youtube.com/embed/ePbKGoIGAXY",
+  "https://www.youtube.com/embed/ePbKGoIGAXY",
+  "https://www.youtube.com/embed/ePbKGoIGAXY"
 ]
 
-
-
 10.times do
-  x = rand(0..2)
 
   user = User.new({
     first_name: Faker::Name.first_name,
@@ -90,7 +83,7 @@ videos_url = [
     facebook_URL: Faker::Boolean.boolean ? urls_facebook.sample : "",
     # bank_account: Faker::Number.number(7),
     interview_verif: Faker::Boolean.boolean ? true : false,
-    date_of_birth: Faker::Date.between(6570.days.ago, 10000.days.ago),
+    date_of_birth: Faker::Date.between(6570.days.ago, 10_000.days.ago),
     address: pick_up_locations.sample
     })
   user.photo = File.open(urls.sample)
@@ -103,10 +96,10 @@ x = 0
 3.times do
   cars << Car.create!({
     user: users.sample,
-    # video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
+    video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
     bio: Faker::Lorem.paragraphs,
     price_hour: price_per_hour.sample,
-    travel_distance: rand(1..10),
+    travel_distance: rand(1..10)
     })
   x += 1
 end
@@ -115,7 +108,7 @@ end_time = 0
 
 10.times do
   start_time = Faker::Time.forward(7, :evening)
-  end_time = start_time + 60*60*3
+  end_time = start_time + 60 * 60 * 3
   avaliabilities << Availability.create!({
     car: cars.sample,
     weekday: weekdays.sample,
@@ -132,7 +125,7 @@ end
     pick_up_time: Faker::Time.forward(7, :morning),
     duration: rand(1..4),
     address: pick_up_locations.sample,
-    completed: false,
+    completed: false
     })
 end
 
@@ -146,10 +139,8 @@ i = 0
     driver_review: Faker::Lorem.paragraphs,
     passenger_review: Faker::Lorem.paragraphs
     })
-i += 1
+  i += 1
 end
-
-
 
 # admin user
 
@@ -165,27 +156,26 @@ admin = User.new({
     facebook_URL: "",
     # bank_account: "1234567",
     interview_verif: false,
-    date_of_birth: Time.new(2002, 10, 31),
+    date_of_birth: Time.new.utc(2002, 10, 31),
     address: "Plaça de la Paeria, 1, 25007 Lleida, Spain",
     admin: true
     })
-  admin.photo = open("http://res.cloudinary.com/georgestam/image/upload/v1476103177/dtwp5e5fj2vqiv0mkacn.jpg")
-  admin.save
-
+admin.photo = open("http://res.cloudinary.com/georgestam/image/upload/v1476103177/dtwp5e5fj2vqiv0mkacn.jpg")
+admin.save!
 
 car_admin = Car.create!({
     user: admin,
     # video_URL: "https://www.youtube.com/embed/ePbKGoIGAXY",
     bio: "I am a self-made woman entrepreneur and proficient linguist in English, Spanish, French, Italian, Catalan and Rumanian. I am a team worker, with high compromise, responsibility and positive attitude to achieve short and long-term objectives. I apply constant effort in the areas of productivity and quality of every performed work. I am also an entrepreneur, polifacetic and charismatic English teacher. I am willing to continue progressing in my teaching career and combine it with my other passion: entrepreneurship. Creative, ambitious and energetic, always ready to roll sleeves up and establish plans and solutions in order to achieve strategic business initiatives and deliver results. I have total availability at the moment and may be contacted in the referred email anytime.",
     price_hour: 30,
-    travel_distance: 20,
+    travel_distance: 20
     })
 
 end_time = 0
 
 5.times do
   start_time = Faker::Time.forward(7, :evening)
-  end_time = start_time + 60*60*3
+  end_time = start_time + 60 * 60 * 3
   avaliabilities << Availability.create!({
     car: car_admin,
     weekday: weekdays.sample,
@@ -211,10 +201,9 @@ i = 11
     passenger_review: Faker::Lorem.paragraphs
     })
 
-i += 1
+  i += 1
 
 end
-
 
 articles = []
 5.times do

@@ -12,7 +12,6 @@ class JourneyMailer < ApplicationMailer
 
   end
 
-
   def update_journey(recipient, journey)
     @user = journey.user
     @journey = journey

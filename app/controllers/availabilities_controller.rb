@@ -3,7 +3,6 @@ class AvailabilitiesController < ApplicationController
   before_action :find_car, only: [:create, :destroy]
   before_action :find_availability, only: [:destroy]
 
-
   def new
     @availability = Availability.new
     authorize @availability
@@ -20,7 +19,6 @@ class AvailabilitiesController < ApplicationController
       render :new
     end
   end
-
 
   def destroy
     authorize @availability
@@ -41,6 +39,5 @@ class AvailabilitiesController < ApplicationController
   def availability_params
     params.require(:availability).permit(:weekday, :start, :finish)
   end
-
 
 end

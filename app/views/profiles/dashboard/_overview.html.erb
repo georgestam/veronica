@@ -57,20 +57,20 @@
           <%# end %>
         </p>
       </div>
-      <div class="<%= @facebook_URL_verified ? 'verified' : "unverified" %>" id="facebook_URL">
+      <div class="<%= @facebook_url_verified ? 'verified' : "unverified" %>" id="facebook_URL">
         <p>
           <%= t('.facebook_check')%>
-          <% if @facebook_URL_verified %>
+          <% if @facebook_url_verified %>
             <i class="fa fa-check"></i>
           <% else %>
             <i class="fa fa-close"></i>
           <% end %>
         </p>
       </div>
-      <div class="<%= @linkedin_URL_verified ? 'verified' : "unverified" %>" id="linkedin_URL">
+      <div class="<%= @linkedin_url_verified ? 'verified' : "unverified" %>" id="linkedin_URL">
         <p>
           <%= t('.linkedin_check')%>
-          <% if @linkedin_URL_verified %>
+          <% if @linkedin_url_verified %>
             <i class="fa fa-check"></i>
           <% else %>
             <i class="fa fa-close"></i>
