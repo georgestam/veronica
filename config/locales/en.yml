@@ -59,6 +59,7 @@ en:
         us with any feedback
       price: Price
       teacher: Teacher
+      thank_you_for_booking_with_us: Thank you for booking with us
     update_journey:
       Please_recommend_this_teacher_to_a_friend: Please recommend this teacher to
         a friend
@@ -77,6 +78,7 @@ en:
         us with any feedback
       price: Price
       teacher: Teacher
+      thank_you_for_booking_with_us: Thank you for booking with us
   journeys:
     edit:
       edit_booking: Edit booking
