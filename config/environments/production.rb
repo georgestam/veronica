@@ -30,7 +30,7 @@ Rails.application.configure do
 
   config.assets.compile = true
   config.assets.precompile += Ckeditor.assets
-  config.assets.precompile += %w(ckeditor/*)
+  config.assets.precompile += %w(ckeditor/* )
   config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
@@ -55,7 +55,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [:request_id]
+  config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store

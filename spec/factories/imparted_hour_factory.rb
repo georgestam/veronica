@@ -5,7 +5,7 @@ FactoryGirl.define do
     journey
     default_minutes = Random.rand(1..120)
     minutes { default_minutes }
-    date { Time.zone.today }
+    date { Date.today }
     
     after(:build) do |rec, eva|
       rec.record_price

@@ -5,4 +5,5 @@ class Car < ApplicationRecord
 
   validates :bio, :travel_distance, :price_hour, presence: true
 
+
 end

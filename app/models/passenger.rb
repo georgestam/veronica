@@ -1,6 +1,6 @@
 class Passenger < ApplicationRecord
 
-  RATINGS = [1, 2, 3, 4, 5].freeze
+  RATINGS = [1, 2, 3, 4, 5]
 
   belongs_to :user  # The passenger
   belongs_to :journey

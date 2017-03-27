@@ -108,10 +108,10 @@ es:
         date_of_birth_html: Fecha de nacimiento html
         description: Descripción
         email_html: Email html
-        facebook_url: Facebook url
+        facebook_URL: Facebook url
         gender_html: Género html
         id_uploaded: DNI uploaded
-        linkedin_url: Linkedin url
+        linkedin_URL: Linkedin url
         'no': 'No'
         personal-information: Información-personal
         phone_number_html: Número de teléfono html

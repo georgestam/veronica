@@ -1,6 +1,6 @@
 class ImpartedHoursController < ApplicationController
 
-  before_action :find_journey, only: [:index, :create, :destroy]
+  before_action :find_journey, only: [:index, :create, :destroy ]
   before_action :find_imparted_hour, only: [:destroy]
 
   def index
@@ -17,10 +17,13 @@ class ImpartedHoursController < ApplicationController
 
     if @imparted_hour.save
       flash[:notice] = "Your class have been recorded!"
+      redirect_to dashboard_path
+      
     else
       flash[:alert] = "There was an error writting your hours!"
+      redirect_to dashboard_path
     end
-    redirect_to dashboard_path
+
   end
 
   def destroy

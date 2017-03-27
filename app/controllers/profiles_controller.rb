@@ -2,9 +2,10 @@ class ProfilesController < ApplicationController
 
   before_action :find_user, only: [:show, :edit, :update]
   before_action :find_car, only: [:teacher]
-  skip_before_action :authenticate_user!, only: [:teacher]
+  skip_before_action :authenticate_user!, only: [ :teacher]
 
   def index
+
 
   end
 
@@ -32,12 +33,12 @@ class ProfilesController < ApplicationController
     @user = current_user
     authorize @user
     @teacher = false
-    car = @user.cars.first ? @user.cars.first : nil
 
-    if car
+    if car = @user.cars.first
 
       @teacher = true
-      @car = car
+      cars= Car.where(user: @user)
+      @car= car
       @availabilities = Availability.where(car: @car)
 
       verifications
@@ -56,9 +57,11 @@ class ProfilesController < ApplicationController
       calculate_avg_rating
 
       @passengers = Passenger.where(journey_id: Journey.where(car: @car))
+
+      end
       
       @imparted_hour = ImpartedHour.new
-
+    
     else
     
       @journeys = Journey.where(user: @user)
@@ -66,12 +69,11 @@ class ProfilesController < ApplicationController
       calculate_avg_rating
 
       @passengers = Passenger.where(journey_id: Journey.where(user: @user))
-      
-    end 
 
   end
 
   def teacher
+
 
     @availabilities = Availability.where(car: @car)
 
@@ -114,7 +116,7 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:photo, :id_document, :first_name, :last_name, :email, :phone_number, :description, :gender, :facebook_url, :linkedin_url, :address, :date_of_birth)
+    params.require(:user).permit(:photo, :id_document, :first_name, :last_name, :email, :phone_number, :description, :gender, :facebook_URL, :linkedin_URL, :address, :date_of_birth)
   end
 
   def calculate_avg_rating
@@ -131,7 +133,7 @@ class ProfilesController < ApplicationController
     end
 
     @avg_rating = 0
-    @avg_rating = @ratings.inject(0){|sum, x| sum + x } / @ratings.count if @ratings.count != 0
+    @avg_rating = @ratings.inject(0){|sum,x| sum + x } / @ratings.count if @ratings.count != 0
 
     @journeys.each do |journey|
       journey.passengers.each do |passenger|
@@ -151,8 +153,8 @@ class ProfilesController < ApplicationController
     @progress += 20 if @address_verified
     @progress += 5 if @availability_verified
     @progress += 0 if @upload_video
-    @progress += 10 if @facebook_url_verified
-    @progress += 10 if @linkedin_url_verified
+    @progress += 10 if @facebook_URL_verified
+    @progress += 10 if @linkedin_URL_verified
     @progress += 10 if @id_document_verified
     @progress += 0 if @bank_verified
 
@@ -163,9 +165,9 @@ class ProfilesController < ApplicationController
     @photo_verified = true if @car.user.photo
     @address_verified = true if @car.user.address
     @availability_verified = true unless @car.user.cars.first.availabilities.empty?
-    @upload_video = true if @car.user.cars.first.video_url != ""
-    @facebook_url_verified = true if @car.user.facebook_url != ""
-    @linkedin_url_verified = true if @car.user.linkedin_url != ""
+    @upload_video = true if @car.user.cars.first.video_URL != ""
+    @facebook_URL_verified = true if @car.user.facebook_URL != ""
+    @linkedin_URL_verified = true if @car.user.linkedin_URL != ""
     @id_document_verified = true if @car.user.id_document
     @bank_verified = true if @car.user.bank_account
 
@@ -179,11 +181,12 @@ class ProfilesController < ApplicationController
 
     if @car.user.passport_verif == false && @id_document_verified
       @manual_check = true
-    elsif @car.user.facebook_verif == false && @facebook_url_verified
+    elsif @car.user.facebook_verif == false && @facebook_URL_verified
       @manual_check = true
-    elsif @car.user.linkedin_verif == false && @linkedin_url_verified
+    elsif @car.user.linkedin_verif == false && @linkedin_URL_verified
       @manual_check = true
     end
+
 
   end
 
@@ -215,20 +218,21 @@ class ProfilesController < ApplicationController
       end
     end
 
-    @days = [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
+    @days = [monday, tuesday, wednesday, thursday,friday, saturday, sunday ]
 
   end
   
   helper_method :calculate_hours
 
+
   def calculate_hours(journey)
     
     if journey.imparted_hours.first
       imparted_hours = ImpartedHour.where(journey_id: journey)
-      hours = { total_hours: 0, hours_paid: 0, hours_not_paid: 0 }
+      hours = { total_hours:0, hours_paid:0, hours_not_paid:0 }
     
       imparted_hours.each do |imparted_hour| 
-        hours[:total_hours] += (imparted_hour.minutes.to_f / 60)
+        hours[:total_hours] += (imparted_hour.minutes.to_f/60)
       end 
     
       hours[:hours_not_paid] = hours[:total_hours] # to be completed once stripe is implemented. 

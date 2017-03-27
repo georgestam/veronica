@@ -9,7 +9,7 @@
   <%= f.input :bio, as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } } %>
   <%= f.input :travel_distance, label: I18n.t('views.cars._car_form.max_travel_distance_in_km', default: 'Max travel distance in km' ), input_html: { min: '1', max: '100', step: 'any' } %>
   <%= f.input :price_hour, label: I18n.t('views.cars._car_form.price_hour_in_euros', default: 'Price per hour' ) %>
-  <%#= f.input :video_url %>
+  <%#= f.input :video_URL %>
 
 
   <%= f.button :submit, I18n.t('views.journeys.new.submit', default: 'Send' ), class: "btn btn-primary wide-btn" %>

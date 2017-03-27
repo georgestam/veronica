@@ -2,33 +2,37 @@ class CarsController < ApplicationController
 
   before_action :find_car, only: [:edit, :update, :destroy]
   before_action :find_user, only: [:update, :destroy]
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [ :index]
 
   def index
+
     @cars = policy_scope(Car)
+
 
     # extract search parameters and use defualts if not entered by user
     @min_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[0] : 0
     @max_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[1] : 1000
-    @max_distance = params[:max_distance] && params[:max_distance] != "" ? params[:max_distance] : 10_000
-    @your_location = params[:your_location] && params[:your_location] != "" ? params[:your_location] : "London"
+    @max_distance = params[:max_distance] && params[:max_distance] !="" ? params[:max_distance] : 10000
+    @your_location = params[:your_location] && params[:your_location] !="" ? params[:your_location] : "London"
 
     user_ids = User.near(@your_location, @max_distance).map(&:id)
     @cars = Car.where(user_id: user_ids)
+
 
     # @car = Car.where(price_hour: @min_price..@max_price, user_id: user_ids)
 
     @hash = Gmaps4rails.build_markers(@cars) do |car, marker|
       marker.lat car.user.latitude
       marker.lng car.user.longitude
-      link = view_context.link_to (car.user.first_name).to_s, teacher_profile_path(car), class: "no-decoration"
-      description = link.to_s
+      link = view_context.link_to "#{car.user.first_name}", teacher_profile_path(car), class: "no-decoration"
+      description = "#{link}"
       marker.infowindow description
-      # marker.picture({
-      #: ActionController::Base.helpers.image_path("vero/logo.png"),
-      # width: 30,
-      # height: 30
-      # })
+      #marker.picture({
+        #: ActionController::Base.helpers.image_path("vero/logo.png"),
+        # width: 30,
+        # height: 30
+      #})
+
     end
 
   end
@@ -45,7 +49,7 @@ class CarsController < ApplicationController
     @car.user = @user
     authorize @car
     if @user.cars.count < 1 && @car.save
-      if user_signed_in? && @user.photo.nil?
+      if user_signed_in? && @user.photo == nil
       redirect_to edit_profile_path(@user)
       else
       redirect_to dashboard_path
@@ -86,7 +90,7 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:bio, :video_url, :travel_distance, :price_hour)
+    params.require(:car).permit(:bio, :video_URL, :travel_distance, :price_hour)
   end
 
   # copy from profile controllers
@@ -104,8 +108,9 @@ class CarsController < ApplicationController
       end
     end
 
-    @avg_rating = @ratings.inject(0){|sum, x| sum + x } / @ratings.count if @ratings.count != 0
+    @avg_rating = @ratings.inject(0){|sum,x| sum + x } / @ratings.count if @ratings.count != 0
 
   end
+
 
 end

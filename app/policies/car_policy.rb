@@ -6,7 +6,7 @@ class CarPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    return true
   end
 
   def update?

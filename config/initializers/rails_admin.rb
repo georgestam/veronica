@@ -29,6 +29,7 @@ RailsAdmin.config do |config|
   ## == Pundit ==
   config.authorize_with :pundit
 
+
   # config.model User do
   #   edit do
   #     # For RailsAdmin >= 0.5.0

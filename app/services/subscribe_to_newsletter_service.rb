@@ -6,7 +6,7 @@ class SubscribeToNewsletterService
   end
 
   def call
-    
+    begin
       @gibbon.lists(@list_id).members.create(
         body: {
           email_address: @user.email,
@@ -17,9 +17,9 @@ class SubscribeToNewsletterService
           # }
         }
       )
-  rescue => e
+    rescue => e
       Rails.logger.error e
       raise e unless Rails.env.development?
-     
+    end 
   end
 end

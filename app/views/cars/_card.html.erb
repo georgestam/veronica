@@ -50,8 +50,8 @@
             <strong> <%= car.price_hour %>/hr </strong>
          </p>
           <p>
-            <div class="<%= car.video_url != "" ? 'verified' : "unverified" %>" id="bank">
-            <!-- <% if car.video_url != "" %>
+            <div class="<%= car.video_URL != "" ? 'verified' : "unverified" %>" id="bank">
+            <!-- <% if car.video_URL != "" %>
             <i class="fa fa-video-camera" aria-hidden="true"></i>
             <i class="fa fa-check"></i>
             <% end %> -->
@@ -93,7 +93,7 @@
     </li>
     <li>
       <p>
-        <% if car.user.facebook_url != "" %>
+        <% if car.user.facebook_URL != "" %>
         <i class="fa fa-check"></i>
         <%= t('.facebook_check')%>
         <% end %>
@@ -102,7 +102,7 @@
     <li>
       <p>
 
-        <% if car.user.linkedin_url != "" %>
+        <% if car.user.linkedin_URL != "" %>
         <i class="fa fa-check"></i>
           <%= t('.linkedin_check')%>
         <% end %>

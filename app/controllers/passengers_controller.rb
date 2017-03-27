@@ -19,6 +19,7 @@ class PassengersController < ApplicationController
 
     if @passenger.save && @journey.save
 
+
       redirect_to dashboard_path
 
     else
