@@ -2,10 +2,9 @@ class ProfilesController < ApplicationController
 
   before_action :find_user, only: [:show, :edit, :update]
   before_action :find_car, only: [:teacher]
-  skip_before_action :authenticate_user!, only: [ :teacher]
+  skip_before_action :authenticate_user!, only: [:teacher]
 
   def index
-
 
   end
 
@@ -37,8 +36,8 @@ class ProfilesController < ApplicationController
     if car = @user.cars.first
 
       @teacher = true
-      cars= Car.where(user: @user)
-      @car= car
+      cars = Car.where(user: @user)
+      @car = car
       @availabilities = Availability.where(car: @car)
 
       verifications
@@ -60,20 +59,19 @@ class ProfilesController < ApplicationController
 
       end
       
-      @imparted_hour = ImpartedHour.new
+    @imparted_hour = ImpartedHour.new
     
     else
     
-      @journeys = Journey.where(user: @user)
+    @journeys = Journey.where(user: @user)
 
-      calculate_avg_rating
+    calculate_avg_rating
 
-      @passengers = Passenger.where(journey_id: Journey.where(user: @user))
+    @passengers = Passenger.where(journey_id: Journey.where(user: @user))
 
   end
 
   def teacher
-
 
     @availabilities = Availability.where(car: @car)
 
@@ -133,7 +131,7 @@ class ProfilesController < ApplicationController
     end
 
     @avg_rating = 0
-    @avg_rating = @ratings.inject(0){|sum,x| sum + x } / @ratings.count if @ratings.count != 0
+    @avg_rating = @ratings.inject(0){|sum, x| sum + x } / @ratings.count if @ratings.count != 0
 
     @journeys.each do |journey|
       journey.passengers.each do |passenger|
@@ -187,7 +185,6 @@ class ProfilesController < ApplicationController
       @manual_check = true
     end
 
-
   end
 
   def map_availabilities
@@ -218,21 +215,20 @@ class ProfilesController < ApplicationController
       end
     end
 
-    @days = [monday, tuesday, wednesday, thursday,friday, saturday, sunday ]
+    @days = [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
 
   end
   
   helper_method :calculate_hours
 
-
   def calculate_hours(journey)
     
     if journey.imparted_hours.first
       imparted_hours = ImpartedHour.where(journey_id: journey)
-      hours = { total_hours:0, hours_paid:0, hours_not_paid:0 }
+      hours = { total_hours: 0, hours_paid: 0, hours_not_paid: 0 }
     
       imparted_hours.each do |imparted_hour| 
-        hours[:total_hours] += (imparted_hour.minutes.to_f/60)
+        hours[:total_hours] += (imparted_hour.minutes.to_f / 60)
       end 
     
       hours[:hours_not_paid] = hours[:total_hours] # to be completed once stripe is implemented. 

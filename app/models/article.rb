@@ -2,7 +2,7 @@ class Article < ApplicationRecord
      
   extend FriendlyId
   
-  LANGUAGES = ['es', 'en']
+  LANGUAGES = %w(es en).freeze
   
   validates :title, presence: true, length: { minimum: 10 }
   validates :description, presence: true, length: { minimum: 50 }

@@ -1,6 +1,6 @@
 class ImpartedHoursController < ApplicationController
 
-  before_action :find_journey, only: [:index, :create, :destroy ]
+  before_action :find_journey, only: [:index, :create, :destroy]
   before_action :find_imparted_hour, only: [:destroy]
 
   def index

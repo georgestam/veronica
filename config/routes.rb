@@ -13,17 +13,17 @@ Rails.application.routes.draw do
 
     get "/profile/:id/", to: "profiles#teacher", as: :teacher_profile
 
-    resources :cars, only:[:index, :new, :create, :edit, :update,:destroy] do
-      resources :journeys, only:[:new, :create]
-      resources :availabilities, only:[:new, :create, :destroy]
+    resources :cars, only: [:index, :new, :create, :edit, :update, :destroy] do
+      resources :journeys, only: [:new, :create]
+      resources :availabilities, only: [:new, :create, :destroy]
     end
 
-    resources :journeys, only:[:index, :show, :new, :create, :destroy, :update, :edit] do
-      resources :passengers, only:[:new, :create, :destroy]
-      resources :imparted_hours, only:[:index, :new, :create, :destroy]
+    resources :journeys, only: [:index, :show, :new, :create, :destroy, :update, :edit] do
+      resources :passengers, only: [:new, :create, :destroy]
+      resources :imparted_hours, only: [:index, :new, :create, :destroy]
     end
     
-    resources :articles, only:[:index, :create, :show]
+    resources :articles, only: [:index, :create, :show]
 
   end
 
