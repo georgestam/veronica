@@ -13,6 +13,10 @@ class PassengerPolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    create?
+  end
+
   def create?
     record.user == user
   end

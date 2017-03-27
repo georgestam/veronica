@@ -3,7 +3,7 @@ class JourneysController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @journeys = policy_scope(Journey)
-    @available_journeys = @journeys.select{ |journey| journey.remaining_seats > 0 && journey.completed != true}
+    @available_journeys = @journeys.select{ |journey| journey.remaining_seats.positive? && journey.completed != true}
     # @available_journeys.sort { |x,y| x.pick_up_time <=> y.pick_up_time }
   end
 

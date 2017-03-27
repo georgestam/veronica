@@ -19,7 +19,6 @@ journeys = []
 cars = []
 users = []
 avaliabilities = []
-locations = []
 
 price_per_hour = [15, 20, 10, 22]
 
@@ -64,14 +63,13 @@ urls_facebook = [
 ]
 
 videos_url = [
-  # "https://www.youtube.com/embed/ePbKGoIGAXY",
-  # "https://www.youtube.com/embed/ePbKGoIGAXY",
-  # "https://www.youtube.com/embed/ePbKGoIGAXY",
-  # "https://www.youtube.com/embed/ePbKGoIGAXY"
+  "https://www.youtube.com/embed/ePbKGoIGAXY",
+  "https://www.youtube.com/embed/ePbKGoIGAXY",
+  "https://www.youtube.com/embed/ePbKGoIGAXY",
+  "https://www.youtube.com/embed/ePbKGoIGAXY"
 ]
 
 10.times do
-  x = rand(0..2)
 
   user = User.new({
     first_name: Faker::Name.first_name,
@@ -98,7 +96,7 @@ x = 0
 3.times do
   cars << Car.create!({
     user: users.sample,
-    # video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
+    video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
     bio: Faker::Lorem.paragraphs,
     price_hour: price_per_hour.sample,
     travel_distance: rand(1..10)
@@ -158,7 +156,7 @@ admin = User.new({
     facebook_URL: "",
     # bank_account: "1234567",
     interview_verif: false,
-    date_of_birth: Time.new(2002, 10, 31),
+    date_of_birth: Time.new.utc(2002, 10, 31),
     address: "Plaça de la Paeria, 1, 25007 Lleida, Spain",
     admin: true
     })

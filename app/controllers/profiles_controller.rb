@@ -32,11 +32,11 @@ class ProfilesController < ApplicationController
     @user = current_user
     authorize @user
     @teacher = false
+    car = @user.cars.first
 
-    if car = @user.cars.first
+    if car
 
       @teacher = true
-      cars = Car.where(user: @user)
       @car = car
       @availabilities = Availability.where(car: @car)
 
@@ -56,18 +56,15 @@ class ProfilesController < ApplicationController
       calculate_avg_rating
 
       @passengers = Passenger.where(journey_id: Journey.where(car: @car))
-
-      end
-      
-    @imparted_hour = ImpartedHour.new
+      @imparted_hour = ImpartedHour.new
     
     else
     
-    @journeys = Journey.where(user: @user)
-
-    calculate_avg_rating
-
-    @passengers = Passenger.where(journey_id: Journey.where(user: @user))
+      @journeys = Journey.where(user: @user)
+      calculate_avg_rating
+      @passengers = Passenger.where(journey_id: Journey.where(user: @user))
+    
+    end
 
   end
 
@@ -151,8 +148,8 @@ class ProfilesController < ApplicationController
     @progress += 20 if @address_verified
     @progress += 5 if @availability_verified
     @progress += 0 if @upload_video
-    @progress += 10 if @facebook_URL_verified
-    @progress += 10 if @linkedin_URL_verified
+    @progress += 10 if @facebook_url_verified
+    @progress += 10 if @linkedin_url_verified
     @progress += 10 if @id_document_verified
     @progress += 0 if @bank_verified
 
@@ -164,8 +161,8 @@ class ProfilesController < ApplicationController
     @address_verified = true if @car.user.address
     @availability_verified = true unless @car.user.cars.first.availabilities.empty?
     @upload_video = true if @car.user.cars.first.video_URL != ""
-    @facebook_URL_verified = true if @car.user.facebook_URL != ""
-    @linkedin_URL_verified = true if @car.user.linkedin_URL != ""
+    @facebook_url_verified = true if @car.user.facebook_URL != ""
+    @linkedin_url_verified = true if @car.user.linkedin_URL != ""
     @id_document_verified = true if @car.user.id_document
     @bank_verified = true if @car.user.bank_account
 
@@ -179,9 +176,9 @@ class ProfilesController < ApplicationController
 
     if @car.user.passport_verif == false && @id_document_verified
       @manual_check = true
-    elsif @car.user.facebook_verif == false && @facebook_URL_verified
+    elsif @car.user.facebook_verif == false && @facebook_url_verified
       @manual_check = true
-    elsif @car.user.linkedin_verif == false && @linkedin_URL_verified
+    elsif @car.user.linkedin_verif == false && @linkedin_url_verified
       @manual_check = true
     end
 
