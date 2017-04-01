@@ -5,8 +5,16 @@ class CarPolicy < ApplicationPolicy
     end
   end
 
-  def create?
+  def new?
     true
+  end
+  
+  def create?
+    new?
+  end
+  
+  def edit?
+    update?
   end
 
   def update?
