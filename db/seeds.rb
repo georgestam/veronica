@@ -63,10 +63,7 @@ urls_facebook = [
 ]
 
 videos_url = [
-  "https://www.youtube.com/embed/ePbKGoIGAXY",
-  "https://www.youtube.com/embed/ePbKGoIGAXY",
-  "https://www.youtube.com/embed/ePbKGoIGAXY",
-  "https://www.youtube.com/embed/ePbKGoIGAXY"
+  "https://www.youtube.com/watch?v=UodA9XdKQkE"
 ]
 
 10.times do
@@ -96,7 +93,7 @@ x = 0
 3.times do
   cars << Car.create!({
     user: users.sample,
-    video_URL: Faker::Boolean.boolean ? videos_url.sample : "",
+    video_URL: videos_url.sample,
     bio: Faker::Lorem.paragraphs,
     price_hour: price_per_hour.sample,
     travel_distance: rand(1..10)
@@ -156,7 +153,7 @@ admin = User.new({
     facebook_URL: "",
     # bank_account: "1234567",
     interview_verif: false,
-    date_of_birth: Time.new.utc(2002, 10, 31),
+    date_of_birth: DateTime.new.iso8601(2002, 10, 31),
     address: "Plaça de la Paeria, 1, 25007 Lleida, Spain",
     admin: true
     })
@@ -165,7 +162,7 @@ admin.save!
 
 car_admin = Car.create!({
     user: admin,
-    # video_URL: "https://www.youtube.com/embed/ePbKGoIGAXY",
+    video_URL: "https://www.youtube.com/watch?v=UodA9XdKQkE",
     bio: "I am a self-made woman entrepreneur and proficient linguist in English, Spanish, French, Italian, Catalan and Rumanian. I am a team worker, with high compromise, responsibility and positive attitude to achieve short and long-term objectives. I apply constant effort in the areas of productivity and quality of every performed work. I am also an entrepreneur, polifacetic and charismatic English teacher. I am willing to continue progressing in my teaching career and combine it with my other passion: entrepreneurship. Creative, ambitious and energetic, always ready to roll sleeves up and establish plans and solutions in order to achieve strategic business initiatives and deliver results. I have total availability at the moment and may be contacted in the referred email anytime.",
     price_hour: 30,
     travel_distance: 20
