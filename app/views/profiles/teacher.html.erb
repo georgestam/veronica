@@ -48,17 +48,13 @@
           <h4> <strong> <%= t('.about_me') %> </strong> </h4>
           <p><%=  @car.bio.html_safe %></p>
           <br>
-          <!-- <h4> <strong>Video</strong> </h4> -->
-          <% if @car.video_URL != "" %>
-
-         <!--  <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="<%= @car.video_URL %>"></iframe> -->
-
-             <p> <%#= @car.user.first_name.capitalize  %>  <%#= t('.views.profile.teacher.has_no_videos')%> </p>
-         <!--  </div> -->
+          <% if @car.video_URL %>
+          <div class="embed-responsive embed-responsive-16by9">
+            <%= @video.html_safe %>
+          </div>
 
           <% elsif %>
-             <p> <%#= @car.user.first_name.capitalize  %>  <%#= t('.views.profile.teacher.has_no_videos')%> </p>
+             <p> <%= @car.user.first_name.capitalize  %>  <%= t('.views.profile.teacher.has_no_videos')%> </p>
 
           <% end %>
         </div>

@@ -68,8 +68,14 @@ class CarsController < ApplicationController
 
   def update
     authorize @car
-    @car.update(car_params)
-    redirect_to teacher_profile_path(@car)
+    
+    if @car.update(car_params)
+      redirect_to teacher_profile_path(@car)
+    else
+      flash[:alert] = @car.errors.full_messages
+      render :edit
+    end
+      
   end
 
   def destroy

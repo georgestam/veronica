@@ -3,6 +3,9 @@ class Car < ApplicationRecord
   has_many :journeys, dependent: :destroy
   has_many :availabilities, dependent: :destroy
 
-  validates :bio, :travel_distance, :price_hour, presence: true
+  validates :bio, presence: true
+  validates :video_URL, presence: true
+  validates :travel_distance, presence: true
+  validates :price_hour, presence: true
 
 end
