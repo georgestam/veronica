@@ -11,7 +11,6 @@ class JourneysController < ApplicationController
     @journey = Journey.find(params[:id])
 
     @car = @journey.car
-    create_waypoints # This will create an array of waypoints to give to the map
   end
 
   def new
@@ -82,9 +81,4 @@ class JourneysController < ApplicationController
     )
   end
 
-  def create_waypoints
-    @waypoints = @journey.passengers.map do |passenger|
-      { location: passenger.passenger_location.address.to_s }
-    end
-  end
 end
