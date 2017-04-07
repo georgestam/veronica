@@ -153,7 +153,7 @@ admin = User.new({
     facebook_URL: "",
     # bank_account: "1234567",
     interview_verif: false,
-    date_of_birth: DateTime.new.iso8601(2002, 10, 31),
+    date_of_birth: DateTime.new(2002, 10, 31),
     address: "Plaça de la Paeria, 1, 25007 Lleida, Spain",
     admin: true
     })

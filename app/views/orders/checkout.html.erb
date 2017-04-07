@@ -1,0 +1,39 @@
+<div class='lift-bacground'>
+
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <div class="dashboard-card">
+
+            <h3 class="text-center"> 
+             Payment To <%= @order.journey.car.user.first_name.capitalize %>   
+           </h3>
+            
+            <%= form_tag charge_journey_order_path(@order) do %>
+              <article>
+                <label class="amount">
+                <%= t('.amount') %>: <%= humanized_money_with_symbol(@order.consumer_total) %>
+                  <br>
+                <%= t('.imparted_hours')%>: <%= (@order.minutes.to_f/60).round(1) %>
+                </label>
+              </article>
+
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-name="Teacher Invoice"
+                data-email="<%= current_user.email %>"
+                data-description="<%= @order.charge_description %>"
+                data-amount="<%= @order.consumer_total_cents %>"
+                data-currency="<%= @order.consumer_total.currency %>"></script>
+            <% end %>
+            
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

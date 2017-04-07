@@ -27,6 +27,14 @@ GIT
       warden (~> 1.2.3)
 
 GIT
+  remote: git://github.com/stripe/stripe-ruby.git
+  revision: cb841602fad553f8495fae05940fef975b85449e
+  ref: cb841602fad553f8495fae05940fef975b85449e
+  specs:
+    stripe (2.1.0)
+      faraday (~> 0)
+
+GIT
   remote: git://github.com/vemv/vemv.git
   revision: 2df6eeed573bb52c5fc02fc60e1e5e75988b66df
   ref: 2df6eeed573bb52c5fc02fc60e1e5e75988b66df
@@ -189,9 +197,20 @@ GEM
     gmaps4rails (2.1.2)
     haml (4.0.7)
       tilt
+    haml-rails (0.9.0)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 4.0.6, < 5.0)
+      html2haml (>= 1.0.1)
+      railties (>= 4.0.1)
     hashdiff (0.3.2)
     hashie (3.5.5)
     highline (1.7.8)
+    html2haml (2.1.0)
+      erubis (~> 2.7.0)
+      haml (~> 4.0)
+      nokogiri (>= 1.6.0)
+      ruby_parser (~> 3.5)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httparty (0.14.0)
@@ -246,6 +265,16 @@ GEM
     minitest (5.10.1)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
+    monetize (1.6.0)
+      money (~> 6.8)
+    money (6.8.2)
+      i18n (>= 0.6.4, < 0.9)
+      sixarm_ruby_unaccent (>= 1.1.1, < 2)
+    money-rails (1.8.0)
+      activesupport (>= 3.0)
+      monetize (~> 1.6.0)
+      money (~> 6.8.1)
+      railties (>= 3.0)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -386,6 +415,8 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
+    ruby_parser (3.8.4)
+      sexp_processor (~> 4.1)
     rubyzip (1.2.1)
     safe_yaml (1.0.4)
     sass (3.4.23)
@@ -399,6 +430,7 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    sexp_processor (4.8.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     simple_form (3.4.0)
@@ -413,6 +445,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    sixarm_ruby_unaccent (1.1.1)
     slop (3.6.0)
     spring (2.0.1)
       activesupport (>= 4.2)
@@ -485,6 +518,7 @@ DEPENDENCIES
   geocoder
   gibbon
   gmaps4rails
+  haml-rails (~> 0.9)
   i18n-tasks (~> 0.9.11)
   jbuilder (~> 2.0)
   jquery-fileupload-rails
@@ -494,6 +528,7 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0.5)
   momentjs-rails (~> 2.9)
+  money-rails (~> 1)
   omniauth-facebook
   pg
   pry-nav
@@ -521,6 +556,7 @@ DEPENDENCIES
   simplecov (~> 0.12)
   spring
   spring-watcher-listen (~> 2.0.0)
+  stripe!
   timecop (~> 0.8)
   uglifier
   vemv!

@@ -25,12 +25,56 @@ module Veronica
     def self.port
       if test?
         @@application_port ||= "5#{1000 + (Random.rand * 8999).to_i}".to_i
+      elsif development?
+        3000
       else
         nil
       end
     end
     
+    def self.host
+      if development? || test?
+        'localhost'
+      else
+        nil
+      end
+    end
+    
+    def self.protocol
+      'http'
+    end
+    
+    def self.main_locale
+      :en
+    end
+    
+    config.i18n.fallbacks = [main_locale]
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
+    
+    def self.set_url_options!
+      [
+        Rails.application.routes.default_url_options,
+        Devise::Engine.routes.default_url_options
+      ].each do |config|
+
+        config[:host] = self.host
+        config[:port] = self.port if self.port
+        config[:protocol] = self.protocol
+        config[:only_path] = false
+         
+      end
+    end
+    
+    set_url_options!
+    # Rails.configuration.session_options[:domain] = host
+    # Rollbar.configuration.environment = host
+    # 
+    # config.action_controller.default_url_options ||= {}
+    # config.action_mailer.default_url_options ||= {}
+    # Rails.application.routes.default_url_options ||= {}
+    
   end
+  
 end
 
 

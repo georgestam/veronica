@@ -1,0 +1,10 @@
+mailers_common: &mailers_common
+  orders:
+    creation:
+      parent_notification_mailer:
+        perform:
+          subject: "#%{id} - Thanks for reserving %{teacher} - Please wait until confirmation"
+          p1: "Thanks for your order! You have reserved %{teacher}, for the following period(s):"
+          p2: "This would result in a payment of %{amount}."
+          p3: "Before you can pay, the owner of the space will confirm whether it is available for the reserved period(s)."
+          p4: "Once confirmed, we will email you the payment form."

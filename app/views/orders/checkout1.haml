@@ -1,0 +1,20 @@
+- the_popup_title = t('stripe.popup_title', amount: @order.consumer_total)
+- the_payment_form_id = 'veronica-payment-form'
+- the_button_id = 'veronica-payment-cta'
+- the_hidden_input_id = 'veronica-token-hidden-input'
+
+%div{class: centered}
+  %h2= t '.h1', id: @order.id, teacher: @order.journey.car.user.first_name
+  %hr
+  %p
+    %strong= t '.hours', hours: @order.minutes/60
+  %button.btn.btn-lg.btn-primary{id: the_button_id}
+    = t('stripe.button_title', amount: @order.consumer_total_cents)
+    -# = t('stripe.button_title', amount: @order.consumer_total_cents.format)
+  %form{id: the_payment_form_id, method: 'post', action: charge_journey_order_url(@order)}
+    = hidden_field_tag :authenticity_token, form_authenticity_token
+    %input{name: "stripe_token", hidden: true, id: the_hidden_input_id}
+    
+- content_for :bottom_js do    
+  = render partial: 'layouts/stripe_checkout', locals: {the_image_path: nil, the_button_selector: "##{the_button_id}", the_form_selector: "##{the_payment_form_id}", the_popup_title: the_popup_title, the_description: @order.journey.car.user.first_name, the_order: @order, the_hidden_input_selector: "##{the_hidden_input_id}"}
+

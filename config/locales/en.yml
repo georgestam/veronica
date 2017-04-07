@@ -84,7 +84,47 @@ en:
       edit_booking: Edit booking
     new:
       teacher_booking: Teacher booking
+  mailers:
+    orders:
+      creation:
+        parent_notification_mailer:
+          perform:
+            cta: Pay reservation
   number_of_students: Number of students
+  orders:
+    charge:
+      success: Success
+    checkout:
+      amount: Amount
+      h1: 'Order #%{id} - %{teacher}'
+      hours: "%{hours} euros"
+      imparted_hours: Imparted hours
+    create:
+      success: Success
+      unexpected_error: Unexpected error
+      validation_error: Validation error
+    creation:
+      parent_notification_mailer:
+        perform:
+          cta: Pay reservation
+          p1: 'You have reserved %{teacher}, for the following hours(s):'
+          p2: This result in a payment of %{amount} euros.
+          p3: Now it is expected that you pay said reservation, using the following
+            link
+          p4: Your previous invoices have been canceled and only this one hast be
+            paid. Please let us know if there's any issue.
+          subject: "#%{id} - Thanks for using %{teacher} - This is your new invoice"
+    errors:
+      booking_is_completed: Booking is completed
+      space_no_longer_available: Space no longer available
+      space_taken_not_charged: Space taken not charged
+    new:
+      create_invoice: Create invoice
+      invoice_description: To date there are %{total_hours} hours (%{total_min} minutes)
+        outstanding (not paid by the parent yet). Please introduce %{total_min} minutes
+        below if you think that they are correct.
+      minutes_to_invoice: Minutes to invoice
+      submit_invoice_to_parent: Submit invoice to parent
   pages:
     home:
       driver: Teacher
@@ -138,6 +178,7 @@ en:
         new_entry: New entry
         price: Price
         see_imparted_hours: See imparted_hours
+        send_invoice: Send invoice
         total_hours: Total hours
         your_bookings_as_teacher: Your bookings as teacher
       journey_user:
@@ -215,6 +256,11 @@ en:
       sign_in: Sign in
       sign_out: Sign out
       teacher_profile: Teacher profile
+  stripe:
+    button_title: Pay %{amount}
+    payment_failed: Sorry, there has been a problem with your payment. You have not
+      been charged.
+    popup_title: Pay %{amount}
   time:
     formats:
       day_month_year: "%d %b %Y"

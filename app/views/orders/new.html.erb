@@ -1,0 +1,38 @@
+<div class='lift-bacground'>
+
+<% content_for :title, I18n.t("orders.new.create_invoice") %>
+
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <div class="dashboard-card">
+
+           <p class="text-center"> 
+              <%= t('.invoice_description', total_hours: (@minutes[:minutes_not_paid].to_f/60).round(1), total_min: @minutes[:minutes_not_paid] ) %> 
+            </p>
+
+            <%= simple_form_for [@journey, @order], url: journey_orders_path(@journey) do |f| %>
+              <%= f.error_notification %>
+              <%#= raise %>
+
+              <%= f.input :minutes, label: t(".minutes_to_invoice") %>
+
+              <%= f.button :submit, class: "btn btn-primary wide-btn" %>
+
+            <% end %>
+            
+
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+

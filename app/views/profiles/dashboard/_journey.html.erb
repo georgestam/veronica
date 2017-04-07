@@ -22,9 +22,11 @@
                 
               <% if h = calculate_hours(journey) %>
                 <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.total_hours') %>: <%=  h[:total_hours] %> </li>
-                <li> <i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('.hours_paid') %>: <%=  h[:hours_paid] %> </li>
-                <li> <i class="fa fa-calendar-times-o" aria-hidden="true"></i>  <%= t('.hours_not_paid') %>: <%= h[:hours_not_paid] %> </li>
+                <!-- <li> <i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('.hours_paid') %>: <%=  h[:hours_paid] %> </li> -->
+                <!-- <li> <i class="fa fa-calendar-times-o" aria-hidden="true"></i>  <%= t('.hours_not_paid') %>: <%= h[:hours_not_paid] %> </li> -->
+                          <%= link_to I18n.t('profiles.dashboard.journey.send_invoice'), new_journey_order_path(journey), class: 'btn btn-danger custom-btn-width' %>
               <% end %>
+              
             </ul>
             <ul>
               <il>
@@ -50,14 +52,18 @@
                       <%= link_to I18n.t('.Edit_booking', default: 'Edit Booking' ), edit_journey_path(journey), class: 'btn btn-primary custom-btn-width' %>
                       <%= link_to I18n.t('profiles.dashboard.journey.history'), journey_imparted_hours_path(journey), class: 'btn btn-success custom-btn-width' %>
                        <%#= link_to I18n.t('.Cancel_booking', default: 'Cancel Booking' ), journey_path(journey), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger custom-btn-width' %>
+                    
+                       
                    <% end %>
                 <% end %>
               </il>
+                
             </ul>
             
             
           </div>
           <%#= link_to "", edit_journey_path(journey), class: "product-link" %>
+
           
           <div class="col-xs-4 text-center">
             <p> <%= t('.add_hours') %> </p>
