@@ -15,7 +15,7 @@
                 <label class="amount">
                 <%= t('.amount') %>: <%= humanized_money_with_symbol(@order.consumer_total) %>
                   <br>
-                <%= t('.imparted_hours')%>: <%= (@order.minutes.to_f/60).round(1) %>
+                <%= t('.imparted_hours')%>: <%= convert_to_hours(@order.minutes) %>
                 </label>
               </article>
 

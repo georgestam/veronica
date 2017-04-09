@@ -43,7 +43,7 @@ gem 'vemv', github: 'vemv/vemv', ref: '2df6eeed573bb52c5fc02fc60e1e5e75988b66df'
 
 gem "haml-rails", "~> 0.9"
 gem 'money-rails', '~>1'
-gem 'stripe', github: 'stripe/stripe-ruby', ref: 'cb841602fad553f8495fae05940fef975b85449e'
+gem 'stripe', '~> 1.57'
 
 group :development do
   gem "rails_real_favicon"

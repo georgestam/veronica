@@ -1,5 +1,8 @@
 class Order < ApplicationRecord
   
+  NOT_PAID = 'not_paid'.freeze
+  PAID = 'paid'.freeze
+  
   include ApplicationRecordImpl
   include Approvable
   include Payable
@@ -36,6 +39,38 @@ class Order < ApplicationRecord
   
   def charge_description
     "Order id #{self.id} - Teacher #{self.journey.car.user.first_name}"
+  end
+  
+  def calculate_consumer_total_cents
+    self.consumer_total = self.minutes * self.price_hour / 60
+  end 
+  
+  def self.calculate_minutes(journey)
+    minutes_paid = Order.calculate_minutes_paid(journey)
+    imparted_hours = ImpartedHour.where(journey_id: journey)
+    minutes = { total_minutes: 0, minutes_paid: minutes_paid, minutes_not_paid: 0 }
+  
+    imparted_hours.each do |imparted_hour| 
+      minutes[:total_minutes] += imparted_hour.minutes
+    end 
+  
+    minutes[:minutes_not_paid] = minutes[:total_minutes] - minutes[:minutes_paid] 
+    
+    minutes
+    
+  end
+  
+  def self.calculate_minutes_paid(journey)
+    
+    orders = Order.where(journey_id: journey).where(state: Order::PAID)
+    minutes_paid = 0
+    orders.each do |order| 
+      amount = (order.consumer_total_cents / 100).to_i
+      minutes_paid += amount * 60 / (order.price_hour)
+    end 
+    
+    minutes_paid
+    
   end
   
 end

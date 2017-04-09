@@ -9,12 +9,11 @@
           <div class="dashboard-card">
 
            <p class="text-center"> 
-              <%= t('.invoice_description', total_hours: (@minutes[:minutes_not_paid].to_f/60).round(1), total_min: @minutes[:minutes_not_paid] ) %> 
+              <%= t('.invoice_description', total_hours: convert_to_hours(@minutes[:minutes_not_paid]), total_min: @minutes[:minutes_not_paid] ) %> 
             </p>
 
             <%= simple_form_for [@journey, @order], url: journey_orders_path(@journey) do |f| %>
               <%= f.error_notification %>
-              <%#= raise %>
 
               <%= f.input :minutes, label: t(".minutes_to_invoice") %>
 
@@ -22,7 +21,6 @@
 
             <% end %>
             
-
           </div>
         
         </div>
@@ -31,8 +29,3 @@
   </div>
 
 </div>
-
-
-
-
-

@@ -10,42 +10,31 @@ class OrdersController < ApplicationController
   end
   
   def new
-    @minutes = calculate_minutes
+    @minutes = Order.calculate_minutes(@journey)
     @order = Order.new
     authorize(@order)
-    # add here all the sum of all the minutes that have not been paid. 
   end 
   
   def create
-    @order.consumer_total = @order.minutes * @order.price_hour / 60
-    @order.state = 'not paid'
+    @order.calculate_consumer_total_cents
+    @order.state = Order::NOT_PAID
     if @order.valid?
       authorize(@order)
       if @order.save
         flash[:success] = t 'orders.create.success'
         redirect_to dashboard_path
       else
-        flash.now[:error] = t 'orders.create.unexpected_error'
+        flash.now[:alert] = t 'orders.create.unexpected_error'
         handle_errors
       end
     else
-      flash.now[:error] = t 'orders.create.validation_error'
-      authorize(@order, :true?)
+      flash.now[:alert] = t 'orders.create.validation_error'
+      authorize(@order)
       handle_errors
     end
   end
   
   def charge
-    
-    # stripe_token = params.require :stripeToken
-    # if @order.charge! stripe_token
-    #   flash[:success] = t '.success'
-    #   redirect_to @order.reservation_link
-    # else
-    #   @order.reload # for cleaning up any possibly modified attributes
-    #   flash[:error] = t 'stripe.payment_failed'
-    #   redirect_to @order.payment_link
-    # end
     
     customer = Stripe::Customer.create(
       source: params[:stripeToken],
@@ -59,14 +48,15 @@ class OrdersController < ApplicationController
       currency:     @order.consumer_total.currency
     )
     
-  @order.update(payment: charge.to_json, state: 'paid')
-  flash[:success] = t '.success'
-  redirect_to dashboard_path
-    
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to dashboard_path
-    
+    if @order.update(payment: charge.to_json, state: Order::PAID)
+      flash[:notice] = t '.success'
+      redirect_to dashboard_path
+    end 
+    rescue Stripe::CardError => e
+      @order.reload # for cleaning up any possibly modified attributes
+      flash[:alert] = e.message
+      redirect_to @order.payment_link
+      
   end
   
   protected
@@ -92,7 +82,7 @@ class OrdersController < ApplicationController
   
   def handle_errors
     ensure_order
-    render 'oders/new'
+    render 'orders/new'
   end
   
   def instantiate_order
@@ -106,31 +96,10 @@ class OrdersController < ApplicationController
     end
   end
   
-  def calculate_minutes
-    minutes_paid = calculate_minutes_paid
-    imparted_hours = ImpartedHour.where(journey_id: @journey)
-    minutes = { total_minutes: 0, minutes_paid: minutes_paid, minutes_not_paid: 0 }
+  helper_method :convert_to_hours
   
-    imparted_hours.each do |imparted_hour| 
-      minutes[:total_minutes] += imparted_hour.minutes
-    end 
-  
-    minutes[:minutes_not_paid] = minutes[:total_minutes] - minutes[:minutes_paid] 
-    
-    minutes
-    
-  end
-  
-  def calculate_minutes_paid
-    
-    orders = Order.where(journey_id: @journey).where(state: 'paid')
-    minutes_paid = 0
-    orders.each do |order| 
-      amount = (order.consumer_total_cents / 100).to_i
-      minutes_paid += amount * 60 / (order.price_hour)
-    end 
-    minutes_paid
-    
+  def convert_to_hours(minutes)
+    (minutes.to_f/60).round(1)  
   end
   
 end

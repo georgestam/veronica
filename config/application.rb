@@ -36,7 +36,7 @@ module Veronica
       if development? || test?
         'localhost'
       else
-        nil
+        "http://www.helloveronica.com/"
       end
     end
     
@@ -66,12 +66,6 @@ module Veronica
     end
     
     set_url_options!
-    # Rails.configuration.session_options[:domain] = host
-    # Rollbar.configuration.environment = host
-    # 
-    # config.action_controller.default_url_options ||= {}
-    # config.action_mailer.default_url_options ||= {}
-    # Rails.application.routes.default_url_options ||= {}
     
   end
   
