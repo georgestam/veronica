@@ -6,7 +6,5 @@ class ApplicationMailer < ActionMailer::Base
     subclass.default template_path: "mailers/#{subclass.name.to_s.underscore}"
     subclass.layout 'mailer'
   end
-  
-  # layout 'mailer'
 
 end

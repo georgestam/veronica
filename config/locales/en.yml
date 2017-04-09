@@ -85,11 +85,66 @@ en:
     new:
       teacher_booking: Teacher booking
   mailers:
+    journeys:
+      creation:
+        journey_mailer:
+          confirmation_of_booking:
+            Please_recommend_this_teacher_to_a_friend: Please recommend this teacher
+              to a friend
+            Please_see_a_summary_of_your_booking_below: Please see a summary of your
+              booking below
+            View_teacher_profile: View teacher profile
+            Your_booking_to: Your booking to
+            children: Children
+            duration: Duration
+            has_been_confirmed: Has been confirmed
+            hello: Hello
+            location: Location
+            many_thanks: Many thanks
+            parent: Parent
+            please_feel_free_to_contact_us_with_any_feedback: Please feel free to
+              contact us with any feedback
+            price: Price
+            teacher: Teacher
+            thank_you_for_booking_with_us: Thank you for booking with us
+          update_journey:
+            Please_recommend_this_teacher_to_a_friend: Please recommend this teacher
+              to a friend
+            Please_see_a_summary_of_your_booking_below: Please see a summary of your
+              booking below
+            View_teacher_profile: View teacher profile
+            Your_booking_to: Your booking to
+            children: Children
+            duration: Duration
+            has_been_UPDATED: Has been updated
+            hello: Hello
+            location: Location
+            many_thanks: Many thanks
+            parent: Parent
+            please_feel_free_to_contact_us_with_any_feedback: Please feel free to
+              contact us with any feedback
+            price: Price
+            teacher: Teacher
+            thank_you_for_booking_with_us: Thank you for booking with us
     orders:
       creation:
         parent_notification_mailer:
           perform:
             cta: Pay reservation
+    users:
+      creation:
+        user_mailer:
+          welcome:
+            If_you_have_any_questions_please_do_not_hesitate_to_ask: If you have any
+              questions please do not hesitate to ask
+            Take_your_time_to_explore_our_website_to_fully_utilise_all_our_amazing_features: Take
+              your time to explore our website to fully utilise all our amazing features
+            Thank_you_for_signing_up!: Thank you for signing up!
+            hello: Hello
+            see_our_teachers: See our teachers
+            thanks: Thanks
+            we_provide_a_system_to_find_realiable_teachers: We provide a system to
+              find realiable teachers
   number_of_students: Number of students
   orders:
     charge:
