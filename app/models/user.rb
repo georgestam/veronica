@@ -61,6 +61,10 @@ class User < ApplicationRecord
 
     user
   end
+  
+  def diverlang?
+    self.domain.to_s.include?('diverlang.com')
+  end 
 
   private
 
@@ -72,11 +76,6 @@ class User < ApplicationRecord
     # SubscribeToNewsletterJob.perform_now(self.id)
     SubscribeToNewsletterService.new(self).call
   end
-
-  def diverlang?
-    self.domain.to_s.include?('diverlang.com')
-  end 
-  
   
 end
 
