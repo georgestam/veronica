@@ -13,7 +13,7 @@ module Users
         @user = User.find(user_id)
         # This will render a view in `app/views/user_mailer`!
         
-        if @user.domain == 'http://www.diverlang.com' || @user.domain == 'http://diverlang.com'
+        if @user.diverlang?
           mail(from: 'contact@diverlang.com', to: @user.email, subject: 'Welcome to Diverlang!')
         else
           mail(from: 'contact@helloveronica.com', to: @user.email, subject: 'Welcome to Veronica!')

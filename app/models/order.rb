@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   
-  NOT_PAID = 'not_paid'.freeze
+  PENDING_PAYMENT = 'pending_payment'.freeze
   PAID = 'paid'.freeze
   
   include ApplicationRecordImpl
@@ -45,7 +45,7 @@ class Order < ApplicationRecord
     self.consumer_total = self.minutes * self.price_hour / 60
   end 
   
-  def self.calculate_minutes(journey)
+  def self.calculate_not_paid_minutes(journey)
     minutes_paid = Order.calculate_minutes_paid(journey)
     imparted_hours = ImpartedHour.where(journey_id: journey)
     minutes = { total_minutes: 0, minutes_paid: minutes_paid, minutes_not_paid: 0 }

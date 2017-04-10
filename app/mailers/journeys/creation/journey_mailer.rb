@@ -7,7 +7,6 @@ module Journeys
         @journey = journey
         @car = @journey.car
         
-        
         from = select_from
 
         mail(from: from, to: recipient, subject: 'Booking confirmation')
@@ -26,7 +25,7 @@ module Journeys
       end
       
       def select_from
-        if @user.domain == 'http://www.diverlang.com' || @user.domain == 'http://diverlang.com'
+        if @user.diverlang?
           'contact@diverlang.com'
         else
           'contact@helloveronica.com'

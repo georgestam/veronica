@@ -10,14 +10,14 @@ class OrdersController < ApplicationController
   end
   
   def new
-    @minutes = Order.calculate_minutes(@journey)
+    @minutes = Order.calculate_not_paid_minutes(@journey)
     @order = Order.new
     authorize(@order)
   end 
   
   def create
     @order.calculate_consumer_total_cents
-    @order.state = Order::NOT_PAID
+    @order.state = Order::PENDING_PAYMENT
     if @order.valid?
       authorize(@order)
       if @order.save
@@ -29,7 +29,6 @@ class OrdersController < ApplicationController
       end
     else
       flash.now[:alert] = t 'orders.create.validation_error'
-      authorize(@order)
       handle_errors
     end
   end
@@ -51,11 +50,15 @@ class OrdersController < ApplicationController
     if @order.update(payment: charge.to_json, state: Order::PAID)
       flash[:notice] = t '.success'
       redirect_to dashboard_path
-    end 
-    rescue Stripe::CardError => e
+    else
       @order.reload # for cleaning up any possibly modified attributes
-      flash[:alert] = e.message
+      flash[:alert] = t 'stripe.payment_failed'
       redirect_to @order.payment_link
+    end 
+    
+  rescue Stripe::CardError => e
+    flash[:alert] = e.message
+    redirect_to @order.payment_link
       
   end
   
@@ -74,14 +77,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:minutes).merge(journey_id: @journey.id, price_hour: @journey.car.price_hour)
   end
   
-  def ensure_order
-    if current_user
-      @order ||= Order.new
-    end
-  end
-  
   def handle_errors
-    ensure_order
     render 'orders/new'
   end
   
@@ -91,15 +87,9 @@ class OrdersController < ApplicationController
   
   def ensure_booking_is_active
     if @journey.completed
-      flash[:error] = t 'orders.errors.booking_is_completed'
+      flash[:alert] = t 'orders.errors.booking_is_completed'
       redirect_to dashboard_path
     end
-  end
-  
-  helper_method :convert_to_hours
-  
-  def convert_to_hours(minutes)
-    (minutes.to_f/60).round(1)  
   end
   
 end

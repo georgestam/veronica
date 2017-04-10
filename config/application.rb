@@ -36,7 +36,7 @@ module Veronica
       if development? || test?
         'localhost'
       else
-        "http://www.helloveronica.com/"
+        "www.helloveronica.com"
       end
     end
     

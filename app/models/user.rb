@@ -73,6 +73,9 @@ class User < ApplicationRecord
     SubscribeToNewsletterService.new(self).call
   end
 
+  def diverlang?
+    self.domain.to_s.include?('diverlang.com')
+  end 
   
   
 end
