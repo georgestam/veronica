@@ -5,24 +5,32 @@ class OrderPolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    true
+  end
+  
   def create?
-    create_or_destroy_or_checkout_or_charge?
+    create_or_destroy?
   end
   
   def destroy?
-    create_or_destroy_or_checkout_or_charge?
+    create_or_destroy?
   end  
   
-  def create_or_destroy_or_checkout_or_charge?
-    record.journey.car == user.cars[0] || user.admin?
+  def create_or_destroy?
+    record.journey.car == user.cars.first || user.admin?
   end 
   
   def checkout?
-    create_or_destroy_or_checkout_or_charge?
+    checkout_or_charge?
   end
   
   def charge?
-    create_or_destroy_or_checkout_or_charge?
+    checkout_or_charge?
   end
+  
+  def checkout_or_charge?
+    record.journey.user == user
+  end 
   
 end

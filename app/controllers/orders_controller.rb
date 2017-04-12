@@ -16,38 +16,35 @@ class OrdersController < ApplicationController
   end 
   
   def create
-    @order.calculate_consumer_total_cents
+    @order.calculate_consumer_total_cents!
     @order.state = Order::PENDING_PAYMENT
+    authorize(@order)
     if @order.valid?
-      authorize(@order)
       if @order.save
-        flash[:success] = t 'orders.create.success'
+        flash[:notice] = t 'orders.create.success'
         redirect_to dashboard_path
       else
-        flash.now[:alert] = t 'orders.create.unexpected_error'
+        flash[:alert] = @order.errors.full_messages
         handle_errors
       end
     else
-      flash.now[:alert] = t 'orders.create.validation_error'
+      flash[:alert] = @order.errors.full_messages
       handle_errors
     end
   end
   
   def charge
     
-    customer = Stripe::Customer.create(
-      source: params[:stripeToken],
-      email:  params[:stripeEmail]
-    )
+    raise "already charged" if @order.charged?
 
     charge = Stripe::Charge.create(
-      customer:     customer.id,   
+      source:       params[:stripeToken],
       amount:       @order.consumer_total_cents, 
       description:  @order.charge_description,
-      currency:     @order.consumer_total.currency
+      currency:     Order::STRIPE_EUR
     )
     
-    if @order.update(payment: charge.to_json, state: Order::PAID)
+    if @order.update(payment: charge.to_json, state: Order::PAID, stripe_charge_id: charge.id )
       flash[:notice] = t '.success'
       redirect_to dashboard_path
     else
@@ -76,9 +73,9 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:minutes).merge(journey_id: @journey.id, price_hour: @journey.car.price_hour)
   end
-  
+
   def handle_errors
-    render 'orders/new'
+    redirect_to dashboard_path
   end
   
   def instantiate_order

@@ -5,7 +5,8 @@ tmp/*
 *.swp
 .DS_Store
 public/assets
+coverage
+coverage/.last_run.json
 
 # Ignore application configuration
 /config/application.yml
-coverage/*

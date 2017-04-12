@@ -23,7 +23,7 @@
                 <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.total_hours') %>: <%=  convert_to_hours(h[:total_minutes]) %> </li>
                 <li> <i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('.hours_paid') %>: <%=  convert_to_hours(h[:minutes_paid]) %> </li>
                 <li> <i class="fa fa-calendar-times-o" aria-hidden="true"></i>  <%= t('.hours_not_paid') %>: <%= convert_to_hours(h[:minutes_not_paid]) %> </li>
-                <%= link_to I18n.t('profiles.dashboard.journey.send_invoice'), new_journey_order_path(journey), class: 'btn btn-danger custom-btn-width' %>
+                <%= link_to I18n.t('profiles.dashboard.journey.send_invoice'), new_journey_order_path(journey), class: 'btn btn-danger custom-btn-width', id:"submit-order" %>
               <% end %>
               
             </ul>

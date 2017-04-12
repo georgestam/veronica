@@ -219,6 +219,7 @@ en:
         verification_information: Verification information
         'yes': 'Yes'
       journey:
+        Cancel_booking: Cancel booking
         Edit_booking: Edit booking
         add_hours: Add hours
         children: Children
@@ -406,3 +407,10 @@ en:
         phone_number: Phone number
         submit: Submit
         what_do_you_expect_from_this_platform: What do you expect from this platform
+  application:
+    "yes": "Yes"
+    "no": "No"
+    param_required: "There has been an issue related with fields you left blank. Please try again."
+    forbidden: "You are not authorized to perform this action."
+    modern_browser_required: "Please use a modern browser in order to use this web application. Thank you!"
+    ensure_ajax_uploading: 'The page you attempted to visit cannot be viewed with Internet Explorer or Opera.'

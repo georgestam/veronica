@@ -1,5 +1,15 @@
 ---
 es:
+  application:
+    ensure_ajax_uploading: The page you attempted to visit cannot be viewed with Internet
+      Explorer or Opera.
+    forbidden: You are not authorized to perform this action.
+    modern_browser_required: Please use a modern browser in order to use this web
+      application. Thank you!
+    'no': 'No'
+    param_required: There has been an issue related with fields you left blank. Please
+      try again.
+    'yes': 'Yes'
   availabilities:
     availability_form:
       title: Modifica tu disponibilidad
@@ -216,6 +226,7 @@ es:
         verification_information: Información verificada
         'yes': Si
       journey:
+        Cancel_booking: Cancel booking
         Edit_booking: Modificar reserva
         add_hours: Add hours
         children: Alumnos

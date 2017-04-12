@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  
+  include ApplicationControllerImpl
+  
+  public
 
   #  i18n
   before_action :set_locale

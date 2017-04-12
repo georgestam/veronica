@@ -3,7 +3,6 @@ class Order < ApplicationRecord
   PENDING_PAYMENT = 'pending_payment'.freeze
   PAID = 'paid'.freeze
   
-  include ApplicationRecordImpl
   include Approvable
   include Payable
   
@@ -11,9 +10,10 @@ class Order < ApplicationRecord
   
   monetize :consumer_total_cents
   
-  validates :state, presence: true
+  validates :state, inclusion: [PENDING_PAYMENT, PAID]
   validates :price_hour, presence: true
-  validates :minutes, presence: true
+  validates :minutes, :numericality => { :greater_than_or_equal_to => 1 }, :presence => true
+  validates :consumer_total, presence: true
   
   after_commit :send_creation_emails, on: :create
   
@@ -41,7 +41,7 @@ class Order < ApplicationRecord
     "Order id #{self.id} - Teacher #{self.journey.car.user.first_name}"
   end
   
-  def calculate_consumer_total_cents
+  def calculate_consumer_total_cents!
     self.consumer_total = self.minutes * self.price_hour / 60
   end 
   
