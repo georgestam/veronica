@@ -220,27 +220,6 @@ class ProfilesController < ApplicationController
 
   end
   
-  helper_method :calculate_hours
-
-  def calculate_hours(journey)
-    
-    if journey.imparted_hours.first
-      imparted_hours = ImpartedHour.where(journey_id: journey)
-      hours = { total_hours: 0, hours_paid: 0, hours_not_paid: 0 }
-    
-      imparted_hours.each do |imparted_hour| 
-        hours[:total_hours] += (imparted_hour.minutes.to_f / 60)
-      end 
-    
-      hours[:hours_not_paid] = hours[:total_hours] # to be completed once stripe is implemented. 
-      
-      hours.each do |key, value|
-        hours[key] = value.round(2)
-      end
-      hours
-    end
-  end
-  
   def youtube_embed(youtube_url)
     if youtube_url[%r{/youtu\.be\/([^\?]*)/}]
       youtube_id = $1

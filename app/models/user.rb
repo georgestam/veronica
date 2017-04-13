@@ -61,19 +61,21 @@ class User < ApplicationRecord
 
     user
   end
+  
+  def diverlang?
+    self.domain.to_s.include?('diverlang.com')
+  end 
 
   private
 
   def send_welcome_email
-    UserMailer.welcome(self.id).deliver_now
+    Users::Creation::UserMailer.welcome(self.id).deliver_now
   end
 
   def subscribe_to_newsletter
     # SubscribeToNewsletterJob.perform_now(self.id)
     SubscribeToNewsletterService.new(self).call
   end
-
-  
   
 end
 

@@ -1,5 +1,15 @@
 ---
 es:
+  application:
+    ensure_ajax_uploading: The page you attempted to visit cannot be viewed with Internet
+      Explorer or Opera.
+    forbidden: You are not authorized to perform this action.
+    modern_browser_required: Please use a modern browser in order to use this web
+      application. Thank you!
+    'no': 'No'
+    param_required: There has been an issue related with fields you left blank. Please
+      try again.
+    'yes': 'Yes'
   availabilities:
     availability_form:
       title: Modifica tu disponibilidad
@@ -81,7 +91,103 @@ es:
       edit_booking: Modificar reserva
     new:
       teacher_booking: Reservas
+  mailers:
+    journeys:
+      creation:
+        journey_mailer:
+          confirmation_of_booking:
+            Please_recommend_this_teacher_to_a_friend: Please recommend this teacher
+              to a friend
+            Please_see_a_summary_of_your_booking_below: Please see a summary of your
+              booking below
+            View_teacher_profile: View teacher profile
+            Your_booking_to: Your booking to
+            children: Children
+            duration: Duration
+            has_been_confirmed: Has been confirmed
+            hello: Hello
+            location: Location
+            many_thanks: Many thanks
+            parent: Parent
+            please_feel_free_to_contact_us_with_any_feedback: Please feel free to
+              contact us with any feedback
+            price: Price
+            teacher: Teacher
+            thank_you_for_booking_with_us: Thank you for booking with us
+          update_journey:
+            Please_recommend_this_teacher_to_a_friend: Please recommend this teacher
+              to a friend
+            Please_see_a_summary_of_your_booking_below: Please see a summary of your
+              booking below
+            View_teacher_profile: View teacher profile
+            Your_booking_to: Your booking to
+            children: Children
+            duration: Duration
+            has_been_UPDATED: Has been updated
+            hello: Hello
+            location: Location
+            many_thanks: Many thanks
+            parent: Parent
+            please_feel_free_to_contact_us_with_any_feedback: Please feel free to
+              contact us with any feedback
+            price: Price
+            teacher: Teacher
+            thank_you_for_booking_with_us: Thank you for booking with us
+    orders:
+      creation:
+        parent_notification_mailer:
+          perform:
+            cta: Cta
+    users:
+      creation:
+        user_mailer:
+          welcome:
+            If_you_have_any_questions_please_do_not_hesitate_to_ask: If you have any
+              questions please do not hesitate to ask
+            Take_your_time_to_explore_our_website_to_fully_utilise_all_our_amazing_features: Take
+              your time to explore our website to fully utilise all our amazing features
+            Thank_you_for_signing_up!: Thank you for signing up!
+            hello: Hello
+            see_our_teachers: See our teachers
+            thanks: Thanks
+            we_provide_a_system_to_find_realiable_teachers: We provide a system to
+              find realiable teachers
   number_of_students: Número de estudiantes
+  orders:
+    charge:
+      already_charged: Already charged
+      success: Success
+    checkout:
+      amount: Amount
+      h1: 'Order #%{id} - %{teacher}'
+      hours: "%{hours} euros"
+      imparted_hours: Imparted hours
+    create:
+      success: Success
+      unexpected_error: Unexpected error
+      validation_error: Validation error
+    creation:
+      parent_notification_mailer:
+        perform:
+          cta: Pay reservation
+          p1: 'You have reserved %{teacher}, for the following hours(s):'
+          p2: This result in a payment of %{amount} euros.
+          p3: Now it is expected that you pay said reservation, using the following
+            link
+          p4: Your previous invoices have been canceled and only this one hast be
+            paid. Please let us know if there's any issue.
+          subject: "#%{id} - Thanks for using %{teacher} - This is your new invoice"
+    errors:
+      booking_is_completed: Booking is completed
+      space_no_longer_available: Space no longer available
+      space_taken_not_charged: Space taken not charged
+    new:
+      create_invoice: Create invoice
+      invoice_description: To date there are %{total_hours} hours (%{total_min} minutes)
+        outstanding (not paid by the parent yet). Please introduce %{total_min} minutes
+        below if you think that they are correct.
+      minutes_to_invoice: Minutes to invoice
+      submit_invoice_to_parent: Submit invoice to parent
   pages:
     home:
       driver: Profesor
@@ -121,6 +227,7 @@ es:
         verification_information: Información verificada
         'yes': Si
       journey:
+        Cancel_booking: Cancel booking
         Edit_booking: Modificar reserva
         add_hours: Add hours
         children: Alumnos
@@ -135,6 +242,7 @@ es:
         new_entry: New entry
         price: Precio
         see_imparted_hours: See imparted_hours
+        send_invoice: Send invoice
         total_hours: Total hours
         your_bookings_as_teacher: Tus reservas
       journey_user:
@@ -212,6 +320,10 @@ es:
       sign_in: Entrar
       sign_out: Salir
       teacher_profile: Teacher profile
+  stripe:
+    button_title: Pay %{amount}
+    payment_failed: Payment failed
+    popup_title: Pay %{amount}
   time:
     formats:
       day_month_year: "%d %b %Y"

@@ -14,17 +14,18 @@
           <div class='product-body'>
             <p> <%= journey.user.first_name.capitalize %> <%= journey.user.last_name.capitalize %> </p>
             <ul>
-              <!-- <li><i class="fa fa-calendar" aria-hidden="true"></i>  <%#= l(journey.pick_up_time, format: :time_date) %></li> -->
               <li><i class="fa fa-map-marker" aria-hidden="true"></i> <%= t('.location') %>:<%= journey.address %> </li>
               <li> <i class="fa fa-money" aria-hidden="true"></i>  <%= t('.price') %>:€ <%= journey.car.price_hour.to_i %>/hr</li>
-              <!-- <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%#= t('.duration') %>:<%= journey.duration %> h </li> -->
               <li> <i class="fa fa-users" aria-hidden="true"></i  >  <%= t('.children') %>: <%= journey.remaining_seats %> </li>
                 
-              <% if h = calculate_hours(journey) %>
-                <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.total_hours') %>: <%=  h[:total_hours] %> </li>
-                <li> <i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('.hours_paid') %>: <%=  h[:hours_paid] %> </li>
-                <li> <i class="fa fa-calendar-times-o" aria-hidden="true"></i>  <%= t('.hours_not_paid') %>: <%= h[:hours_not_paid] %> </li>
+              <% if journey.imparted_hours.first %>
+                <% h = Order.calculate_not_paid_minutes(journey) %>
+                <li> <i class="fa fa-clock-o" aria-hidden="true"></i>  <%= t('.total_hours') %>: <%=  convert_to_hours(h[:total_minutes]) %> </li>
+                <li> <i class="fa fa-calendar" aria-hidden="true"></i>  <%= t('.hours_paid') %>: <%=  convert_to_hours(h[:minutes_paid]) %> </li>
+                <li> <i class="fa fa-calendar-times-o" aria-hidden="true"></i>  <%= t('.hours_not_paid') %>: <%= convert_to_hours(h[:minutes_not_paid]) %> </li>
+                <%= link_to I18n.t('profiles.dashboard.journey.send_invoice'), new_journey_order_path(journey), class: 'btn btn-danger custom-btn-width', id:"submit-order" %>
               <% end %>
+              
             </ul>
             <ul>
               <il>
@@ -44,20 +45,19 @@
                       <%= f.hidden_field :completed, :value => false %>
                       <%= f.submit I18n.t('.completed', default: 'Completed' ), class: 'btn btn-success custom-btn-width' %>
                     <% else %>
-                      <%#= f.submit I18n.t('.Mark_as_Completed', default:'Mark as Completed' ), class: 'btn btn-primary custom-btn-width' %>
-
 
                       <%= link_to I18n.t('.Edit_booking', default: 'Edit Booking' ), edit_journey_path(journey), class: 'btn btn-primary custom-btn-width' %>
                       <%= link_to I18n.t('profiles.dashboard.journey.history'), journey_imparted_hours_path(journey), class: 'btn btn-success custom-btn-width' %>
-                       <%#= link_to I18n.t('.Cancel_booking', default: 'Cancel Booking' ), journey_path(journey), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger custom-btn-width' %>
+                      <%= link_to I18n.t('.Cancel_booking', default: 'Cancel Booking' ), journey_path(journey), data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger custom-btn-width' %>  
+                       
                    <% end %>
                 <% end %>
               </il>
+                
             </ul>
             
             
           </div>
-          <%#= link_to "", edit_journey_path(journey), class: "product-link" %>
           
           <div class="col-xs-4 text-center">
             <p> <%= t('.add_hours') %> </p>

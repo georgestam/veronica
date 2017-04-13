@@ -1,5 +1,10 @@
 class ApplicationMailer < ActionMailer::Base
 
-  layout 'mailer'
+  default from: 'cristina@helloveronica.com'
+  
+  def self.inherited(subclass)
+    subclass.default template_path: "mailers/#{subclass.name.to_s.underscore}"
+    subclass.layout 'mailer'
+  end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320090300) do
+ActiveRecord::Schema.define(version: 20170404112239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,27 @@ ActiveRecord::Schema.define(version: 20170320090300) do
     t.index ["user_id"], name: "index_journeys_on_user_id", using: :btree
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string   "state",                                   null: false
+    t.integer  "price_hour",                              null: false
+    t.integer  "journey_id",                              null: false
+    t.integer  "minutes",                                 null: false
+    t.integer  "consumer_total_cents",    default: 0,     null: false
+    t.string   "consumer_total_currency", default: "EUR", null: false
+    t.json     "payment"
+    t.datetime "approved_at"
+    t.datetime "rejected_at"
+    t.string   "stripe_charge_id"
+    t.string   "stripe_refund_id"
+    t.datetime "stripe_charged_at"
+    t.datetime "stripe_refunded_at"
+    t.integer  "invoice_number"
+    t.integer  "invoice_year"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.index ["journey_id"], name: "index_orders_on_journey_id", using: :btree
+  end
+
   create_table "passengers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "journey_id"
@@ -167,6 +188,7 @@ ActiveRecord::Schema.define(version: 20170320090300) do
   add_foreign_key "imparted_hours", "journeys"
   add_foreign_key "journeys", "cars"
   add_foreign_key "journeys", "users"
+  add_foreign_key "orders", "journeys"
   add_foreign_key "passengers", "journeys"
   add_foreign_key "passengers", "users"
 end

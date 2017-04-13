@@ -21,6 +21,12 @@ Rails.application.routes.draw do
     resources :journeys, only: [:index, :show, :new, :create, :destroy, :update, :edit] do
       resources :passengers, only: [:new, :create, :destroy]
       resources :imparted_hours, only: [:index, :new, :create, :destroy]
+      resources :orders, only: [:new, :create] do
+        member do
+          get :checkout  # payment new
+          post :charge   # payment create. 
+        end
+      end
     end
     
     resources :articles, only: [:index, :create, :show]

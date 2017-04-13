@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  
+  include ApplicationControllerImpl
 
   #  i18n
   before_action :set_locale
@@ -38,5 +40,11 @@ class ApplicationController < ActionController::Base
 
   def set_locale #  i18n
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+  
+  helper_method :convert_to_hours
+  
+  def convert_to_hours(minutes)
+    (minutes.to_f / 60).round(1)  
   end
 end
