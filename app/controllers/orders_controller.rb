@@ -34,25 +34,32 @@ class OrdersController < ApplicationController
   end
   
   def charge
-    
-    raise "already charged" if @order.charged?
-
-    charge = Stripe::Charge.create(
-      source:       params[:stripeToken],
-      amount:       @order.consumer_total_cents, 
-      description:  @order.charge_description,
-      currency:     Order::STRIPE_EUR
-    )
-    
-    if @order.update(payment: charge.to_json, state: Order::PAID, stripe_charge_id: charge.id )
-      flash[:notice] = t '.success'
-      redirect_to dashboard_path
+      
+    if @order.payable?
+      
+      charge = Stripe::Charge.create(
+        source:       params[:stripeToken],
+        amount:       @order.consumer_total_cents, 
+        description:  @order.charge_description,
+        currency:     Order::STRIPE_EUR
+      )
+      
+      if @order.update(payment: charge.to_json, state: Order::PAID, stripe_charge_id: charge.id )
+        flash[:notice] = t '.success'
+        redirect_to dashboard_path
+      else
+        @order.reload # for cleaning up any possibly modified attributes
+        flash[:alert] = t 'stripe.payment_failed'
+        redirect_to @order.payment_link
+      end 
+      
     else
-      @order.reload # for cleaning up any possibly modified attributes
-      flash[:alert] = t 'stripe.payment_failed'
-      redirect_to @order.payment_link
-    end 
-    
+      error = t '.already_charged'
+      SafeLoggerRaygun.error { error }
+      flash[:alert] = error
+      redirect_to dashboard_path
+    end
+  
   rescue Stripe::CardError => e
     flash[:alert] = e.message
     redirect_to @order.payment_link

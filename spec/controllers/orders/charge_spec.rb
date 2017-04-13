@@ -88,10 +88,9 @@ RSpec.describe OrdersController, type: :controller do
           let!(:journey){ FactoryGirl.create :journey, user: user }
           let!(:order){ FactoryGirl.create :order, :paid, journey: journey }
 
-          it "raise and exception" do
-            
-            expect { the_action }.to raise_exception("already charged")
-            
+          it "logs an error" do
+            the_action
+            expect(flash[:alert]).to eq "Already charged"
           end
 
         end

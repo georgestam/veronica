@@ -1,9 +1,7 @@
 RSpec.describe OrdersController, type: :controller do
         
   def the_action(minutes)
-    # post :create, :order => ourney_id: journey.id, minutes:minutes
-    # post :create, order: { ourney_id: journey.id, minutes:minutes }
-    post :create, params: { journey_id: journey.id, minutes:minutes }
+    post :create, params: {order: { journey_id: journey.id, minutes:minutes } }
   end
 
   describe '#create' do
@@ -20,7 +18,7 @@ RSpec.describe OrdersController, type: :controller do
       context "for a new order is created" do
           
         it "works" do
-          # expect{the_action(reference.minutes)}.to change(Order, :count).by(1)
+          expect{the_action(reference.minutes)}.to change(Order, :count).by(1)
         end
         
       end

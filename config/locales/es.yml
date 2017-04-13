@@ -155,6 +155,7 @@ es:
   number_of_students: Número de estudiantes
   orders:
     charge:
+      already_charged: Already charged
       success: Success
     checkout:
       amount: Amount

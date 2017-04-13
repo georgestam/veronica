@@ -30,7 +30,7 @@ class OrderPolicy < ApplicationPolicy
   end
   
   def checkout_or_charge?
-    record.journey.user == user
+    record.journey.user == user || user.admin?
   end 
   
 end
