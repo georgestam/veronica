@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   include ApplicationControllerImpl
-  # include SafeLoggerRaygun
 
   #  i18n
   before_action :set_locale
