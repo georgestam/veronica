@@ -12,7 +12,7 @@ class Order < ApplicationRecord
   
   validates :state, inclusion: [PENDING_PAYMENT, PAID]
   validates :price_hour, presence: true
-  validates :minutes, :numericality => { :greater_than_or_equal_to => 1 }, :presence => true
+  validates :minutes, numericality: { greater_than_or_equal_to: 1 }, presence: true
   validates :consumer_total, presence: true
   
   after_commit :send_creation_emails, on: :create

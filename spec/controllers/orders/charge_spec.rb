@@ -95,7 +95,7 @@ RSpec.describe OrdersController, type: :controller do
 
         end
 
-        context "attempting to pay an order I did not booked with a teacher" do
+        context "attempting to pay an order I did not book with a teacher" do
 
           let(:order){ FactoryGirl.create :order }
 

@@ -6,8 +6,6 @@ module Journeys
         @user = journey.user
         @journey = journey
         @car = @journey.car
-        
-        from = select_from
 
         mail(from: from, to: recipient, subject: 'Booking confirmation')
 
@@ -17,14 +15,12 @@ module Journeys
         @user = journey.user
         @journey = journey
         @car = @journey.car
-        
-        from = select_from
 
         mail(from: from, to: recipient, subject: 'Your teacher booking have changed')
         
       end
       
-      def select_from
+      def from
         if @user.diverlang?
           'contact@diverlang.com'
         else

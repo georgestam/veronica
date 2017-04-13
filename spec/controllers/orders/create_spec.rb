@@ -1,7 +1,7 @@
 RSpec.describe OrdersController, type: :controller do
         
   def the_action(minutes)
-    post :create, params: {order: { journey_id: journey.id, minutes:minutes } }
+    post :create, params: {order: { journey_id: journey.id, minutes: minutes } }
   end
 
   describe '#create' do
