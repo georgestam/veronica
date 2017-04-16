@@ -60,7 +60,7 @@
                           <% if passenger.journey.car.user.photo? %>
                           <%= cl_image_tag passenger.journey.car.user.photo.path, width: 60, height: 60, crop: :thumb, gravity: :face , class: "" %>
                           <% else %>
-                          <% avatar_url = passenger.journey.car.user.facebook_picture_url || "http://placehold.it/60x60" %>
+                          <% avatar_url = passenger.journey.car.user.facebook_picture_url || "https://s3-us-west-2.amazonaws.com/colorbuffs/user_data/images/profile/default/default-user.png" %>
                           <%= image_tag avatar_url, width: 60, height: 60, crop: :thumb, gravity: :face, class: "" %>
                           <% end %>
 

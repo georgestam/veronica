@@ -3,7 +3,7 @@
   <% if @user.photo? %>
     <%= cl_image_tag @user.photo.path, width: 200, height: 200, crop: :thumb, gravity: :face , class: "avatar-large header-img" %>
   <% else %>
-    <% avatar_url = @user.facebook_picture_url || "http://placehold.it/100x100" %>
+    <% avatar_url = @user.facebook_picture_url || "https://s3-us-west-2.amazonaws.com/colorbuffs/user_data/images/profile/default/default-user.png" %>
     <%= image_tag avatar_url, class: "avatar-large header-img" %>
   <% end %>
   <div class="header-info">

@@ -7,7 +7,7 @@
           <% if journey.car.user.photo? %>
           <%= cl_image_tag journey.car.user.photo.path, { class: "product-image hidden-xs"} %>
           <% else %>
-          <% avatar_url = journey.car.user.facebook_picture_url || "http://placehold.it/200x200" %>
+          <% avatar_url = journey.car.user.facebook_picture_url || "https://s3-us-west-2.amazonaws.com/colorbuffs/user_data/images/profile/default/default-user.png" %>
           <%= cl_image_tag avatar_url, { class: "product-image hidden-xs"} %>
           <% end %>
 
