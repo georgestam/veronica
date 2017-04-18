@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
       )
       
       if @order.update(payment: charge.to_json, state: Order::PAID, stripe_charge_id: charge.id )
-        flash[:notice] = t '.success'
+        flash[:notice] = t 'success_payment'
         redirect_to dashboard_path
       else
         @order.reload # for cleaning up any possibly modified attributes

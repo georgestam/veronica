@@ -50,6 +50,8 @@ es:
       imparted_hours: Imparted hours
       list_hours_paid: List hours paid
       list_hours_worked: List hours worked
+      minutes_paid: Minutes paid
+      total_paid: Total paid
   journey_mailer:
     confirmation_of_booking:
       Please_recommend_this_teacher_to_a_friend: Recomienda este profesor a un amigo.
@@ -324,6 +326,7 @@ es:
     button_title: Pay %{amount}
     payment_failed: Payment failed
     popup_title: Pay %{amount}
+  success_payment: Pago realizado con exito
   time:
     formats:
       day_month_year: "%d %b %Y"

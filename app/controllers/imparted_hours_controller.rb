@@ -5,6 +5,7 @@ class ImpartedHoursController < ApplicationController
 
   def index
     @imparted_hours = ImpartedHour.where(journey: @journey)
+    @orders = Order.where(journey: @journey)
     policy_scope(@imparted_hours)
   end
   

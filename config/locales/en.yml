@@ -50,6 +50,8 @@ en:
       imparted_hours: imparted hours
       list_hours_paid: List hours paid
       list_hours_worked: List hours worked
+      minutes_paid: Minutes paid
+      total_paid: Total paid
   journey_mailer:
     confirmation_of_booking:
       Please_recommend_this_teacher_to_a_friend: Please recommend this teacher to
@@ -328,6 +330,7 @@ en:
     payment_failed: Sorry, there has been a problem with your payment. You have not
       been charged.
     popup_title: Pay %{amount}
+  success_payment: Success payment
   time:
     formats:
       day_month_year: "%d %b %Y"
