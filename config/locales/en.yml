@@ -47,7 +47,7 @@ en:
       delete_time: Delete time
       hours: Hours
       hours_paid: Hours paid
-      imparted_hours: imparted hours
+      imparted_hours: Total unpaid hours
       list_hours_paid: List hours paid
       list_hours_worked: List hours worked
       minutes_paid: Minutes paid
@@ -201,14 +201,14 @@ en:
       how_it_works: How does it work?
       joan_bio: I'm an English teacher living in Lleida and Barcelona with 5 years
         experience in pedagogics, teaching children and adults. I can teach or improve
-        your English in any level.
+        your English at any level.
       joan_bio1: That’s why I created diverlang.com!
       joan_bio2: We can train you and your kids properly and get you ready to pass
-        any exam, school, Cambridge, TOEFL... for all ages.
+        any exam, Cambridge, TOEFL... for all ages.
       passenger: Parent
       passenger_call_to_action: Find a teacher
       passenger_subtitle: do you want your children to be prepared for the future?
-      share_charity: We give 10% of each teacher's hour to unicef
+      share_charity: We give 5% of our dividends to charity. 
       step_one_explanation: Find a language teacher close to you
       step_three_explanation: Enjoy seeing how your children learn!
       step_two_explanation: Contact him to come to your home
@@ -246,7 +246,7 @@ en:
         minutes: Minutes
         new_entry: New entry
         price: Price
-        see_imparted_hours: See imparted_hours
+        see_total_unpaid_hours: See total_unpaid_hours
         send_invoice: Send invoice
         total_hours: Total hours
         your_bookings_as_teacher: Your bookings as teacher
