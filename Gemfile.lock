@@ -293,6 +293,9 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     pg (0.20.0)
+    postmark (1.10.0)
+      json
+      rake
     powerpack (0.1.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -522,6 +525,7 @@ DEPENDENCIES
   money-rails (~> 1)
   omniauth-facebook
   pg
+  postmark
   pry-nav
   pry-rails
   pry-stack_explorer

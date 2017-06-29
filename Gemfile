@@ -31,6 +31,7 @@ gem 'compass-rails', github: 'Compass/compass-rails'
 
 # mailchimp
 gem 'gibbon'
+gem 'postmark'
 
 # raygun
 gem 'raygun4ruby'
