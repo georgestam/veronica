@@ -14,9 +14,9 @@ module Users
         # This will render a view in `app/views/user_mailer`!
         
         if @user.diverlang?
-          mail(from: 'contact@diverlang.com', to: @user.email, subject: 'Welcome to Diverlang!')
+          mail(from: 'cristina@helloveronica.com', to: @user.email, subject: 'Welcome to Diverlang!')
         else
-          mail(from: 'contact@helloveronica.com', to: @user.email, subject: 'Welcome to Veronica!')
+          mail(from: 'cristina@helloveronica.com', to: @user.email, subject: 'Welcome to Veronica!')
         end   
       
       end

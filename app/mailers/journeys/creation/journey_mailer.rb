@@ -22,9 +22,9 @@ module Journeys
       
       def from
         if @user.diverlang?
-          'contact@diverlang.com'
+          'cristina@helloveronica.com'
         else
-          'contact@helloveronica.com'
+          'cristina@helloveronica.com'
         end  
       end 
 
